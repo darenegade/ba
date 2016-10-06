@@ -11,9 +11,9 @@ fontsize: 12pt
 Bei der Microservice Architektur wird komplexe Anwendungssoftware mit kleinen,
 unabhängigen Services komponiert, welche über eine sprachunabhängige
 Programmierschnittstelle (z.B. Http/RESTful) kommunizieren. Diese Services sind
-klein, weitgehend entkoppelt und erledigen eine kleine Aufgabe. Dadurch wird
+weitgehend entkoppelt und erledigen eine kleine Teilaufgabe. Dadurch wird
 ein modularer Aufbau ermöglicht und setzt innerhalb der Services den Fokus
-auf eine kleine leichter zu lösende Teilaufgabe. So kann sich das
+auf die kleine leichter zu lösende Teilaufgabe. So kann sich das
 Entwicklerteam eines Services bei der Wahl der Programmiersprache und dem
 Framework an den eigenen Fähigkeiten und der zu lösenden Teilaufgabe konzentrieren.
 Durch diese freie Entwicklung kann der Service komplett unabhängig von den anderen
@@ -46,7 +46,7 @@ Neben den Anforderungen an die Integration eines Services müssen auch Kriterien
 der Sicherheit erfüllt werden. Gerade Services mit Anbindung an eine Datenbank
 besitzen meist zu schützende Inhalte. So muss eine Authentifizierung und
 Autorisierung am Service eingerichtet werden können, um den Service vor
-Missbrauch schützen zu können. Damit sich nicht jeder Service eigenständig um eine
+Missbrauch zu schützen. Damit sich nicht jeder Service eigenständig um eine
 Nutzer- und Rechteverwaltung kümmern muss, hat sich eine zentrale Lösung bewährt.
 Der RFC Standard OAuth2 bietet hierfür die beste Grundlage. Die API eines Services
 darf somit nur von Clients mit gültigem Token verwendet werden können. Und
