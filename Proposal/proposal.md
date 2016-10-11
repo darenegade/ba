@@ -70,3 +70,14 @@ Anforderungsprofile für Services eingeführt. Diese beschreiben verschiedene Be
 und Nutzungen eines Services. So können den Anforderungen Gewichte zugeordnet werden,
 um somit eine Empfehlung für den Einsatz der Sprachen und
 Frameworks für diverse Aufgabentypen aussprechen zu können.
+
+Im praktischen Teil der Bachelor Arbeit werden verschiedene Frameworks und die
+dazugehörigen Sprachen als einfacher Microservice umgesetzt. Diese Services erhalten
+eine Anbindung an eine MySQL Datenbank und bieten das gleiche Datenmodell als API
+nach außen an. Zusätzlich bietet jeder Service eine einfache und eine rechenintensive
+Geschäftsanwendung über die API an. Diese API wird mit einer Authentifizierung
+abgesichert. Die damit entstandenen Microservices werden anschließend auf die oben
+genannten Anforderungen untersucht. So werden allgemeine Umsetzungsprobleme festgehalten
+und bewertet sowie am fertigen Service ein Stresstest durchgeführt. Anschließend werden
+Sie in eine bestehende Microservice-Infrastruktur eingebunden. Mit den dabei gewonnen
+Erkenntnissen werden für die Frameworks Empfehlungen für den Einsatz ausgesprochen.
