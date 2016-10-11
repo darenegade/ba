@@ -82,4 +82,4 @@ und bewertet sowie am fertigen Service ein Stresstest durchgeführt. Anschließe
 Sie in eine bestehende Microservice-Infrastruktur eingebunden. Mit den dabei gewonnen
 Erkenntnissen werden für die Frameworks Empfehlungen für den Einsatz ausgesprochen.
 Zudem werden nicht unterstütze und somit selbst entwickelte Funktionen als Library
-für den zukünftigen Gebrauch festgehalten.
+für den zukünftigen Gebrauch festgehalten. 
