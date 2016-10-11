@@ -81,3 +81,5 @@ genannten Anforderungen untersucht. So werden allgemeine Umsetzungsprobleme fest
 und bewertet sowie am fertigen Service ein Stresstest durchgeführt. Anschließend werden
 Sie in eine bestehende Microservice-Infrastruktur eingebunden. Mit den dabei gewonnen
 Erkenntnissen werden für die Frameworks Empfehlungen für den Einsatz ausgesprochen.
+Zudem werden nicht unterstütze und somit selbst entwickelte Funktionen als Library
+für den zukünftigen Gebrauch festgehalten. 
