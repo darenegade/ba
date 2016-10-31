@@ -1,6 +1,17 @@
 *.class
 *.pxm
 
+# Latex
+*.log
+*.lol
+*.lot
+*.lof
+*.out
+*.toc
+*.aux
+*.synctex.gz
+
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
