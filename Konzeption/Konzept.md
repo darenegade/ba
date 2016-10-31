@@ -21,8 +21,9 @@
       * Frameworks verfügbar
       * Service Verfügbarkeit hängt an Infrastruktur / Auslastung
   * Fehler Toleranz
-    * Kriterium ausschließen?
-      * Fehlerbehaftete Antworten werden nicht akzeptiert
+    * Fehlerbehaftete Antworten werden nicht akzeptiert
+    * Circuit Breaker Pattern (Hystrix)
+      * Bewertung finden (z.B. unterstützt, umsetzbar, nicht unterstützt)
   * Wiederherstellbarkeit
     * Kriterium ausschließen?
       * Service stateless
@@ -68,7 +69,9 @@
     * Einhaltung von Standards
       * REST Schnittstelle
       * JSON/XML Serialisierung
-    * Bewertung finden (z.B. schlecht, mittel, gut, sehr gut)
+      * Bewertung finden (z.B. schlecht, mittel, gut, sehr gut)
+    * Service Discovery (Eureka, Consul)
+      * Mit Spring Cloud SideCar nicht notwendig
   * Co-Existence
     * Kriterium ausschließen?
       * Grundsatz in Architektur
@@ -85,9 +88,9 @@
     * Logging Schnittstelle
     * Bewertung finden (z.B. unterstützt, umsetzbar, nicht unterstützt)
   * Erweiterbarkeit
-    * Wünschenswerte Features
+    * Spezielle Features
       * Caching
-      * Sonstiges
+      * ???
   * Testbarkeit
     * Kriterium ausschließen?
       * Unit Tests überall möglich
