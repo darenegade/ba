@@ -10,7 +10,8 @@
 *.toc
 *.aux
 *.synctex.gz
-
+*.bbl
+*.blg
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
