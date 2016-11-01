@@ -24,22 +24,22 @@ Komplettes ISO25010 Modell mit Qualitätskategorien und Kriterien.
         * Einhaltung von anwendungsspezifischen Normen
         * Kriterium ausschließen
             * Gibt es bei Microservices - Service Normen?
-  * Angemessenheit
-      * Wird eine Funktion angemessen zur Verfügung gestellt?
-          * Ordinalskala (z.B. schlecht, mittel, gut, sehr gut)
+    * Angemessenheit
+        * Wird eine Funktion angemessen zur Verfügung gestellt?
+            * Ordinalskala (z.B. schlecht, mittel, gut, sehr gut)
 
 * Reliabilität
     * Verfügbarkeit
         * Verfügbarkeit des Services liegt an Infrastruktur / Platform
         * Circuit Breaker Pattern (Hystrix)
             * Ordinalskala (z.B. unterstützt, umsetzbar, nicht unterstützt)
-  * Fehler Toleranz
-      * Kriterium ausschließen
-          * Fehlerbehaftete Antworten werden nicht akzeptiert
-  * Wiederherstellbarkeit
-      * Kriterium ausschließen
-          * Service stateless
-          * DB nicht im Scope
+    * Fehler Toleranz
+        * Kriterium ausschließen
+            * Fehlerbehaftete Antworten werden nicht akzeptiert
+    * Wiederherstellbarkeit
+        * Kriterium ausschließen
+            * Service stateless
+            * DB nicht im Scope
 
 * Performance
     * Zeitverhalten
@@ -64,9 +64,11 @@ Komplettes ISO25010 Modell mit Qualitätskategorien und Kriterien.
         * Zufriedenstellung
             * Subjektiv vom Nutzer -> Ordinalskala (z.B. schlecht, mittel, gut, sehr gut)
             * Begründung notwendig da subjektiv
-        * Risikofreiheit
+        * Risikofreiheit (persönlich, wirtschaftlich, Umgebung)
             * Kriterium ausschließen
-                * Kann ein Service ein Risiko mildern oder verstärken?
+                * Open Source mildert das wirt. Risiko, aber hier vernachlässigbar
+                * persönliche Schaden ist nicht obj. messbar
+                * Framework sollte keinen Schaden am System auslösen
         * Kontext Abbildung
             * Kriterium ausschließen
                 * Architektur schreibt kleinen Kontext für Service vor
@@ -122,10 +124,31 @@ Komplettes ISO25010 Modell mit Qualitätskategorien und Kriterien.
             * Nur Netzwerkverbindung notwendig
     * Installierbarkeit
         * Einschränkungen OS?
-        * Bewertung: Installierbar auf System ja oder nein
+        * Kriterium ausschließen
+          * Mit z.B. Docker ist dies kein Problem
     * Ersetzbarkeit
         * Kriterium ausschließen
             * RESTful Schnittstelle ist definiert
+
+Daraus folgt folgendes Modell für diese Arbeit mit einer Zusammenfassung einiger
+Kriterien:
+
+* Funktionalität
+    * Angemessenheit
+    * Sicherheit (Vertraulichkeit, Integrität, Authentizität)
+    * Interoperabilität
+* Performance
+    * Zeitverhalten
+    * Ressourcen Verbrauch
+* Benutzbarkeit (Quality in use)
+    * Effizienz
+    * Effektivität
+    * Zufriedenstellung
+* Wartbarkeit
+    * Wiederverwendbarkeit
+    * Analysierbarkeit
+    * Verfügbarkeit
+    * Erweiterbarkeit
 
 ## Evaluation
 
