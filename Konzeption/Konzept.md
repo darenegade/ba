@@ -154,7 +154,7 @@ Kriterien:
 
 Festlegung der Evaluationsmethode für die Qualitätskriterien
 
-### Usability, Funktionalität, Sicherheit, Wartbarkeit
+### Funktionalität, Benutzbarkeit, Wartbarkeit
 * Cognitive Walkthrough
     * Aufgabenbeschreibung
     * Aufgabenbewertung
@@ -162,7 +162,7 @@ Festlegung der Evaluationsmethode für die Qualitätskriterien
     1. Installation Framework
     2. Einfachster Service
         * Eine Schnittstelle "Hello Service"
-        * Security
+        * Security enthalten
     3. Komplexerer Service
         * Modell mit Relation und dazugehörigen Schnittstellen
 
