@@ -133,13 +133,13 @@ Festlegung der Evaluationsmethode für die Qualitätskriterien
 * Cognitive Walkthrough
     * Aufgabenbeschreibung
     * Aufgabenbewertung
-    * Aufgabenstellungen
-        * 1. Installation Framework
-        * 2. Einfachster Service
-            * Eine Schnittstelle "Hello Service"
-            * Security
-        * 3. Komplexerer Service
-            * Modell mit Relation und dazugehörigen Schnittstellen
+* Aufgabenstellungen
+    1. Installation Framework
+    2. Einfachster Service
+        * Eine Schnittstelle "Hello Service"
+        * Security
+    3. Komplexerer Service
+        * Modell mit Relation und dazugehörigen Schnittstellen
 
 ### Performance
 * Tool: JMeter
