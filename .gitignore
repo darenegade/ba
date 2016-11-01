@@ -1,6 +1,5 @@
 *.class
 *.pxm
-/output
 
 # Latex
 *.log
@@ -13,6 +12,8 @@
 *.synctex.gz
 *.bbl
 *.blg
+*.fdb_latexmk
+*.fls
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
