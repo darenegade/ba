@@ -6,10 +6,10 @@ Komplettes ISO25010 Modell mit Qualitätskategorien und Kriterien.
 -> Jedes Kriterium wurde in Bezug zur Aufgabenstellungen bewertet.
 
 * Software Produkt Qualität
-![](Bilder/ISO25010_Modell.pdf)
+Siehe: Bilder/ISO25010_Modell.pdf
 
 * Quality in use
-![](Bilder/QualityInUse.pdf)
+Siehe: Bilder/QualityInUse.pdf
 
 ### Bewertung
 
