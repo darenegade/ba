@@ -4,12 +4,12 @@
 
 * Funktionalität
   * Richtigkeit
-    * Kriterium ausschließen?
+    * Kriterium ausschließen
       * Nur Richtige Lösungen werden akzeptiert
       * Keine Workarounds
   * Ordnungsmäßigkeit
     * Einhaltung von anwendungsspezifischen Normen
-    * Kriterium Ausschließen?
+    * Kriterium ausschließen
       * Gibt es bei Microservices - Service Normen?
   * Angemessenheit
     * Abwägung ob das Framework eine Funktion angemessen zur Verfügung stellt
@@ -17,15 +17,14 @@
 
 * Reliabilität
   * Verfügbarkeit
-    * Kriterium ausschließen?
-      * Frameworks verfügbar
-      * Service Verfügbarkeit hängt an Infrastruktur / Auslastung
-  * Fehler Toleranz
-    * Fehlerbehaftete Antworten werden nicht akzeptiert
+    * Verfügbarkeit des Services liegt an Infrastruktur / Platform
     * Circuit Breaker Pattern (Hystrix)
       * Bewertung finden (z.B. unterstützt, umsetzbar, nicht unterstützt)
+  * Fehler Toleranz
+    * Kriterium ausschließen
+      * Fehlerbehaftete Antworten werden nicht akzeptiert
   * Wiederherstellbarkeit
-    * Kriterium ausschließen?
+    * Kriterium ausschließen
       * Service stateless
       * DB nicht im Scope
 
@@ -38,31 +37,38 @@
   * Ressourcen Verbrauch
     * Heap Size
   * Kapazität
-    * Kriterium ausschließen?
+    * Kriterium ausschließen
       * Skalierung ermöglicht theoretisch unendliche Kapazität
       * Limitierung liegt in Infrastruktur und DB nicht im Service
 
 * Benutzbarkeit
+  * Der Nutzer ist der Entwickler, somit bietet sich eher Quality in use an
   * Quality in use
     * Effizienz
-      * LOC, Methodenaufrufe, Zeichen
+      * LOC + (Methodenaufrufe, Zeichen)
     * Effektivität
       * Unterstützung des User durch das Framework zum Erreichen des Ziels in %
     * Zufriedenstellung
       * Subjektiv vom Nutzer -> Bewertung finden (z.B. schlecht, mittel, gut, sehr gut)
       * Begründung notwendig da subjektiv
+    * Freedom from Risk
+      * Kriterium ausschließen
+        * Kann ein Service ein Risiko mildern oder verstärken?
+    * Context coverage
+      * Kriterium ausschließen
+        * Architektur schreibt kleinen Kontext für Service vor
 
 * Sicherheit
   * Vertraulichkeit, Integrität, Authentizität
     * Schnittstelle kann durch z.B. OAuth2 gesichert werden?
     * Bewertung finden (z.B. unterstützt, umsetzbar, nicht unterstützt)
   * Nichtabstreitbarkeit, Accountability
-    * Kriterium ausschließen?
+    * Kriterium ausschließen
       * Auditing kann als zus. Datenmodell aufgefasst werden
 
 * Kompatibilität
   * Ersetzbarkeit
-    * Kriterium ausschließen?
+    * Kriterium ausschließen
       * Grundsatz in Architektur
       * RESTful Schnittstelle von allen gleich
   * Interoperabilität
@@ -73,12 +79,12 @@
     * Service Discovery (Eureka, Consul)
       * Mit Spring Cloud SideCar nicht notwendig
   * Co-Existence
-    * Kriterium ausschließen?
+    * Kriterium ausschließen
       * Grundsatz in Architektur
 
 * Wartbarkeit
   * Modularität
-    * Kriterium ausschließen?
+    * Kriterium ausschließen
       * Services sollten klein sein
       * Grundsatz Architektur
   * Wiederverwendbarkeit
@@ -88,24 +94,24 @@
     * Logging Schnittstelle
     * Bewertung finden (z.B. unterstützt, umsetzbar, nicht unterstützt)
   * Erweiterbarkeit
-    * Spezielle Features
+    * Spezielle Features vorhanden (ja/nein)
       * Caching
       * ???
   * Testbarkeit
-    * Kriterium ausschließen?
+    * Kriterium ausschließen
       * Unit Tests überall möglich
       * Schnittstelle definiert und testbar
 
 * Übertragbarkeit
   * Anpassungsfähigkeit
-    * Kriterium ausschließen?
+    * Kriterium ausschließen
       * RESTful Schnittstelle ist definiert
       * Nur Netzwerkverbindung notwendig
   * Installierbarkeit
     * Einschränkungen OS?
     * Bewertung: Installierbar auf System ja oder nein
   * Ersetzbarkeit
-    * Kriterium ausschließen?
+    * Kriterium ausschließen
       * RESTful Schnittstelle ist definiert
 
 ## Evaluation
@@ -118,6 +124,7 @@
     * 1. Installation Framework
     * 2. Einfachster Service
       * Eine Schnittstelle "Hello Service"
+      * Security
     * 3. Komplexerer Service
       * Modell mit Relation und dazugehörigen Schnittstellen
 
@@ -145,6 +152,9 @@
 ## Literatur
 ### ISO 25010
 ISO/IEC 25010: Software-Engineering – Qualitätskriterien und Bewertung von Softwareprodukten (SQuaRE) – Qualitätsmodell und Leitlinien. März 2011.
+
+### Software Product Quality Control
+S Wagner: Software Product Quality Control, DOI 10.1007/978-3-642-38571-1 2, Springer-Verlag Berlin Heidelberg 2013
 
 ### Software Evaluation
 Hegner, Marcus: Methoden zur Evaluation von Software. http: //www.gesis.org/fileadmin/upload/forschung/publikationen/gesis_ reihen/iz_arbeitsberichte/ab_29.pdf, 2003.
