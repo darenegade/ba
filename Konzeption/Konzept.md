@@ -1,45 +1,48 @@
 # Konzept:
 
-## ISO 25010 Q.-Modell
+## Vorgehensmodell
 
-Komplettes ISO25010 Modell mit Qualitätskategorien und Kriterien.
--> Jedes Kriterium wurde in Bezug zur Aufgabenstellungen bewertet.
+Das Vorgehensmodell ist eine Abwandlung der Software Architektur Evaluation Methode
+(SAEM) und Architectur Tradeoff Analysis Method (ATAM)
+Diese Methode beschreibt folgende Schritte.
 
-* Software Produkt Qualität
+1. Analyse: Bestimmung von Qualitätszielen für das Produkt
+    * Hier kann die Goal - Question - Metrik Methode genutzt werden
+    * Es wird ein Quality Utility Tree aufgebaut
+    * Goals werden anschließend mit Prioritäten versehen
+2. Bewertung: Die Architektur wird auf die Qualitätsziele untersucht und bewertet
+    * Normalerweise wird hier mittels Workshops und Experten Wissen eine Einschätzung getroffen
+    * Hier soll das Experten Wissen durch Prototyping gewonnen werden
+    * Durch das Prototyping lassen sich auch Quantitative Daten erfassen (Performance)
+3. Tradeoff: Gesamtbewertung der Architektur
+    * Anhand der Bewertungen wird eine Gesamtbewertung gefunden, die
+      eine Aussage über die zu erwartende Qualität trifft
 
-        Siehe: Bilder/ISO25010_Modell.pdf
 
-* Quality in use
+## Analyse
 
-        Siehe: Bilder/QualityInUse.pdf
+Es werden Views als Stakeholder definiert, um mehrere Aspekte einzuschließen.
+Stakeholder: Entwickler (E), Administrator (A)
 
-### Bewertung
+### Quality Utility Tree
 
 * Funktionalität
     * Richtigkeit
-        * Kriterium ausschließen
-            * Nur Richtige Lösungen werden akzeptiert
-            * Keine Workarounds
-    * Ordnungsmäßigkeit
-        * Einhaltung von anwendungsspezifischen Normen
-        * Kriterium ausschließen
-            * Gibt es bei Microservices - Service Normen?
+        * Noch kein Goal
+    * Vollständigkeit
+        * Noch kein Goal
     * Angemessenheit
-        * Wird eine Funktion angemessen zur Verfügung gestellt?
-            * Ordinalskala (z.B. schlecht, mittel, gut, sehr gut)
+        * Noch kein Goal
 
 * Reliabilität
     * Verfügbarkeit
-        * Verfügbarkeit des Services liegt an Infrastruktur / Platform
-        * Circuit Breaker Pattern (Hystrix)
-            * Ordinalskala (z.B. unterstützt, umsetzbar, nicht unterstützt)
+        * G: Der Zugriff auf andere Services wird abgesichert (A) (Circuit Breaker Pattern)
+            * Q: Das Framework unterstützt das Circute Braker Pattern
+            * M: Ordinalskala (z.B. unterstützt, umsetzbar, nicht unterstützt)
     * Fehler Toleranz
-        * Kriterium ausschließen
-            * Fehlerbehaftete Antworten werden nicht akzeptiert
+        * Noch kein Goal
     * Wiederherstellbarkeit
-        * Kriterium ausschließen
-            * Service stateless
-            * DB nicht im Scope
+        * Noch kein Goal
 
 * Performance
     * Zeitverhalten
@@ -50,105 +53,70 @@ Komplettes ISO25010 Modell mit Qualitätskategorien und Kriterien.
     * Ressourcen Verbrauch
         * Heap Size
     * Kapazität
-        * Kriterium ausschließen
-            * Skalierung ermöglicht theoretisch unendliche Kapazität
-            * Limitierung liegt in Infrastruktur und DB nicht im Service
+        * Noch kein Goal
 
 * Benutzbarkeit
     * Der Nutzer ist der Entwickler, somit bietet sich eher Quality in use an
     * Quality in use
         * Effizienz
-            * LOC + (Methodenaufrufe, Zeichen)
+            * G: Die Entwicklung ist Effizient (E)
+                * Q: Ein Service kann mit wenig Aufwand entwickelt werden
+                * M: LOC + (Methodenaufrufe, Zeichen)
         * Effektivität
-            * Unterstützung des User durch das Framework zum Erreichen des Ziels in %
+            * G: Das Framework unterstützt den Nutzer beim erreichen seines Ziels
+                * Q: Möglichst viele Funktionen werden vom Framework bereitgestellt
+                * M: Funktionen die vom Framework übernommen werden in %
         * Zufriedenstellung
-            * Subjektiv vom Nutzer -> Ordinalskala (z.B. schlecht, mittel, gut, sehr gut)
-            * Begründung notwendig da subjektiv
+            * Noch kein Goal
         * Risikofreiheit (persönlich, wirtschaftlich, Umgebung)
-            * Kriterium ausschließen
-                * Open Source mildert das wirt. Risiko, aber hier vernachlässigbar
-                * persönliche Schaden ist nicht obj. messbar
-                * Framework sollte keinen Schaden am System auslösen
+            * Noch kein Goal
         * Kontext Abbildung
-            * Kriterium ausschließen
-                * Architektur schreibt kleinen Kontext für Service vor
+            * Noch kein Goal
 
 * Sicherheit
-    * Vertraulichkeit, Integrität, Authentizität
-        * Schnittstelle kann durch z.B. OAuth2 gesichert werden?
-        * Ordinalskala (z.B. unterstützt, umsetzbar, nicht unterstützt)
-    * Nichtabstreitbarkeit, Accountability
-        * Kriterium ausschließen
-            * Auditing kann als zus. Datenmodell aufgefasst werden
+        * G: Schnittstelle sind durch Authentifizierung abgesichert
+            * Q: Das Framework unterstützt die Absicherung von Endpunkten
+            * Ordinalskala (z.B. unterstützt, umsetzbar, nicht unterstützt)
 
 * Kompatibilität
     * Ersetzbarkeit
-        * Kriterium ausschließen
-            * Grundsatz in Architektur
-            * RESTful Schnittstelle von allen gleich
+        * Noch kein Goal
     * Interoperabilität
-        * Einhaltung von Standards
-            * REST Schnittstelle
-            * JSON/XML Serialisierung
-            * Ordinalskala (z.B. schlecht, mittel, gut, sehr gut)
-        * Service Discovery (Eureka, Consul)
-            * Mit Spring Cloud SideCar nicht notwendig
+        * G: Der Service kann mittels JSON oder XML kommunizieren
+            * Q: Werden ein- oder ausgehende Daten mittels JSON/XML Serialisiert?
+            * M: Ordinalskala (z.B. schlecht, mittel, gut)
     * Co-Existence
-        * Kriterium ausschließen
-            * Grundsatz in Architektur
+        * Noch kein Goal
 
 * Wartbarkeit
     * Modularität
-        * Kriterium ausschließen
-            * Services sollten klein sein
-            * Grundsatz Architektur
+        * G: Einzelne Komponenten sind sauber getrennt
+            * Q: Wie stark sind Komponenten miteinander verbunden.
+            * M: ???
     * Wiederverwendbarkeit
-        * Code Reuse für weitere Services (Lib)
-        * Ordinalskala (z.B. schlecht, mittel, gut, sehr gut)
+        * Noch kein Goal
     * Analysierbarkeit
-        * Logging Schnittstelle
-        * Ordinalskala (z.B. unterstützt, umsetzbar, nicht unterstützt)
+        * G: Logging Schnittstelle
+            * Q: Das Framework bietet eine Logging Schnittstelle
+            * M: Ordinalskala (z.B. unterstützt, umsetzbar, nicht unterstützt)
     * Erweiterbarkeit
-        * Spezielle Features vorhanden (ja/nein)
-            * Caching
-            * ???
+        * G: Der Service kann einfach um weitere Endpunkte erweitert werden
+            * Q: Kann die Schnittstelle zerstörungsfrei um weitere Endpunkte erweitert werden
+            * M: Ordinalskala (z.B. schlecht, mittel, gut)
     * Testbarkeit
-        * Kriterium ausschließen
-            * Unit Tests überall möglich
-            * Schnittstelle definiert und testbar
+        * Noch kein Goal
 
 * Übertragbarkeit
     * Anpassungsfähigkeit
-        * Kriterium ausschließen
-            * RESTful Schnittstelle ist definiert
-            * Nur Netzwerkverbindung notwendig
+        * G: Es werden mehrere Datenbank Typen unterstützt
+            * Q: ??
+            * M: ??
     * Installierbarkeit
-        * Einschränkungen OS?
-        * Kriterium ausschließen
-          * Mit z.B. Docker ist dies kein Problem
+        * G: Das Framework kann einfach installiert werden
+            * Q: Wie viel Aufwand erfordert die Installation
+            * M: Ordinalskala?
     * Ersetzbarkeit
-        * Kriterium ausschließen
-            * RESTful Schnittstelle ist definiert
-
-Daraus folgt folgendes Modell für diese Arbeit mit einer Zusammenfassung einiger
-Kriterien:
-
-* Funktionalität
-    * Angemessenheit
-    * Sicherheit (Vertraulichkeit, Integrität, Authentizität)
-    * Interoperabilität
-* Performance
-    * Zeitverhalten
-    * Ressourcen Verbrauch
-* Benutzbarkeit (Quality in use)
-    * Effizienz
-    * Effektivität
-    * Zufriedenstellung
-* Wartbarkeit
-    * Wiederverwendbarkeit
-    * Analysierbarkeit
-    * Verfügbarkeit
-    * Erweiterbarkeit
+        * Noch kein Goal
 
 ## Evaluation
 
@@ -188,11 +156,6 @@ Festlegung der Evaluationsmethode für die Qualitätskriterien
 
 
 ## Literatur
-### ISO 25010
-ISO/IEC 25010: Software-Engineering – Qualitätskriterien und Bewertung von Softwareprodukten (SQuaRE) – Qualitätsmodell und Leitlinien. März 2011.
-
-### Software Product Quality Control
-S Wagner: Software Product Quality Control, DOI 10.1007/978-3-642-38571-1 2, Springer-Verlag Berlin Heidelberg 2013
 
 ### Software Evaluation
 Hegner, Marcus: Methoden zur Evaluation von Software. http: //www.gesis.org/fileadmin/upload/forschung/publikationen/gesis_ reihen/iz_arbeitsberichte/ab_29.pdf, 2003.
