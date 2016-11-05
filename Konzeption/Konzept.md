@@ -24,6 +24,22 @@ Diese Methode beschreibt folgende Schritte.
 Es werden Views als Stakeholder definiert, um mehrere Aspekte einzuschließen.
 Stakeholder: Entwickler (E), Administrator (A)
 
+## Anforderungen Claus
+* Https
+* Permissions aus Token
+* Bean Validation
+* AppSensor - Events vom Service???
+* Testbarkeit - Unterstützung z.B. mit Mock OAuth
+* Build Infrastruktur wie Maven??
+* HATEOAS (Rest Modell)
+
+
+## Hammerschall
+* Methode schreibt Anforderung vor - Abklären
+    * Wenn Methode sich im Praktischen Teil als falsch heraustellt,
+      dann wird Methode nicht angepasst
+
+
 ### Quality Utility Tree
 
 * Funktionalität
@@ -105,6 +121,7 @@ Stakeholder: Entwickler (E), Administrator (A)
             * M: Ordinalskala (z.B. schlecht, mittel, gut)
     * Testbarkeit
         * Noch kein Goal
+
 
 * Übertragbarkeit
     * Anpassungsfähigkeit
