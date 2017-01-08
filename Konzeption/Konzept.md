@@ -9,54 +9,49 @@ Diese Methode beschreibt folgende Schritte.
 1. Analyse: Bestimmung von Qualitätszielen für das Produkt
     * Hier kann die Goal - Question - Metrik Methode genutzt werden
     * Es wird ein Quality Utility Tree aufgebaut
-    * Goals werden anschließend mit Prioritäten versehen
+    * Goals werden anschließend mit 2 Prioritäten versehen
+        * Priorität des Qualitätsziels
+        * Komplexität
 2. Bewertung: Die Architektur wird auf die Qualitätsziele untersucht und bewertet
     * Normalerweise wird hier mittels Workshops und Experten Wissen eine Einschätzung getroffen
-    * Hier soll das Experten Wissen durch Prototyping gewonnen werden
+    * Da Experten Wissen bei neuen Frameworks of nicht vorhanden ist,
+      soll das Experten Wissen durch Prototyping gewonnen werden
     * Durch das Prototyping lassen sich auch Quantitative Daten erfassen (Performance)
-3. Tradeoff: Gesamtbewertung der Architektur
-    * Anhand der Bewertungen wird eine Gesamtbewertung gefunden, die
-      eine Aussage über die zu erwartende Qualität trifft
+3. Gesamtbewertung der Architektur
+    * Anhand der Bewertungen wird mittels der Prioritäten eine Gesamtbewertung erstellt, die
+      eine Aussage über die zu erwartende Qualität bzw. die möglichen Risiken trifft
 
 
 ## Analyse
 
 ### Anforderungen
 * Https
-* Self Defending Services - Logged Events (AppSensor)
+* Self Defending Services - Logged Events (wie AppSensor)
 * Permissions aus Token bzw. UserInfo Endpoint
 * OAuth Support
-* Bean Validation
+* Objekt Validierung
 * HATEOAS (Richardson Maturity Model Level 3)
-* JSON/XML Serialisierung
+* JSON/XML De-/Serialisierung
 * Fehler bei Inter-Service Kommunikation werden erkannt (Circuit Breaker Pattern)
 * Logging
 * Metric Schnittstelle
 * Distributed Tracing
 * Testbarkeit - Unterstützung z.B. mit Mock OAuth
-* Build Infrastruktur (Maven)
+* Build Infrastruktur (wie Maven)
 * Die Entwicklung ist effizient
 * Der Service lässt sich schnell um einen Endpunkt erweitern (z.B. Modell Anpassung)
 * Der Service startet schnell
 * Das Framework hat wenig Overhead
 * Der Service hat einen hohen Durchsatz
 * Der Service verwendet möglichst wenig Speicher
-* Gut Dokumentation
-
-
-
-### Hammerschall
-* Methode schreibt Anforderung vor - Abklären
-    * Wenn Methode sich im Praktischen Teil als falsch herausstellt,
-      dann wird Methode nicht angepasst
-
+* Gute Dokumentation
 
 ### Quality Utility Tree
 
-Zuordnung der Anforderung in Qualitätsziele und genauere Definition
+Gruppierung der Anforderung in Qualitätsziele und genauere Definition
 über Goal-Question-Metrik. Anschließend Priorisierung (High, Medium, Low)
 
-* Funktionalität
+* Funktionalität
     * G: Eingehende Domänen Objekte müssen validiert werden
         * Q1: Unterstützt das Framework eine automatische Validierung von Domänen Objekten.
             * M: Ordinalskala (enthalten, leicht umsetzbar, schwer umsetzbar)
@@ -110,6 +105,8 @@ Zuordnung der Anforderung in Qualitätsziele und genauere Definition
             * M: LoC und Methodenaufrufe bei einem Service mit einem Datenmodell
         * Q3: Lässt sich das Framework einfach und schnell installieren
             * M: Ordinalskala (sehr gut, gut, schlecht)
+        * Q4: Ist die Entwicklung schnell zu erlernen
+            * M: Ordinalskala (sehr gut, gut, schlecht)
         * Priorität
     * G: Gute Dokumentation
         * Q1: Bietet das Framework eine umfangreiche Dokumentation mit Beispielen
@@ -154,18 +151,30 @@ Zuordnung der Anforderung in Qualitätsziele und genauere Definition
 Festlegung der Evaluationsmethode für die Qualitätsziele.
 
 ### Funktionalität, Benutzbarkeit, Sicherheit, Wartbarkeit
+Nicht quantitativ erfassbare Metriken, z.B. Effiziente Programmierung,
+werden über eine analytisches Evaluationsmethode erfasst. Dabei wird auch
+ein Prototyp erstellt, der im 2. Schritt für die empirische Evaluation
+genutzt wird.
+Methode:
+
 * Cognitive Walkthrough
-    * Aufgabenbeschreibung
-    * Aufgabenbewertung
-* Aufgabenstellungen
+    * Genaue Beschreibung einer Aufgabe
+        * Zuordnung von Qualitätszielen zu dieser Aufgabe
+    * Durchführung dieser Aufgabe
+    * Bewertung der Qualitätszielen anhand der gewonnen Erkenntnisse
+* Aufgabenstellungen für die Framework-Bewertung
     1. Installation Framework
     2. Einfachster Service
-        * Eine Schnittstelle "Hello Service"
+        * Eine Schnittstelle "HelloWorld Service"
         * Security enthalten
     3. Komplexerer Service
         * Modell mit Relation und dazugehörigen Schnittstellen
+        * Einfache Geschäftsanwendung
+        * Komplexe Geschäftsanwendung
 
 ### Performance
+Empirische Evaluation am zuvor gewonnen Prototypen.
+
 * Tool: JMeter
 * Benchmark-Test
     * Anforderungsprofile
@@ -187,6 +196,9 @@ Festlegung der Evaluationsmethode für die Qualitätsziele.
 
 
 ## Literatur
+
+### Architektur Bewertung
+Gernot Starke: Effektive Softwarearchitekturen - 2011
 
 ### Software Evaluation
 Hegner, Marcus: Methoden zur Evaluation von Software. http: //www.gesis.org/fileadmin/upload/forschung/publikationen/gesis_ reihen/iz_arbeitsberichte/ab_29.pdf, 2003.

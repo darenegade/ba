@@ -1,58 +1,81 @@
-\section{Konzeption}
+\section{\acf{MFEM}}
 
-\subsection{Anforderungen}
+Die Bewertung, ob ein Framework für den produktiven Einsatz in einer Microservice Architektur geeignet ist, lässt sich nicht auf die Servicearchitektur beschränken. Aus diesem Grund ist \ac{MFEM} keine reine Architekturbewertungs Methode. Sie betrachtet einerseits die durch das Framework vorgegebene Servicearchitektur und versucht dabei Risiken aufzudecken sowie ein tieferes Verständnis für die Architektur zu schaffen. Auf der anderen Seite wird das Framework als Produkt aufgefasst und versucht, eine Aussage über die Qualität dessen zu treffen. \ac{MFEM} setzt dabei keine grundlegenden Kenntnisse über das Framework voraus, da es 2 Seiten der Analyse anbietet. Dies ist einerseits die Nutzung von bereits vorhandenem Experten Wissen, was die Phase der Analyse verkürzt. Andererseits werden die restlichen Daten über die Erstellung von Prototypen erfasst.
+Auf dieser Basis kann am Ende eine begründete Entscheidung für oder gegen den Einsatz eines Frameworks getroffen werden.
 
-\subsubsection{Software-Qualitätsmodelle}
+Der Ablauf von \ac{MFEM} ist in Bild \ref{MFEMAblauf} schematisch dargestellt und startet mit der Analyse der vorhanden Microservice Architektur sowie der Identifizierung von Qualitätsanforderungen.
 
-\newparagraph{Qualitätsmodell nach McCall}
+%todo
+\image{MFEMAblauf}{Ablaufschema MFEM}{Schematische Darstellung vom Ablauf von \ac{MFEM}}
 
-\newparagraph{ISO/IEC 9126}
+\subsection{Architektur Analyse und Wahl der Anforderungen}
 
-\newparagraph{ISO/IEC 25010}
+Aus dem vorangegangenen Kapitel wird ersichtlich, dass eine Bewertung nicht nur frühzeitig erfolgen muss. Viel mehr ist es wichtig, dass diese auch auf detaillierten Qualitätsanforderungen basiert. Die Anforderungen werden dabei durch die maßgeblichen Stakeholder definiert. In einer Microservice Architektur sind dies die definierten Umstände eines Services. Diese beschränken sich dabei nicht auf die Kommunikation zwischen zwei einzelnen Services. Gerade die Komposition der Microservices über die Infrastruktur muss gewährleistet sein. Wobei Punkte wie Sicherheit und Wartbarkeit die Komplexität noch steigern.
+Damit ein Service dies erfüllt und somit in der Architektur funktionieren kann, müssen anhand der Umstände, wie z.B. Service Discovery, Logging oder Tracing, Anforderungen definiert werden. Nur wenn das Framework eines Services diese unterstützt, kann garantiert werden, dass sich das Risiko zur Erfüllung des Qualitätszieles minimiert.
 
+\newparagraph{Externe Serviceanforderungen}
 
-\vspace{1em}
-\begin{minipage}{\linewidth}
-	\centering
-	\includegraphics[width=0.9\linewidth]{Konzeption/Bilder/ISO25010_Modell.pdf}
-	\captionof{figure}[ISO/IEC 25010 Qualitätsmodell]{ISO/IEC 25010 Software Produkt Qualitätsmodell}
-	\label{fig:iso25010}
-\end{minipage}
+Im ersten Schritt müssen demnach Anforderungen gefunden werden, die die Microservice Architektur an die einzelnen Services stellt. Das ist dabei stark von der Umsetzung dieser abhängig. Ein gutes Beispiel hierfür ist die Service Discovery. Dass sich Services gegenseitig finden können, ohne die Flexibilität der Architektur zu verlieren, darf eben diese nicht fehlen. Die Umsetzung kann dabei jedoch stark variieren. So kann ein zentraler Service, wie z.B. Netflix-Eureka\footnote{
+\url{https://github.com/Netflix/eureka}
+}
+oder Consul\footnote{
+\url{https://www.consul.io}
+}
+, eine Registrierungsstelle anbieten. Dort können sich sämtliche Service-Instanzen registrieren und auch andere Services finden. Diese müssen es aber auch nicht direkt unterstützen. Projekte wie Spring Cloud Sidecar\footnote{
+\url{http://projects.spring.io/spring-cloud/spring-cloud.html\#_polyglot_support_with_sidecar}
+}
+übernehmen dies für einzelne Services. Die Discovery kann aber auch auf die darüber liegende Abstraktions-Schicht hochgezogen werden. Innerhalb eines Kubernetes\footnote{
+\url{http://kubernetes.io}
+}
+Clusters übernimmt die Service Verwaltung diese Aufgabe selbst und stellt sie über Umgebungsvariablen oder DNS zur Verfügung. 
 
-\vspace{1em}
-\begin{minipage}{\linewidth}
-	\centering
-	\includegraphics[width=0.9\linewidth]{Konzeption/Bilder/QualityInUse.pdf}
-	\captionof{figure}[ISO/IEC 25010 Quality in use]{ISO/IEC 25010 Quality in use model}
-	\label{fig:iso25010qiu}
-\end{minipage}
- 
-\subsubsection{Analyse und Wahl der Anforderungen}
+%todo
+\image{Servicediscoverytypen}{Service Discovery Typen}{Beispiele für Ausprägungen der Service Discovery}
 
+Die spezifische Ausprägung der Architektur gibt somit Anforderungen vor, die es zu identifizieren gilt und im folgenden externe Serviceanforderungen genannt werden.
 
-\newparagraph{Funktionalität}
+\newparagraph{Interne Serviceanforderungen}
 
-\newparagraph{Reliabilität}
+Aus den externen Serviceanforderungen lassen sich auch interne Anforderungen ableiten, die zur Erreichung und Zufriedenstellung dieser notwendig sind. Dies muss dabei nicht auf die durch das Framework vorgegebene Architektur des Services beschränkt sein. An dieser Stelle kann das Framework als Werkzeug aufgefasst werden. Es gilt somit nicht nur die Frage zu klären, ob ein Framework eine benötigte Funktion bereitstellt. Sondern ob es den Entwickler bei der Umsetzung bestmöglich unterstützt und dabei flexibel bleibt. Nach dem KISS-Prinzip\footnote{
+\url{http://principles-wiki.net/principles:keep_it_simple_stupid}
+} 
+wird zum Beispiel die Funktion bevorzugt, die möglichst einfach und "dumm" erscheint. So brauch es für die Umsetzung keine anspruchsvollen oder besonders cleveren Lösungen. Eine Einfache lässt sich nicht nur besser Lesen und Verstehen, es erhöht auch die Wartbarkeit.  
 
-\newparagraph{Performance}
+Damit das Bewertungsteam, bei der Findung von internen und externen Serviceanforderungen, nicht bei null anfangen muss, wird an dieser Stelle eine Orientierungshilfe angeboten. Hier wurde in einem Brainstorming versucht, eine Schnittmenge an Anforderungen zu finden, die für die meisten Microservice Architekturen gelten sollte. 
+Die so gefundenen Anforderungen basieren dabei auf der Erfahrung der Anwendungsentwicklung innerhalb der Landeshauptstadt München. Diese hat sich in den letzten Jahren mit dem produktiven Einsatz von Microservices beschäftigt und diverse erfolgreiche Projekte damit umgesetzt.\todo{anders Formulieren und ausschmücken}   
 
-\newparagraph{Benutzbarkeit}
+Für die Analyse und Wahl der Anforderungen wird hier ein Quality Utility Tree aufgebaut.
 
-\newparagraph{Sicherheit}
+\subsubsection{Entwicklung Quality Utility Tree}
 
-\newparagraph{Kompatibilität}
+Der Quality Utility Tree bietet einen effizienten Top-Down Ansatz zur Identifizierung und Verfeinerung von Qualitätsanforderungen. Die mittels Brainstorming gefundenen Anforderungen werden in einzelne Kategorien aufgeteilt und bis zu den konkreten Zielen weiter verfeinert. Bei der Kategorisierung kann das Qualitätsmodell aus der ISO/IEC 9126-1 hergenommen werden. Wobei das Modell nur eine Hilfestellung ist und keine Vorgabe darstellt. Hier wurden die Kategorien Funktionalität, Performance, Benutzbarkeit, Sicherheit und Wartbarkeit definiert. Anschließend wurden diesen die Qualitätsanforderungen zugeordnet. Bild \ref{MSQUTAusschnitt} zeigt einen Ausschnitt des gesamten Baumes, wobei der vollständige Baum im Anhang zu finden ist. 
 
-\newparagraph{Wartbarkeit}
+%\newparagraph{Funktionalität}
+%
+%\begin{description}[labelwidth=\linewidth]
+%	\item[Validierung eingehender Domänen Objekte] 
+%	Eingehende Domänen Objekte sollten validiert werden, so dass keine undefinierten oder unzulässigen Zustände verarbeitet aufkommen.
+%	\item[Die Schnittstelle ist nach \acs{HATEOAS}\footnotemark\space aufgebaut] \footnotetext{\acf{HATEOAS}}
+%	Damit die Kopplung zwischen den Services loser wird, sollte die \ac{REST} Schnittstelle nach dem Richardson Maturity Model - Level 3 aufgebaut sein.
+%	\item[De- und Serialisierung von Standardformaten zur Datenübertragung]
+%	
+%\end{description}
+% TODO Ausschnitt als Text oder Bild
+\image{MSQUTAusschnitt}{\acs{MFEM} Quality Utility Tree Beispiel}{Ausschnitt aus dem Quality Utility Tree als Beispiel}
 
-\newparagraph{Übertragbarkeit} 
- 
+\subsection{Metriken definieren über \ac{GQM}}
+
+Für die identifizierten Qualitätsanforderungen müssen möglichst aussagekräftig Metriken gefunden werden. Dies können dabei Messung an der Architektur sein, wie das Vorhandensein spezifischer Funktionen oder Komponenten sowie den Einsatz bewährter Pattern. Zusätzlich können auch Softwaremetriken genutzt werden, die sich direkt an einem Prototypen ermitteln lassen. Damit kann neben Messungen zur Performance auch z.B. der Aufwand zur Umsetzung bestimmter Funktionen bemessen werden. Um dabei stets das Ziel im Auge zu behalten, wird die bereits bekannte \ac{GQM} Methode genutzt. 
+
+Eine um Metriken erweiterter Qualitätsbaum ist in Bild \ref{MFEMGQMQUTAusschnitt} dargestellt. Wie zuvor ist dies nur ein Ausschnitt, wobei der gesamte Baum im Anhang zu finden ist.
+
+% TODO
+\image{MFEMGQMQUTAusschnitt}{\acs{MFEM} Qualitätsbaum erweitert um Metriken}{Ein Ausschnitt aus dem Qualitätsbaum erweitert um Metriken}
+
 \pagebreak
- 
-\subsection{Evaluation}
+\subsection{Analyse}
 
 \subsubsection{Evaluationsmethoden}
-
-\subsubsection{Wahl der Evalutationsmethoden}
 
 \newparagraph{Subjektive Evaluation}
 
@@ -61,15 +84,5 @@
 \newparagraph{Objektive Evaluation}
 
 \newsubparagraph{Performance Messung}
- 
+
 \pagebreak
-
-\subsection{Wahl der Frameworks}
-
-\subsubsection{Spring}
-
-\subsubsection{Vert.X}
-
-\subsubsection{NodeJS}
-
-\subsubsection{Go}

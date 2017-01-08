@@ -22,6 +22,15 @@
 \usepackage[right]{eurosym}
 \usepackage[subfigure,titles]{tocloft}
 \usepackage[pdfpagelabels=true]{hyperref}
+\usepackage[rgb]{xcolor}
+\usepackage[obeyFinal, colorinlistoftodos, backgroundcolor=yellow, 
+linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
+\usepackage{letltxmacro}
+\usepackage[autostyle, german=quotes]{csquotes}
+\MakeOuterQuote{"}
+\usepackage{biblatex}
+\usepackage{enumitem}
+\usepackage{etoolbox}
 
 \usepackage{listings}
 \lstset{basicstyle=\footnotesize, captionpos=b, breaklines=true, showstringspaces=false, tabsize=2, frame=lines, numbers=left, numberstyle=\tiny, xleftmargin=2em, framexleftmargin=2em}
@@ -34,7 +43,7 @@
 \hypersetup{unicode=false, pdftoolbar=true, pdfmenubar=true, pdffitwindow=false, pdfstartview={FitH},
 	pdftitle={Bachelorarbeit},
 	pdfauthor={Rene Zarwel},
-	pdfsubject={Heterogene Microservices},
+	pdfsubject={Microservices und technologische Heterogenität},
 	pdfcreator={\LaTeX\ with package \flqq hyperref\frqq},
 	pdfproducer={pdfTeX \the\pdftexversion.\pdftexrevision},
 	pdfkeywords={Bachelorarbeit},
@@ -42,8 +51,61 @@
 	colorlinks=true,linkcolor=black,citecolor=black,filecolor=magenta,urlcolor=black}
 \pdfinfo{/CreationDate (D:20110620133321)}
 
+\setlist[description]{labelindent=1cm}
+\setlist[itemize]{labelindent=1cm}
+\setlist[enumerate]{labelindent=1cm}
+
 \newcommand{\newparagraph}[1]{\paragraph{#1}\mbox{}\\}
 \newcommand{\newsubparagraph}[1]{\subparagraph{#1}\mbox{}\\}
+
+\newcommand{\acfootnote}[1]{\acs{#1}\footnote{\acf{#1}}}
+
+% Nice and big quote
+% #1 Quote
+% #2 Name of person to quote
+\newcommand{\bigquote}[2]{
+	\vspace*{1\baselineskip}
+	\begin{center}
+		\begin{minipage}{0.8\textwidth}
+			\enquote{\textit{#1}}\par
+			- #2
+		\end{minipage}
+	\end{center}
+	\vspace*{1\baselineskip}
+}
+%-----------------
+
+%Todo Commands
+\newcounter{todocounter}
+
+\LetLtxMacro{\todoold}{\todo}
+\renewcommand{\todo}[2][]{\stepcounter{todocounter}\todoold[#1]{TODO \thetodocounter: #2}}
+\newcommand{\todoInline}[1]{\todo[inline]{#1}}
+\newcommand{\todoFigure}[1]{\stepcounter{todocounter}\missingfigure[figcolor=white]{TODO \thetodocounter: #1}}
+% ----------------
+
+%Image Command - Optional Image otherwise TODO
+% #1 IMAGE File - optional (TODO if not present)
+% #2 LabelName
+% #3 TOC Text
+% #4 Captiontext
+\newcommand{\image}[4][TODO]{
+	\begin{minipage}{\linewidth}
+		\vspace*{0.5cm}
+		\centering
+		\ifstrequal{TODO}{#1}{
+			\todoFigure{#3}
+		}{
+			\includegraphics{#1}
+		}	
+		\captionof{figure}[#3]{#4}
+		\label{#2}
+		\vspace*{0.5cm}
+\end{minipage}
+}
+%-------------
+
+\bibliography{bibo}
 
 \begin{document}
 
@@ -56,7 +118,7 @@
 \lhead{}
 \chead{}
 \rhead{\thesection\space\contentsname}
-\lfoot{Heterogene Microservices}
+\lfoot{Microservices und technologische Heterogenität}
 \cfoot{}
 \rfoot{\ \linebreak Seite \thepage}
 \renewcommand{\headrulewidth}{0.4pt}
@@ -83,7 +145,8 @@
 	\large
 	über das Thema\\
 	\vspace*{1cm}
-	\textbf{Heterogene Microservices}\\
+	\textbf{Microservices und technologische Heterogenität}\\
+	Entwicklung einer sprachunabhängigen Microservice Framework Evaluationsmethode\\
 	\vspace*{2cm}
 	
 	\vfill
@@ -139,14 +202,22 @@ Insert Abstract Here
 \renewcommand{\lstlistlistingname}{Listing-Verzeichnis}
 {\labelsep2cm\lstlistoflistings}
 \pagebreak
-
 % ----------------------------------------------------------------------------------------------------------
 % Abkürzungen
 % ----------------------------------------------------------------------------------------------------------
 \section{Abkürzungsverzeichnis}
-\begin{acronym}[OSGi] % längste Abkürzung steht in eckigen Klammern
+\begin{acronym}[ATAM] % längste Abkürzung steht in eckigen Klammern
 	\setlength{\itemsep}{-\parsep} % geringerer Zeilenabstand
-	\acro{API}{Programmierschnittstelle}
+	\acro{SEI}{Software Engineering Institute}
+	\acro{SAAM}{Software Architecture Analysis Method}
+	\acro{ATAM}{Architecture Tradeoff Analysis Method}
+	\acro{SAEM}{Software Architecture Evaluation Model}
+	\acro{GQM}{Goal Question Metrik}
+	\acro{MFEM}{Microservice Framework Evaluation Method}
+	\acro{HATEOAS}{Hypermedia As The Engine Of Application State}
+	\acro{REST}{Representational State Transfer}
+	\acro{XML}{Extensible Markup Language}
+	\acro{JSON}{JavaScript Object Notation}
 \end{acronym}
 \newpage
 
@@ -173,33 +244,32 @@ Insert Abstract Here
 \setcounter{page}{1}
 
 % ----------------------------------------------------------------------------------------------------------
-% Einleitung
+% Einleitung und Motivation
 % ----------------------------------------------------------------------------------------------------------
-\section{Einleitung}
-
+\include{Einleitung/Einleitung}
 \pagebreak
 % ----------------------------------------------------------------------------------------------------------
-% Grundlagen
+% Microservices
 % ----------------------------------------------------------------------------------------------------------
 \include{Grundlagen/Grundlagen}
 \pagebreak
 
 % ----------------------------------------------------------------------------------------------------------
-% Konzeption
+% Konzeption Methode
 % ----------------------------------------------------------------------------------------------------------
 \include{Konzeption/Konzeption}
 
 \pagebreak
 
 % ----------------------------------------------------------------------------------------------------------
-% Evaluation
+% Evaluation an Beispielen
 % ----------------------------------------------------------------------------------------------------------
 \include{Evaluation/Evaluation}
 
 \pagebreak
 
 % ----------------------------------------------------------------------------------------------------------
-% Zusammenfassung
+% Zusammenfassung und Ausblick
 % ----------------------------------------------------------------------------------------------------------
 \include{Zusammenfassung/Zusammenfassung}
 
@@ -209,9 +279,15 @@ Insert Abstract Here
 % Literatur
 % ----------------------------------------------------------------------------------------------------------
 \renewcommand\refname{Quellenverzeichnis}
-\bibliographystyle{myalpha}
-\bibliography{bibo}
+
+\printbibliography
 \pagebreak
+
+% ----------------------------------------------------------------------------------------------------------
+% Todos
+% ----------------------------------------------------------------------------------------------------------
+\todototoc
+\listoftodos
 
 % ----------------------------------------------------------------------------------------------------------
 % Anhang
@@ -225,9 +301,11 @@ Insert Abstract Here
 \phantomsection
 \addcontentsline{toc}{section}{Anhang}
 \addtocontents{toc}{\vspace{-0.5em}}
+\section{\ac{MFEM} - Vollständiger Quality Utility Tree}
+\todoInline{Quality Utility Tree vollständig mit allen Kategorien (mit GQM)}
 
 \section{CODE}
-Nothing Here
+\todoInline{Nothing Here}
 
 \end{appendix}
 \end{document}
