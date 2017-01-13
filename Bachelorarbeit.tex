@@ -84,6 +84,13 @@ linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
 \newcommand{\todoFigure}[1]{\stepcounter{todocounter}\missingfigure[figcolor=white]{TODO \thetodocounter: #1}}
 % ----------------
 
+%Cite Redefinition - Auto Space on citation + Prevent forever alone citation
+\LetLtxMacro{\citeold}{\cite}
+\renewcommand{\cite}[1]{~\citeold{#1}}
+\LetLtxMacro{\citesold}{\cites}
+\renewcommand{\cites}[2]{~\citesold{#1}{#2}}
+%----------------------
+
 %Image Command - Optional Image otherwise TODO
 % #1 IMAGE File - optional (TODO if not present)
 % #2 LabelName
