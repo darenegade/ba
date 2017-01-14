@@ -13,7 +13,7 @@ Der Ablauf von \ac{MFEM} ist in Bild \ref{MFEMAblauf} schematisch dargestellt un
 Aus dem vorangegangenen Kapitel wird ersichtlich, dass eine Bewertung nicht nur frühzeitig erfolgen muss. Viel mehr ist es wichtig, dass diese auch auf detaillierten Qualitätsanforderungen basiert. Die Anforderungen werden dabei durch die maßgeblichen Stakeholder definiert. In einer Microservice Architektur sind dies die definierten Umstände eines Services. Diese beschränken sich dabei nicht auf die Kommunikation zwischen zwei einzelnen Services. Gerade die Komposition der Microservices über die Infrastruktur muss gewährleistet sein. Wobei Punkte wie Sicherheit und Wartbarkeit die Komplexität noch steigern.
 Damit ein Service dies erfüllt und somit in der Architektur funktionieren kann, müssen anhand der Umstände, wie z.B. Service Discovery, Logging oder Tracing, Anforderungen definiert werden. Nur wenn das Framework eines Services diese unterstützt, kann garantiert werden, dass sich das Risiko zur Erfüllung des Qualitätszieles minimiert.
 
-\newparagraph{Externe Serviceanforderungen}
+\newparagraph{Externe Serviceanforderungen}\todo{Extern/Intern - Zweck, Reihenfolge, Prozess beschreiben}
 
 Im ersten Schritt müssen demnach Anforderungen gefunden werden, die die Microservice Architektur an die einzelnen Services stellt. Das ist dabei stark von der Umsetzung dieser abhängig. Ein gutes Beispiel hierfür ist die Service Discovery. Dass sich Services gegenseitig finden können, ohne die Flexibilität der Architektur zu verlieren, darf eben diese nicht fehlen. Die Umsetzung kann dabei jedoch stark variieren. So kann ein zentraler Service, wie z.B. Netflix-Eureka\footnote{
 \url{https://github.com/Netflix/eureka}

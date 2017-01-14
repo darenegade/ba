@@ -4,7 +4,7 @@
 
 
 Die Auswahl des richtigen Frameworks für einen einzelnen Service hängt von vielen Faktoren ab.
-Damit neben den Kundenanforderungen nicht Anforderungen von der
+Damit neben den Kundenanforderungen nicht Anforderungen\todo{nicht-funktionale Anforderungen} von der
 Microservice Architektur vergessen und objektiv in den Auswahlprozess
 mit einbezogen werden, sollte es eine Methode zur Bewertung des Frameworks
 geben. Dabei kann die durch das Framework vorgegebene Architektur und die
@@ -21,7 +21,7 @@ So ist der Aufwand für die Integration der neuen Methode sehr gering, da sie in
 Bewertungsprozesse integriert werden kann.
 In diesem Zusammenhang stellt sich die grundsätzliche Frage, warum Architekturen in der professionellen Softwareentwicklung bewertet werden? Und ob es dafür bereits etablierte Methoden gibt?  
 
-\section{Qualitätsbewertung von Softwarearchitektur}
+\section{Qualitätsbewertung von Softwarearchitektur}\todo{Erklären: Anforderungen, Ziele, Merkmale}
 
 \bigquote{You cannot control what you cannot measure}{Tom DeMarco (Controlling Software Projects, 1982)}
 
@@ -38,12 +38,11 @@ Durch Zeit- und Kostendruck wird dies leider in der Praxis häufig erst in spät
 In einem sogenannten "Audit" oder "Review" werden bereits produktiv laufende Systeme bewertet\cite{Starke2015}.
 Sollten sich hier starke Abweichungen gegenüber den Anforderungen zeigen, kann sich dies zu einem großen Problem 
 avancieren, hohe Kosten verursachen und Kunden verärgern.
-Aus diesem Grund ist die Qualität einer Architektur sehr entscheidend und sollte stichhaltig bewiesen sein.
+Aus diesem Grund ist die Qualität einer Architektur sehr entscheidend und sollte stichhaltig nachgewiesen sein.
 Um sie zu bestimmen und Restrisiken minimiert zu können, gibt es Methoden zur Qualitätsbewertung 
 von Softwarearchitektur.
 
-%todo
-\image{Architekturbewertung}{Umfang Architekturbewertung}{Architekturbewertung\cite{Starke2015}}
+\image[Architekturbewertung.pdf][width=0.7\linewidth]{Architekturbewertung}{Ziele Architekturbewertung}{Allgemeine Ziele von Architekturbewertung.}
 
 Die Bewertung kann sich dabei auf die im Softwareprojekt entstehenden Artefakte stützen. Beispielsweise sind
 Anforderungen, Architekturen, Diagramme, Quellcode und andere Dokumente zu nennen. Diese Artefakte können dabei quantitativ 
@@ -80,7 +79,7 @@ Diese Aufzählung stellt hierbei eine Auswahl an verschiedenen Qualitätsmerkmal
 
 \newparagraph{Soll-Ist Vergleich}
 
-Mit den Anforderungen kann ein Soll-Ist Vergleich anhand der Artefakte durchgeführt 
+Mit den Anforderungen\todo{Zusammenhang Q-Merkmale} kann ein Soll-Ist Vergleich anhand der Artefakte durchgeführt 
 werden. Jede einzelne Anforderung wird mit Plänen, Dokumentation oder Modellen verglichen und bewertet. D.h. es wird geprüft, ob das geplante System den Anforderungen entsprechen wird. Wichtig ist, dass die geforderten Ziele möglichst granular sind. Je detaillierter die Anforderungen vorliegen, desto geringer ist das Restrisiko einzelne Punkte zu vergessen oder unscharf zu bewerten.
   
 Das Ergebnis dieser Prüfung kann folgendermaßen aussehen\cite{Starke2015}:
@@ -103,19 +102,20 @@ Methoden basieren auf der \ac{SAAM} und erweitern diese um spezielle Sichten ode
 
 \subsection{\acf{ATAM}}
 
-Im Folgenden Abschnitt möchte ich \ac{ATAM} genauer Vorstellen. Das Ziel dieser Bewertungsmethode ist nicht eine exakte Vorhersage über die 
+Im Folgenden Abschnitt wird \ac{ATAM} genauer vorgestellt. Das Ziel dieser Bewertungsmethode ist nicht eine exakte Vorhersage über die 
 zu erwartende Qualität der Software zu treffen. Das ist nahezu unmöglich bei der frühen Entwurfsphase, da noch nicht genügend Informationen 
 vorliegen. Vielmehr soll der Blick auf einzelne Qualitätsmerkmale und dessen Abhängigkeit zu gewissen Architektur-Entwurfsentscheidungen geschärft 
 werden\cite{Clements2000}. Mit diesem Wissen können einzelne Entscheidungen überdacht, genauer modelliert oder angepasst werden, um das gewünschte 
 Qualitätsziel zu erreichen. Darüber hinaus wird auch die Dokumentation der Architektur verbessert, da alle Qualitätsaspekte genauer untersucht werden.
 
-Das Ziel von \ac{ATAM} ist eine Dokumentation von Risiken, Empfindlichkeiten und Kompromisse, die durch eine genauere Analyse der Architektur\cite{Clements2000}
-ermittelt werden konnten. Risiken stellen nicht getroffene Architekturentscheidungen oder Eigenschaften der Architektur,die nicht vollständig
+Das Ziel von \ac{ATAM} ist eine Dokumentation von Risiken (Risks), Sensitivitätspunkte (sensitivity points) und Kompromisspunkte(tradeoff points), die durch eine genauere Analyse der Architektur\cite{Clements2000}
+ermittelt werden konnten. 
+Risiken stellen nicht getroffene Architekturentscheidungen oder Eigenschaften der Architektur,die nicht vollständig
 verstanden wurden, dar. So kann z.B. der verwendete Datenbanktyp noch ungeklärt oder die Auswirkungen einer zentral geführten Komponente unklar sein.
-Empfindlichkeiten sind starke Abhängigkeiten messbarer Qualitätsmerkmale. Diese beziehen sich auf die Auslegung von einzelnen Komponenten der Architektur. Ein Beispiel für Empfindlichkeiten ist ein Engpass zwischen zwei Modulen. Dieser kann für den Durchsatz des gesamten Systems verantwortlich sein. 
-Zusätzlich deckt der Kompromiss Empfindlichkeiten auf, die sich entgegen wirken.
-Die Folge aus einer breiteren Auslegung des Engpasses kann unter Umständen die Stabilität des Systems verschlechtern.
-Mit den Risiken, Empfindlichkeiten und Kompromissen kann die Architektur mit gezielteren Analysen, Erstellung von Prototypen und weiteren Entwürfen stark verbessert 
+Sensitivitätspunkte sind starke Abhängigkeiten messbarer Qualitätsmerkmale. Diese beziehen sich auf die Auslegung von einzelnen Komponenten der Architektur. Ein Beispiel für Sensitivitätspunkte ist ein Engpass zwischen zwei Modulen. Dieser kann für den Durchsatz des gesamten Systems verantwortlich sein.\todo{Beispiel ausführlicher} 
+Zusätzlich deckt der Kompromisspunkt Sensitivitätspunkte auf, die sich entgegen wirken.
+Die Folge aus einer breiteren Auslegung des Engpasses kann unter Umständen die Stabilität des Systems verschlechtern.\todo{Beispiel ausführlicher} 
+Mit den Risiken, Sensitivitäts- und Kompromisspunkten kann die Architektur mit gezielteren Analysen, Erstellung von Prototypen und weiteren Entwürfen stark verbessert 
 werden. 
 
 Die Grundvoraussetzung zum Erreichen dieses Zieles ist eine detaillierte Definition der Qualitätsmerkmale und eine genaue Spezifikation der Architektur sowie
@@ -199,7 +199,7 @@ So kann z.B. mittels eines Walkthrough genau aufgezeigt werden, wie einzelne Kom
 	\item Wird die Entscheidung von Analysen, Untersuchungen oder Prototypen unterstützt?
 \end{itemize}
 
-Die Analyse ist dabei nicht auf diese Fragen beschränkt. Sie bieten lediglich einen Startpunkt für eine Diskussion, um potentielle Risiken, Empfindlichkeiten oder Kompromisse zu finden. An dieser Stelle gibt es leider kein Patentrezept oder eine spezifisches Vorgehen, um das Erfüllen des Qualitätsmerkmales zu bestimmen. Viel mehr wird von den Teilnehmern ein analytisches und systematisches Denken verlangt. Im Fokus muss hierbei stehen, dass eine Verbindung zwischen der Architekturentscheidung und der Qualitätsanforderung geschaffen wird, die sie erfüllen soll.
+Die Analyse ist dabei nicht auf diese Fragen beschränkt. Sie bieten lediglich einen Startpunkt für eine Diskussion, um potentielle Risiken, Sensitivitäts- oder Kompromisspunkte zu finden. An dieser Stelle gibt es leider kein Patentrezept oder eine spezifisches Vorgehen, um das Erfüllen des Qualitätsmerkmales zu bestimmen. Viel mehr wird von den Teilnehmern ein analytisches und systematisches Denken verlangt. Im Fokus muss hierbei stehen, dass eine Verbindung zwischen der Architekturentscheidung und der Qualitätsanforderung geschaffen wird, die sie erfüllen soll.
 
 \newparagraph{Ergebnis präsentieren}
 
@@ -209,7 +209,7 @@ Die durch \ac{ATAM} gefundenen Risiken und die daraus resultierenden Maßnahmen 
 
 Einen anderen Ansatz verfolgt die \ac{SAEM} Methode. Diese betrachtet die Softwarearchitektur als finales Produkt der Entwurfsphase und versucht mittels dem ISO/IEC 9126-1\footnote{
 	Die ISO/IEC 9126-1 wurde 2011 durch die ISO/IEC 25010 ersetzt. Die neue Norm bietet in diesem Zusammenhang jedoch keinen Mehrwert.
-} 
+} \todo{Auf 25010 umbauen, damit diese Arbeit nicht veraltet wirkt}
 Qualitätsmodell die Qualität der Architektur festzustellen.
 
 
@@ -221,7 +221,7 @@ Wie beim finalen System ist die direkte Messung am Produkt eine objektive und se
 
 \newparagraph{Spezifikation Qualität}
 
-Das Qualitätsmodell von \ac{SAEM} baut dabei auf das Modell der ISO/IEC 9126-1 auf. Jenes teilt die Qualität in 6 Kategorien und weitere Unterkategorien auf\cite{ISOIEC9126}. Anhand derer kann die Qualität der Softwarearchitektur spezifiziert werden, indem man diesen Architekturanforderungen zuordnet.
+Das Qualitätsmodell von \ac{SAEM} baut dabei auf dem Modell der ISO/IEC 9126-1 auf. Jenes teilt die Qualität in 6 Kategorien und weitere Unterkategorien auf\cite{ISOIEC9126}. Anhand derer kann die Qualität der Softwarearchitektur spezifiziert werden, indem man diesen Architekturanforderungen zuordnet.
 
 %todo
 \image{ISO9126QModell}{Qualitätsmodell der ISO/IEC 9126-1}{Qualitätsmodell der ISO/IEC 9126-1\cite{ISOIEC9126}}

@@ -31,6 +31,8 @@ linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
 \usepackage{biblatex}
 \usepackage{enumitem}
 \usepackage{etoolbox}
+\usepackage{xparse}
+\usepackage{import}
 
 \usepackage{listings}
 \lstset{basicstyle=\footnotesize, captionpos=b, breaklines=true, showstringspaces=false, tabsize=2, frame=lines, numbers=left, numberstyle=\tiny, xleftmargin=2em, framexleftmargin=2em}
@@ -93,20 +95,21 @@ linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
 
 %Image Command - Optional Image otherwise TODO
 % #1 IMAGE File - optional (TODO if not present)
-% #2 LabelName
-% #3 TOC Text
-% #4 Captiontext
-\newcommand{\image}[4][TODO]{
+% #2 Image options - optional
+% #3 LabelName
+% #4 TOC Text
+% #5 Captiontext
+\DeclareDocumentCommand{\image}{ o O{width=\linewidth} m m m}{
 	\begin{minipage}{\linewidth}
 		\vspace*{0.5cm}
 		\centering
-		\ifstrequal{TODO}{#1}{
-			\todoFigure{#3}
+		\IfNoValueTF{#1}{
+			\todoFigure{#4}
 		}{
-			\includegraphics{#1}
+			\includegraphics[#2]{Bilder/#1}
 		}	
-		\captionof{figure}[#3]{#4}
-		\label{#2}
+		\captionof{figure}[#4]{#5}
+		\label{#3}
 		\vspace*{0.5cm}
 \end{minipage}
 }
@@ -253,32 +256,32 @@ Insert Abstract Here
 % ----------------------------------------------------------------------------------------------------------
 % Einleitung und Motivation
 % ----------------------------------------------------------------------------------------------------------
-\include{Einleitung/Einleitung}
+\subimport{Einleitung/}{Einleitung}
 \pagebreak
 % ----------------------------------------------------------------------------------------------------------
 % Microservices
 % ----------------------------------------------------------------------------------------------------------
-\include{Grundlagen/Grundlagen}
+\subimport{Grundlagen/}{Grundlagen}
 \pagebreak
 
 % ----------------------------------------------------------------------------------------------------------
 % Konzeption Methode
 % ----------------------------------------------------------------------------------------------------------
-\include{Konzeption/Konzeption}
+\subimport{Konzeption/}{Konzeption}
 
 \pagebreak
 
 % ----------------------------------------------------------------------------------------------------------
 % Evaluation an Beispielen
 % ----------------------------------------------------------------------------------------------------------
-\include{Evaluation/Evaluation}
+\subimport{Evaluation/}{Evaluation}
 
 \pagebreak
 
 % ----------------------------------------------------------------------------------------------------------
 % Zusammenfassung und Ausblick
 % ----------------------------------------------------------------------------------------------------------
-\include{Zusammenfassung/Zusammenfassung}
+\subimport{Zusammenfassung/}{Zusammenfassung}
 
 \pagebreak
 
