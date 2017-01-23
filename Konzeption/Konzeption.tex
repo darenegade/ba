@@ -1,6 +1,6 @@
 \section{\acf{MFEM}}
 
-Die Bewertung, ob ein Framework für den produktiven Einsatz in einer Microservice Architektur geeignet ist, lässt sich nicht auf die Servicearchitektur beschränken. Aus diesem Grund ist \ac{MFEM} keine reine Architekturbewertungs Methode. Sie betrachtet einerseits die durch das Framework vorgegebene Servicearchitektur und versucht dabei Risiken aufzudecken sowie ein tieferes Verständnis für die Architektur zu schaffen. Auf der anderen Seite wird das Framework als Produkt aufgefasst und versucht, eine Aussage über die Qualität dessen zu treffen. \ac{MFEM} setzt dabei keine grundlegenden Kenntnisse über das Framework voraus, da es 2 Seiten der Analyse anbietet. Dies ist einerseits die Nutzung von bereits vorhandenem Expertenwissen, was die Phase der Analyse verkürzt. Andererseits werden die restlichen Daten über die Erstellung von Prototypen erfasst.
+Die Bewertung, ob ein Framework für den produktiven Einsatz in einer Microservice Architektur geeignet ist, lässt sich nicht auf die Servicearchitektur beschränken. Aus diesem Grund ist \ac{MFEM} keine reine Architekturbewertungs-Methode. Sie betrachtet einerseits die durch das Framework vorgegebene Servicearchitektur und versucht dabei Risiken aufzudecken sowie ein tieferes Verständnis für die Architektur zu schaffen. Auf der anderen Seite wird das Framework als Produkt aufgefasst und versucht, eine Aussage über die Qualität dessen zu treffen. \ac{MFEM} setzt dabei keine grundlegenden Kenntnisse über das Framework voraus, da es 2 Seiten der Analyse anbietet. Dies ist einerseits die Nutzung von bereits vorhandenem Expertenwissen, was die Phase der Analyse verkürzt. Andererseits werden die restlichen Daten über die Erstellung von Prototypen erfasst.
 Auf dieser Basis kann am Ende eine begründete Entscheidung für oder gegen den Einsatz eines Frameworks getroffen werden.
 
 Der Ablauf von \ac{MFEM} ist in Bild \ref{MFEMAblauf} schematisch dargestellt und startet mit der Analyse der vorhanden Microservice Architektur sowie der Identifizierung von Qualitätsanforderungen.
@@ -15,7 +15,7 @@ Damit ein Service dies erfüllt und somit in der Architektur funktionieren kann,
 
 \newparagraph{Externe Serviceanforderungen}\todo{Extern/Intern - Zweck, Reihenfolge, Prozess beschreiben}
 
-Im ersten Schritt müssen demnach Anforderungen gefunden werden, die die Microservice Architektur an die einzelnen Services stellt. Das ist dabei stark von der Umsetzung dieser abhängig. Ein gutes Beispiel hierfür ist die Service Discovery. Dass sich Services gegenseitig finden können, ohne die Flexibilität der Architektur zu verlieren, darf eben diese nicht fehlen. Die Umsetzung kann dabei jedoch stark variieren. So kann ein zentraler Service, wie z.B. Netflix-Eureka\footnote{
+Im ersten Schritt müssen demnach Anforderungen gefunden werden, die die Microservice Architektur an die einzelnen Services stellt. Das ist dabei stark von der Umsetzung dieser abhängig. Ein gutes Beispiel hierfür ist die Servicediscovery. Dass sich Services gegenseitig finden können, ohne die Flexibilität der Architektur zu verlieren, darf eben diese nicht fehlen. Die Umsetzung kann dabei jedoch stark variieren. So kann ein zentraler Service, wie z.B. Netflix-Eureka\footnote{
 \url{https://github.com/Netflix/eureka}
 }
 oder Consul\footnote{
@@ -30,7 +30,7 @@ oder Consul\footnote{
 Clusters übernimmt die Service Verwaltung diese Aufgabe selbst und stellt sie über Umgebungsvariablen oder DNS zur Verfügung. 
 
 %todo
-\image{Servicediscoverytypen}{Service Discovery Typen}{Beispiele für Ausprägungen der Service Discovery}
+\image{Servicediscoverytypen}{Servicediscovery Typen}{Beispiele für Ausprägungen der Servicediscovery}
 
 Die spezifische Ausprägung der Architektur gibt somit Anforderungen vor, die es zu identifizieren gilt und im folgenden externe Serviceanforderungen genannt werden.
 
@@ -50,22 +50,12 @@ Für die Analyse und Wahl der Anforderungen wird hier ein Quality Utility Tree a
 
 Der Quality Utility Tree bietet einen effizienten Top-Down Ansatz zur Identifizierung und Verfeinerung von Qualitätsanforderungen. Die mittels Brainstorming gefundenen Anforderungen werden in einzelne Kategorien aufgeteilt und bis zu den konkreten Zielen weiter verfeinert. Bei der Kategorisierung kann das Qualitätsmodell aus der ISO/IEC 9126-1 hergenommen werden. Wobei das Modell nur eine Hilfestellung ist und keine Vorgabe darstellt. Hier wurden die Kategorien Funktionalität, Performance, Benutzbarkeit, Sicherheit und Wartbarkeit definiert. Anschließend wurden diesen die Qualitätsanforderungen zugeordnet. Bild \ref{MSQUTAusschnitt} zeigt einen Ausschnitt des gesamten Baumes, wobei der vollständige Baum im Anhang zu finden ist. 
 
-%\newparagraph{Funktionalität}
-%
-%\begin{description}[labelwidth=\linewidth]
-%	\item[Validierung eingehender Domänen Objekte] 
-%	Eingehende Domänen Objekte sollten validiert werden, so dass keine undefinierten oder unzulässigen Zustände verarbeitet aufkommen.
-%	\item[Die Schnittstelle ist nach \acs{HATEOAS}\footnotemark\space aufgebaut] \footnotetext{\acf{HATEOAS}}
-%	Damit die Kopplung zwischen den Services loser wird, sollte die \ac{REST} Schnittstelle nach dem Richardson Maturity Model - Level 3 aufgebaut sein.
-%	\item[De- und Serialisierung von Standardformaten zur Datenübertragung]
-%	
-%\end{description}
-% TODO Ausschnitt als Text oder Bild
+% TODO
 \image{MSQUTAusschnitt}{\acs{MFEM} Quality Utility Tree Beispiel}{Ausschnitt aus dem Quality Utility Tree als Beispiel}
 
 \subsection{Metriken definieren über \ac{GQM}}
 
-Für die identifizierten Qualitätsanforderungen müssen möglichst aussagekräftig Metriken gefunden werden. Dies können dabei Messung an der Architektur sein, wie das Vorhandensein spezifischer Funktionen oder Komponenten sowie den Einsatz bewährter Pattern. Zusätzlich können auch Softwaremetriken genutzt werden, die sich direkt an einem Prototypen ermitteln lassen. Damit kann neben Messungen zur Performance auch z.B. der Aufwand zur Umsetzung bestimmter Funktionen bemessen werden. Um dabei stets das Ziel im Auge zu behalten, wird die bereits bekannte \ac{GQM} Methode genutzt. 
+Für die identifizierten Qualitätsanforderungen müssen möglichst aussagekräftig Metriken gefunden werden. Dies können dabei Messung an der Architektur sein, wie das Vorhandensein spezifischer Funktionen oder Komponenten sowie den Einsatz bewährter Pattern. Zusätzlich können auch Softwaremetriken genutzt werden, die sich direkt an einem Prototyp ermitteln lassen. Damit kann neben Messungen zur Performance auch z. B. der Aufwand zur Umsetzung bestimmter Funktionen bemessen werden. Um dabei stets das Ziel im Auge zu behalten, wird die bereits bekannte \ac{GQM} Methode genutzt. 
 
 Eine um Metriken erweiterter Qualitätsbaum ist in Bild \ref{MFEMGQMQUTAusschnitt} dargestellt. Wie zuvor ist dies nur ein Ausschnitt, wobei der gesamte Baum im Anhang zu finden ist.
 
