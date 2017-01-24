@@ -4,13 +4,13 @@
 
 
 Die Auswahl des richtigen Frameworks für einen einzelnen Service hängt von vielen Faktoren ab.
-Damit neben den Kundenanforderungen nicht Anforderungen\todo{nicht-funktionale Anforderungen} von der
+Damit neben den Kundenanforderungen nicht Anforderungen von der
 Microservice Architektur vergessen und objektiv in den Auswahlprozess
 mit einbezogen werden, sollte es eine Methode zur Bewertung des Frameworks
 geben. Dabei kann die durch das Framework vorgegebene Architektur und die
 bereits enthaltenen Funktionen bewertet werden. So kann, schon während der
 Entwurfsphase, eine fundierte Aussage über die zu erwartenden Risiken und Trade-Offs
-getroffen werden. Sollte z. B. eine wesentliche Funktion, wie eine Authentifizierung am
+getroffen werden. Sollte z.~B. eine wesentliche Funktion, wie eine Authentifizierung am
 Service, fehlen, müsste diese selbstständig entwickelt werden.
 Die kann, je nach Architektur, sehr aufwendig sein. Damit verbunden wäre ein hoher Zeitaufwand, 
 der die Projektkosten immens steigern würde.
@@ -25,17 +25,14 @@ In diesem Zusammenhang stellt sich die grundsätzliche Frage, warum Architekture
 
 \bigquote{You cannot control what you cannot measure}{Tom DeMarco (Controlling Software Projects, 1982)}
 
-Die Aussage beschreibt sehr gut, dass ein IT-Projekt nur dann direkt auf die Projektziele
-zusteuern kann, wenn Messwerte erhoben werden. \todo{Ausschweifender einleiten, um keinen zu großen Cut zu haben.} Das erlaubt einen Vergleich mit den bereits erreichten
-Zielen und trifft eine Aussage über den Projektstatus. Sollte der Status
-an gewissen Punkten zu stark von den Anforderungen abweichen, können rechtzeitig
-korrigierende Maßnahmen eingeleitet werden\cite{Starke2015}.
+Die Aussage beschreibt sehr gut, dass ein IT-Projekt besser auf die Projektziele
+zusteuern kann, wenn Messwerte erhoben werden. Diese lassen sich z.~B. in Diagrammen sehr gut darstellen und können zumeist einfach sowie unmissverständlich interpretiert werden. Neben dem aktuellen Projektstatus lassen sich so auch Trends erkennen. Diese helfen dabei rechtzeitig Abweichungen festzustellen und gegebenenfalls korrigierende Maßnahmen einzuleiten\cite{Starke2015}. Auch wenn \citeauthor{DeMarco2009} \citeyear{DeMarco2009} seine Aussage relativiert hat\cite{DeMarco2009}, bleibt sie in Bezug auf die Softwarearchitektur stimmig.
 Gerade bei einem so entscheidendem Punkt, wie der Architektur, ist es wichtig frühzeitig
 Risiken und Qualitätsabweichungen festzustellen. Die Architektur ist ein sehr kritischer
 und wesentlicher Bestandteil im Entwicklungsprozess von einer Software. Ihrer Beschaffenheit nach,
 kann sie nur schwer und mit hohen Kosten verändert werden.
 Durch Zeit- und Kostendruck wird dies leider in der Praxis häufig erst in späten Entwicklungsphasen durchgeführt. 
-In einem sogenannten "Audit" oder "Review" werden bereits produktiv laufende Systeme bewertet\cite{Starke2015}.
+In einem sogenannten \enquote{Audit} oder \enquote{Review} werden bereits produktiv laufende Systeme bewertet\cite{Starke2015}.
 Sollten sich hier starke Abweichungen gegenüber den Anforderungen zeigen, kann sich dies zu einem großen Problem 
 avancieren, hohe Kosten verursachen und Kunden verärgern.
 Aus diesem Grund ist die Qualität einer Architektur sehr entscheidend und sollte stichhaltig nachgewiesen sein.
@@ -46,7 +43,7 @@ von Softwarearchitektur. Neben diesem Ziel gibt es noch weitere positive Auswirk
 
 Die Bewertung kann sich dabei auf die im Softwareprojekt entstehenden Artefakte stützen. Beispielsweise sind
 Anforderungen, Architekturen, Diagramme, Quellcode und andere Dokumente zu nennen. Diese Artefakte können dabei quantitativ 
-oder qualitativ bewertet werden. So kann z.B. der Quellcode mittels Metriken quantitativ, d.h. in reinen Zahlen, bewertet werden. Dies lässt sich meist einfach und automatisiert, siehe SonarQube\footnote{\url{https://www.sonarqube.org}}, erfassen und kann sehr gut reproduziert sowie verglichen werden. Der Einsatz sollte jedoch gut überlegt sein, damit nicht ziellos gemessen wird.
+oder qualitativ bewertet werden. So kann z.~B. der Quellcode mittels Metriken quantitativ, d.~h. in reinen Zahlen, bewertet werden. Dies lässt sich meist einfach und automatisiert, siehe SonarQube\footnote{\url{https://www.sonarqube.org}}, erfassen und kann sehr gut reproduziert sowie verglichen werden. Der Einsatz sollte jedoch gut überlegt sein, damit nicht ziellos gemessen wird.
 Andere Artefakte entziehen sich dieser Bewertung und können nur auf ihre Güte hin, also qualitativ, bewertet werden. Diese, teils auch subjektiven, Bewertungen setzen einen größeren Aufwand voraus und lassen sich schwer vergleichen.  
 Zu letzterem zählt die Softwarearchitektur. 
 
@@ -63,11 +60,11 @@ Nicht-funktionalen Anforderungen beschreiben \textit{in welcher Qualität} die z
 In der Regel werden diese Anforderungen durch Verträge, Normen oder Spezifikationen festgelegt. Diese begründen sich meistens auf die Ziele des Produktes. So will der Onlineshop-Betreiber Frust beim Kunden verhindern und Spontankäufe begünstigen, indem er den Bestellvorgang möglichst kurz hält.
 Eine Untersuchung der Produktmerkmale, also der charakteristischen Kennzeichen eines Produktes, gibt dabei Aufschluss über die Erfüllung der Anforderungen. So kann der vorher genannte Bestellvorgang bei der Messung 5 Sekunden benötigen und damit die Anforderung nicht erfüllen.      
 
-\newparagraph{Qualitätsanforderungen an Softwarearchitektur}
+\newparagraph{Qualitätsmerkmale der Softwarearchitektur}
 
 Auch bei der Architekturbewertung sind die Anforderungen das Fundament. Sie charakterisieren die 
 gewünschten Eigenschaften eines Systems\cite{Starke2015}.
-Bei der Softwarearchitektur können eine Vielzahl an Anforderungen bestimmt und bewertet werden\cites{Starke2015}{Clements2000}:
+Bei der Softwarearchitektur gibt es eine Vielzahl an Qualitätsmerkmale anhand derer Anforderungen bestimmt und definiert werden können\cites{Starke2015}{Clements2000}:
 
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Konzeptuelle Integrität}]
 	\item[Funktionalität] 
@@ -85,16 +82,16 @@ Bei der Softwarearchitektur können eine Vielzahl an Anforderungen bestimmt und 
 	\item[Unterteilbarkeit]
 	Die Unterteilbarkeit ermöglicht eine einfache Aufteilung in Teilsysteme. So können einzelne Teile unabhängig entwickelt oder sogar betrieben werden.
 	\item[Konzeptuelle Integrität] 
-	Das Konzept sollte sich auf allen Ebenen widerspiegeln und sich durch ein einheitlichen Design präsentieren. Ähnliche Dinge sollen dabei in ähnlicher Art und Weise gelöst werden. 
+	Das Konzept sollte sich auf allen Ebenen widerspiegeln und sich durch ein einheitliches Design präsentieren. Ähnliche Dinge sollen dabei in ähnlicher Art und Weise gelöst werden. 
 	\item[Machbarkeit] 
 	Es muss möglich sein, das System mit vorhandenen Ressourcen (Technologie, Budget, usw.) umzusetzen.
 \end{description}
 
-Diese Aufzählung stellt hierbei eine Auswahl an verschiedenen allgemeinen Qualitätsanforderungen dar und erhebt dabei keinen Anspruch auf Vollständigkeit.
+Diese Aufzählung stellt hierbei eine Auswahl an verschiedenen allgemeinen Qualitätsmerkmalen dar und erhebt dabei keinen Anspruch auf Vollständigkeit.
 
-\newparagraph{Soll-Ist Vergleich}
+\newparagraph{Soll-Ist-Vergleich}
 
-Mit den Anforderungen kann ein Soll-Ist Vergleich anhand der Artefakte durchgeführt werden. Jede einzelne Anforderung wird dabei mit Plänen, Dokumentation oder Modellen verglichen und bewertet. D.h. es wird geprüft, ob das geplante System den Anforderungen entsprechen wird. Wichtig ist, dass die geforderten Eigenschaften möglichst granular sind. Je detaillierter die Anforderungen vorliegen, desto geringer ist das Restrisiko einzelne Punkte zu vergessen oder unscharf zu bewerten.
+Mit den Anforderungen kann ein Soll-Ist-Vergleich anhand der Artefakte durchgeführt werden. Jede einzelne Anforderung wird dabei mit Plänen, Dokumentation oder Modellen verglichen und bewertet. D.~h. es wird geprüft, ob das geplante System den Anforderungen entsprechen wird. Wichtig ist, dass die geforderten Eigenschaften möglichst feingranular sind. Je detaillierter die Anforderungen vorliegen, desto geringer ist das Restrisiko einzelne Punkte zu vergessen oder unscharf zu bewerten.
   
 Das Ergebnis dieser Prüfung kann folgendermaßen aussehen\cite{Starke2015}:
 
@@ -110,7 +107,7 @@ Das Ergebnis dieser Prüfung kann folgendermaßen aussehen\cite{Starke2015}:
 Die Architekturbewertung ist somit ein relativer Vergleich in Hinblick auf spezifische 
 Kriterien und liefert keine absolute Aussage über die Qualität. Vielmehr identifizieren sich aus einer Architekturbewertung Risiken, die die Architekturentscheidungen in der Entwurfsphase mit sich gebracht haben. 
 
-Diesen Ansatz verfolgt auch \ac{SAAM}. \ac{SAAM} ist die erste am \ac{SEI}, einem Wegbereiter für die Architekturbewertung, entwickelte Methode.\todo{Umformulieren}
+Diesen Ansatz verfolgt auch \ac{SAAM}. Das \ac{SEI}, ein Forschungs- und Entwicklungszentrum für , hat mit dieser Methode den Grundstein der Architekturbewertung gelegt.
 Viele der heute bekannten 
 Methoden basieren auf der \ac{SAAM} und erweitern diese um spezielle Sichten oder fokussieren sich auf ein spezielles Qualitätsmerkmal. Mit der \ac{ATAM} wurde die \ac{SAAM} von der \ac{SEI} weiterentwickelt und stellt heute die führende Methode zur Architekturbewertung dar\cite{ATAM_SEI}.
 
@@ -125,10 +122,13 @@ Qualitätsziel zu erreichen. Darüber hinaus wird auch die Dokumentation der Arc
 Das Ziel von \ac{ATAM} ist eine Dokumentation von Risiken (Risks), Sensitivitätspunkte (sensitivity points) und Kompromisspunkte(tradeoff points), die durch eine genauere Analyse der Architektur\cite{Clements2000}
 ermittelt werden konnten. 
 Risiken stellen nicht getroffene Architekturentscheidungen oder Eigenschaften der Architektur,die nicht vollständig
-verstanden wurden, dar. So kann z. B. der verwendete Datenbanktyp noch ungeklärt oder die Auswirkungen einer zentral geführten Komponente unklar sein.
-Sensitivitätspunkte sind starke Abhängigkeiten messbarer Qualitätsmerkmale. Diese beziehen sich auf die Auslegung von einzelnen Komponenten der Architektur. Ein Beispiel für Sensitivitätspunkte ist ein Engpass zwischen zwei Modulen. Dieser kann für den Durchsatz des gesamten Systems verantwortlich sein.\todo{Beispiel ausführlicher} 
+verstanden wurden, dar. So kann z.~B. der verwendete Datenbanktyp noch ungeklärt oder die Auswirkungen einer zentral geführten Komponente unklar sein.
+
+Sensitivitätspunkte sind starke Abhängigkeiten messbarer Qualitätsmerkmale. Diese beziehen sich auf die Auslegung von einzelnen Komponenten der Architektur. Ein Beispiel für Sensitivitätspunkte ist ein Engpass zwischen zwei Modulen. D.~h. wenn der Kommunikationskanal zweier Module, wovon mindestens eins essenziell für das Gesamtsystem ist, zu gering ausgelegt wurde, dann kann dieser für einen niedrigen Durchsatz des gesamten Systems verantwortlich sein. In anderen Worten beeinflusst die Dimensionierung einer einzelnen Komponente direkt das Gesamtsystem, was einen Sensitivitätspunkt darstellt.
+
 Zusätzlich deckt der Kompromisspunkt Sensitivitätspunkte auf, die sich entgegen wirken.
-Die Folge aus einer breiteren Auslegung des Engpasses kann unter Umständen die Stabilität des Systems verschlechtern.\todo{Beispiel ausführlicher} 
+Würde man z.~B. den zuvor genannten Engpass breiter auslegen, kann unter Umständen dies die Zuverlässigkeit des Gesamtsystems verschlechtern. Ein angebundenes Modul verwirft möglicherweise bei einer starken Belastung einige Anfragen, wodurch ein korrektes Ergebnis nicht mehr garantiert werden kann. So wirken sich diese beiden Sensitivitätspunkte entgegen und es muss ein Kompromiss gebildet werden.  
+ 
 Mit den Risiken, Sensitivitäts- und Kompromisspunkten kann die Architektur mit gezielteren Analysen, Erstellung von Prototypen und weiteren Entwürfen stark verbessert 
 werden. 
 
@@ -136,16 +136,15 @@ Die Grundvoraussetzung zum Erreichen dieses Zieles ist eine detaillierte Definit
 dessen zugrunde liegenden Entscheidungen\cite{Clements2000}. In der Praxis ist es leider nicht unüblich, dass Ziele und Architekturdetails noch unklar oder mehrdeutig sind. Aus diesem Grund ist ein wichtiges Ziel von \ac{ATAM} auch dies genauer zu definieren und eindeutig festzuhalten. Um die Erreichung sämtlicher Ziele zu unterstützen, ist \ac{ATAM} in 
 mehrere Phasen aufgeteilt. Bild \ref{ATAMPhasen} gibt hierzu einen Überblick.
 
-%todo
-\image{ATAMPhasen}{Phasen von ATAM}{Phasen der Architekturbewertung nach ATAM\cite{Starke2015}}
+\image[ATAM-Phasen.pdf]{ATAMPhasen}{Phasen von ATAM}{Phasen der Architekturbewertung nach ATAM\cite{Starke2015}}
 
 \newparagraph{Vorbereitung}
 
-Das Fundament der Bewertung stellen die Qualitätsanforderungen dar. Diese können nur lückenlos bestimmt werden, wenn alle maßgeblich vom Projekt betroffenen Personen involviert sind. In der Vorbereitungs-Phase müssen alle wichtigen Stakeholder identifiziert werden. Neben dem Kunden bzw. Auftraggeber selbst, kann dies z.B. der Benutzer, Administrator oder Tester sein. Dabei müssen jene Personen nicht direkt in den Prozess miteinbezogen werden. Es reicht schon einen Vertreter, meist aus dem Management, zu bestimmen oder die Wünsche und Ziele vorher genau zu ermitteln. In der Regel werden nur wenige Stakeholder, meist Personen aus dem Management und der Projektleitung\cite{Starke2015}, direkt zur Architekturbewertung eingeladen. Zu viele Personen würden den Prozess, durch Diskussionen und Abschweifungen, nur verlangsamen und ineffektiv gestalten.
+Das Fundament der Bewertung stellen die Qualitätsanforderungen dar. Diese können nur lückenlos bestimmt werden, wenn alle maßgeblich vom Projekt betroffenen Personen involviert sind. In der Vorbereitungs-Phase müssen alle wichtigen Stakeholder identifiziert werden. Neben dem Kunden bzw. Auftraggeber selbst, kann dies z.~B. der Benutzer, Administrator oder Tester sein. Dabei müssen jene Personen nicht direkt in den Prozess miteinbezogen werden. Es reicht schon einen Vertreter, meist aus dem Management, zu bestimmen oder die Wünsche und Ziele vorher genau zu ermitteln. In der Regel werden nur wenige Stakeholder, meist Personen aus dem Management und der Projektleitung\cite{Starke2015}, direkt zur Architekturbewertung eingeladen. Zu viele Personen würden den Prozess, durch Diskussionen und Abschweifungen, nur verlangsamen und ineffektiv gestalten.
 
 \newparagraph{Bewertungsmethode (ATAM) vorstellen}
 
-Im ersten Schritt soll die Bewertungsmethode vorgestellt und dessen Ziele verdeutlicht werden. Nicht jeder Stakeholder ist regelmäßig in eine Architekturbewertung involviert. So muss klar gestellt werden, welche Bedeutung das Architektur- und Qualitätsziel hat\cite{Starke2015}. Des Weiteren sollte hervorgehoben werden, dass es bei der qualitativen Architekturbewertung um das Aufdecken von Risiken sowie um mögliche Maßnahmen geht. Es sollte nicht Ziel sein Noten für die Architektur zu vergeben. Insbesondere sollte die Präsentation folgende Punkte enthalten\cite{Clements2000}:
+Im ersten Schritt soll die Bewertungsmethode vorgestellt und dessen Ziele verdeutlicht werden. Nicht jeder Stakeholder ist regelmäßig in eine Architekturbewertung involviert. So muss klar gestellt werden, welche Bedeutung das Architektur- und Qualitätsziel hat\cite{Starke2015}. Des Weiteren sollte hervorgehoben werden, dass es bei der qualitativen Architekturbewertung um das Aufdecken von Risiken sowie um mögliche Maßnahmen geht. Es sollte nicht Ziel sein, Noten für die Architektur zu vergeben. Insbesondere sollte die Präsentation folgende Punkte enthalten\cite{Clements2000}:
 
 \begin{itemize}[]
 	\item Eine Kurze Beschreibung von ATAM und dessen Ablauf
@@ -177,10 +176,9 @@ Die Erfüllung der kritischen Anforderungen von der Architektur wird so sicherge
 \newparagraph{Bildung eines Qualitätsbaumes (Quality Utility Tree)}
 
 In dieser Phase werden alle Stakeholder aktiv. Sie identifizieren und verfeinern die wichtigsten Qualitätsanforderungen des Systems. Wichtig dabei ist den Fokus nicht auf die wesentlichen Anforderungen zu verlieren und sich in Feinheiten zu verstricken\cite{Clements2000}. Damit dies gelingen kann, wird ein Qualitätsbaum erstellt.
-So werden die wesentlich geforderten Anforderungen, z. B. in einem Brainstorming, erfasst und anschließend in Baum-Form angeordnet. Die globalen Anforderungen stehen auf der linken Seite und werden nach rechts hin verfeinert. Bild \ref{Qualitaetsbaum} stellt ein Beispiel für einen solchen Qualitätsbaum dar. 
+So werden die wesentlich geforderten Anforderungen, z.~B. in einem Brainstorming, erfasst und anschließend in Baum-Form angeordnet. Die globalen Anforderungen stehen auf der linken Seite und werden nach rechts hin verfeinert. Bild \ref{Qualitaetsbaum} stellt ein Beispiel für einen solchen Qualitätsbaum dar. 
 
-%todo
-\image{Qualitaetsbaum}{Beispiel Qualitätsbaumes}{Beispiel eines Qualitätsbaums.}
+\image[BeispielQualitaetsbaum.pdf]{Qualitaetsbaum}{Beispiel Qualitätsbaumes}{Beispiel eines Qualitätsbaums.}
 
 Anschließend werden zu den Qualitätsanforderungen Szenarien erstellt. Diese bilden einen wichtigen Bestandteil der Bewertungsmethode. Sie dienen dazu, die Anforderungen genauer zu definieren und den Stakeholdern somit näher zu bringen. Dabei muss die Formulierung eines Szenarios möglichst konkret sein und ein Beispiel darstellen, wie sich das System in einer bestimmten Situation verhält. Ein Szenario sollte folgende Informationen umfassen\cite{Starke2015}:
 
@@ -194,15 +192,14 @@ Anschließend werden zu den Qualitätsanforderungen Szenarien erstellt. Diese bi
 
 Die Szenarien sind nicht nur eine genauere Definition der Anforderungen. Auch helfen sie den Projektbeteiligten dabei, die Qualitätseigenschaften genauer zu verstehen, da sie weniger abstrakt sind und konkrete Anwendungsfälle enthalten. Ein, um Szenarien erweiterter Qualitätsbaum, ist in Bild \ref{QualitaetsbaumSzenarien} dargestellt.
 
-%todo
-\image{QualitaetsbaumSzenarien}{Qualitätsbaum und Szenarien}{Qualitätsbaum mit Szenarien erweitert}
+\image[BeispielQualitaetsbaumMitSzenarien.pdf]{QualitaetsbaumSzenarien}{Qualitätsbaum und Szenarien}{Qualitätsbaum mit einzelnen Szenarien erweitert}
 
-Zuletzt werden den Szenarien Prioritäten zugeordnet, so dass der Fokus zuerst auf kritische Anforderungen steht. Auch ist der Bewertungs-Workshop meist zeitlich begrenzt und somit wird sichergestellt, dass die Nichterfüllung essentieller Qualitätsanforderungen schnell zu einem Abbruch führt. Es kann durch eine einfache Skala mit wenigen Prioritäten erreicht werden, z. B. A = hoch, B = mittel und C = weniger wichtig.
+Zuletzt werden den Szenarien Prioritäten zugeordnet, so dass der Fokus zuerst auf kritische Anforderungen steht. Auch ist der Bewertungs-Workshop meist zeitlich begrenzt und somit wird sichergestellt, dass die Nichterfüllung essentieller Qualitätsanforderungen schnell zu einem Abbruch führt. Es kann durch eine einfache Skala mit wenigen Prioritäten erreicht werden, z.~B. A = hoch, B = mittel und C = weniger wichtig.
 
 \newparagraph{Architekturansätze analysieren}
 
 Anhand der Prioritäten kann nun die eigentliche Analyse beginnen. In kleineren Gruppen, zusammen mit den Architekten oder Entwicklern, werden die Szenarien genauer untersucht und zugehörige Architekturansätze erläutert.
-So kann z.B. mittels eines Walkthrough genau aufgezeigt werden, wie einzelne Komponenten zur Erreichung des Ziels interagieren und welche Entwurfsentscheidungen unterstützen\cite{Starke2015}. Dabei sollten folgende Fragen geklärt werden: 
+So kann z.~B. mittels eines Walkthrough genau aufgezeigt werden, wie einzelne Komponenten zur Erreichung des Ziels interagieren und welche Entwurfsentscheidungen unterstützen\cite{Starke2015}. Dabei sollten folgende Fragen geklärt werden: 
 
 \begin{itemize}
 	\item Wie wird das Szenario in der Architektur umgesetzt?
@@ -221,9 +218,9 @@ Am Ende wird das Ergebnis den Stakeholdern präsentiert. Es muss nicht zwangslä
 
 Die durch \ac{ATAM} gefundenen Risiken und die daraus resultierenden Maßnahmen können auch Änderungen an der Architektur darstellen. Daher bietet sich \ac{ATAM} auch zum iterativen Einsatz an. Mit ersten Entwürfen einer komplexen Architektur kann überprüft werden, ob die Entscheidungen den richtigen Weg einschlagen und wichtige Anforderungen von Beginn an mit einbezogen werden. So bildet sich Schrittweise eine detaillierte Architektur unter gut dokumentierter Berücksichtigung der Qualitätsanforderungen. 
 
-Einen anderen Ansatz verfolgt die \ac{SAEM} Methode. Diese betrachtet die Softwarearchitektur als finales Produkt der Entwurfsphase und versucht mittels dem ISO/IEC 9126-1\footnote{
-	Die ISO/IEC 9126-1 wurde 2011 durch die ISO/IEC 25010 ersetzt. Die neue Norm bietet in diesem Zusammenhang jedoch keinen Mehrwert.
-} \todo{Auf 25010 umbauen, damit diese Arbeit nicht veraltet wirkt}
+Einen anderen Ansatz verfolgt die \ac{SAEM} Methode. Diese betrachtet die Softwarearchitektur als finales Produkt der Entwurfsphase und versucht mittels dem ISO/IEC 25010\footnote{
+	In der ursprünglichen Veröffentlichung von \ac{SAEM} wurde das ISO/IEC 9126-1 Modell verwendet. Die ISO/IEC 9126-1 wurde 2011 durch die ISO/IEC 25010 ersetzt.
+}
 Qualitätsmodell die Qualität der Architektur festzustellen.
 
 
@@ -235,19 +232,18 @@ Wie beim finalen System ist die direkte Messung am Produkt eine objektive und se
 
 \newparagraph{Spezifikation Qualität}
 
-Das Qualitätsmodell von \ac{SAEM} baut dabei auf dem Modell der ISO/IEC 9126-1 auf. Jenes teilt die Qualität in 6 Kategorien und weitere Unterkategorien auf\cite{ISOIEC9126}. Anhand derer kann die Qualität der Softwarearchitektur spezifiziert werden, indem man diesen Architekturanforderungen zuordnet.
+Das Qualitätsmodell von \ac{SAEM} baut dabei auf dem Modell der ISO/IEC 25010 auf. Jenes teilt die Qualität in 8 Kategorien und weitere Unterkategorien auf\cite{ISOIEC25010}. Anhand derer kann die Qualität der Softwarearchitektur spezifiziert werden, indem man diesen Architekturanforderungen zuordnet.
 
-%todo
-\image{ISO9126QModell}{Qualitätsmodell der ISO/IEC 9126-1}{Qualitätsmodell der ISO/IEC 9126-1\cite{ISOIEC9126}}
+\image[ISO25010.pdf]{ISO25010Modell}{Qualitätsmodell der ISO/IEC 25010}{Qualitätsmodell der ISO/IEC 25010\cite{ISOIEC25010}}
 
 Hierzu wird im ersten Schritt die externe Qualität bestimmt. Diese basiert auf messbaren Metriken unter Nutzungsbedingungen und werden vom Nutzer sowie den Architekten definiert\cite{Duenas1998}. So sollten, für alle Qualitätskategorien, Anforderungen an die Architektur ausgewählt und optimale bzw. zulässige Werte bestimmt werden. Ein Beispiel hierfür ist die Reaktionszeit auf Anfragen. 
-Mittels der externen Qualität können die Architekten die interne Qualität bestimmen. Diese sind Anforderungen, die zur Erreichung und Zufriedenstellung des Ziels benötigt werden. Im Unterschied zu externen Anforderungen werden diese nicht durch die Nutzung bestimmt, sondern beziehen sich auf intrinsische Eigenschaften, wie z. B. Modularität oder Komplexität\cite{Duenas1998}. Die Bestimmung dieser basiert meist auf Expertenwissen oder Firmen interne Richtlinien.
+Mittels der externen Qualität können die Architekten die interne Qualität bestimmen. Diese sind Anforderungen, die zur Erreichung und Zufriedenstellung des Ziels benötigt werden. Im Unterschied zu externen Anforderungen werden diese nicht durch die Nutzung bestimmt, sondern beziehen sich auf intrinsische Eigenschaften, wie z.~B. Modularität oder Komplexität\cite{Duenas1998}. Die Bestimmung dieser basiert meist auf Expertenwissen oder Firmen interne Richtlinien.
 
 \newparagraph{Bestimmung von Metriken}
 
 Für die Messung der Qualitätsanforderungen müssen Metriken bestimmt werden. Hierzu kann das Bewertungsteam aus bekannten Softwaremetriken wählen oder systematisch neue definieren. Wichtig ist nur, dass die Messung zielorientiert ist. D. h. die Metriken müssen mit einem Top-Down Ansatz bestimmt werden\cite{Habenicht2008}. Somit soll nicht aus vorhandenen Messungen ein Bezug zur Qualität aufgebaut, sondern mittels spezifischer Qualitätsanforderungen passende und aussagekräftige Metriken gefunden werden.
 
-Eine sehr gute Vorlage hierzu ist die \ac{GQM} Methode. Diese setzt die Qualitätsanforderungen an erste Stelle, welche das Ziel darstellen. Auf dessen Basis werden Fragen abgeleitet, die das Ziel wiedergeben. Dabei muss es pro Ziel nicht nur eine Frage geben. Zur Erreichung des Ziels kann eine Komposition aus verschieden Fragen nötig sein. Dabei hilft es, das Ziel aus mehreren Sichten zu betrachten. Nach\cite{Habenicht2008} \todo{Richtiges Format?} 
+Eine sehr gute Vorlage hierzu ist die \ac{GQM} Methode. Diese setzt die Qualitätsanforderungen an erste Stelle, welche das Ziel darstellen. Auf dessen Basis werden Fragen abgeleitet, die das Ziel wiedergeben. Dabei muss es pro Ziel nicht nur eine Frage geben. Zur Erreichung des Ziels kann eine Komposition aus verschieden Fragen nötig sein. Dabei hilft es, das Ziel aus mehreren Sichten zu betrachten. Nach\cite{Habenicht2008}
 sind Teilkriterien zur Erfüllung der notwendigen Fragestellung:
  
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Anwendungsbereich}]
@@ -257,7 +253,7 @@ sind Teilkriterien zur Erfüllung der notwendigen Fragestellung:
 	\item[Kontext] intern, extern
 \end{description} 
  
-Anschließend werden für sämtliche Fragestellungen Metriken bestimmt, die diese am besten beantworten. Die damit erhobenen Daten können dabei objektiv (z. B. Unterstützung Standardformate) oder subjektiv (z. B. Skala für Zufriedenstellung) sein.
+Anschließend werden für sämtliche Fragestellungen Metriken bestimmt, die diese am besten beantworten. Die damit erhobenen Daten können dabei objektiv (z.~B. Unterstützung Standardformate) oder subjektiv (z.~B. Skala für Zufriedenstellung) sein.
 Durch den Top-Down Ansatz stehen die erhobenen Daten immer im Zusammenhang mit den Zielen, womit die Interpretation leichter fällt. 
 
 Ein Beispiel für das Ergebnis von \ac{GQM} wird in Bild \ref{GQMBeispiel} dargestellt.
