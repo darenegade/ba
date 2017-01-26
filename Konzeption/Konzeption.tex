@@ -3,15 +3,22 @@
 Die Bewertung, ob ein Framework für den produktiven Einsatz in einer Microservice Architektur geeignet ist, lässt sich nicht auf die Servicearchitektur beschränken. Aus diesem Grund ist \ac{MFEM} keine reine Architekturbewertungs-Methode. Sie betrachtet einerseits die durch das Framework vorgegebene Servicearchitektur und versucht dabei Risiken aufzudecken sowie ein tieferes Verständnis für die Architektur zu schaffen. Auf der anderen Seite wird das Framework als Produkt aufgefasst und versucht, eine Aussage über die Qualität dessen zu treffen. \ac{MFEM} setzt dabei keine grundlegenden Kenntnisse über das Framework voraus, da es 2 Seiten der Analyse anbietet. Dies ist einerseits die Nutzung von bereits vorhandenem Expertenwissen, was die Phase der Analyse verkürzt. Andererseits werden die restlichen Daten über die Erstellung von Prototypen erfasst.
 Auf dieser Basis kann am Ende eine begründete Entscheidung für oder gegen den Einsatz eines Frameworks getroffen werden.
 
-Der Ablauf von \ac{MFEM} ist in Bild \ref{MFEMAblauf} schematisch dargestellt und startet mit der Analyse der vorhanden Microservice Architektur sowie der Identifizierung von Qualitätsanforderungen.
+Der Ablauf von \ac{MFEM} ist in Bild \ref{MFEMAblauf} schematisch dargestellt und startet mit der optionalen Kickoff-Phase. Diese kann somit auch übersprungen werden, wenn die beteiligten Personen nur die Software-Architekten selbst sind. Sollten bei der Bewertung auch weitere Stakeholder mit einbezogen werden, wird zur Durchführung der Kickoff-Phase geraten.
 
-%todo
-\image{MFEMAblauf}{Ablaufschema MFEM}{Schematische Darstellung vom Ablauf von \ac{MFEM}}
+\image[MFEM-Phasen.pdf][width=0.75\linewidth]{MFEMAblauf}{Ablaufschema MFEM}{Schematische Darstellung vom Ablauf von \ac{MFEM}}
+
+\subsection{Kickoff-Phase}
+
+\newparagraph{\ac{MFEM} vorstellen}
+\todoInline{Ablauf beschreiben}
+
+\newparagraph{Architektur vorstellen}
+\todoInline{Ablauf beschreiben}
 
 \subsection{Architektur Analyse und Wahl der Anforderungen}
 
 Aus dem vorangegangenen Kapitel wird ersichtlich, dass eine Bewertung nicht nur frühzeitig erfolgen muss. Viel mehr ist es wichtig, dass diese auch auf detaillierten Qualitätsanforderungen basiert. Die Anforderungen werden dabei durch die maßgeblichen Stakeholder definiert. In einer Microservice Architektur sind dies die definierten Umstände eines Services. Diese beschränken sich dabei nicht auf die Kommunikation zwischen zwei einzelnen Services. Gerade die Komposition der Microservices über die Infrastruktur muss gewährleistet sein. Wobei Punkte wie Sicherheit und Wartbarkeit die Komplexität noch steigern.
-Damit ein Service dies erfüllt und somit in der Architektur funktionieren kann, müssen anhand der Umstände, wie z.~B. Service Discovery, Logging oder Tracing, Anforderungen definiert werden. Nur wenn das Framework eines Services diese unterstützt, kann garantiert werden, dass sich das Risiko zur Erfüllung des Qualitätszieles minimiert.
+Damit ein Service dies erfüllt und somit in der Architektur funktionieren kann, müssen anhand der Umstände, wie z.~B. Servicediscovery, Logging oder Tracing, Anforderungen definiert werden. Nur wenn das Framework eines Services diese unterstützt, kann garantiert werden, dass sich das Risiko zur Erfüllung des Qualitätszieles minimiert.
 
 \newparagraph{Externe Serviceanforderungen}\todo{Extern/Intern - Zweck, Reihenfolge, Prozess beschreiben}
 
@@ -27,7 +34,7 @@ oder Consul\footnote{
 übernehmen dies für einzelne Services. Die Discovery kann aber auch auf die darüber liegende Abstraktions-Schicht hochgezogen werden. Innerhalb eines Kubernetes\footnote{
 \url{http://kubernetes.io}
 }
-Clusters übernimmt die Service Verwaltung diese Aufgabe selbst und stellt sie über Umgebungsvariablen oder DNS zur Verfügung. 
+Clusters übernimmt die Service-Verwaltung diese Aufgabe selbst und stellt sie über Umgebungsvariablen oder DNS zur Verfügung. 
 
 %todo
 \image{Servicediscoverytypen}{Servicediscovery Typen}{Beispiele für Ausprägungen der Servicediscovery}
@@ -39,7 +46,7 @@ Die spezifische Ausprägung der Architektur gibt somit Anforderungen vor, die es
 Aus den externen Serviceanforderungen lassen sich auch interne Anforderungen ableiten, die zur Erreichung und Zufriedenstellung dieser notwendig sind. Dies muss dabei nicht auf die durch das Framework vorgegebene Architektur des Services beschränkt sein. An dieser Stelle kann das Framework als Werkzeug aufgefasst werden. Es gilt somit nicht nur die Frage zu klären, ob ein Framework eine benötigte Funktion bereitstellt. Sondern ob es den Entwickler bei der Umsetzung bestmöglich unterstützt und dabei flexibel bleibt. Nach dem KISS-Prinzip\footnote{
 \url{http://principles-wiki.net/principles:keep_it_simple_stupid}
 } 
-wird zum Beispiel die Funktion bevorzugt, die möglichst einfach und "dumm" erscheint. So brauch es für die Umsetzung keine anspruchsvollen oder besonders cleveren Lösungen. Eine Einfache lässt sich nicht nur besser Lesen und Verstehen, es erhöht auch die Wartbarkeit.  
+wird zum Beispiel die Funktion bevorzugt, die möglichst einfach und \enquote{dumm} erscheint. So brauch es für die Umsetzung keine anspruchsvollen oder besonders cleveren Lösungen. Eine Einfache lässt sich nicht nur besser Lesen und Verstehen, es erhöht auch die Wartbarkeit.  
 
 Damit das Bewertungsteam, bei der Findung von internen und externen Serviceanforderungen, nicht bei null anfangen muss, wird an dieser Stelle eine Orientierungshilfe angeboten. Hier wurde in einem Brainstorming versucht, eine Schnittmenge an Anforderungen zu finden, die für die meisten Microservice Architekturen gelten sollte. 
 Die so gefundenen Anforderungen basieren dabei auf der Erfahrung der Anwendungsentwicklung innerhalb der Landeshauptstadt München. Diese hat sich in den letzten Jahren mit dem produktiven Einsatz von Microservices beschäftigt und diverse erfolgreiche Projekte damit umgesetzt.\todo{anders Formulieren und ausschmücken}   
