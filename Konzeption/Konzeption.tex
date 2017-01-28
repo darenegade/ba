@@ -1,6 +1,6 @@
 \section{\acf{MFEM}}
 
-Die Bewertung, ob ein Framework für den produktiven Einsatz in einer Microservice Architektur geeignet ist, lässt sich nicht auf die Servicearchitektur beschränken. Aus diesem Grund ist \ac{MFEM} keine reine Architekturbewertungs-Methode. Sie betrachtet einerseits die durch das Framework vorgegebene Servicearchitektur und versucht dabei Risiken aufzudecken sowie ein tieferes Verständnis für die Architektur zu schaffen. Auf der anderen Seite wird das Framework als Produkt aufgefasst und versucht, eine Aussage über die Qualität dessen zu treffen. \ac{MFEM} setzt dabei keine grundlegenden Kenntnisse über das Framework voraus, da es 2 Seiten der Analyse anbietet. Dies ist einerseits die Nutzung von bereits vorhandenem Expertenwissen, was die Phase der Analyse verkürzt. Andererseits werden die restlichen Daten über die Erstellung von Prototypen erfasst.
+Die Bewertung, ob ein Framework für den produktiven Einsatz in einer Microservice Architektur geeignet ist, lässt sich nicht auf die Servicearchitektur beschränken. Aus diesem Grund ist \ac{MFEM} keine reine Architekturbewertungs-Methode. Sie betrachtet einerseits die durch das Framework vorgegebene Servicearchitektur und versucht dabei Risiken aufzudecken sowie ein tieferes Verständnis für die Architektur zu schaffen. Auf der anderen Seite wird das Framework als Produkt aufgefasst und versucht, eine Aussage über die Qualität dessen zu treffen. \ac{MFEM} setzt dabei keine grundlegenden Kenntnisse über das Framework voraus, da es 2 Seiten der Analyse anbietet. Dies ist einerseits die Nutzung von bereits vorhandenem Expertenwissen, was die Phase der Evaluation verkürzt. Andererseits werden die restlichen Daten über die Erstellung von Prototypen erfasst.
 Auf dieser Basis kann am Ende eine begründete Entscheidung für oder gegen den Einsatz eines Frameworks getroffen werden.
 
 Der Ablauf von \ac{MFEM} ist in Bild \ref{MFEMAblauf} schematisch dargestellt und startet mit der optionalen Kickoff-Phase. Diese kann somit auch übersprungen werden, wenn die beteiligten Personen nur die Software-Architekten selbst sind. Sollten bei der Bewertung auch weitere Stakeholder mit einbezogen werden, wird zur Durchführung der Kickoff-Phase geraten.
@@ -9,20 +9,18 @@ Der Ablauf von \ac{MFEM} ist in Bild \ref{MFEMAblauf} schematisch dargestellt un
 
 \subsection{Kickoff-Phase}
 
-\newparagraph{\ac{MFEM} vorstellen}
-\todoInline{Ablauf beschreiben}
+In der Kickoff Phase geht es darum, Klarheit zu schaffen. Den Beteiligten Personen sollten der Ablauf und die Ziele dieser Methode erläutert werden. Wie auch schon bei \ac{ATAM} ist das Ziel von \ac{MFEM} nicht die Vergabe von Noten. Vielmehr geht es darum den Reifegrad eines Frameworks und etwaige Risiken, wie erhöhten Entwicklungsaufwand für fehlende Funktionen, festzustellen. 
 
-\newparagraph{Architektur vorstellen}
-\todoInline{Ablauf beschreiben}
+In diesem Zusammenhang sollte auch die vorhandene Microservice Architektur vom Software-Architekten vorgestellt werden, damit die Grundlage der Bewertung klar ist. Neben den in der Architektur getroffenen Entscheidungen geht es auch um technische Einschränkungen und Abhängigkeiten zu Drittsystemen. Auf dieser Basis kann die Architektur analysiert und Anforderungen definiert werden.
 
 \subsection{Architektur Analyse und Wahl der Anforderungen}
 
 Aus dem vorangegangenen Kapitel wird ersichtlich, dass eine Bewertung nicht nur frühzeitig erfolgen muss. Viel mehr ist es wichtig, dass diese auch auf detaillierten Qualitätsanforderungen basiert. Die Anforderungen werden dabei durch die maßgeblichen Stakeholder definiert. In einer Microservice Architektur sind dies die definierten Umstände eines Services. Diese beschränken sich dabei nicht auf die Kommunikation zwischen zwei einzelnen Services. Gerade die Komposition der Microservices über die Infrastruktur muss gewährleistet sein. Wobei Punkte wie Sicherheit und Wartbarkeit die Komplexität noch steigern.
-Damit ein Service dies erfüllt und somit in der Architektur funktionieren kann, müssen anhand der Umstände, wie z.~B. Servicediscovery, Logging oder Tracing, Anforderungen definiert werden. Nur wenn das Framework eines Services diese unterstützt, kann garantiert werden, dass sich das Risiko zur Erfüllung des Qualitätszieles minimiert.
+Damit ein Service dies erfüllt und somit in der Architektur funktionieren kann, müssen anhand der Umstände, wie z.~B. Servicediscovery, Logging oder Tracing, Anforderungen definiert werden. Nur wenn das Framework eines Services diese unterstützt, kann garantiert werden, dass es in die Gesamtarchitektur passt.
 
-\newparagraph{Externe Serviceanforderungen}\todo{Extern/Intern - Zweck, Reihenfolge, Prozess beschreiben}
+\newparagraph{Funktionale Serviceanforderungen}
 
-Im ersten Schritt müssen demnach Anforderungen gefunden werden, die die Microservice Architektur an die einzelnen Services stellt. Das ist dabei stark von der Umsetzung dieser abhängig. Ein gutes Beispiel hierfür ist die Servicediscovery. Dass sich Services gegenseitig finden können, ohne die Flexibilität der Architektur zu verlieren, darf eben diese nicht fehlen. Die Umsetzung kann dabei jedoch stark variieren. So kann ein zentraler Service, wie z.~B. Netflix-Eureka\footnote{
+Es müssen demnach Anforderungen gefunden werden, die die Microservice Architektur an die einzelnen Services stellt. Das ist dabei stark von der Umsetzung dieser abhängig. Ein gutes Beispiel hierfür ist die Servicediscovery. Dass sich Services gegenseitig finden können, ohne die Flexibilität der Architektur zu verlieren, darf eben diese nicht fehlen. Die Umsetzung kann dabei jedoch stark variieren. So kann ein zentraler Service, wie z.~B. Netflix-Eureka\footnote{
 \url{https://github.com/Netflix/eureka}
 }
 oder Consul\footnote{
@@ -39,47 +37,104 @@ Clusters übernimmt die Service-Verwaltung diese Aufgabe selbst und stellt sie �
 %todo
 \image{Servicediscoverytypen}{Servicediscovery Typen}{Beispiele für Ausprägungen der Servicediscovery}
 
-Die spezifische Ausprägung der Architektur gibt somit Anforderungen vor, die es zu identifizieren gilt und im folgenden externe Serviceanforderungen genannt werden.
+Die spezifische Ausprägung der Architektur gibt somit Anforderungen vor, die es zu identifizieren gilt. Diese stellen die funktionalen Serviceanforderungen dar und müssen für die Akzeptanz erfüllt werden. Sollte sich mit einem Framework z.~B. nicht die benötigte Authentifizierung umsetzen lassen, kann der Service nicht vor Missbrauch geschützt werden. Ein Einsatz im produktiven Umfeld wäre demnach undenkbar oder nur mit unverhältnismäßig großem Aufwand zu realisieren.
 
-\newparagraph{Interne Serviceanforderungen}
+\newparagraph{Nicht-Funktionale Serviceanforderungen}
 
-Aus den externen Serviceanforderungen lassen sich auch interne Anforderungen ableiten, die zur Erreichung und Zufriedenstellung dieser notwendig sind. Dies muss dabei nicht auf die durch das Framework vorgegebene Architektur des Services beschränkt sein. An dieser Stelle kann das Framework als Werkzeug aufgefasst werden. Es gilt somit nicht nur die Frage zu klären, ob ein Framework eine benötigte Funktion bereitstellt. Sondern ob es den Entwickler bei der Umsetzung bestmöglich unterstützt und dabei flexibel bleibt. Nach dem KISS-Prinzip\footnote{
+Neben den funktionalen Serviceanforderungen lassen sich auch nicht-funktionale Anforderungen definieren, die zur Erreichung und Zufriedenstellung der benötigen Funktionen notwendig sind. Dies muss dabei nicht auf die durch das Framework vorgegebene Architektur des Services beschränkt sein. An dieser Stelle kann das Framework als Werkzeug aufgefasst werden. Es gilt somit nicht nur die Frage zu klären, ob ein Framework eine benötigte Funktion bereitstellt. Sondern ob es den Entwickler bei der Umsetzung bestmöglich unterstützt und dabei flexibel bleibt. Nach dem KISS-Prinzip\footnote{
 \url{http://principles-wiki.net/principles:keep_it_simple_stupid}
 } 
 wird zum Beispiel die Funktion bevorzugt, die möglichst einfach und \enquote{dumm} erscheint. So brauch es für die Umsetzung keine anspruchsvollen oder besonders cleveren Lösungen. Eine Einfache lässt sich nicht nur besser Lesen und Verstehen, es erhöht auch die Wartbarkeit.  
 
-Damit das Bewertungsteam, bei der Findung von internen und externen Serviceanforderungen, nicht bei null anfangen muss, wird an dieser Stelle eine Orientierungshilfe angeboten. Hier wurde in einem Brainstorming versucht, eine Schnittmenge an Anforderungen zu finden, die für die meisten Microservice Architekturen gelten sollte. 
-Die so gefundenen Anforderungen basieren dabei auf der Erfahrung der Anwendungsentwicklung innerhalb der Landeshauptstadt München. Diese hat sich in den letzten Jahren mit dem produktiven Einsatz von Microservices beschäftigt und diverse erfolgreiche Projekte damit umgesetzt.\todo{anders Formulieren und ausschmücken}   
+\newparagraph{Basis Anforderungen von \ac{MFEM}}
 
-Für die Analyse und Wahl der Anforderungen wird hier ein Quality Utility Tree aufgebaut.
+Damit das Bewertungsteam, bei der Findung von funktionalen und nicht-funktionalen Serviceanforderungen, nicht bei null anfangen muss, wird an dieser Stelle eine Orientierungshilfe angeboten. Hier wurde in einem Brainstorming versucht, eine Schnittmenge an Anforderungen zu finden, die für die meisten Microservice Architekturen gelten sollte. 
+Die so gefundenen Anforderungen basieren auf der Erfahrung der Anwendungsentwicklung innerhalb der Landeshauptstadt München. Diese hat sich in den letzten Jahren mit dem produktiven Einsatz von Microservices beschäftigt und diverse erfolgreiche Projekte damit umgesetzt.\todo{anders Formulieren und ausschmücken}   
 
-\subsubsection{Entwicklung Quality Utility Tree}
+Um die Analyse und Wahl der Anforderungen zu unterstützen, wird hier ein Quality Utility Tree aufgebaut.
 
-Der Quality Utility Tree bietet einen effizienten Top-Down Ansatz zur Identifizierung und Verfeinerung von Qualitätsanforderungen. Die mittels Brainstorming gefundenen Anforderungen werden in einzelne Kategorien aufgeteilt und bis zu den konkreten Zielen weiter verfeinert. Bei der Kategorisierung kann das Qualitätsmodell aus der ISO/IEC 9126-1 hergenommen werden. Wobei das Modell nur eine Hilfestellung ist und keine Vorgabe darstellt. Hier wurden die Kategorien Funktionalität, Performance, Benutzbarkeit, Sicherheit und Wartbarkeit definiert. Anschließend wurden diesen die Qualitätsanforderungen zugeordnet. Bild \ref{MSQUTAusschnitt} zeigt einen Ausschnitt des gesamten Baumes, wobei der vollständige Baum im Anhang zu finden ist. 
+\subsubsection{Entwicklung Quality Utility Tree}\todo{Priorisierung von Anforderungen}
+
+Der Quality Utility Tree bietet einen effizienten Top-Down Ansatz zur Identifizierung und Verfeinerung von Qualitätsanforderungen. Die mittels Brainstorming gefundenen Anforderungen werden in einzelne Kategorien aufgeteilt und bis zu den konkreten Zielen weiter verfeinert. Bei der Kategorisierung kann das Qualitätsmodell aus der ISO/IEC 25010 hergenommen werden. Wobei das Modell nur eine Hilfestellung ist und keine Vorgabe darstellt. Hier wurden die Kategorien Funktionalität, Performance, Benutzbarkeit, Sicherheit und Wartbarkeit definiert. Anschließend wurden diesen die Qualitätsanforderungen zugeordnet. Bild \ref{MSQUTAusschnitt} zeigt einen Ausschnitt des gesamten Baumes, wobei der vollständige Baum im Anhang zu finden ist. 
 
 % TODO
 \image{MSQUTAusschnitt}{\acs{MFEM} Quality Utility Tree Beispiel}{Ausschnitt aus dem Quality Utility Tree als Beispiel}
 
-\subsection{Metriken definieren über \ac{GQM}}
+\subsection{Metriken definieren über \ac{GQM}}\todo{Ausführlicher Ablauf erklären}
 
-Für die identifizierten Qualitätsanforderungen müssen möglichst aussagekräftig Metriken gefunden werden. Dies können dabei Messung an der Architektur sein, wie das Vorhandensein spezifischer Funktionen oder Komponenten sowie den Einsatz bewährter Pattern. Zusätzlich können auch Softwaremetriken genutzt werden, die sich direkt an einem Prototyp ermitteln lassen. Damit kann neben Messungen zur Performance auch z. B. der Aufwand zur Umsetzung bestimmter Funktionen bemessen werden. Um dabei stets das Ziel im Auge zu behalten, wird die bereits bekannte \ac{GQM} Methode genutzt. 
+Für die identifizierten Qualitätsanforderungen müssen möglichst aussagekräftig Metriken gefunden werden. Dies können dabei Messung an der Architektur sein, wie das Vorhandensein spezifischer Funktionen oder Komponenten sowie den Einsatz bewährter Entwurfsmuster. Dabei können die möglichen Ergebnisse komplexer als nur ein einfaches \enquote{enthalten} oder \enquote{nicht enthalten} sein. Falls beispielsweise eine spezifische Funktion vom Framework nicht unterstützt wird, heißt dies nicht, dass sich diese nicht umsetzen lässt. Hier bietet sich eine Ordinalskala an. Wobei folgende mögliche Ergebnisse verwendet werden können: enthalten, leicht umsetzbar, schwer umsetzbar, nicht möglich. Dieser Ansatz bietet den Vorteil, dass das Ergebnis quantifizierbar ist.
+Zusätzlich können auch Softwaremetriken genutzt werden. Da im Zuge der Analyse ein Prototyp erstellt wird, können an diesem auch direkt Messungen vorgenommen werden. Damit kann neben der Performance auch z.~B. der Aufwand zur Umsetzung bestimmter Funktionen bemessen werden. Falls z.~B. die Erstellung eines \ac{REST}-Endpunktes sehr aufwändig ist und viele Codezeilen sowie Methodenaufrufe benötigt, macht dies den Microservice schnell sehr komplex bei vielen Endpunkten und verschlechtert somit die Wartbarkeit.
+Um bei der Definition der Metriken stets das Ziel im Auge zu behalten, wird die bereits bekannte \ac{GQM} Methode genutzt. 
 
 Eine um Metriken erweiterter Qualitätsbaum ist in Bild \ref{MFEMGQMQUTAusschnitt} dargestellt. Wie zuvor ist dies nur ein Ausschnitt, wobei der gesamte Baum im Anhang zu finden ist.
 
 % TODO
 \image{MFEMGQMQUTAusschnitt}{\acs{MFEM} Qualitätsbaum erweitert um Metriken}{Ein Ausschnitt aus dem Qualitätsbaum erweitert um Metriken}
 
-\pagebreak
-\subsection{Analyse}
+\subsection{Evaluationsphase}
 
-\subsubsection{Evaluationsmethoden}
+Während der Evaluation wird das Framework auf die Anforderungen mittels der zuvor definierten Metriken untersucht. Dabei wird ein tieferer Blick in das Framework geworfen. Neben der Untersuchung von Dokumentation und bereits vorhandenem Expertenwissen, wird auch ein Prototyp erstellt. Dieser soll als Referenz für zukünftig entwickelte Services gelten und muss somit zielgerichtet entwickelt werden. Es gilt in kürzester Zeit essenzielle Funktionen umzusetzen und dabei Erkenntnisse über das Framework zu gewinnen. Um dies zu Unterstützen muss im ersten Schritt die Evaluation genauer definiert werden.
+
+\subsubsection{Evaluation definieren}
+
+In der Softwareevaluation wird zwischen der subjektiven und objektiven Evaluation unterschieden\cite{Hegner2016}.
+Dabei versucht die subjektive Evaluation eine Beurteilung durch den Benutzer zu finden, wobei der Benutzer im Fall von \ac{MFEM} der Softwareentwickler ist. Während dieser Evaluation werden sogenannte \enquote{weiche} Daten erhoben. Diese sagen aus, ob die Entwicklung mit dem Framework effizient, einfach, klar oder einsichtig ist. Es wird somit versucht eine Aussage über die Akzeptanz zu treffen.
+Diese subjektiven Eindrücke versucht man bei der objektiven Evaluation möglichst auszuschalten. Dies gelingt durch das Anwenden von \enquote{harten} Methoden zur Erhebung von quantitativer, statisch abgesicherter Daten\cite{Hegner2016}. Sehr gute Beispiele hierfür sind Performancemessungen, Fehlerraten oder Komplexitätsbestimmungen.  
 
 \newparagraph{Subjektive Evaluation}
 
-\newsubparagraph{Cognitive Walkthrough}
+Während der subjektiven Evaluation soll bei \ac{MFEM} der Prototyp von einem Experten erstellt werden. Wie eingangs erwähnt muss dies zielgerichtet ablaufen. Um dies zu unterstützen und gleichzeitig eine Aussage über Qualitätsmerkmale wie Lernbarkeit, Analysierbarkeit, Wartbarkeit oder Benutzbarkeit zu treffen, soll der \ac{CW} verwendet werden. Dies ist eine aufgabenorientierte Inspektionsmethode\cite{Hegner2016}. Dabei versetzt sich der Experte in einen hypothetischen Benutzer und analysiert konkrete Handlungsabläufe. Dies kann z.~B. das Lösen eines Problems oder das Umsetzen einer einfachen Funktion sein. 
+So kann er feststellen, woran die Entwicklung eines Microservices mit Hilfe des Frameworks vermutlich scheitern wird.
 
+Der \ac{CW} verläuft in 3 Schritten\cite{Hegner2016}:
+
+\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Input definieren}]
+	\item[1. Vorbereitung]
+	In diesem Schritt werden die Beispielszenarien definiert. D.~h. es werden für den Experten Aufgaben bzw. Problemstellungen festgelegt, die durchgeführt oder gelöst werden sollen. Dies können grundlegend Aufgaben sein, wie das Erstellen eines \ac{REST}-Endpunktes. Sie sollten so präzise wie möglich formuliert werden.
+	\item[2. Analyse]
+	Während der Analyse nimmt sich der Experte ein Szenario nach dem anderen zur Hand und führt diese durch. Für jede Aktivität wird ein Protokoll angefertigt. Dieses sollte die durchgeführten Aktionen und damit eventuell zusammenhängenden Probleme oder Feststellungen enthalten.
+	\item[3. Follow Up]
+	Die durch die Analyse gewonnenen Erkenntnisse werden zusammengefasst und ausgewertet. 
+\end{description}
+
+Der Vorteil des \ac{CW} ist die schnelle und einfache Anwendung. Zudem kann es, wie es von \ac{MFEM} benötigt wird, in einem frühen Stadium der Entwicklung verwendet werden.So muss für den Einsatz bei der Bewertung von Frameworks in erster Linie Szenarien definiert werden.
+
+Die Grundlage für den Einsatz eines Frameworks ist die Installation der benötigten Komponenten. Da \ac{MFEM} sprachunabhängig ist, kann nicht davon ausgegangen werden, dass alle beteiligten Entwickler bereits die benötigen Compiler bzw. Interpreter und zugehörige Bibliotheken installiert haben. Zudem werden in Zeiten von Continuous Integration\footnote{\url{https://de.wikipedia.org/wiki/Kontinuierliche_Integration}} und immer kürzer werdenden Time-to-Market Zyklen automatische Build-Tools benötigt. Die Einrichtung dieser Komponenten ist somit die Basis einer jeden Entwicklung und stellt für \ac{MFEM} das erste Szenario dar.
+
+\image{Installation}{Installation eines Frameworks}{Szenario 1: Installation des Frameworks mit allen benötigten Komponenten.}
+
+Die ersten Schritte, gerade in einem ungewohnten Umfeld, sollten nicht zu groß gewählt werden, damit ein erster Eindruck zur Struktur und Syntax erfolgen kann. So bildet das zweite Szenario die Erstellung eines einfachen Hello-World-Services. Dieser soll einen Endpunkt enthalten, der auf jegliche Anfrage \enquote{HELLO World!} antwortet. Als Ergebnis werden so erste Erkenntnisse über die Funktionsweise des Frameworks und der Erstellung von grundlegenden Elementen eines Microservices gewonnen. Da die Absicherung des Services ein wesentlicher Bestandteil ist, soll anschließend der Endpunkt mit einer Authentifizierung abgesichert werden. Die genaue Umsetzung hängt dabei von den zuvor definierten Anforderungen ab. 
+Mit den Basis-Anforderungen von \ac{MFEM} wird eine Authentifizierung mittels OAuth2-Token gefordert. Zur Vereinfachung werden \ac{JWT}\footnote{\url{https://jwt.io}} eingesetzt, da diese signiert sind und vom Service, ohne weitere Kommunikation mit anderen Services, selbst validiert werden können.   
+
+\image{EinfacherService}{Einfacher Service}{Szenario 2: Erstellung eines einfachen Hello-World-Services.} 
+
+Das dritte Szenario baut auf dem zweiten auf und erweitert es um ein Datenmodell. Hier soll neben der Anbindung an eine Datenbank auch die komplexe Erstellung einer API durchgeführt werden. Das Modell muss dabei als solches nicht komplex sein. Hier wird eine einfach Personal- und Aufgabenverwaltung umgesetzt. Dieses teilt Mitarbeiter in Abteilungen auf, welche wiederum Mitarbeiter als Abteilungsleiter haben. Zusätzlich können Mitarbeitern Aufgaben zugeordnet werden. Das vollständige Datenmodell ist im Bild \ref{KomplexerService} dargestellt.
+Auf diesem Modell soll auch eine einfache Geschäftslogik implementiert werden, wie die Auflistung aller offenen Aufgaben nach Abteilungen. Die tatsächliche Geschäftslogik spielt dabei weniger eine Rolle. Viel mehr soll der Umgang mit Datenmodell und eigener Logik erprobt werden.
+
+\image{KomplexerService}{Service mit Datenmodell}{Szenario 3: Erstellung eines komplexeren Services mit Datenmodell.}
+
+Das Ergebnis bzw. der erstellte Prototyp aus dem 3. Szenario stellt dabei die Grundlage für die objektive Evaluation dar. 
+	
 \newparagraph{Objektive Evaluation}
 
-\newsubparagraph{Performance Messung}
+Die aus dem \ac{CW} gewonnen Artefakte können nun zur Bestimmung der \enquote{harten} Daten hergezogen werden. Neben der Messung der Softwaremetriken direkt am entstandenen Code, kann auch eine Performance Messung am Prototypen durchgeführt werden. Hierzu 
+
+\subsubsection{Metriken zuordnen}
+
+\subsubsection{Evaluation durchführen}
+
+\subsection{Abschlussphase}
 
 \pagebreak
+
+
+
+
+
+
+
+
+
+
+
+
