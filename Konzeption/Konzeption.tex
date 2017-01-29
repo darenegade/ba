@@ -19,7 +19,7 @@ Aus dem vorangegangenen Kapitel wird ersichtlich, dass eine Bewertung nicht nur 
 Damit ein Service dies erfüllt und somit in der Architektur funktionieren kann, müssen anhand der Umstände, wie z.~B. Servicediscovery, Logging oder Tracing, Anforderungen definiert werden. Nur wenn das Framework eines Services diese unterstützt, kann garantiert werden, dass es in die Gesamtarchitektur passt.
 
 \newparagraph{Funktionale Serviceanforderungen}
-
+\
 Es müssen demnach Anforderungen gefunden werden, die die Microservice Architektur an die einzelnen Services stellt. Das ist dabei stark von der Umsetzung dieser abhängig. Ein gutes Beispiel hierfür ist die Servicediscovery. Dass sich Services gegenseitig finden können, ohne die Flexibilität der Architektur zu verlieren, darf eben diese nicht fehlen. Die Umsetzung kann dabei jedoch stark variieren. So kann ein zentraler Service, wie z.~B. Netflix-Eureka\footnote{
 \url{https://github.com/Netflix/eureka}
 }
@@ -40,14 +40,14 @@ Clusters übernimmt die Service-Verwaltung diese Aufgabe selbst und stellt sie �
 Die spezifische Ausprägung der Architektur gibt somit Anforderungen vor, die es zu identifizieren gilt. Diese stellen die funktionalen Serviceanforderungen dar und müssen für die Akzeptanz erfüllt werden. Sollte sich mit einem Framework z.~B. nicht die benötigte Authentifizierung umsetzen lassen, kann der Service nicht vor Missbrauch geschützt werden. Ein Einsatz im produktiven Umfeld wäre demnach undenkbar oder nur mit unverhältnismäßig großem Aufwand zu realisieren.
 
 \newparagraph{Nicht-Funktionale Serviceanforderungen}
-
+\
 Neben den funktionalen Serviceanforderungen lassen sich auch nicht-funktionale Anforderungen definieren, die zur Erreichung und Zufriedenstellung der benötigen Funktionen notwendig sind. Dies muss dabei nicht auf die durch das Framework vorgegebene Architektur des Services beschränkt sein. An dieser Stelle kann das Framework als Werkzeug aufgefasst werden. Es gilt somit nicht nur die Frage zu klären, ob ein Framework eine benötigte Funktion bereitstellt. Sondern ob es den Entwickler bei der Umsetzung bestmöglich unterstützt und dabei flexibel bleibt. Nach dem KISS-Prinzip\footnote{
 \url{http://principles-wiki.net/principles:keep_it_simple_stupid}
 } 
 wird zum Beispiel die Funktion bevorzugt, die möglichst einfach und \enquote{dumm} erscheint. So brauch es für die Umsetzung keine anspruchsvollen oder besonders cleveren Lösungen. Eine Einfache lässt sich nicht nur besser Lesen und Verstehen, es erhöht auch die Wartbarkeit.  
 
 \newparagraph{Basis Anforderungen von \ac{MFEM}}
-
+\
 Damit das Bewertungsteam, bei der Findung von funktionalen und nicht-funktionalen Serviceanforderungen, nicht bei null anfangen muss, wird an dieser Stelle eine Orientierungshilfe angeboten. Hier wurde in einem Brainstorming versucht, eine Schnittmenge an Anforderungen zu finden, die für die meisten Microservice Architekturen gelten sollte. 
 Die so gefundenen Anforderungen basieren auf der Erfahrung der Anwendungsentwicklung innerhalb der Landeshauptstadt München. Diese hat sich in den letzten Jahren mit dem produktiven Einsatz von Microservices beschäftigt und diverse erfolgreiche Projekte damit umgesetzt.\todo{anders Formulieren und ausschmücken}   
 
@@ -82,7 +82,7 @@ Dabei versucht die subjektive Evaluation eine Beurteilung durch den Benutzer zu 
 Diese subjektiven Eindrücke versucht man bei der objektiven Evaluation möglichst auszuschalten. Dies gelingt durch das Anwenden von \enquote{harten} Methoden zur Erhebung von quantitativer, statisch abgesicherter Daten\cite{Hegner2016}. Sehr gute Beispiele hierfür sind Performancemessungen, Fehlerraten oder Komplexitätsbestimmungen.  
 
 \newparagraph{Subjektive Evaluation}
-
+\
 Während der subjektiven Evaluation soll bei \ac{MFEM} der Prototyp von einem Experten erstellt werden. Wie eingangs erwähnt muss dies zielgerichtet ablaufen. Um dies zu unterstützen und gleichzeitig eine Aussage über Qualitätsmerkmale wie Lernbarkeit, Analysierbarkeit, Wartbarkeit oder Benutzbarkeit zu treffen, soll der \ac{CW} verwendet werden. Dies ist eine aufgabenorientierte Inspektionsmethode\cite{Hegner2016}. Dabei versetzt sich der Experte in einen hypothetischen Benutzer und analysiert konkrete Handlungsabläufe. Dies kann z.~B. das Lösen eines Problems oder das Umsetzen einer einfachen Funktion sein. 
 So kann er feststellen, woran die Entwicklung eines Microservices mit Hilfe des Frameworks vermutlich scheitern wird.
 
@@ -97,7 +97,10 @@ Der \ac{CW} verläuft in 3 Schritten\cite{Hegner2016}:
 	Die durch die Analyse gewonnenen Erkenntnisse werden zusammengefasst und ausgewertet. 
 \end{description}
 
-Der Vorteil des \ac{CW} ist die schnelle und einfache Anwendung. Zudem kann es, wie es von \ac{MFEM} benötigt wird, in einem frühen Stadium der Entwicklung verwendet werden.So muss für den Einsatz bei der Bewertung von Frameworks in erster Linie Szenarien definiert werden.
+Der Vorteil des \ac{CW} ist die schnelle und einfache Anwendung. Zudem kann es, wie von \ac{MFEM} benötigt, in einem frühen Stadium der Entwicklung verwendet werden.\cite{Wharton1994} 
+Im derzeitigen Definitionsschritt müssen in erster Linie Szenarien definiert werden. Die Analyse und das Follow Up erfolgen später.
+
+\newsubparagraph{Definition von Szenarien}
 
 Die Grundlage für den Einsatz eines Frameworks ist die Installation der benötigten Komponenten. Da \ac{MFEM} sprachunabhängig ist, kann nicht davon ausgegangen werden, dass alle beteiligten Entwickler bereits die benötigen Compiler bzw. Interpreter und zugehörige Bibliotheken installiert haben. Zudem werden in Zeiten von Continuous Integration\footnote{\url{https://de.wikipedia.org/wiki/Kontinuierliche_Integration}} und immer kürzer werdenden Time-to-Market Zyklen automatische Build-Tools benötigt. Die Einrichtung dieser Komponenten ist somit die Basis einer jeden Entwicklung und stellt für \ac{MFEM} das erste Szenario dar.
 
@@ -108,22 +111,66 @@ Mit den Basis-Anforderungen von \ac{MFEM} wird eine Authentifizierung mittels OA
 
 \image{EinfacherService}{Einfacher Service}{Szenario 2: Erstellung eines einfachen Hello-World-Services.} 
 
-Das dritte Szenario baut auf dem zweiten auf und erweitert es um ein Datenmodell. Hier soll neben der Anbindung an eine Datenbank auch die komplexe Erstellung einer API durchgeführt werden. Das Modell muss dabei als solches nicht komplex sein. Hier wird eine einfach Personal- und Aufgabenverwaltung umgesetzt. Dieses teilt Mitarbeiter in Abteilungen auf, welche wiederum Mitarbeiter als Abteilungsleiter haben. Zusätzlich können Mitarbeitern Aufgaben zugeordnet werden. Das vollständige Datenmodell ist im Bild \ref{KomplexerService} dargestellt.
+Das dritte Szenario baut auf dem zweiten auf und erweitert es um ein Datenmodell. Hier soll neben der Anbindung an eine Datenbank auch die Erstellung einer komplexeren API durchgeführt werden. Das Modell muss dabei als solches nicht komplex sein. Hier wird eine einfach Personal- und Aufgabenverwaltung umgesetzt. Dieses teilt Mitarbeiter in Abteilungen auf, welche wiederum Mitarbeiter als Abteilungsleiter haben. Zusätzlich können Mitarbeitern Aufgaben zugeordnet werden. Das vollständige Datenmodell ist im Bild \ref{ErweiterterService} dargestellt.
 Auf diesem Modell soll auch eine einfache Geschäftslogik implementiert werden, wie die Auflistung aller offenen Aufgaben nach Abteilungen. Die tatsächliche Geschäftslogik spielt dabei weniger eine Rolle. Viel mehr soll der Umgang mit Datenmodell und eigener Logik erprobt werden.
 
-\image{KomplexerService}{Service mit Datenmodell}{Szenario 3: Erstellung eines komplexeren Services mit Datenmodell.}
+\image{ErweiterterService}{Service mit Datenmodell}{Szenario 3: Erstellung eines erweiterten Services mit Datenmodell.}
 
 Das Ergebnis bzw. der erstellte Prototyp aus dem 3. Szenario stellt dabei die Grundlage für die objektive Evaluation dar. 
 	
 \newparagraph{Objektive Evaluation}
+\
+Die aus dem \ac{CW} gewonnen Artefakte können zur Bestimmung der \enquote{harten} Daten herangezogen werden. Neben der Messung der Softwaremetriken direkt am entstandenen Code, lassen sie auch eine Messung am lauffähigen Prototypen zu. Hierzu werden mehrere Anforderungsprofile definiert, die eine reguläre Nutzung eines Microservices unter verschiedenen Situationen betrachtet. Damit werden die Voraussetzungen und Umstände für die Messungen genauer definiert. 
 
-Die aus dem \ac{CW} gewonnen Artefakte können nun zur Bestimmung der \enquote{harten} Daten hergezogen werden. Neben der Messung der Softwaremetriken direkt am entstandenen Code, kann auch eine Performance Messung am Prototypen durchgeführt werden. Hierzu 
+\newsubparagraph{Anforderungsprofile definieren}
+\todo{Make table pretty + Max. Anfragen überdenken}
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{p{1cm}p{4cm}p{2cm}p{4cm}}
+		\textbf{Nr.} & \textbf{Name} & \textbf{parallele Anfragen} & \textbf{Besonderheit} \\
+		\hline
+		1 	& Datenservice 							& 50.000 				& CRUD Operationen auf Datenbank  \\
+		\hline
+		2 	& Einfacher Service mit wenigen Anfragen & 500 					& Wenig rechenintensive Geschäftslogik  \\
+		\hline
+		3	& Einfacher Service mit vielen Anfragen	& 50.000 				& Wenig rechenintensive Geschäftslogik  \\
+		\hline
+		4	& Komplexer Service mit wenigen Anfragen & 500 					& Stark rechenintensive Geschäftslogik  \\
+		\hline
+		5	& Komplexer Service mit vielen Anfragen	& 50.000				& Stark rechenintensive Geschäftslogik  \\
+		\hline
+	\end{tabular}
+	\caption[Anforderungsprofile]{Anforderungsprofile für die objektiven Evaluation am Prototyp}
+	\label{Anforderungsprofile}
+\end{table}
+
+Das erste Anforderungsprofil stellt einen einfachen Datenservice dar. Dieser ist mit einer Datenbank verbunden und führt diese über die \ac{REST}-Schnittstelle nach außen. Durch die hohen Anfragen wird dieser Service stark unter Last gestellt, um eine Aussage über Qualitätsmerkmale wie Stabilität, Fehlerrate und Durchsatz zu treffen.
+
+Um möglichst limitierende Faktoren, wie die Datenbank, auszuschließen, wurden die Profile zwei bis vier hinzugenommen. Diese bauen auf eine Geschäftslogik im Service auf. Dabei spielt es keine Rolle, ob ein sinnvolles Ergebnis berechnet wird. Mit der wenig rechenintensiven Logik steht der Overhead des Frameworks im Vordergrund. Ist dieses besonders groß, um z.~B. die übertragenen Daten zu de- und serialisieren, beeinflusst es jede Anfrage am Service und vermindert den Durchsatz. Die stark rechenintensive Logik zielt dabei mehr auf einen Vergleich zu anderen Programmiersprachen ab. Aus diesem Grund sollte die enthaltene Logik einheitlich sein. So kann sie darin bestehen Testdaten zu generieren und diese zu sortieren.
+
+Neben dem reinen Zeitverhalten können an den Profilen noch weitere Messwerte erhoben werden. Dies kann z.~B. Speicherbedarf in Ruhe sowie bei Vollauslastung sein. Dabei stellen die zuvor genannten Punkte nur Beispiele für Messungen an den Profilen dar. Welche genau durchgeführt werden, wurde bereits mit den Anforderungen über \ac{GQM} definiert. So bleiben die tatsächlichen Messungen sinnvoll.
 
 \subsubsection{Metriken zuordnen}
 
+Die in der Analysephase gefunden Metriken müssen den genauen Messpunkten zugeordnet werden. Qualitätsmerkmale wie Lernbarkeit und Effizienz lassen sich dabei besser in der subjektiven und Performance sowie Wartbarkeit eher in der objektiven Evaluation bestimmen. Welche Metriken genau in welcher Evaluationsphase ermittelt werden sollen, wird in diesem Schritt definiert.
+
+\image{ZuordnungMetriken}{Zuordnung Metriken}{Beispiel für die Zuordnung von Metriken zu Szenarien oder Artefakten bzw. Profilen}
+
+Sollten sich einzelne Metriken nicht zuordnen lassen, können die Szenarien und Profile des vorangegangenen Schrittes erweitert oder verfeinert werden. Dabei sind die Anforderungen absteigend der Prioritäten zu verteilen. 
+
 \subsubsection{Evaluation durchführen}
 
+An dieser Stelle werden die zuvor definierten Evaluationsprozesse durchgeführt. Dabei sollte der Fokus auf die Anforderungen mit hoher Priorität stehen. So kann das frühzeitig nicht Erfüllen von wichtigen Anforderungen direkt zum Abbruch führen.
+
+Zu aller erst werden die Szenarien des \ac{CW} umgesetzt. Dabei müssen die gewonnenen Erkenntnisse negativ als auch positiv protokolliert werden, damit diese sich später besser auswerten lassen. Sobald ein Szenario durchgeführt wurde, wird es durch die zugeordneten Metriken bewertet.
+
+Nachdem das letzte Szenario de \ac{CW} durchgeführt wurde, steht ein Prototyp für die objektive Evaluation bereit. An diesem werden nun über den Programmcode die Softwaremetriken gemessen. Zusätzlich wird am laufenden Prototyp mittels Tools, wie z.~B. JMeter\footnote{http://jmeter.apache.org}, die Leistung sowie der Durchsatz gemessen.
+
 \subsection{Abschlussphase}
+
+In der Abschlussphase werden die Ergebnisse zusammengefasst und präsentiert. Dies muss dabei nicht zwangsläufig eine Präsentation sein. Viel mehr geht es um das Aufbereiten der Daten. Dies kann in einem abschließendem Dokument erfolgen. Dabei lassen sich wichtige Anforderungen, die nicht erfüllt wurden hervorheben. Sollten z.~B. Funktionen fehlen, kann bei einem späteren Release des Frameworks die Bewertung verkürzt wiederholt und nur auf diese spezifischen Anforderungen untersucht werden.
+
+Anhand der Ergebnisse kann eine eindeutige und fundierte Aussage über die Akzeptanz des Frameworks getroffen werden. Und das Risiko zur Erfüllung des geforderten Qualitätsziels minimiert sich.
 
 \pagebreak
 
