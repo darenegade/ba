@@ -33,6 +33,8 @@ linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
 \usepackage{etoolbox}
 \usepackage{xparse}
 \usepackage{import}
+\usepackage[pagewise, right]{lineno}
+\usepackage{ifdraft}
 
 \usepackage{listings}
 \lstset{basicstyle=\footnotesize, captionpos=b, breaklines=true, showstringspaces=false, tabsize=2, frame=lines, numbers=left, numberstyle=\tiny, xleftmargin=2em, framexleftmargin=2em}
@@ -256,7 +258,9 @@ Insert Abstract Here
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-% ----------------------------------------------------------------------------------------------------------
+%
+\ifoptionfinal{}{\linenumbers}
+ ----------------------------------------------------------------------------------------------------------
 % Einleitung und Motivation
 % ----------------------------------------------------------------------------------------------------------
 \subimport{Einleitung/}{Einleitung}
@@ -287,7 +291,7 @@ Insert Abstract Here
 \subimport{Zusammenfassung/}{Zusammenfassung}
 
 \pagebreak
-
+\nolinenumbers
 % ----------------------------------------------------------------------------------------------------------
 % Literatur
 % ----------------------------------------------------------------------------------------------------------
