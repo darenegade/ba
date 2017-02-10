@@ -1,4 +1,4 @@
-- Inhaltsverzeichnis max. ein Unterpunkt
+- Inhaltsverzeichnis: nicht nur ein Unterpunkt
 - Struktur
 - Bilder MEHR!
 - Glossar sollte drin sein
@@ -7,6 +7,7 @@
 * Kontext ist Projekt und nicht Lifecycle da Bewertungsmethoden darauf abzielen
 * Abgrenzung von Lifecycle
 * Scope
+* Evaluierung Framework gibt es nicht?!?
 # Kapitel 2
 ## Seite 2
 * 27 - Kosten -> Bilder
@@ -58,3 +59,57 @@
 * 11 - Dabei kann es mehr als ein Ziel geben
 ## Seite 16
 * Abschnitt 3.3 Resümee und Überleitung zu MFEM, Warum sind die Methoden schlecht für Microservices und warum MFEM
+## Seite 17
+* Architektur am Anfang in den Vordergrund stellen, da viel von Architektur geredet
+* 8 - dessen weg
+* 9 - Zahl ausschreiben
+* 2 Seiten der Bewertung als eig. Absatz
+* Einleitung STARK ausbauen und tiefer Ziele und Ansätze beschreiben
+* 12 - Entscheidung zu Framework und Architektur
+* Output ATAM ist input MFEM - MFEM Bewertung mehr Framework statt Architektur
+## Seite 18
+* Ausschnitt aus Ablauf in Kapitel
+* Vorgehen Beschreiben in diesem Schritt - Analyse -> F.-NF Anforderungen - Bild vom Prozess
+* 2 - Ablauf und Ziel besser beschreiben, was soll man machen
+* 15 - "Anforderungen werden indirekt über die Architektur vorgegeben" - in einem Satz mit Stakeholder -> Architektur
+* 19 - Nicht nur Sicherheit und Wartbarkeit -> Entweder Beispiel oder volle Liste
+* Abschnitt 4.2 Anfang - Schwer verständlich, Botschaft besser formulieren
+* Bild: Analyse einzel. Service anhand umgebener Architektur
+* 32 - "diese müssen es" - Was mein ich mit es
+* 26 - Eigener Abschnitt - ersten zwei Sätze ausschmücken - Was wird gemacht
+## Seite 19
+* 8 + 9 - Authentifizierung Beispiel muss nicht sein
+* Funktionale und Nicht-Funktionale Anforderungen Abgrenzung zu allgemeinen Funktionalen und nf Anforderungen - NF Allgemein ist F im Service
+## Seite 20
+* NF Anforderungen Bild?
+## Seite 21
+* Bild 9: Markieren von NF.-F.&Basisanforderungen
+* 9 - Referenzieren auf SAEM - GQM war gut deshalb genommen
+* Häufig "Werden"
+## Seite 22
+* 4 - "Um bei der Def. ..." Satz nach oben
+* Bild 10: LOC und Methodenaufruf trennen - Weniger Ordinalskala
+* Expertenwissen noch nicht definiert
+* Ablaufdiagramm vom Prozess
+* Anforderung: Community wichtig bei OpenSource
+* 13 - Dokumentation raus, Nur Expertenwissen und Prototyp
+* 7 - Entwicklung nicht vom Experten
+##  Seite 23
+* Regelkreis zur Definition von Szenarien und Zuordnung Metriken beschreiben
+## Seite 24
+* Wie werden Szenarien definiert - fehlt noch komplett - Abstrakt beschreiben, Einfach zu komplex
+* "Definition von Szenarien" als eigener Unterpunkt neben Subj. Eval.
+## Seite 26
+* Anforderungsprofile wie kommt man darauf - Abstrakter
+* 8 - statische Codeanalyse ausbauen
+* Zu stark auf Perf. Messung
+* Obj. Eval. mehr auf Rahmenbedingungen (Community, Zukunftssicherheit)
+## Seite 27
+* Einteilung subj. und objekt. Metriken -> Beschreibung des Regelkreises am Anfang des Kapitels
+* Aus subj. folgen Szenarien
+* Aus objek. folgen Messungen
+## Seite 28
+* Abschlussphase - Alles zum Ende führen -> Viel ausführlicher
+  * Wie kommt man zum Vergleich - Bewertung der Ergebnisse und wie man damit umgeht
+  * Metriken und Prioritäten -> Ergebnis
+  * Wie kann man das Resultat grafisch präsentieren

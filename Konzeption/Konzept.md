@@ -45,6 +45,7 @@ Diese Methode beschreibt folgende Schritte.
 * Der Service hat einen hohen Durchsatz
 * Der Service verwendet möglichst wenig Speicher
 * Gute Dokumentation
+* Aktive Community
 
 ### Quality Utility Tree
 
@@ -64,9 +65,9 @@ Gruppierung der Anforderung in Qualitätsziele und genauere Definition
         * Priorität:
     * G: Daten können im XML oder JSON Format übertragen werden
         * Q1: Kann das Framework Daten im JSON Format de-/serialisieren
-            * M: Ordinalskala(enthalten, nicht enthalten)
+            * M: Ordinalskala(automatisch, manuell, nicht möglich)
         * Q2: Kann das Framework Daten im XML Format de-/serialisieren
-            * M: Ordinalskala(enthalten, nicht enthalten)
+            * M: Ordinalskala(automatisch, manuell, nicht möglich)
         * Priorität:
     * G: Fehler bei Inter-Service Kommunikation werden erkannt und behandelt
         * Q1: Wir vom Framework das Circuit Breaker Pattern unterstützt.
@@ -78,7 +79,13 @@ Gruppierung der Anforderung in Qualitätsziele und genauere Definition
         * Q1: Kann eine neue Instanz vom Service schnell erstellt werden
             * M: Startzeit in Sekunden
         * Priorität:
-    * G: Der Service reagiert schnell auf Anfragen und hat einen hohen Durchsatz
+    * G: Kurze Reaktionszeit
+        * Q1: Bleibt der Service bei Lastspitzen verfügbar
+            * M: Performance Messungen
+        * Q2: Ist der Overhead vom Framework minimal
+            * M: Performance Messungen
+        * Priorität:
+    * G: Hoher Durchsatz
         * Q1: Bleibt der Service bei Lastspitzen verfügbar
             * M: Performance Messungen
         * Q2: Ist der Overhead vom Framework minimal
@@ -94,7 +101,7 @@ Gruppierung der Anforderung in Qualitätsziele und genauere Definition
         * Q1: Unterstützt das Framework Mocking von ext. Abhängigkeiten
             * M: Ordinalskala (enthalten, leicht umsetzbar, schwer umsetzbar)
         * Priorität:
-    * G: Zum Framework gibt es eine Build Infrastruktur
+    * G: Build-Management-Tool(s) vorhanden
         * Q1: Lässt sich automatisiert ein Build vom Service erstellen
             * M: Ordinalskala (Verfügbar, leicht umsetzbar, schwer umsetzbar)
         * Priorität:
@@ -144,6 +151,20 @@ Gruppierung der Anforderung in Qualitätsziele und genauere Definition
         * Q1: Kann der Service effizient um eine Schnittstelle erweitert werden
             * M: LoC, Methodenaufrufe
         * Priorität:
+    * G: Framework wird supported
+        * Q1: Wie lange wird ein Support gewährleistet?
+            * M 1: Länge vom Support in Jahren pro Major Release
+        * Q2: Gibt es vom Hersteller Unterstützung
+            * M 2: Kommerzieller Support vorhanden (j/n)
+* Progressivität
+    * G: Aktive Community
+        * Q1: Werden Regelmäßig Fehler behoben?
+            * M: Release Zykluslänge bzw. Durchschnittlicher Majorrelease Abstand
+        * Q2: Stehen große Firmen dahinter?
+            * M 1: Anzahl Firmen über 1000 MA
+            * M 2: Anzahl Firmen über 100 MA
+        * Q3: Wie viele Benutzer gibt es
+            * M: Github - Star + Watch + Fork
 
 
 ## Evaluation
