@@ -13,9 +13,13 @@ In der Kickoff Phase geht es darum, Klarheit zu schaffen. Den Beteiligten Person
 
 In diesem Zusammenhang sollte auch die vorhandene Microservice Architektur vom Software-Architekten vorgestellt werden, damit die Grundlage der Bewertung klar ist. Neben den in der Architektur getroffenen Entscheidungen geht es auch um technische Einschränkungen und Abhängigkeiten zu Drittsystemen. Auf dieser Basis kann die Architektur analysiert und Anforderungen definiert werden.
 
-\subsection{Architektur Analyse und Wahl der Anforderungen}
+\subsection{Analysephase}
 
-Aus dem vorangegangenen Kapitel wird ersichtlich, dass eine Bewertung nicht nur frühzeitig erfolgen muss. Viel mehr ist es wichtig, dass diese auch auf detaillierten Qualitätsanforderungen basiert. Die Anforderungen werden dabei durch die maßgeblichen Stakeholder definiert. In einer Microservice Architektur sind dies die definierten Umstände eines Services. Diese beschränken sich dabei nicht auf die Kommunikation zwischen zwei einzelnen Services. Gerade die Komposition der Microservices über die Infrastruktur muss gewährleistet sein. Wobei Punkte wie Sicherheit und Wartbarkeit die Komplexität noch steigern.
+\image[MFEM-Analysephase.pdf][width=0.4\linewidth]{MFEM-Analysephase}{MFEM-Analysephase}{Analysephase von \ac{MFEM}}
+
+\subsubsection{Architektur Analyse und Wahl der Anforderungen}
+
+Aus dem vorangegangenen Kapitel wird ersichtlich, dass eine Bewertung nicht nur frühzeitig erfolgen muss. Viel mehr ist es wichtig, dass diese auch auf detaillierten Anforderungen basiert. Durch die maßgeblichen Stakeholder werden diese vorgegeben. In einer Microservice Architektur sind dies die definierten Umstände eines Services. Diese beschränken sich dabei nicht auf die Kommunikation zwischen zwei einzelnen Services. Gerade die Komposition der Microservices über die Infrastruktur muss gewährleistet sein. Wobei Punkte wie Sicherheit und Wartbarkeit die Komplexität noch steigern.
 Damit ein Service dies erfüllt und somit in der Architektur funktionieren kann, müssen anhand der Umstände, wie z.~B. Servicediscovery, Logging oder Tracing, Anforderungen definiert werden. Nur wenn das Framework eines Services diese unterstützt, kann garantiert werden, dass es in die Gesamtarchitektur passt.
 
 \newparagraph{Funktionale Serviceanforderungen}
@@ -52,14 +56,14 @@ Die so gefundenen Anforderungen basieren auf der Erfahrung der Anwendungsentwick
 
 Um die Analyse und Wahl der Anforderungen zu unterstützen, wird hier ein Quality Utility Tree aufgebaut.
 
-\subsubsection{Entwicklung Quality Utility Tree}
+\newparagraph{Entwicklung Quality Utility Tree}
 \todoInline{Priorisierung von Anforderungen}
 
 Der Quality Utility Tree bietet einen effizienten Top-Down Ansatz zur Identifizierung und Verfeinerung von Qualitätsanforderungen. Die mittels Brainstorming gefundenen Anforderungen werden in einzelne Kategorien aufgeteilt und bis zu den konkreten Zielen weiter verfeinert. Bei der Kategorisierung kann das Qualitätsmodell aus der ISO/IEC 25010 hergenommen werden. Wobei das Modell nur eine Hilfestellung ist und keine Vorgabe darstellt. Hier wurden die Kategorien Funktionalität, Performance, Benutzbarkeit, Sicherheit und Wartbarkeit definiert. Anschließend wurden diesen die Qualitätsanforderungen zugeordnet. Bild \ref{MSQUTAusschnitt} zeigt einen Ausschnitt des gesamten Baumes, wobei der vollständige Baum im Anhang zu finden ist. 
 
 \image[MSQUTAusschnitt.pdf][width=0.7\linewidth]{MSQUTAusschnitt}{\acs{MFEM} Quality Utility Tree Beispiel}{Ausschnitt aus dem Quality Utility Tree der Basisanforderungen}
 
-\subsection{Metriken definieren über \ac{GQM}}\todo{Ausführlicher Ablauf erklären}
+\subsubsection{Metriken definieren über \ac{GQM}}\todo{Ausführlicher Ablauf erklären}
 
 Für die identifizierten Qualitätsanforderungen müssen möglichst aussagekräftig Metriken gefunden werden. Dies können dabei Messung an der Architektur sein, wie das Vorhandensein spezifischer Funktionen oder Komponenten sowie den Einsatz bewährter Entwurfsmuster. Dabei können die möglichen Ergebnisse komplexer als nur ein einfaches \enquote{enthalten} oder \enquote{nicht enthalten} sein. Falls beispielsweise eine spezifische Funktion vom Framework nicht unterstützt wird, heißt dies nicht, dass sich diese nicht umsetzen lässt. Hier bietet sich eine Ordinalskala an. Wobei folgende mögliche Ergebnisse verwendet werden können: enthalten, leicht umsetzbar, schwer umsetzbar, nicht möglich. Dieser Ansatz bietet den Vorteil, dass das Ergebnis quantifizierbar ist.
 Zusätzlich können auch Softwaremetriken genutzt werden. Da im Zuge der Evaluation ein Prototyp erstellt wird, können an diesem auch direkt Messungen vorgenommen werden. Damit kann neben der Performance auch z.~B. der Aufwand zur Umsetzung bestimmter Funktionen bemessen werden. Falls z.~B. die Erstellung eines \ac{REST}-Endpunktes sehr aufwändig ist und viele Codezeilen sowie Methodenaufrufe benötigt, macht dies den Microservice schnell sehr komplex bei vielen Endpunkten und verschlechtert somit die Wartbarkeit.
@@ -70,6 +74,8 @@ Eine um Metriken erweiterter Qualitätsbaum ist in Bild \ref{MFEMGQMQUTAusschnit
 \image[MFEMGQMQUTAusschnitt.pdf]{MFEMGQMQUTAusschnitt}{\acs{MFEM} Qualitätsbaum erweitert um Metriken}{Ein Ausschnitt aus dem Qualitätsbaum erweitert um Metriken}
 
 \subsection{Evaluationsphase}
+
+\image[MFEM-Evaluationsphase.pdf][width=0.4\linewidth]{MFEM-Evaluationsphase}{MFEM-Evaluationsphase}{Evaluationsphase von \ac{MFEM}}
 
 Während der Evaluation wird das Framework auf die Anforderungen mittels der zuvor definierten Metriken untersucht. Dabei wird ein tieferer Blick in das Framework geworfen. Neben der Untersuchung von Dokumentation und bereits vorhandenem Expertenwissen, wird auch ein Prototyp erstellt. Dieser soll als Referenz für zukünftig entwickelte Services gelten und muss somit zielgerichtet entwickelt werden. Es gilt in kürzester Zeit essenzielle Funktionen umzusetzen und dabei Erkenntnisse über das Framework zu gewinnen. Um dies zu Unterstützen muss im ersten Schritt die Evaluation genauer definiert werden.
 
@@ -170,7 +176,14 @@ Nachdem das letzte Szenario de \ac{CW} durchgeführt wurde, steht ein Prototyp f
 
 \subsection{Abschlussphase}
 
-In der Abschlussphase werden die Ergebnisse zusammengefasst und präsentiert. Dies muss dabei nicht zwangsläufig eine Präsentation sein. Viel mehr geht es um das Aufbereiten der Daten. Dies kann in einem abschließendem Dokument erfolgen. Dabei lassen sich wichtige Anforderungen, die nicht erfüllt wurden hervorheben. Sollten z.~B. Funktionen fehlen, kann bei einem späteren Release des Frameworks die Bewertung verkürzt wiederholt und nur auf diese spezifischen Anforderungen untersucht werden.
+\image[MFEM-Abschlussphase.pdf][width=0.4\linewidth]{MFEM-Abschlussphase}{MFEM-Abschlussphase}{Abschlussphase von \ac{MFEM}}
+
+\subsubsection{Ergebnisse auswerten}
+\todoInline{Auswerten usw...}
+
+\subsubsection{Resultat präsentieren}
+\todoInline{Komplett überarbeiten}
+In diesem Schritt werden die Ergebnisse präsentiert und . Dies muss dabei nicht zwangsläufig eine Präsentation sein. Viel mehr geht es um das Aufbereiten der Daten. Dies kann in einem abschließendem Dokument erfolgen. Dabei lassen sich wichtige Anforderungen, die nicht erfüllt wurden hervorheben. Sollten z.~B. Funktionen fehlen, kann bei einem späteren Release des Frameworks die Bewertung verkürzt wiederholt und nur auf diese spezifischen Anforderungen untersucht werden.
 
 Anhand der Ergebnisse kann eine eindeutige und fundierte Aussage über die Akzeptanz des Frameworks getroffen werden. Und das Risiko zur Erfüllung des geforderten Qualitätsziels minimiert sich.
 

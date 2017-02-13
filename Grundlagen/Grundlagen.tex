@@ -47,7 +47,7 @@ oder qualitativ bewertet werden. So kann z.~B. der Quellcode mittels Metriken qu
 Andere Artefakte entziehen sich dieser Bewertung und können nur auf ihre Güte hin, also qualitativ, bewertet werden. Diese, teils auch subjektiven, Bewertungen setzen einen größeren Aufwand voraus und lassen sich schwer vergleichen.  
 Zu letzterem zählt die Softwarearchitektur. 
 
-\newparagraph{Anforderungen, Merkmale und Ziele}
+\subsection{Anforderungen, Merkmale und Ziele}
 \
 Die Grundlage einer jeden Bewertung sind spezifisch definierte Anforderungen. Diese stellen die notwendige Beschaffenheit oder Fähigkeit eines Produktes dar, dass es für die Abnahme erfüllen muss. Dabei ist eine Unterscheidung von funktionalen und nicht-funktionalen Anforderungen weit verbreitet. Funktionale Anforderungen bestimmen, \textit{was} das Produkt tun soll\cite{Robertson2006}. Ein Beispiel:
 
@@ -60,7 +60,7 @@ Nicht-funktionalen Anforderungen beschreiben \textit{in welcher Qualität} die z
 In der Regel werden diese Anforderungen durch Verträge, Normen oder Spezifikationen festgelegt. Diese begründen sich meistens auf die Ziele des Produktes. So will der Onlineshop-Betreiber Frust beim Kunden verhindern und Spontankäufe begünstigen, indem er den Bestellvorgang möglichst kurz hält.
 Eine Untersuchung der Produktmerkmale, also der charakteristischen Kennzeichen eines Produktes, gibt dabei Aufschluss über die Erfüllung der Anforderungen. So kann der vorher genannte Bestellvorgang bei der Messung 5 Sekunden benötigen und damit die Anforderung nicht erfüllen.      
 
-\newparagraph{Qualitätsmerkmale der Softwarearchitektur}
+\subsection{Qualitätsmerkmale der Softwarearchitektur}
 
 Auch bei der Architekturbewertung sind die Anforderungen das Fundament. Sie charakterisieren die 
 gewünschten Eigenschaften eines Systems\cite{Starke2015}.
@@ -89,7 +89,7 @@ Bei der Softwarearchitektur gibt es eine Vielzahl an Qualitätsmerkmale anhand d
 
 Diese Aufzählung stellt hierbei eine Auswahl an verschiedenen allgemeinen Qualitätsmerkmalen dar und erhebt dabei keinen Anspruch auf Vollständigkeit.
 
-\newparagraph{Soll-Ist-Vergleich}
+\subsection{Soll-Ist-Vergleich}
 \
 Mit den Anforderungen kann ein Soll-Ist-Vergleich anhand der Artefakte durchgeführt werden. Jede einzelne Anforderung wird dabei mit Plänen, Dokumentation oder Modellen verglichen und bewertet. D.~h. es wird geprüft, ob das geplante System den Anforderungen entsprechen wird. Wichtig ist, dass die geforderten Eigenschaften möglichst feingranular sind. Je detaillierter die Anforderungen vorliegen, desto geringer ist das Restrisiko einzelne Punkte zu vergessen oder unscharf zu bewerten.
   
@@ -138,10 +138,10 @@ mehrere Phasen aufgeteilt. Bild \ref{ATAMPhasen} gibt hierzu einen Überblick.
 
 \image[ATAM-Phasen.pdf]{ATAMPhasen}{Phasen von ATAM}{Phasen der Architekturbewertung nach ATAM\cite{Starke2015}}
 
-\newparagraph{Vorbereitung}
+\subsubsection{Vorbereitung}
 \
 Das Fundament der Bewertung stellen die Qualitätsanforderungen dar. Diese können nur lückenlos bestimmt werden, wenn alle maßgeblich vom Projekt betroffenen Personen involviert sind. In der Vorbereitungs-Phase müssen alle wichtigen Stakeholder identifiziert werden. Neben dem Kunden bzw. Auftraggeber selbst, kann dies z.~B. der Benutzer, Administrator oder Tester sein. Dabei müssen jene Personen nicht direkt in den Prozess miteinbezogen werden. Es reicht schon einen Vertreter, meist aus dem Management, zu bestimmen oder die Wünsche und Ziele vorher genau zu ermitteln. In der Regel werden nur wenige Stakeholder, meist Personen aus dem Management und der Projektleitung\cite{Starke2015}, direkt zur Architekturbewertung eingeladen. Zu viele Personen würden den Prozess, durch Diskussionen und Abschweifungen, nur verlangsamen und ineffektiv gestalten.
-
+\subsubsection{Kickoff-Phase}
 \newparagraph{Bewertungsmethode (ATAM) vorstellen}
 \
 Im ersten Schritt soll die Bewertungsmethode vorgestellt und dessen Ziele verdeutlicht werden. Nicht jeder Stakeholder ist regelmäßig in eine Architekturbewertung involviert. So muss klar gestellt werden, welche Bedeutung das Architektur- und Qualitätsziel hat\cite{Starke2015}. Des Weiteren sollte hervorgehoben werden, dass es bei der qualitativen Architekturbewertung um das Aufdecken von Risiken sowie um mögliche Maßnahmen geht. Es sollte nicht Ziel sein, Noten für die Architektur zu vergeben. Insbesondere sollte die Präsentation folgende Punkte enthalten\cite{Clements2000}:
@@ -167,7 +167,7 @@ Die Präsentation der Architektur sollte hier folgende Informationen umfassen\ci
 	\item Technische Einschränkungen, wie Betriebssystem, Hardware oder Middleware
 	\item Weitere Systeme mit denen dieses zusammenhängt 
 \end{itemize}
-
+\subsubsection{Bewertungsphase}
 \newparagraph{Architekturansätze identifizieren}
 \
 Aus der vorangegangenen Information können nun Architekturentscheidungen identifiziert werden, die zur Erfüllung spezieller Qualitätsanforderungen dienen. Es ist zu klären, wie die Architektur, strukturell oder konzeptionell, die wesentlichen Probleme oder Herausforderungen löst. Die treibenden und prägenden Architekturansätze werden dabei von den Architekten hervorgehoben und dienen der Ergänzung des voraufgegangenem Überblicks\cite{Starke2015}.
@@ -212,7 +212,7 @@ So kann z.~B. mittels eines Walkthrough genau aufgezeigt werden, wie einzelne Ko
 
 Die Analyse ist dabei nicht auf diese Fragen beschränkt. Sie bieten lediglich einen Startpunkt für eine Diskussion, um potentielle Risiken, Sensitivitäts- oder Kompromisspunkte zu finden. An dieser Stelle gibt es leider kein Patentrezept oder ein spezifisches Vorgehen, um das Erfüllen der Qualitätsanforderung zu bestimmen. Viel mehr wird von den Teilnehmern ein analytisches und systematisches Denken verlangt. Im Fokus muss hierbei stehen, dass eine Verbindung zwischen der Architekturentscheidung und der Anforderung geschaffen wird, die sie erfüllen soll.
 
-\newparagraph{Ergebnis präsentieren}
+\subsubsection{Abschlussphase}
 \
 Am Ende wird das Ergebnis den Stakeholdern präsentiert. Es muss nicht zwangsläufig nur durch eine Präsentation dargestellt, sondern kann auch um einen detaillierten Berichte ergänzt werden. Sämtliche Phasen der Bewertung und dessen Ergebnisse können so noch einmal rekapituliert werden und bilden die Basis zur Definition von eventuell benötigten Maßnahmen.
 
@@ -230,7 +230,7 @@ Im Gegensatz zu \ac{ATAM} ist \ac{SAEM} weniger bekannt und erprobt\cite{IEEE_TS
 
 Wie beim finalen System ist die direkte Messung am Produkt eine objektive und sehr effektive Evaluation der Qualität. Um dies zu erreichen, müssen Qualitätsanforderungen definiert und ein Prozess zur Überprüfung dieser  geplant, implementiert und kontrolliert werden\cite{Duenas1998}. \ac{SAEM} versucht dies mittels eines Qualitätsmodells auf die Softwarearchitektur abzubilden und stellt Methoden sowie Metriken für die Evaluation bereit. 
 
-\newparagraph{Spezifikation Qualität}
+\subsubsection{Spezifikation Qualität}
 \
 Das Qualitätsmodell von \ac{SAEM} baut dabei auf dem Modell der ISO/IEC 25010 auf. Jenes teilt die Qualität in 8 Kategorien und weitere Unterkategorien auf\cite{ISOIEC25010}. Anhand derer kann die Qualität der Softwarearchitektur spezifiziert werden, indem man diesen Architekturanforderungen zuordnet.
 
@@ -239,7 +239,7 @@ Das Qualitätsmodell von \ac{SAEM} baut dabei auf dem Modell der ISO/IEC 25010 a
 Hierzu wird im ersten Schritt die externe Qualität bestimmt. Diese basiert auf messbaren Metriken unter Nutzungsbedingungen und werden vom Nutzer sowie den Architekten definiert\cite{Duenas1998}. So sollten, für alle Qualitätskategorien, Anforderungen an die Architektur ausgewählt und optimale bzw. zulässige Werte bestimmt werden. Ein Beispiel hierfür ist die Reaktionszeit auf Anfragen. 
 Mittels der externen Qualität können die Architekten die interne Qualität bestimmen. Diese sind Anforderungen, die zur Erreichung und Zufriedenstellung des Ziels benötigt werden. Im Unterschied zu externen Anforderungen werden diese nicht durch die Nutzung bestimmt, sondern beziehen sich auf intrinsische Eigenschaften, wie z.~B. Modularität oder Komplexität\cite{Duenas1998}. Die Bestimmung dieser basiert meist auf Expertenwissen oder Firmen interne Richtlinien.
 
-\newparagraph{Bestimmung von Metriken}
+\subsubsection{Bestimmung von Metriken}
 \
 Für die Messung der Qualitätsanforderungen müssen Metriken bestimmt werden. Hierzu kann das Bewertungsteam aus bekannten Softwaremetriken wählen oder systematisch neue definieren. Wichtig ist nur, dass die Messung zielorientiert ist. D. h. die Metriken müssen mit einem Top-Down Ansatz bestimmt werden\cite{Habenicht2008}. Somit soll nicht aus vorhandenen Messungen ein Bezug zur Qualität aufgebaut, sondern mittels spezifischer Qualitätsanforderungen passende und aussagekräftige Metriken gefunden werden.
 
@@ -260,10 +260,14 @@ Ein Beispiel für das Ergebnis von \ac{GQM} wird in Bild \ref{GQMBeispiel} darge
 
 \image[GQMBeispiel.pdf]{GQMBeispiel}{Beispiele \acs{GQM}}{Beispiel für die Anwendung von \ac{GQM} an einer Microservice Architektur}
  
-\newparagraph{Evaluation}
+\subsubsection{Evaluation}
 \
 An diesem Punkt ist die Evaluation denkbar einfach. Sie besteht aus dem Sammeln und Auswerten der Daten mittels der Metriken. Über die gewonnenen Daten und die vorher bestimmten zulässigen Werte, wie das Vorhandensein spezifischer Funktionen, wird die Architekturqualität bestimmt. Es lässt sich auch eine Aussage über die zu erwartende Qualität des Endsystems treffen.
 An diesem Punkt wird der Unterschied zu \ac{ATAM} wieder deutlich. \ac{SAEM} versucht nicht ein tieferes Verständnis für die Architektur bei maßgeblichen Stakeholdern zu schaffen, sondern nur die Einhaltung spezifischer Anforderungen zu gewährleisten. Dies hängt dabei stark vom definiertem Qualitätsziel ab. Gerade bei der internen Qualität verlangt \ac{SAEM} somit eine firmeninterne Qualitätsrichtlinie\cite{IEEE_TSE2002}, die auf Erfahrung und Expertenwissen basiert.
+
+\subsection{Architekturbewertungsmethoden und Microservices}
+
+\todoInline{Resümee der beiden Methoden und Klärung: "Warum schlecht für MS-Frameworks?"}
 
 Mit dem Wissen über verschiedene Ansätze zur Qualitätsbewertung von Softwarearchitektur kann nun versucht werden, eine Methode zu finden, die es zur Bewertung von Microservice Frameworks und die daraus vorgegebenen Architektur des Services nutzt. 
 
