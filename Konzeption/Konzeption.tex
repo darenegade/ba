@@ -17,7 +17,7 @@ In diesem Zusammenhang sollte auch die vorhandene Microservice Architektur vom S
 
 \image[MFEM-Analysephase.pdf][width=0.4\linewidth]{MFEM-Analysephase}{MFEM-Analysephase}{Analysephase von \ac{MFEM}}
 
-\subsubsection{Architektur Analyse und Wahl der Anforderungen}
+\subsubsection{Architektur Analyse und Wahl der Anforderungen}\label{Analyse_Wahl_Anforderungen}
 
 Aus dem vorangegangenen Kapitel wird ersichtlich, dass eine Bewertung nicht nur frühzeitig erfolgen muss. Viel mehr ist es wichtig, dass diese auch auf detaillierten Anforderungen basiert. Durch die maßgeblichen Stakeholder werden diese vorgegeben. In einer Microservice Architektur sind dies die definierten Umstände eines Services. Diese beschränken sich dabei nicht auf die Kommunikation zwischen zwei einzelnen Services. Gerade die Komposition der Microservices über die Infrastruktur muss gewährleistet sein. Wobei Punkte wie Sicherheit und Wartbarkeit die Komplexität noch steigern.
 Damit ein Service dies erfüllt und somit in der Architektur funktionieren kann, müssen anhand der Umstände, wie z.~B. Servicediscovery, Logging oder Tracing, Anforderungen definiert werden. Nur wenn das Framework eines Services diese unterstützt, kann garantiert werden, dass es in die Gesamtarchitektur passt.
@@ -193,7 +193,17 @@ In der Abschlussphase geht es um die Aufbereitung und Präsentation der Daten. D
 
 \subsubsection{Ergebnisse auswerten}
 
+Da Entscheidungsträger häufig keine Zeit für Detailanalysen haben, müssen die Daten so aufbereitet werden, dass mit einem Blick ein Gesamtergebnis sichtbar wird. Detailfragen lassen sich weiterhin durch die Anforderungen und Ergebnisse der Metriken klären. Ein sehr guten Überblick lässt sich durch ein Netzdiagramm erreichen. Hierzu können die Qualitätskategorien aus dem im Abschnitt \ref{Analyse_Wahl_Anforderungen} erstellten Quality Utility Tree für die Achsen genommen werden. Um einen Eindruck für das Ergebnis der Auswertung zu erhalten, ist ein Beispiel in Bild \ref{Netzdiagramm} dargestellt.
 
+\image[Netzdiagramm.pdf][width=0.8\linewidth]{Netzdiagramm}{Netzdiagramm}{Beispiel für aufbereitet Daten als Netzdiagramm mit Qualitätskategorien als Achsen.}  
+
+Die Achsen der einzelnen Qualitätskategorien stellen dabei den Gesamt-Erfüllungsgrad in Prozent dar. Wurden alle Anforderungen der Kategorie mit vollster Zufriedenheit erfüllt, ergibt sich ein Vollausschlag auf der jeweiligen Achse. Die Nichterfüllung einzelner Anforderungen mindert den Ausschlag entsprechend.
+
+Wie stark einzelne Anforderungen in die zugehörige Kategorie einfließen, hängt von der Priorisierung dieser ab. Wurde eine Anforderung mit A bewertet, zählt das Ergebnis zu 100 Prozent. Entsprechend wird der Einfluss bei Priorität B und C auf 50 bzw. 25 Prozent gesenkt. Dies stellt sicher, dass die Nichterfüllung kleiner Anforderungen das Gesamtergebnis nicht zu stark nach unten ziehen. 
+
+Für eine einfache Darstellung reicht die Unterscheidung zwischen Erfüllen (1) und Nichterfüllen (0) der Anforderungen. Das Ergebnis wird anschließend mit den Gewichten der Prioritäten multipliziert und aufsummiert. 
+
+\todoInline{Weiter...}
 
 \subsubsection{Resultat präsentieren}
 \todoInline{Komplett überarbeiten}
