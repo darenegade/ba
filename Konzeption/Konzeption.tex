@@ -201,12 +201,64 @@ Die Achsen der einzelnen Qualitätskategorien stellen dabei den Gesamt-Erfüllun
 
 Wie stark einzelne Anforderungen in die zugehörige Kategorie einfließen, hängt von der Priorisierung dieser ab. Wurde eine Anforderung mit A bewertet, zählt das Ergebnis zu 100 Prozent. Entsprechend wird der Einfluss bei Priorität B und C auf 50 bzw. 25 Prozent gesenkt. Dies stellt sicher, dass die Nichterfüllung kleiner Anforderungen das Gesamtergebnis nicht zu stark nach unten ziehen. 
 
-Für eine einfache Darstellung reicht die Unterscheidung zwischen Erfüllen (1) und Nichterfüllen (0) der Anforderungen. Das Ergebnis wird anschließend mit den Gewichten der Prioritäten multipliziert und aufsummiert. 
+Für eine einfache Auswertung reicht die Unterscheidung zwischen Erfüllen (1) und Nichterfüllen (0) der Anforderungen. Somit reicht es die Gewichte der erfüllten Anforderungen pro Kategorie zu kumulieren, den Prozentsatz zu bilden und in die jeweilige Achse einzutragen. Dies hat jedoch den Nachteil, dass gerade bei den qualitativ erhobenen Daten viel Informationsgehalt verloren geht. Wird z.~B. die Lernbarkeit über einer Ordinalskala mit 3 möglichen Werten erhoben (sehr gut, gut, schlecht), geht die Differenzierung zwischen \enquote{sehr gut} und \enquote{gut} bzw. \enquote{gut} und \enquote{schlecht} verloren, je nachdem wo die Akzeptanzschwelle liegt.
 
-\todoInline{Weiter...}
+Um dies zu verhindern, kann auch eine komplexere Auswertung erfolgen. Diese betrachtet jede erhobene Metrik und stellt einen Erfüllungsgrad pro Anforderung zusammen. Hierzu wird das Ergebnis der Metrik auf einen Wert zwischen 0 und 1 normalisiert. Dies kann bei der zuvor genannten Ordinalskala mit 3 Werten folgende Ergebnisse enthalten:
+  
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{ll}
+		\textbf{Ergebnisse} & \textbf{Normalisierung}\\
+		\hline
+		sehr gut 	& 1  	\\
+		\hline
+		gut			& 0.5	\\
+		\hline
+		schlecht	& 0  	\\
+		\hline
+	\end{tabular}
+	\caption[Ordinalskala Normalisierung]{Beispiel: Normalisierung einer Ordinalskala mit 3 Werten.}
+	\label{Ordinalskala_Normalisierung}
+\end{table}
+
+Für quantitativ erhobene Daten kann weiterhin die dyadische Darstellung gewählt werden. Alternativ hierzu kann auch eine Abstufung mittels prozentualer Abweichung zum Zielwert ermittelt werden. Soll z.~B. die Antwortzeit eines ausgelasteten Services unter 10ms im Durchschnitt betragen, könnte folgende Normalisierung gewählt werden:
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{ll}
+		\textbf{Ergebnisse} & \textbf{Normalisierung}\\
+		\hline
+		$\le 10ms$ 		& 1  	\\
+		\hline
+		$12ms$			& 0.8	\\
+		\hline
+		$14ms$			& 0.6  	\\
+		\hline
+		$16ms$			& 0.4  	\\
+		\hline
+		$18ms$			& 0.2  	\\
+		\hline
+		$\ge 20ms$		& 0  	\\
+		\hline
+	\end{tabular}
+	\caption[Normalisierung quantitativer Daten]{Beispiel: Normalisierung von quantitativ erhobener Latenzzeit}
+	\label{Normalisierung_quant}
+\end{table}
+
+Wie die erhobenen Daten normalisiert werden, hängt von den Anforderungen ab und welches Ziel diese verfolgen. Aus diesem Grund ist dies eine Einzelfallentscheidung und obliegt dem Prüfer.
+
+Für den Erfüllungsgrad einer Anforderung können nun die einzelnen normalisierten Ergebnisse kumuliert und der Prozentsatz gebildet werden. Anschließend erfolgt die Multiplikation mit den Gewichten und das Eintragen in die jeweilige Achse analog zur einfachen Darstellung. 
+
+Ein einfaches Beispiel für die Auswertung einer Kategorie findet sich in Bild \ref{AuswertungBeispiel}
+
+\image[AuswertungBeispiel.pdf]{AuswertungBeispiel}{Auswertung Beispiel}{Beispiel für die Auswertung einer Kategorie.}
+
+Die so ausgewerteten und in ein Netzdiagramm eingetragenen Daten bieten einen guten Überblick über die Qualität eines Frameworks. Sie lassen aber auch einen Vergleich mehrerer Frameworks zu, indem verschiedene Ergebnisse in das Diagramm eingetragen werden.
 
 \subsubsection{Resultat präsentieren}
-\todoInline{Komplett überarbeiten}
+
+
+
 In diesem Schritt werden die Ergebnisse präsentiert und . Dies muss dabei nicht zwangsläufig eine Präsentation sein. Viel mehr geht es um das Aufbereiten der Daten. Dies kann in einem abschließendem Dokument erfolgen. Dabei lassen sich wichtige Anforderungen, die nicht erfüllt wurden hervorheben. Sollten z.~B. Funktionen fehlen, kann bei einem späteren Release des Frameworks die Bewertung verkürzt wiederholt und nur auf diese spezifischen Anforderungen untersucht werden.
 
 Anhand der Ergebnisse kann eine eindeutige und fundierte Aussage über die Akzeptanz des Frameworks getroffen werden. Und das Risiko zur Erfüllung des geforderten Qualitätsziels minimiert sich.
