@@ -1,4 +1,4 @@
-\section{\acf{MFEM}}
+\section{\acf*{MFEM}}
 
 Die Bewertung, ob ein Framework für den produktiven Einsatz in einer Microservice Architektur geeignet ist, lässt sich nicht auf die Servicearchitektur beschränken. Aus diesem Grund ist \ac{MFEM} keine reine Architekturbewertungs-Methode. Sie betrachtet einerseits die durch das Framework vorgegebene Servicearchitektur und versucht dabei Risiken aufzudecken sowie ein tieferes Verständnis für die Architektur zu schaffen. Auf der anderen Seite wird das Framework als Produkt aufgefasst und versucht, eine Aussage über die Qualität dessen zu treffen. \ac{MFEM} setzt dabei keine grundlegenden Kenntnisse über das Framework voraus, da es 2 Seiten der Analyse anbietet. Dies ist einerseits die Nutzung von bereits vorhandenem Expertenwissen, was die Phase der Evaluation verkürzt. Andererseits werden die restlichen Daten über die Erstellung von Prototypen erfasst.
 Auf dieser Basis kann am Ende eine begründete Entscheidung für oder gegen den Einsatz eines Frameworks getroffen werden.
@@ -52,20 +52,73 @@ wird zum Beispiel die Funktion bevorzugt, die möglichst einfach und \enquote{du
 \newparagraph{Basisanforderungen von \ac{MFEM}}
 \
 Damit das Bewertungsteam, bei der Findung von funktionalen und nicht-funktionalen Serviceanforderungen, nicht bei null anfangen muss, wird an dieser Stelle eine Orientierungshilfe angeboten. Hier wurde in einem Brainstorming versucht, eine Schnittmenge an Anforderungen zu finden, die für die meisten Microservice Architekturen gelten sollte. 
-Die so gefundenen Anforderungen basieren auf der Erfahrung der Anwendungsentwicklung innerhalb der Landeshauptstadt München. Diese hat sich in den letzten Jahren mit dem produktiven Einsatz von Microservices beschäftigt und diverse erfolgreiche Projekte damit umgesetzt.\todo{anders Formulieren und ausschmücken}   
+Die so gefundenen Anforderungen basieren auf der Erfahrung der Anwendungsentwicklung innerhalb der Landeshauptstadt München. Diese hat sich in den letzten Jahren mit dem produktiven Einsatz von Microservices beschäftigt und diverse erfolgreiche Projekte damit umgesetzt.
+\ac{MFEM} enthält somit Basisanforderungen, die als Grundlage für die Bewertung eines Frameworks hergenommen werden können. Eine Verpflichtung zu diesen Anforderungen besteht jedoch nicht. Wie zuvor beschrieben, hängen die Anforderungen stark am jeweiligen Kontext und müssen dahingehend beurteilt werden. Daher ist essentiell, dass die Basisanforderungen nur als Orientierung dienen und beliebig gekürzt aber in jedem Fall um weitere kontext-spezifische Anforderungen erweitert werden müssen.  
 
 Um die Analyse und Wahl der Anforderungen zu unterstützen, wird hier ein Quality Utility Tree aufgebaut.
 
 \newparagraph{Entwicklung Quality Utility Tree}
-\todoInline{Priorisierung von Anforderungen}
 
-Der Quality Utility Tree bietet einen effizienten Top-Down Ansatz zur Identifizierung und Verfeinerung von Qualitätsanforderungen. Die mittels Brainstorming gefundenen Anforderungen werden in einzelne Kategorien aufgeteilt und bis zu den konkreten Zielen weiter verfeinert. Bei der Kategorisierung kann das Qualitätsmodell aus der ISO/IEC 25010 hergenommen werden. Wobei das Modell nur eine Hilfestellung ist und keine Vorgabe darstellt. Hier wurden die Kategorien Funktionalität, Performance, Benutzbarkeit, Sicherheit und Wartbarkeit definiert. Anschließend wurden diesen die Qualitätsanforderungen zugeordnet. Bild \ref{MSQUTAusschnitt} zeigt einen Ausschnitt des gesamten Baumes, wobei der vollständige Baum im Anhang zu finden ist. 
+Der Quality Utility Tree bietet einen effizienten Top-Down Ansatz zur Identifizierung und Verfeinerung von Qualitätsanforderungen. Mittels Brainstorming sollen somit Anforderungen gefundenen und in einzelne Kategorien aufgeteilt werden. Die Anforderungen müssen dabei nicht sofort konkret sein, sondern können anfangs grob erstellt werden. Über den Baum können die groben Anforderungen nach rechts weiter verfeinert werden, bis diese konkret genug sind. 
+
+Bei der Kategorisierung kann das Qualitätsmodell aus der ISO/IEC 25010 hergenommen werden. Wobei das Modell nur eine Hilfestellung ist und keine Vorgabe darstellt. Es geht lediglich darum einen Überblick zu schaffen und mehrere Teilaspekte zu betrachten. Auch ermöglichen die Kategorien eine bessere Übersicht über das Endergebnis. Hierzu später mehr im Abschnitt \ref{Ergebnisse_auswerten} \enquote{Ergebnisse auswerten}.
+
+Für die Basisanforderungen wurden die Kategorien Funktionalität, Performance, Benutzbarkeit, Sicherheit, Wartbarkeit und Zukunftssicherheit definiert. Anschließend wurden diesen die Qualitätsanforderungen zugeordnet und stellen ein Beispiel dar, wie ein entsprechender Quality Utility Tree aufgebaut ist. Bild \ref{MSQUTAusschnitt} zeigt einen Ausschnitt des gesamten Baumes, wobei der vollständige Baum im Anhang zu finden ist. 
 
 \image[MSQUTAusschnitt.pdf][width=0.7\linewidth]{MSQUTAusschnitt}{\acs{MFEM} Quality Utility Tree Beispiel}{Ausschnitt aus dem Quality Utility Tree der Basisanforderungen}
 
-\subsubsection{Metriken definieren über \ac{GQM}}\todo{Ausführlicher Ablauf erklären}
+Damit der Fokus in späteren Phasen auf den wichtigen Anforderungen liegt, werden anschließend alle mit Prioritäten versehen. Hierbei bietet sich eine dreistufige Skala mit A, B und C an. Dies sollte für den Normalfall ausreichen und benötigt keiner weiteren Detailstufe.
+Die mit A bewerteten Anforderungen können zudem später zu einem schnelleren Abbruch führen, wenn diese nicht erfüllt werden. Auch wirken sie sich beim Gesamtergebnis stärker aus als niedriger bewertete Anforderungen. 
 
-Für die identifizierten Qualitätsanforderungen müssen möglichst aussagekräftig Metriken gefunden werden. Dies können dabei Messung an der Architektur sein, wie das Vorhandensein spezifischer Funktionen oder Komponenten sowie den Einsatz bewährter Entwurfsmuster. Dabei können die möglichen Ergebnisse komplexer als nur ein einfaches \enquote{enthalten} oder \enquote{nicht enthalten} sein. Falls beispielsweise eine spezifische Funktion vom Framework nicht unterstützt wird, heißt dies nicht, dass sich diese nicht umsetzen lässt. Hier bietet sich eine Ordinalskala an. Wobei folgende mögliche Ergebnisse verwendet werden können: enthalten, leicht umsetzbar, schwer umsetzbar, nicht möglich. Dieser Ansatz bietet den Vorteil, dass das Ergebnis quantifizierbar ist.
+Der in Bild \ref{MSQUTAusschnitt} gezeigte Quality Utility Tree wurde im Bild \ref{MSQUTPrio} um Prioritäten erweitert. Wobei dies nur ein Beispiel ist und bei jeder Bewertung separat durchgeführt werden sollte.
+
+\image[MSQUTPrioAusschnitt.pdf][width=0.7\linewidth]{MSQUTPrio}{\acs{MFEM} Quality Utility Tree Beispiel mit Prioritäten}{Beispiel eines Quality Utility Tree der Basisanforderungen mit Prioritäten}
+
+\subsubsection{Metriken definieren über \ac*{GQM}}
+
+In diesem Schritt müssen für die identifizierten Qualitätsanforderungen möglichst aussagekräftig Metriken gefunden werden. Dies können dabei Messung an der Architektur sein, wie das Vorhandensein spezifischer Funktionen oder Komponenten sowie den Einsatz bewährter Entwurfsmuster. Dabei können die möglichen Ergebnisse komplexer als nur ein einfaches \enquote{enthalten} oder \enquote{nicht enthalten} sein. Falls beispielsweise eine spezifische Funktion vom Framework nicht unterstützt wird, heißt dies nicht, dass sich diese nicht umsetzen lässt. Hier bietet sich eine Ordinalskala an. Wobei folgende mögliche Ergebnisse verwendet werden können: enthalten, leicht umsetzbar, schwer umsetzbar, nicht möglich. Dieser Ansatz bietet den Vorteil, dass das Ergebnis quantifizierbar ist.
+
+Diese Metriken bieten sich auch für weitere Anforderungen an, die sich schwer in Zahlen erheben lassen. Die Tabelle \ref{OrdinalskalaBeispiele} zeigt ein paar Beispiele aus den Basisanforderungen und die zugehörigen Ordinalskalen mit einer Erläuterung zu den jeweiligen Stufen.
+
+\begin{table}[!htb]
+	\centering
+	\resizebox{\linewidth}{!}{
+	\begin{tabular}{p{3cm}|p{3cm}|p{2cm}|p{8cm}}
+
+		\textbf{Anforderung (Goal)}                   & \textbf{Frage (Question)} & \textbf{Skala für Metrik} & \textbf{Erläuterung}                                                                                         \\ \hline
+		\multirow{3}{3cm}{Effiziente Entwicklung}	& 
+		\multirow{3}{3cm}{Kann das Framework schnell erlernt werden?} 
+		& sehr gut & Das Framework lässt sich schnell erlernen und ist intuitive zu bedienen. Es nimmt dem Nutzer, wo es geht, Arbeit ab. 
+		\\ \cline{3-4} & 
+		& gut & Die Einarbeitungszeit ist etwas länger und das Framework ist nicht sehr intuitive.                                   
+		\\ \cline{3-4} &                                                                                       
+		& schlecht & Sehr lange Einarbeitungszeit und viele Eigenheiten, die sich dem Benutzer nicht direkt erschließen.                  
+		\\ \hline
+		\multirow{3}{3cm}{Standard Übertragungs-formate} & 
+		\multirow{3}{3cm}{Wird JSON unterstützt?}                                               
+		& automatisch & Das Framework de- und serialisiert Objekte automatisch ins JSON Format.                                              
+		\\ \cline{3-4} & 
+		& manuell & Durch eigenes Parsing oder mittels Drittbibliotheken können die Objekte de- und serialisiert werden.                 
+		\\ \cline{3-4} &                                                                                       
+		& nicht möglich & JSON wird nicht unterstützt und kann auch nicht nachträglich integriert werden.                                      
+		\\ \hline
+		\multirow{4}{3cm}{Gute Dokumentation} & 
+		\multirow{4}{3cm}{Bietet das Framework eine umfangreiche Dokumentation mit Beispielen?} 
+		& Sehr Umfangreich mit Beispielen & Die Dokumentation erklärt jeden Teilaspekt des Frameworks und bietet viele Code-Beispiele.                           
+		\\ \cline{3-4} &                                                                                       
+		& Umfangreich & Sämtliche Funktionen sind von der Dokumentation erfasst.                                                            
+		\\ \cline{3-4} &                                                                                       
+		& Einfach & Nur die wichtigsten Funktionen werden abgedeckt.                                                                     
+		\\ \cline{3-4} &                                                                                       
+		& nicht vorhanden & Es ist keine Dokumentation vorhanden.                                                                                
+		\\ \hline
+	\end{tabular}
+	}
+	\caption[Beispiele für Ordinalskalen]{Beispiel: Anforderungen und Ordinalskalen}
+	\label{OrdinalskalaBeispiele}
+\end{table}
+\FloatBarrier
+
 Zusätzlich können auch Softwaremetriken genutzt werden. Da im Zuge der Evaluation ein Prototyp erstellt wird, können an diesem auch direkt Messungen vorgenommen werden. Damit kann neben der Performance auch z.~B. der Aufwand zur Umsetzung bestimmter Funktionen bemessen werden. Falls z.~B. die Erstellung eines \ac{REST}-Endpunktes sehr aufwändig ist und viele Codezeilen sowie Methodenaufrufe benötigt, macht dies den Microservice schnell sehr komplex bei vielen Endpunkten und verschlechtert somit die Wartbarkeit.
 Um bei der Definition der Metriken stets das Ziel im Auge zu behalten, wird die bereits bekannte \ac{GQM} Methode genutzt. 
 
@@ -191,7 +244,7 @@ Nachdem das letzte Szenario de \ac{CW} durchgeführt wurde, steht ein Prototyp f
 
 In der Abschlussphase geht es um die Aufbereitung und Präsentation der Daten. Die zuvor durchgeführten Phasen bringen viele Anforderungen und zugehörige Metriken hervor. Da dies einen schlechten Überblick über das Gesamtergebnis liefert, werden im nächsten Schritt die Daten aufbereitet.
 
-\subsubsection{Ergebnisse auswerten}
+\subsubsection{Ergebnisse auswerten}\label{Ergebnisse_auswerten}
 
 Da Entscheidungsträger häufig keine Zeit für Detailanalysen haben, müssen die Daten so aufbereitet werden, dass mit einem Blick ein Gesamtergebnis sichtbar wird. Detailfragen lassen sich weiterhin durch die Anforderungen und Ergebnisse der Metriken klären. Ein sehr guten Überblick lässt sich durch ein Netzdiagramm erreichen. Hierzu können die Qualitätskategorien aus dem im Abschnitt \ref{Analyse_Wahl_Anforderungen} erstellten Quality Utility Tree für die Achsen genommen werden. Um einen Eindruck für das Ergebnis der Auswertung zu erhalten, ist ein Beispiel in Bild \ref{Netzdiagramm} dargestellt.
 
@@ -257,11 +310,8 @@ Die so ausgewerteten und in ein Netzdiagramm eingetragenen Daten bieten einen gu
 
 \subsubsection{Resultat präsentieren}
 
-
-
-In diesem Schritt werden die Ergebnisse präsentiert und . Dies muss dabei nicht zwangsläufig eine Präsentation sein. Viel mehr geht es um das Aufbereiten der Daten. Dies kann in einem abschließendem Dokument erfolgen. Dabei lassen sich wichtige Anforderungen, die nicht erfüllt wurden hervorheben. Sollten z.~B. Funktionen fehlen, kann bei einem späteren Release des Frameworks die Bewertung verkürzt wiederholt und nur auf diese spezifischen Anforderungen untersucht werden.
-
-Anhand der Ergebnisse kann eine eindeutige und fundierte Aussage über die Akzeptanz des Frameworks getroffen werden. Und das Risiko zur Erfüllung des geforderten Qualitätsziels minimiert sich.
+Im letzten Schritt werden die Ergebnisse festgehalten und möglichen Stakeholdern präsentiert. Dies muss dabei nicht zwangsläufig eine Präsentation sein. Viel mehr geht es darum, aus dem Gesamtergebnis ein Resultat zu ziehen. Dies kann in einem abschließendem Dokument erfolgen. Dabei lassen sich wichtige Anforderungen, die nicht erfüllt wurden hervorheben. Sollten z.~B. Funktionen fehlen, kann bei einem späteren Release des Frameworks die Bewertung verkürzt wiederholt und nur auf diese spezifischen Anforderungen untersucht werden.
+Auch kann anhand des zuvor gewonnen Gesamtüberblicks ein Vergleich mit bereits bewerteten Frameworks erfolgen. Dies kann anschließend die Grundlage für oder gegen die weitere Entwicklung mit dem Framework sein.
 
 \pagebreak
 
