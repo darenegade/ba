@@ -91,10 +91,25 @@ linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
 % ----------------
 
 %Cite Redefinition - Auto Space on citation + Prevent forever alone citation
+\renewcommand{\multicitedelim}{\addsemicolon\space}
 \LetLtxMacro{\citeold}{\cite}
-\renewcommand{\cite}[1]{~\citeold{#1}}
+\renewcommand{\cite}[2][]{~\citeold[#1]{#2}}
 \LetLtxMacro{\citesold}{\cites}
-\renewcommand{\cites}[2]{~\citesold{#1}{#2}}
+\DeclareDocumentCommand{\cites}{o m o m}{
+	\IfNoValueTF{#1}{
+		\IfNoValueTF{#3}{
+			~\citesold{#2}{#4}
+		}{
+			~\citesold{#2}[#3]{#4}
+		}
+	}{
+		\IfNoValueTF{#3}{
+			~\citesold[#1]{#2}{#4}
+		}{
+			~\citesold[#1]{#2}[#3]{#4}
+		}
+	}
+}
 %----------------------
 
 %Image Command - Optional Image otherwise TODO
