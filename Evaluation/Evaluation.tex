@@ -6,8 +6,20 @@ Um dies zu gewährleisten, müssen die richtigen Kandidaten gewählt werden.
 
 \subsection{Wahl der Kandidaten}
 
-\ac{MFEM} sollte möglichst ein schlechte Frameworks negativ und Gute positiv bewerten. Aus diesem Grund wurde als Erstes das Spring Framework\footnote{\url{spring.io}} gewählt. Es befindet sich seit 2002 in Entwicklung und hat seit dem schon mehrere Preise gewonnen\cite{Gutierrez2016}. Dabei entwickelt es die sehr aktive Open-Source-Community ständig weiter und integriert die neuesten Technologien. Beispiele hierfür sind WebFlux, welches reaktive Webapplikationen ermöglicht, oder Cloud-Contract, um die \ac{REST}-Schnittstelle mit einem Consumer-Driven Contract abzusichern.\\
-Um dem Entwickler so viel Arbeit wie möglich abzunehmen, sodass er sich auf die Geschäftslogik konzentrieren kann, wurde das Projekt Spring Boot aufgenommen. Es stellt die Konvention über die Konfiguration und erstellt so automatisch robuste, erweiterbare und skalierbare Spring Applikationen\cite[1]{Gutierrez2016}.
+Um mit der Evaluation von \ac{MFEM} möglichst vertretbare Ergebnisse zu erhalten, wurden folgenden Anforderungen an die Wahl der Kandidaten gestellt:
+
+\begin{description}
+	\item[Heterogenität] Da \ac{MFEM} eine sprachunabhängige Bewertungsmethode ist, sollten die Programmiersprachen andersartig sein.
+	\item[Diskrepanz] Um Unterschiede in einzelnen Aspekten zu erhalten, sollte der Reifegrad bzw. Entwicklungsstand auseinandergehen.
+	\item[Popularität] Die Frameworks sollten aktuell und relevant sein.
+	\item[Opportunität] Der Zweck sollte nachgewiesenermaßen für den Einsatz in einer Microservice Architektur sein.
+\end{description}
+
+Diesen Anforderungen folgend wurde als Erstes das Spring Framework\footnote{\url{spring.io}} gewählt. Es befindet sich seit 2002 in Entwicklung und hat seit dem mehrere Preise gewonnen\cite{Gutierrez2016}. Dabei entwickelt es die sehr aktive Open-Source-Community ständig weiter und integriert die neuesten Technologien. Beispiele hierfür sind WebFlux, welches reaktive Webapplikationen ermöglicht, oder Cloud-Contract, um die \ac{REST}-Schnittstelle mit einem Consumer-Driven Contract abzusichern. Zudem findet jährlich die SpringOne Konferenz statt, welche mit über 2000 Teilnehmern und 30 großen Sponsoren für den Erfolg von Spring sprechen\footnote{
+Statistiken zur SpringOne 2016 finden sich hier: \url{https://spring.io/blog/2016/08/03/springone-platform-2016-recap-day-1}
+}.\\
+2014 wurde die Erweiterung Spring Boot offiziell veröffentlicht und stellte eine große Evolution des Frameworks dar. Es nimmt dem Entwickler so viel Arbeit wie möglich ab, sodass dieser sich auf die Geschäftslogik konzentrieren kann. Dabei stellt es die Konvention über die Konfiguration und erstellt so automatisch robuste, erweiterbare und skalierbare Spring Applikationen\cite[1]{Gutierrez2016}. Dies spricht für den hohen Reifegrad und die Akzeptanz des Frameworks.\\
+Nach \cite{Wolff2016} ist das Spring Framework eine sehr gute Wahl für den Einsatz in einer Microservice Architektur und bringt alles mit, was man dafür benötigt. Somit erfüllt es die Opportunität. 
 
 \subsection{Kickoff-Phase}
 \subsection{Analysephase}
