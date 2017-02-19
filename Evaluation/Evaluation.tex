@@ -1,6 +1,6 @@
 \section{Evaluation der Methode an Beispielen}
 
-In diesem Kapitel soll die Anwendbarkeit und Wirksamkeit von \ac{MFEM} untersucht werden. Hierzu wird die Methode an 2 Beispielen durchgeführt und ausgewertet. Es werden sämtliche Phase exemplarisch durchlaufen und dokumentiert. Zudem wird für die Durchführung der 2 Beispiele der Zeitaufwand gemessen, um auch eine Aussage über die Anwendungsdauer zu treffen. Diese spielt eine Rolle für die Akzeptanz der Methode, da eine lange Laufzeit eventuelle Nutzer abschrecken könnte.\\ 
+In diesem Kapitel soll die Anwendbarkeit und Wirksamkeit von \ac{MFEM} untersucht werden. Hierzu wird die Methode an 2 Beispielen durchgeführt und ausgewertet. Es werden sämtliche Phase exemplarisch durchlaufen und dokumentiert. Zudem wird für die Durchführung der 2 Beispiele der Zeitaufwand gemessen, um auch eine Aussage über die Anwendungsdauer zu treffen. Diese spielt eine Rolle für die Akzeptanz der Methode, da eine lange Laufzeit dem Nutzen entgegensteht.\\ 
 Als Ergebnis der Evaluation wird sich zeigen, ob die Methode möglichst viele Seiten eines Frameworks betrachtet und dabei repräsentative Resultate liefert.  
 Um dies zu gewährleisten, müssen die richtigen Kandidaten gewählt werden.
 
@@ -15,14 +15,27 @@ Um mit der Evaluation von \ac{MFEM} möglichst vertretbare Ergebnisse zu erhalte
 	\item[Opportunität] Der Zweck sollte nachgewiesenermaßen für den Einsatz in einer Microservice Architektur sein.
 \end{description}
 
-Diesen Anforderungen folgend wurde als Erstes das Spring Framework\footnote{\url{spring.io}} gewählt. Es befindet sich seit 2002 in Entwicklung und hat seit dem mehrere Preise gewonnen\cite{Gutierrez2016}. Dabei entwickelt es die sehr aktive Open-Source-Community ständig weiter und integriert die neuesten Technologien. Beispiele hierfür sind WebFlux, welches reaktive Webapplikationen ermöglicht, oder Cloud-Contract, um die \ac{REST}-Schnittstelle mit einem Consumer-Driven Contract abzusichern. Zudem findet jährlich die SpringOne Konferenz statt, welche mit über 2000 Teilnehmern und 30 großen Sponsoren für den Erfolg von Spring sprechen\footnote{
-Statistiken zur SpringOne 2016 finden sich hier: \url{https://spring.io/blog/2016/08/03/springone-platform-2016-recap-day-1}
-}.\\
+Diesen Anforderungen folgend wurde als Erstes das auf Java basierende Spring Framework\footnote{\url{spring.io}} gewählt. Es befindet sich seit 2002 in Entwicklung und hat seit dem mehrere Preise gewonnen\cite[1]{Gutierrez2016}. Dabei entwickelt es die sehr aktive Open-Source-Community ständig weiter und integriert die neuesten Technologien. Beispiele hierfür sind WebFlux, welches reaktive Webapplikationen ermöglicht, oder Cloud-Contract, um die \ac{REST}-Schnittstelle mit einem Consumer-Driven Contract abzusichern. Zudem findet jährlich die SpringOne Konferenz statt, welche mit über 2000 Teilnehmern und 30 großen Sponsoren für den Erfolg von Spring sprechen\cite{SpringOne2016}.\\
 2014 wurde die Erweiterung Spring Boot offiziell veröffentlicht und stellte eine große Evolution des Frameworks dar. Es nimmt dem Entwickler so viel Arbeit wie möglich ab, sodass dieser sich auf die Geschäftslogik konzentrieren kann. Dabei stellt es die Konvention über die Konfiguration und erstellt so automatisch robuste, erweiterbare und skalierbare Spring Applikationen\cite[1]{Gutierrez2016}. Dies spricht für den hohen Reifegrad und die Akzeptanz des Frameworks.\\
-Nach \cite{Wolff2016} ist das Spring Framework eine sehr gute Wahl für den Einsatz in einer Microservice Architektur und bringt alles mit, was man dafür benötigt. Somit erfüllt es die Opportunität. 
+Nach \cite{Wolff2016} ist das Spring Framework eine sehr gute Wahl für den Einsatz in einer Microservice Architektur und lässt dabei kaum ein Problem offen, für das es keine Lösung vorhält. 
+
+Die Wahl des zweiten Frameworks fiel auf Go-Kit\footnote{\url{gokit.io}}. Es wird seit 2016 entwickelt und ist somit, im Gegensatz zu Spring, ein sehr junges Framework. Dabei setzen die Entwickler auf die Programmiersprache Go, welche selbst noch relativ jung ist. \\
+Go wurde ursprünglich 2007 von Mitarbeitern des Unternehmens Google\cite{Golang2009} entwickelt und ist seit 2012 in einer stabilen Version verfügbar. Seit dem ist das Interesse für diese Sprache immens gestiegen, was der Tiobe Index deutlich zeigt. Dies ist ein Popularitäts-Ranking von Programmiersprachen, in dem Go bereits Platz 14 (Stand: Februar 2017) einnimmt\cite{Tiobe2016}. Aufgrund der starken Steigerung gegenüber dem Vorjahr wurde Go von Tiobe auch zur Programmiersprache 2016 gewählt.\\
+Da Go bereits im Hinblick auf skalierbare Netzwerkdienste, Cluster- und Cloud Computing entwickelt wurde, bringt die Sprache bereits sehr viel für die Erstellung von verteilten Systemen mit. In Bezug auf eine Microservice Architektur fehlen jedoch einige Funktionen wie z.~B. Infrastrukturintegration oder Logging. Diese Lücke versucht Go-Kit zu schließen, damit der Entwickler sich auf die Geschäftslogik konzentrieren kann.
+
+Mit Spring und Go-Kit für die Evaluation von \ac{MFEM} werden die Anforderungen nach Heterogenität, Diskrepanz, Popularität und Opportunität erfüllt. Neben den unterschiedlichen Programmiersprachen geht der Reifegrad der Frameworks stark auseinander und sollte somit für unterschiedliche Ergebnisse sorgen. Nichtsdestotrotz erfahren 
+beide aktuell einen hohen Zuspruch für den Einsatz in einer Microservice Architektur und stellen somit interessante Kandidaten dar.
 
 \subsection{Kickoff-Phase}
+
+Neben der Einführung der Methode sieht diese Phase eine Vorstellung der vorhandenen Microservice Architektur vor. Da ein Teil der Evaluation auf den in \ac{MFEM} enthaltenen Basisanforderungen und deren Wirkung liegen soll, wurde auf die Erstellung einer theoretischen Grundarchitektur verzichtet. Dies würde weitere Anforderungen in den Prozess mit einbeziehen und eventuell einzelne Basisanforderungen ausschließen.\\
+Eine Auswirkung auf das Evaluationsergebnis wird nicht erwartet, da eine spezifische Architektur sich nur auf die Wahl der Anforderungen niederschlägt. Die weiteren Phasen haben keinen direkten Zusammenhang zur Architektur und bleiben daher unberührt.\\
+Weitere Einführungen sind an dieser Stelle nicht vorgenommen worden, da nur der Autor die Evaluation durchführt.  
+
 \subsection{Analysephase}
+
+
+
 \subsubsection{Wahl der Anforderungen}
 \subsubsection{Metriken definieren}
 \subsection{Evaluationsphase}
