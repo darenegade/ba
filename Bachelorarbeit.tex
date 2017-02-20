@@ -57,6 +57,8 @@ linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
 	colorlinks=true,linkcolor=black,citecolor=black,filecolor=magenta,urlcolor=black}
 \pdfinfo{/CreationDate (D:20110620133321)}
 
+\numberwithin{figure}{section} %Numbering of figs include section
+
 \setlist[description]{labelindent=1cm}
 \setlist[itemize]{labelindent=1cm}
 \setlist[enumerate]{labelindent=1cm}
@@ -184,7 +186,7 @@ linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
 	\begin{tabular}{x{6cm}p{7.5cm}}
 		\rule{0mm}{5ex}\textbf{Autor:} & René Zarwel\newline zarwel@hm.edu \\ 
 		\rule{0mm}{5ex}\textbf{Prüfer:} & Prof. Dr. Hammerschall \\ 
-		\rule{0mm}{5ex}\textbf{Abgabedatum:} & XX.XX.XX\\ 
+		\rule{0mm}{5ex}\textbf{Abgabedatum:} & 13.03.2017\\ 
 	\end{tabular} 
 \end{center}
 \pagebreak
@@ -322,24 +324,60 @@ Insert Abstract Here
 % ----------------------------------------------------------------------------------------------------------
 \todototoc
 \listoftodos
+\pagebreak
+% ----------------------------------------------------------------------------------------------------------
+% Selbstständigkeitserklärung
+% ----------------------------------------------------------------------------------------------------------
+\begin{appendix}
+\pagenumbering{Roman}
+\setcounter{page}{1}
 
+\thispagestyle{empty}
+\section*{Selbstständigkeitserklärung}
+\phantomsection
+\addcontentsline{toc}{section}{Selbstständigkeitserklärung}
+\addtocontents{toc}{\vspace{-0.5em}}
+
+\vspace{2cm}
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{p{0.5\linewidth}p{0.5\linewidth}}
+		\textbf{Zarwel, René} & \textbf{München, 13.03.2017} \\ 
+		(Familienname, Vorname) & (Ort, Datum)\\
+		\\ \\
+		\textbf{21.10.1987} & \textbf{Informatik - 7B / WS - 2013} \\ 
+		(Geburtsdatum) & (Studiengruppe / WS/SS)\\
+	\end{tabular} 
+\end{table}
+\vspace{2cm}
+
+\begin{center}
+	\Large
+	\textbf{Erklärung}
+\end{center}
+
+\vspace{1cm}
+Hiermit erkläre ich, dass ich die Bachelorarbeit selbständig verfasst, noch nicht anderweitig für Prüfungszwecke vorgelegt, keine anderen als die angegebenen Quellen oder Hilfsmittel benutzt sowie wörtliche und sinngemäße Zitate als solche gekennzeichnet habe.\\[4ex]
+
+München, den 13.03.2017\\[6ex]
+\flushleft
+\newlength\us
+\settowidth{\us}{-René~Zarwel-}
+\begin{tabular}{p{\us}}\hline
+	\centering\footnotesize René~Zarwel
+\end{tabular}
+\pagebreak
 % ----------------------------------------------------------------------------------------------------------
 % Anhang
 % ----------------------------------------------------------------------------------------------------------
-\pagenumbering{Roman}
-\setcounter{page}{1}
 \lhead{Anhang \thesection}
-
-\begin{appendix}
 \section*{Anhang}
 \phantomsection
 \addcontentsline{toc}{section}{Anhang}
 \addtocontents{toc}{\vspace{-0.5em}}
 \section{\ac{MFEM} - Vollständiger Quality Utility Tree}
 \todoInline{Quality Utility Tree vollständig mit allen Kategorien (mit GQM)}
-
-\section{CODE}
-\todoInline{Nothing Here}
+\pagebreak
 
 \end{appendix}
 \end{document}

@@ -28,16 +28,33 @@ beide aktuell einen hohen Zuspruch für den Einsatz in einer Microservice Archit
 
 \subsection{Kickoff-Phase}
 
-Neben der Einführung der Methode sieht diese Phase eine Vorstellung der vorhandenen Microservice Architektur vor. Da ein Teil der Evaluation auf den in \ac{MFEM} enthaltenen Basisanforderungen und deren Wirkung liegen soll, wurde auf die Erstellung einer theoretischen Grundarchitektur verzichtet. Dies würde weitere Anforderungen in den Prozess mit einbeziehen und eventuell einzelne Basisanforderungen ausschließen.\\
-Eine Auswirkung auf das Evaluationsergebnis wird nicht erwartet, da eine spezifische Architektur sich nur auf die Wahl der Anforderungen niederschlägt. Die weiteren Phasen haben keinen direkten Zusammenhang zur Architektur und bleiben daher unberührt.\\
-Weitere Einführungen sind an dieser Stelle nicht vorgenommen worden, da nur der Autor die Evaluation durchführt.  
+Neben der Einführung der Methode sieht diese Phase eine Vorstellung der vorhandenen Microservice Architektur vor.  
+Da ein Teil der Evaluation auf den in \ac{MFEM} enthaltenen Basisanforderungen und deren Wirkung liegen soll, wurde ein möglichst einfacher Entwurf der zugrundeliegenden Architektur gewählt. So ergeben sich in der Analysephase nur wenige spezifische Anforderungen, die für die Evaluation der Methode nur eine geringe Rolle spielen. Weitere Phasen sind von der Microservice Architektur nicht direkt betroffen und bleiben daher unberührt. Abbildung \ref{Evaluationsarchitektur} zeigt die gewählte Architektur.
+
+\image[Evaluationsarchitektur.pdf]{Evaluationsarchitektur}{Architektur für die Evaluation}{Vorgegebene Microservice Architektur für die Evaluation}
+
+Die Architektur teilt sich in Infrastruktur und Services auf. Services enthalten die Ge\-schäfts\-logik sowie Datenhaltung. Dabei kann es verschiedene Services geben, die in mehrere Instanzen vorhanden sein können. Die genaue Form ist für die Evaluation irrelevant und wird daher nicht weiter berücksichtigt. Des Weiteren kümmert sich die Infrastruktur um den reibungslosen Ablauf und ist in Service-Discovery, Authentication-Service und API-Gateway aufgeteilt.
+
+Das API-Gateway stellt eine einheitliche Schnittstelle des Gesamtsystems den Clients zur Verfügung. So müssen diese keine Kenntnis über die interne Struktur haben und können sämtliche Funktionen über einen zentralen Punkt nutzen. Hierzu reicht es die externen Anfragen an die jeweiligen Services weiter.
+
+Die Service-Discovery sorgt für die Verwaltung der einzelnen Services und deren Instanzen, damit diese von anderen, z.~B. dem API-Gateway, erreicht werden können. Jede Instanz eines Services muss sich an der Discovery beim Start registrieren und einen regelmäßigen Heartbeat an diese senden. Hierzu bietet die mit Netflix Eureka erstellte Discovery eine \ac{REST}-Schnittstelle zur Verfügung. Der genaue Ablauf ist in Abbildung \ref{ServiceDiscovery} dargestellt.
+
+\image[ServiceDiscovery.pdf][width=0.5\linewidth]{ServiceDiscovery}{Ablauf Service Discovery}{Ablauf: Zugriff über die Service Discovery}
+
+Der Authentication Service kümmert sich um die Authentifizierung der Benutzer. Damit müssen die einzelnen Services keine eigene Benutzerverwaltung integrieren. Mit der Authentifizierung erhält der Client einen begrenzt gültigen \ac{JWT}, mit dem er auf die Services zugreifen kann. So lassen sich auch kaskadierte Anfragen realisieren, bei dem ein Service mittels des \ac{JWT} einen anderen aufruft ohne die Anmeldeinformationen des Clients zu kennen. Dies ist auch vereinfacht in Abbildung \ref{AuthFlow} dargestellt, wobei die Zwischenschritte über das API-Gateway und die Service-Discovery vernachlässigt wurden.
+
+\image[AuthFlow.pdf][width=0.7\linewidth]{AuthFlow}{Ablauf kaskadierter Anfrage}{Vereinfachte Darstellung einer kaskadierten Anfrage eines Clients über mehrere Services}
+
+
 
 \subsection{Analysephase}
 
 
 
 \subsubsection{Wahl der Anforderungen}
+
 \subsubsection{Metriken definieren}
+
 \subsection{Evaluationsphase}
 \subsubsection{Evaluation definieren}
 \subsubsection{Metriken zuordnen}
