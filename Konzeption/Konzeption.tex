@@ -193,28 +193,32 @@ Auf diesem Modell soll auch eine einfache Geschäftslogik implementiert werden, 
 Die objektive Evaluation dient zur Findung der \textbf{harten} Daten. Hierzu werden die Artefakte aus der subjektiven Evaluation als Grundlage der Messungen genutzt. So können einzelne Funktionen im Code auf Komplexität untersucht werden, damit z.~B. eine Aussage über Umsetzungsaufwand oder Wartbarkeit getroffen werden kann. Neben diesen Messungen direkt an den Artefakten kann auch eine Performance Messung und Recherche zur Ermittlung der harten Daten herangezogen werden. 
 
 \newsubparagraph{Performance Messung}
-Der aus der subjektiven Evaluation gewonnene lauffähige Prototyp kann für Performance-Messungen herangezogen werden. Hierzu sollen ein oder mehrere Anforderungsprofile definiert werden, die eine reguläre Nutzung des Services unter verschiedenen Situationen betrachtet. Damit werden die Voraussetzungen und Umstände für die Messungen genauer definiert. 
+Der aus der subjektiven Evaluation gewonnene lauffähige Prototyp kann für Performance-Messungen herangezogen werden. Hierzu sollen ein oder mehrere Anforderungsprofile definiert werden, die eine reguläre Nutzung des Services unter verschiedenen Situationen betrachtet. Damit werden die Voraussetzungen und Umstände für die Messungen genauer definiert. Die Tabelle \ref{Anforderungsprofile} zeigt hierzu ein paar mögliche Beispiele. 
 
 \begin{table}[!h]
 	\centering
 	\begin{tabular}{p{1cm}p{4cm}p{2cm}p{2cm}p{4cm}}
-		\textbf{Nr.} & \textbf{Name} & \textbf{parallele Anfragen} & 
-		\textbf{Wieder- holungen} & \textbf{Besonderheit} \\
+		\textbf{Nr.} & \textbf{Typ} & \textbf{Parallele Verbindungen} & 
+		\textbf{Dauer} & \textbf{Besonderheit} \\
 		\hline
-		1 	& Datenservice 			& 255	&	500		& CRUD Operationen auf Datenbank  \\
+		1 	& Datenservice 			& 255	&	30s		& CRUD Operationen auf Datenbank  \\
 		\hline
-		2	& Einfacher Service		& 255 	&	500		& Wenig rechenintensive Geschäftslogik   \\
+		2	& Einfacher Service		& 255 	&	30s		& Wenig rechenintensive Geschäftslogik   \\
 		\hline
-		3	& Komplexer Service 	& 255	&	500		& Stark rechenintensive Geschäftslogik  \\
+		3	& Einfacher Service		& 10 	&	30s		& Wenig rechenintensive Geschäftslogik   \\
+		\hline
+		4	& Komplexer Service 	& 255	&	30s		& Stark rechenintensive Geschäftslogik  \\
+		\hline
+		5	& Komplexer Service 	& 10	&	30s		& Stark rechenintensive Geschäftslogik  \\
 		\hline
 	\end{tabular}
 	\caption[Anforderungsprofile]{Beispiel: Anforderungsprofile für die objektiven Evaluation am Prototyp}
 	\label{Anforderungsprofile}
 \end{table}
 
-Das erste Anforderungsprofil stellt einen einfachen Datenservice dar. Dieser ist mit einer Datenbank verbunden und führt diese über die \ac{REST}-Schnittstelle nach außen. Durch die hohen Anfragen wird dieser Service stark unter Last gestellt, um eine Aussage über Qualitätsmerkmale wie Stabilität, Fehlerrate und Durchsatz zu treffen.
+Das erste Anforderungsprofil-Beispiel stellt einen einfachen Datenservice dar. Dieser ist mit einer Datenbank verbunden und führt diese über die \ac{REST}-Schnittstelle nach außen. Durch die hohen Anfragen wird dieser Service stark unter Last gestellt, um eine Aussage über Qualitätsmerkmale wie Stabilität, Fehlerrate und Durchsatz zu treffen.
 
-Um möglichst limitierende Faktoren, wie die Datenbank, auszuschließen, wurden das Profil zwei definiert. Dieses baut auf einer Geschäftslogik im Service auf. Dabei spielt es keine Rolle, ob ein sinnvolles Ergebnis berechnet wird. Mit der wenig rechenintensiven Logik steht der Overhead des Frameworks im Vordergrund. Ist dieses besonders groß, um z.~B. die übertragenen Daten zu de- und serialisieren, beeinflusst es jede Anfrage am Service und vermindert den Durchsatz. Die stark rechenintensive Logik zielt dabei mehr auf einen Vergleich zu anderen Programmiersprachen ab. Aus diesem Grund sollte die enthaltene Logik einheitlich sein. So kann sie darin bestehen Testdaten zu generieren und diese zu sortieren.
+Um möglichst limitierende Faktoren, wie die Datenbank, auszuschließen, wurden die Profile zwei bis fünf definiert. Diese bauen auf einer Geschäftslogik im Service auf. Dabei spielt es keine Rolle, ob ein sinnvolles Ergebnis berechnet wird. Mit der wenig rechenintensiven Logik steht der Overhead des Frameworks im Vordergrund. Ist dieser besonders groß, um z.~B. die übertragenen Daten zu de- und serialisieren, beeinflusst es jede Anfrage am Service und vermindert den Durchsatz. Die stark rechenintensive Logik zielt dabei mehr auf einen Vergleich zu anderen Programmiersprachen ab. Aus diesem Grund sollte die enthaltene Logik einheitlich sein. So kann sie darin bestehen Testdaten zu generieren und diese zu sortieren.
 
 Neben dem reinen Zeitverhalten können an den Profilen noch weitere Messwerte erhoben werden. Dies kann z.~B. Speicherbedarf in Ruhe sowie bei Vollauslastung sein. Dabei stellen die zuvor genannten Punkte nur Beispiele für Messungen an den Profilen dar. Welche genau durchgeführt werden, wurde bereits mit den Anforderungen über \ac{GQM} definiert. So bleiben die tatsächlichen Messungen sinnvoll.
 

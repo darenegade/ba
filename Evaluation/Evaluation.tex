@@ -71,28 +71,55 @@ Nachdem alle Anforderungen zusammengetragen und in einem Quality Utility Tree ei
 
 Mit dem Ergebnis aus dem letzten Schritt können nun die passenden Metriken für die Anforderungen gefunden werden. \ac{MFEM} sieht hierfür den Top-Down Ansatz der \ac{GQM} Methode vor.\\
 Das heißt, dass für jede Anforderungen eine oder mehrere Fragen erstellt werden, die zusammen das Ziel wiedergeben. Sie drücken somit aus, was man mit der Messung erfahren will und betrachten die Anforderung von mehreren Seiten.\\
-Für alle Anforderungen wurden so Metriken definiert und in einer Tabelle festgehalten.
+Für alle Anforderungen wurden so Fragen erstellt und in einer Tabelle festgehalten. Darauf aufbauend wurden Metriken definiert, die die Fragen beantworten sollen.
 
-Diese Tabelle wird in \ref{GQM} dargestellt und enthält das Ergebnis der Anwendung von \ac{GQM} auf die Anforderungen mit allen definierten Metriken.  
+Die gesamte in diesem Schritt erstellte Tabelle wird in \ref{GQM} dargestellt und enthält das Ergebnis der Anwendung von \ac{GQM} auf die Anforderungen mit allen definierten Metriken.  
 
-\todo{Einbau der Tabelle überdenken....eher Anhang, aber wie dann hier?}
-\begin{table}[!h]
-	\centering
-	\begin{tabular}{c}
-		\includegraphics[width=0.9\linewidth]{Bilder/GQM.pdf}	
-	\end{tabular}
+\begin{longtable}{c}
+	\includegraphics[width=\linewidth]{Bilder/GQM.pdf} \\	
+	\includegraphics[width=\linewidth]{Bilder/GQM2.pdf}	\\
 	\caption[Evaluation: Goal Question Metrik Tabelle]{Goal Question Metrik Ergebnis als Tabelle dargestellt}
-	\label{GQM}
-\end{table}
+	\label{GQM}\\
+\end{longtable}
 \FloatBarrier
 
 \subsection{Evaluationsphase}
 
-
+In der Evaluationsphase wird nun der Ablauf der Evaluation geplant und durchgeführt. Hierzu werden im nächsten Schritt Szenarien definiert.
 
 \subsubsection{Evaluation definieren}
 
+Die Evaluation wird in subjektiv und objektiv aufgeteilt. Für die subjektive Evaluation werden Szenarien definiert, die die Anforderungen bzw. Metriken untersuchen sollen.\\
+\ac{MFEM} sieht hierzu die Definition eines Standard-Anwendungsfalls vor, der in mehrere Teile, den Szenarien, aufgeteilt wird. Hier wurde die Erstellung eines einfachen Daten-Service definiert, der sich mit dem Beispiel aus Kapitel \ref{Evaluation_definieren} deckt. Aus diesem Grund werden auch die Beispiel-Szenarien aus Kapitel \ref{Evaluation_definieren} übernommen und hier nur nochmal kurz zusammengefasst:
 
+\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Sz.3 Erweiterter Service}]
+	\item[Sz.1 Installation] Installation der Sprache sowie des Frameworks und Einrichtung der Build-Tools
+	\item[Sz.2 Einfacher Service] Programmierung eines einfachen "Hello World"-Services, inklusive Security
+	\item[Sz.3 Erweiterter Service] Erweiterung des einfachen Services um ein Datenmodell (Aufgabenverwaltung)  
+\end{description} 
+
+Für die objektive Evaluation stehen nach \ac{MFEM} bereits Messgruppen fest. Diese umfassen die Messung an Artefakten, wie z.~B. dem Code, die Performance-Messung am lauffähigen Prototyp sowie der Recherche.\\
+Um für die Messungen am laufenden Prototyp definierte Umstände zu haben, werden hier noch Anforderungsprofile benötigt. Dabei wurden folgende Profile für die Evaluation festgehalten:
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{p{1cm}p{4cm}p{2cm}p{2cm}p{4cm}}
+		\textbf{Nr.} & \textbf{Typ} & \textbf{Parallele Verbindungen} & 
+		\textbf{Dauer} & \textbf{Besonderheit} \\
+		\hline
+		1 	& Datenservice 			& 255	&	30s		& CRUD Operationen auf Datenbank  \\
+		\hline
+		2	& Einfacher Service		& 255 	&	30s		& Wenig rechenintensive Geschäftslogik   \\
+		\hline
+	\end{tabular}
+	\caption[Anforderungsprofile]{Anforderungsprofile für die objektiven Evaluation am Prototyp}
+	\label{AnforderungsprofileEval}
+\end{table}
+
+Insgesamt ergeben sich für den nächsten Schritt somit 6 Messgruppen, denen Metriken zugeordnet werden können.
+Diese sind in Abbildung \ref{MessgruppenEval} nochmal zusammengefasst.
+
+\image[MessgruppenEval.pdf]{MessgruppenEval}{Messgruppen für Evaluation}{Zusammenfassung aller Messgruppen für Evaluation}
 
 \subsubsection{Metriken zuordnen}
 
