@@ -1,6 +1,6 @@
 \section{Evaluation der Methode an Beispielen}
 
-In diesem Kapitel soll die Anwendbarkeit und Wirksamkeit von \ac{MFEM} untersucht werden. Hierzu wird die Methode an 2 Beispielen durchgeführt und ausgewertet. Es werden sämtliche Phase exemplarisch durchlaufen und dokumentiert. Zudem wird für die Durchführung der 2 Beispiele der Zeitaufwand gemessen, um auch eine Aussage über die Anwendungsdauer zu treffen. Diese spielt eine Rolle für die Akzeptanz der Methode, da eine lange Laufzeit dem Nutzen entgegensteht.\\ 
+In diesem Kapitel soll die Anwendbarkeit und Wirksamkeit von \ac{MFEM} untersucht werden. Hierzu wird die Methode an 2 Beispielen durchgeführt und anschließend ausgewertet. Es werden sämtliche Phase exemplarisch durchlaufen, dokumentiert und kurz resümiert. Zudem wird für die Durchführung der 2 Beispiele der Zeitaufwand gemessen, um auch eine Aussage über die Anwendungsdauer zu treffen. Diese spielt eine Rolle für die Akzeptanz der Methode, da eine lange Laufzeit dem Nutzen entgegensteht.\\ 
 Als Ergebnis der Evaluation wird sich zeigen, ob die Methode möglichst viele Seiten eines Frameworks betrachtet und dabei repräsentative Resultate liefert.  
 Um dies zu gewährleisten, müssen die richtigen Kandidaten gewählt werden.
 
@@ -47,13 +47,17 @@ Der Authentication Service kümmert sich um die Authentifizierung der Benutzer. 
 
 Weitere Vorgaben über die Architektur werden nicht gemacht, da diese im Sinne der Evaluation nicht zielführend wären. Wie eingangs geschildert, würde sich dies nur in zusätzlichen Anforderungen widerspiegeln.
 
+\subsubsection{Resümee Kickoff}
+
+Da nur der Autor die Evaluation durchführt, gab es keine Informationen, die mit anderen Teilnehmern ausgetauscht werden mussten. Aus diesem Grund wäre diese Phase bei einer realen Anwendung übersprungen worden. Sie ist somit zu Recht nach \ac{MFEM} nur optional durchzuführen. Eine Einführung bei mehreren Teilnehmern mach weiterhin durchaus Sinn.
+
 \subsection{Analysephase}
 
 In der Analysephase sollen nun mit Hilfe der gegebenen Architektur die Anforderungen gewählt, priorisiert und um Metriken erweitert werden. Hierzu wird im nächsten Schritt ein Quality Utility Tree aufgebaut.
 
 \subsubsection{Architektur Analyse und Wahl der Anforderungen}
 
-Mit \ac{MFEM} kommen bereits viele Anforderungen, die Basisanforderungen, mit. Da die Architektur möglichst einfach gehalten wurde, gibt es keinen Widerspruch zu diesen Anforderungen. Sie lassen sich somit vollständig übernehmen.
+Mit \ac{MFEM} kommen bereits viele Anforderungen, die Basisanforderungen, mit. Da die Architektur möglichst einfach gehalten wurde, gibt es keinen Widerspruch zu diesen Anforderungen. Auch gibt es unter den Basisanforderungen keine Punkte die sich Widersprechen. Sie lassen sich somit vollständig übernehmen.
 
 Zusätzlich ergeben sich aus der Architektur funktionale Serviceanforderungen. Dies betrifft hauptsächlich die Service-Discovery. Ein Service muss sich an diesem An- und Abmelden sowie regelmäßig einen Heartbeat senden. Auch für die Inter-Service-Kommunikation muss ein Service an der Discovery die Einträge abfragen und verarbeiten können. (Abbildung \ref{ServiceDiscovery}) Somit wurde die Anforderung zur Unterstützung einer mit Eureka aufgebauten Service-Discovery aufgenommen.
 
@@ -65,7 +69,7 @@ Die Basisanforderungen decken bereits eine Vielzahl an nicht-funktionalen Servic
 
 Nachdem alle Anforderungen zusammengetragen und in einem Quality Utility Tree eingeordnet wurden, sind diese Priorisiert worden. Abbildung \ref{QUT} zeigt den entstandenen Quality Utility Tree mit allen Anforderungen für die Evaluation.
 
-\image[QUT.pdf][width=0.7\linewidth]{QUT}{Quality Utility Tree Evaluation}{Priorisierter Quality Utility Tree mit allen Anforderungen für die Evaluation.}
+\image[QUT.pdf][width=0.9\linewidth]{QUT}{Quality Utility Tree Evaluation}{Priorisierter Quality Utility Tree mit allen Anforderungen für die Evaluation.}
 
 \subsubsection{Metriken definieren}
 
@@ -78,10 +82,15 @@ Die gesamte in diesem Schritt erstellte Tabelle wird in \ref{GQM} dargestellt un
 \begin{longtable}{c}
 	\includegraphics[width=\linewidth]{Bilder/GQM.pdf} \\	
 	\includegraphics[width=\linewidth]{Bilder/GQM2.pdf}	\\
-	\caption[Evaluation: Goal Question Metrik Tabelle]{Goal Question Metrik Ergebnis als Tabelle dargestellt}
+	\caption[Evaluation: Goal Question Metrik Tabelle]{Goal Question Metrik Ergebnis}
 	\label{GQM}\\
 \end{longtable}
 \FloatBarrier
+
+\subsubsection{Resümee Analysephase}
+Die Basisanforderungen stellen eine gute Grundlage für die Wahl der Anforderungen da und beschleunigen somit die Analysephase. Dadurch konnte der \acl{QUT} schnell aufgebaut und priorisiert werden. Es bietet sich dabei an, dass der \ac{QUT} mit den Basisanforderungen vor dem Brainstorming für die Anforderungen vorbereitet ist und entsprechend angepasst wird.\\
+Bei der Definition von Metriken fällt auf, dass viele qualitative Metriken, die Ordinalskalen, verwendet wurden. Dies lässt den Ursprung von \ac{MFEM} in der qualitativen Architekturbewertung erkennen. Aus Sicht des Autors bieten die Ordinalskalen einen guten Ansatz, um auch weiche Daten zu quantifizieren. Zusammen mit den weiteren Metriken kann das Framework so von allen Seiten betrachtet werden.\\
+Wie sich der Einsatz der gefunden Metriken auswirkt, kommt aus dem den folgenden Phasen hervor.
 
 \subsection{Evaluationsphase}
 
@@ -90,7 +99,7 @@ In der Evaluationsphase wird nun der Ablauf der Evaluation geplant und durchgef�
 \subsubsection{Evaluation definieren}
 
 Die Evaluation wird in subjektiv und objektiv aufgeteilt. Für die subjektive Evaluation werden Szenarien definiert, die die Anforderungen bzw. Metriken untersuchen sollen.\\
-\ac{MFEM} sieht hierzu die Definition eines Standard-Anwendungsfalls vor, der in mehrere Teile, den Szenarien, aufgeteilt wird. Hier wurde die Erstellung eines einfachen Daten-Service definiert, der sich mit dem Beispiel aus Kapitel \ref{Evaluation_definieren} deckt. Aus diesem Grund werden auch die Beispiel-Szenarien aus Kapitel \ref{Evaluation_definieren} übernommen und hier nur nochmal kurz zusammengefasst:
+\ac{MFEM} sieht hierzu die Definition eines Standard-Anwendungsfalls vor, der in mehrere Teile, den Szenarien, aufgeteilt wird. Hier wurde die Erstellung eines einfachen Daten-Service definiert, der sich mit dem Beispiel aus Kapitel \ref{Evaluation_definieren} deckt. Aus diesem Grund werden auch die Beispiel-Szenarien aus Kapitel \ref{Evaluation_definieren} übernommen und hier nur kurz zusammengefasst:
 
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Sz.3 Erweiterter Service}]
 	\item[Sz.1 Installation] Installation der Sprache sowie des Frameworks und Einrichtung der Build-Tools
@@ -123,21 +132,58 @@ Diese sind in Abbildung \ref{MessgruppenEval} nochmal zusammengefasst.
 
 \subsubsection{Metriken zuordnen}
 
+Die Zuordnung der Metriken beginnt mit den Szenarios. Da diese zur subjektiven Evaluation gehören, werden nur weiche Daten erhoben. Im aktuellen Fall betrifft dies somit die mittels Ordinalskala erhobenen Metriken.
 
+Da das Szenario 1 die Installation und Einrichtung übernimmt, wurden hier z.~B. Metriken der Anforderungen  Build-Tools oder Dependencieverwaltung zugeordnet. Mit dem Szenario 2, dem einfachen Service, konnten die Standardformate und Security (\ac{JWT}) zugeordnet werden. Als letzte wurden dem Szenario 3, dem erweiterten Service, die Metriken für die \ac{REST}-Schnittstelle sowie Objektvalidierung zugeordnet. Zusätzlich wurden diesem Szenario, da es das fortgeschrittenste ist, auch die Dokumentation und effiziente Programmierung zugeteilt.\\
+Somit blieben am Ende des ersten Durchlaufs Metriken für Anforderungen wie z.~B. Logging, Service-Discovery und Circuit-Breaker-Pattern übrig. Aus diesem Grund mussten die Szenarios weiter verfeinert werden. Die Wahl fiel dabei auf das Szenario 2. Es sollte somit nicht nur ein "Hello World"-Service entstehen, sondern auch ein Service der bereits in der Infrastruktur funktioniert. Somit ließen sich auch die letzten Metriken zuordnen. 
+
+Es ergibt sich somit die in Tabelle \ref{SzMetriken} gezeigte Zuordnung.  
+
+\begin{longtable}{c}
+	\includegraphics[width=\linewidth]{Bilder/SzMetriken.pdf} \\	
+	\caption[Metriken Szenarios]{Szenarios: Zugeordnete Metriken}
+	\label{SzMetriken}\\
+\end{longtable}
+\FloatBarrier
+
+Da die objektiven Metriken sich nur an ihrem definierten Messpunkt erheben lassen, z.~B. kann der Durchsatz nur am lauffähigen Prototyp ermitteln, ließen sich diese einfach auf die 3 verbleibenden Messgruppen verteilen. 
+
+Es ergibt sich somit die in Tabelle \ref{ObjekEvalMetriken} gezeigte Zuordnung. 
+
+\begin{longtable}{c}
+	\includegraphics[width=\linewidth]{Bilder/ObjekEvalMetriken.pdf} \\	
+	\caption[Metriken Objektive Evaluation]{Objektive Evaluation: Zugeordnete Metriken}
+	\label{ObjekEvalMetriken}\\
+\end{longtable}
+\FloatBarrier
+
+Da nun festgelegt ist, an welchem Punkt welche Daten erhoben werden, kann die Evaluation der Kandidaten durchgeführt werden.
 
 \subsubsection{Evaluation durchführen: Spring Boot}
 
+An dieser Stelle werden die Szenarien und Messungen an Spring Boot vorgenommen. Da es bei der Evaluation von \ac{MFEM} weniger um die konkrete Implementierung geht, wird die Durchführung der einzelnen Messgruppen nur kurz beschrieben und markante Punkte hervorgehoben.\footnote{
+	Die gesamte Implementierung findet sich auf einem Github Repository mit der URL:\url{https://github.com/darenegade/SimpleSpringService}
+}  
 
+\newparagraph{Szenario 1: Installation}
+\newparagraph{Szenario 2: Einfacher Service}
+\newparagraph{Szenario 3: Erweiterter Service}
+\newparagraph{Quantitative Evaluation}
 
 \subsubsection{Evaluation durchführen: Go-Kit}
 
+\newparagraph{Szenario 1: Installation}
+\newparagraph{Szenario 2: Einfacher Service}
+\newparagraph{Szenario 3: Erweiterter Service}
+\newparagraph{Quantitative Evaluation}
 
+\subsubsection{Resümee Evaluationsphase}
 
 \subsection{Abschlussphase}
+\subsubsection{Resümee Abschlussphase}
 
 
-
-\subsection{Methodenauswertung}
+\subsection{Gesamtauswertung \ac*{MFEM}}
 
 
 
