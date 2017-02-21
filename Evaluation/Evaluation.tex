@@ -163,12 +163,110 @@ Da nun festgelegt ist, an welchem Punkt welche Daten erhoben werden, kann die Ev
 
 An dieser Stelle werden die Szenarien und Messungen an Spring Boot vorgenommen. Da es bei der Evaluation von \ac{MFEM} weniger um die konkrete Implementierung geht, wird die Durchführung der einzelnen Messgruppen nur kurz beschrieben und markante Punkte hervorgehoben.\footnote{
 	Die gesamte Implementierung findet sich auf einem Github Repository mit der URL:\url{https://github.com/darenegade/SimpleSpringService}
-}  
+} 
 
 \newparagraph{Szenario 1: Installation}
+Mit Spring Boot wird Java als Programmiersprache benötigt. Die nötigen Installationsdateien lassen sich für jedes Betriebssystem bei Oracle\footnote{\url{http://www.oracle.com/technetwork/java}} beziehen.\\
+Als Buildmanagement-Tools haben sich Gradle\footnote{\url{https://gradle.org}}  und Maven\footnote{\url{https://maven.apache.org}} etabliert. Beide sind für die Verwendung mit Spring gut geeignet und daher fiel die Wahl auf Maven. Die Installation ist sehr einfach und es werden keine Vorkenntnisse benötigt. So konnten alle Metriken mit den bestmöglichen Werten bewertet werden.
+
+\begin{longtable}{c}
+	\includegraphics[width=\linewidth]{Bilder/Sz1Ergebnis.pdf} \\	
+	\caption[Szenario 1 Ergebnis Spring]{Ergebnis von Szenario 1 für Spring}
+	\label{Sz1ErgebnisSpring}\\
+\end{longtable}
+\FloatBarrier
+
 \newparagraph{Szenario 2: Einfacher Service}
+Für die Erstellung eines neuen Projektes bietet Spring einen Initialisierungsservice\footnote{\url{http://start.spring.io}} an. Dieser lässt einen die nötigen Spring Module auswählen und das Projekt vorkonfigurieren. Als Ergebnis erhält man ein vollständig konfiguriertes Maven Projekt.
+Dies macht den Einstieg sehr einfach.
+
+%\image[start_spring.png][width=0.7\linewidth]{SpringStarter}{Initialisierungsservice Spring}{Initialisierungsservice von Spring}
+
+Auch die Implementierung eines einfachen "Hello-World"-Service ist mit Spring denkbar einfach. Das Listing \ref{SpringHello} zeigt was hierfür nötig ist. Daran sieht man sehr gut, dass die Einstiegshürde sehr gering ist. 
+Mit \lstinline|@SpringBootApplication| werden die Standard-Spring\-konfigurationen aktiviert. So lässt sich anschließend über \lstinline|@RestController| und \lstinline|@PostMapping| der "Hello-World"-Endpunkt erstellen.
+Mehr Konfiguration ist dabei nicht nötig, da Spring über die automatische Konfiguration die Parameter sowie den Rückgabewert der Methode erkennt und damit den Endpunkt anlegt. Auch die De- und Serialisierung in die Standardformate erfolgt automatisch und muss nicht manuell erstellt werden. Somit konnten diese Anforderungen mit automatisch bewertet werden. 
+
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}[caption={"Hello-Word" in Spring},label=SpringHello,language=JAVA] 
+		@SpringBootApplication
+		@RestController
+		@EnableEurekaClient
+		public class Application {
+		
+			public static void main(String[] args) {
+				SpringApplication.run(Application.class, args);
+			}
+			
+			@PostMapping("/hello_service")
+			public String helloService(@RequestBody Name name){
+				return "Hello " + name.getName();
+			}
+		}
+	\end{lstlisting}
+\end{minipage}
+
+Ähnlich einfach gestaltet sich die Einrichtung der Service-Discovery Unterstützung. Mit der zusätzlichen Annotation \lstinline|@EnableEurekaClient| und einem Eintrag der Discovery-URL in der Datei \lstinline|application.properties| ist der Service für die Discovery konfiguriert. Die zugehörige Anforderung konnte somit bestmöglich bewertet werden. \\
+Diese Kombination von Annotationen und einfachen Konfigurationen ist typisch für Spring Boot und konnte auf sämtliche weiteren Anforderungen angewendet werden. Das Ergebnis in Tabelle \ref{Sz2ErgebnisSpring} ist dementsprechend positiv.
+
+\begin{longtable}{c}
+	\includegraphics[width=\linewidth]{Bilder/Sz2Ergebnis.pdf} \\	
+	\caption[Szenario 2 Ergebnis Spring]{Ergebnis von Szenario 2 für Spring}
+	\label{Sz2ErgebnisSpring}\\
+\end{longtable}
+\FloatBarrier
+
 \newparagraph{Szenario 3: Erweiterter Service}
+Das Szenario 3 sieht vor das Datenmodell für die Aufgabenverwaltung (Abbildung \ref{Datenmodell}) zu implementieren und über eine \ac{REST}-Schnittstelle nach außen anzubieten. Das Datenmodell wird dabei über die \ac{JPA} für Spring aufgebaut und die Konfiguration besteht somit auch aus Annotationen. Listing \ref{Department} zeigt dies als Beispiel für die Entität \enquote{Department}.
+
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}[caption={Umsetzung der Entität \enquote{Department} mittels JPA},label=Department,language=JAVA] 
+	@Entity
+	public class Department extends BaseEntity{
+	String name;
+	
+	@OneToOne
+	@NotNull
+	Employee head;
+	
+	@OneToMany
+	Set<Employee> employees;
+	
+	//... Getter + Setter 
+	}
+	\end{lstlisting}
+\end{minipage}
+
+Die Besonderheit von Spring ist nun, dass mittels Spring-Data-Rest und dem in Listing \ref{DepRepo} gezeigten Code, die komplette \ac{REST}-Schnittstelle fertig konfiguriert ist. Das Repository-Interface muss lediglich als solches mit der Annotation \lstinline|@RepositoryRestResource| gekennzeichnet und von \lstinline|CrudRepository<T, ID>| abgeleitet werden, sodass Spring die Schnittstelle aufbauen kann. Diese ist vollständig nach Ressoucen aufgebaut und integriert in die Antworten automatisch \ac{HATEOAS} Links.
+
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}[caption={Erstellung der REST-Schnittstelle für das \enquote{Department} über ein Interface},label=DepRepo,language=JAVA] 
+	@RepositoryRestResource
+	public interface DepartmentRepository extends 
+									CrudRepository<Department, UUID> { 
+	}
+	\end{lstlisting}
+\end{minipage}
+
+Die Entwicklung eines Datenservice könnte somit kaum effizienter sein. Die automatische Konfiguration lässt sich auch anpassen. Hierzu bietet die Dokumentation detaillierte Beschreibungen und Code-Beispiele.\\
+Somit konnte auch im 3. Szenario Spring sehr gut bewertet werden. Das Ergebnis ist in Tabelle \ref{Sz3ErgebnisSpring} zu sehen.
+
+\begin{longtable}{c}
+	\includegraphics[width=\linewidth]{Bilder/Sz3Ergebnis.pdf} \\	
+	\caption[Szenario 3 Ergebnis Spring]{Ergebnis von Szenario 3 für Spring}
+	\label{Sz3ErgebnisSpring}\\
+\end{longtable}
+\FloatBarrier
+
 \newparagraph{Quantitative Evaluation}
+
+
+\begin{longtable}{c}
+	\todoFigure{Quantitative Evaluation Spring Ergebnis}\\
+	%\includegraphics[width=\linewidth]{Bilder/QuantErgebnis.pdf} \\	
+	\caption[Quantitative Evaluation Ergebnis Spring]{Ergebnis von Quantitative Evaluation für Spring}
+	\label{QuantErgebnisSpring}\\
+\end{longtable}
+\FloatBarrier
 
 \subsubsection{Evaluation durchführen: Go-Kit}
 
