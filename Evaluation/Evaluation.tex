@@ -278,10 +278,70 @@ Der zweite Kandidat für die Evaluation ist Go-Kit. Auch hier wird nicht auf die
  eingegangen, sondern nur markante Punkte hervorgehoben. Dabei beginnt die Evaluation mit dem 1. Szenario.
 
 \newparagraph{Szenario 1: Installation}
+Go-Kit wird, wie der Name vermuten lässt, mit Go entwickelt. Daher ist die Installation von Go der erste Schritt. Hierzu lassen sich die Installationsdateien von der Webseite \url{golang.org} herunterladen und installieren.\\
+Damit sind auch die essentiellen Tools fürs Buildmanagement installiert. Diese sind z.~B. \lstinline|go get| für das Auflösen und Herunterladen von Abhängigkeiten (Dependencies) sowie \lstinline|go test| für das Ausführen von Unit-Tests.\\
+Diese Befehle ersetzen aber kein vollständiges Buildmanagement-Tool, welches den kompletten Prozess steuert und die richtigen Abhängigkeiten auflöst\cite{GoDep2016}. So ist es notwendig den kompletten Prozess mittels Skript zu steuern und dabei Paketmanagement-Tools, wie Glide\footnote{\url{https://github.com/Masterminds/glide}}, zu nutzen.
 
+Aus diesem Grund gab es für die Evaluation Abzüge bezüglich der Build-Tools. Die vollständige Bewertung ist in Tabelle \ref{Sz1ErgebnisGokit} festgehalten.
+
+\begin{longtable}{c}
+	\includegraphics[width=\linewidth]{Bilder/Sz1ErgebnisGokit.pdf} \\	
+	\caption[Szenario 1 Ergebnis GoKit]{Ergebnis von Szenario 1 für GoKIt}
+	\label{Sz1ErgebnisGokit}\\
+\end{longtable}
+\FloatBarrier
 
 \newparagraph{Szenario 2: Einfacher Service}
+Im 2. Szenario wird ein einfacher "Hello World"-Service implementiert. Hierzu muss ein neues Projekt angelegt werden, welches im Workspace von Go, dem GoPath, erfolgen muss. Dabei ist das \lstinline|main.go| File der Einstiegspunkt einer jeden Go Applikation.\\
+Die Implementierung des einfachen "Hello-Word"-Endpunktes ist in Listing \ref{HelloGo} dargestellt.
+
+\begin{lstlisting}[caption={"Hello-Word" in Go-Kit},label=HelloGo,language=Golang] 
+	func main() {
+		logger := LOG.NewLogfmtLogger(os.Stdout)
+		ctx := context.Background()
+		svc := helloWorldService{}
+		
+		var helloWorldEndpoint endpoint.Endpoint
+		helloWorldEndpoint = makeHelloWorldEndpoint(svc)
+		
+		helloWorldHandler := httptransport.NewServer(
+			ctx, helloWorldEndpoint, 
+			decodeHelloWorldRequest, encodeResponse,
+			httptransport.ServerBefore(jwt.ToHTTPContext()),
+			httptransport.ServerErrorLogger(logger),
+		)
+		
+		http.Handle("/hello_service", helloWorldHandler)
+		log.Fatal(http.ListenAndServe(":8080", nil))
+	}
+	
+	type HelloWorldService interface {
+		helloService(string) (string, error)
+	}
+	
+	type helloWorldService struct{}
+	
+	func (helloWorldService) helloService(name string) (string, error) {
+		return "Hello " + name, nil
+	}
+\end{lstlisting}
+
+Dies zeigt sehr deutlich, dass die Erstellung eines Endpunktes relativ komplex ist. Es erfordert mehrere Konfigurationsschritte und muss vollständig manuell erfolgen, wobei der Ausschnitt nur ein Teil der gesamt nötigen Implementierung darstellt.\\
+Auch ist die Verbindung zur Service Discovery an der Stelle noch nicht eingebaut. Go-Kit bietet für Eureka keine Unterstützung, sodass diese komplett eigenständig entwickelt werden muss. Da diese Anforderung mit \enquote{A} bewertet wurde und auch weitere Metriken ein mittelmäßiges Ergebnis aufweisen, könnte an dieser Stelle bereits über ein Abbruch der Evaluation diskutiert werden.\\
+Im Sinne der Evaluation von \ac{MFEM} wurde entschieden, die Durchführung nicht abzubrechen. Das dabei entstanden Ergebnis ist in Tabelle \ref{Sz2ErgebnisGokit} zusammengefasst.
+
+\begin{longtable}{c}
+	\includegraphics[width=\linewidth]{Bilder/Sz2ErgebnisGokit.pdf} \\	
+	\caption[Szenario 2 Ergebnis GoKit]{Ergebnis von Szenario 2 für GoKIt}
+	\label{Sz2ErgebnisGokit}\\
+\end{longtable}
+\FloatBarrier    
+
 \newparagraph{Szenario 3: Erweiterter Service}
+Auch beim erweiterten Service stößt man mit Go-Kit schnell an die Grenzen. Es bietet selber keine Unterstützung für eine Verbindung zu einer MySQL Datenbank. Um dies zu ermöglichen, wurde die Gorm\footnote{\url{http://jinzhu.me/gorm/}} Bibliothek mit aufgenommen. Es unterstützt die gängigsten Operationen auf einer Datenbank und verwaltet dabei das Datenschema.\\
+Da Go-Kit somit nichts über die Datenbank weiß, kann es die \ac{Rest}-Schnittstelle auch nicht nach Ressourcen aufbauen. Dies muss somit manuell erfolgen und für fast jede Operation muss ein eigener Endpunkt erstellt werden. Da dies analog zum Listing \ref{HelloGo} erfolgt, entsteht sehr viel \enquote{Boilerplate} Code, der die Entwicklung ineffizient macht. So wird der Code mit nur wenigen Endpunkten schnell unübersichtlich und schwer wartbar.\\
+
+
 \newparagraph{Quantitative Evaluation}
 
 \subsubsection{Resümee Evaluationsphase}
