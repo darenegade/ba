@@ -113,3 +113,7 @@
   * Wie kommt man zum Vergleich - Bewertung der Ergebnisse und wie man damit umgeht
   * Metriken und Prioritäten -> Ergebnis
   * Wie kann man das Resultat grafisch präsentieren
+##Seite 32
+* Grafik 4.15: 1 - Vollste Zufrieden, 0 - Keine Erfüllung
+# Feedback 23.02
+## Weiche Daten Firmen dahinter + Schmerz bei Ersteller

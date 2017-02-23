@@ -161,16 +161,17 @@ Da nun festgelegt ist, an welchem Punkt welche Daten erhoben werden, kann die Ev
 
 \subsubsection{Evaluation durchführen: Spring Boot}
 
-An dieser Stelle werden die Szenarien und Messungen an Spring Boot vorgenommen. Da es bei der Evaluation von \ac{MFEM} weniger um die konkrete Implementierung geht, wird die Durchführung der einzelnen Messgruppen nur kurz beschrieben und markante Punkte hervorgehoben.\footnote{
+An dieser Stelle werden die Szenarien und Messungen an Spring Boot vorgenommen. Da es bei der Evaluation von \ac{MFEM} weniger um die konkrete Implementierung\footnote{
 	Die gesamte Implementierung findet sich auf einem Github Repository mit der URL:\url{https://github.com/darenegade/SimpleSpringService}
 } 
+ geht, wird die Durchführung der einzelnen Messgruppen nur kurz beschrieben. Dabei werden markante Punkte hervorgehoben, die die Ergebnisse nachvollziehbar machen. 
 
 \newparagraph{Szenario 1: Installation}
 Mit Spring Boot wird Java als Programmiersprache benötigt. Die nötigen Installationsdateien lassen sich für jedes Betriebssystem bei Oracle\footnote{\url{http://www.oracle.com/technetwork/java}} beziehen.\\
 Als Buildmanagement-Tools haben sich Gradle\footnote{\url{https://gradle.org}}  und Maven\footnote{\url{https://maven.apache.org}} etabliert. Beide sind für die Verwendung mit Spring gut geeignet und daher fiel die Wahl auf Maven. Die Installation ist sehr einfach und es werden keine Vorkenntnisse benötigt. So konnten alle Metriken mit den bestmöglichen Werten bewertet werden.
 
 \begin{longtable}{c}
-	\includegraphics[width=\linewidth]{Bilder/Sz1Ergebnis.pdf} \\	
+	\includegraphics[width=\linewidth]{Bilder/Sz1ErgebnisSpring.pdf} \\	
 	\caption[Szenario 1 Ergebnis Spring]{Ergebnis von Szenario 1 für Spring}
 	\label{Sz1ErgebnisSpring}\\
 \end{longtable}
@@ -179,8 +180,6 @@ Als Buildmanagement-Tools haben sich Gradle\footnote{\url{https://gradle.org}}  
 \newparagraph{Szenario 2: Einfacher Service}
 Für die Erstellung eines neuen Projektes bietet Spring einen Initialisierungsservice\footnote{\url{http://start.spring.io}} an. Dieser lässt einen die nötigen Spring Module auswählen und das Projekt vorkonfigurieren. Als Ergebnis erhält man ein vollständig konfiguriertes Maven Projekt.
 Dies macht den Einstieg sehr einfach.
-
-%\image[start_spring.png][width=0.7\linewidth]{SpringStarter}{Initialisierungsservice Spring}{Initialisierungsservice von Spring}
 
 Auch die Implementierung eines einfachen "Hello-World"-Service ist mit Spring denkbar einfach. Das Listing \ref{SpringHello} zeigt was hierfür nötig ist. Daran sieht man sehr gut, dass die Einstiegshürde sehr gering ist. 
 Mit \lstinline|@SpringBootApplication| werden die Standard-Spring\-konfigurationen aktiviert. So lässt sich anschließend über \lstinline|@RestController| und \lstinline|@PostMapping| der "Hello-World"-Endpunkt erstellen.
@@ -209,7 +208,7 @@ Mehr Konfiguration ist dabei nicht nötig, da Spring über die automatische Konf
 Diese Kombination von Annotationen und einfachen Konfigurationen ist typisch für Spring Boot und konnte auf sämtliche weiteren Anforderungen angewendet werden. Das Ergebnis in Tabelle \ref{Sz2ErgebnisSpring} ist dementsprechend positiv.
 
 \begin{longtable}{c}
-	\includegraphics[width=\linewidth]{Bilder/Sz2Ergebnis.pdf} \\	
+	\includegraphics[width=\linewidth]{Bilder/Sz2ErgebnisSpring.pdf} \\	
 	\caption[Szenario 2 Ergebnis Spring]{Ergebnis von Szenario 2 für Spring}
 	\label{Sz2ErgebnisSpring}\\
 \end{longtable}
@@ -251,26 +250,36 @@ Die Entwicklung eines Datenservice könnte somit kaum effizienter sein. Die auto
 Somit konnte auch im 3. Szenario Spring sehr gut bewertet werden. Das Ergebnis ist in Tabelle \ref{Sz3ErgebnisSpring} zu sehen.
 
 \begin{longtable}{c}
-	\includegraphics[width=\linewidth]{Bilder/Sz3Ergebnis.pdf} \\	
+	\includegraphics[width=\linewidth]{Bilder/Sz3ErgebnisSpring.pdf} \\	
 	\caption[Szenario 3 Ergebnis Spring]{Ergebnis von Szenario 3 für Spring}
 	\label{Sz3ErgebnisSpring}\\
 \end{longtable}
 \FloatBarrier
 
 \newparagraph{Quantitative Evaluation}
+Der aus dem 3. Szenario entstandene Prototyp kann nun für die Erhebung der harten Daten herangezogen werden. So wurden die \ac{LOC} und Methodenaufrufe für einen Endpunkt gemessen. Diese fallen, wie in Listing \ref{SpringHello} gezeigt, sehr gering aus. So bleibt die Codebasis auch bei vielen Endpunkten schlank und gut wartbar.\\
+Des Weiteren wurden am lauffähigen Prototyp Performance Messungen durchgeführt. Hierzu wurde das Anforderungsprofil 2 aus der Tabelle \ref{AnforderungsprofileEval} auf den Prototyp angewendet und die entsprechenden Metriken, wie z.~B. Latenz, Durchsatz und Speicherverbrauch unter Last, gemessen\footnote{Für die Performance Messung wurde das Tool JMeter(\url{http://jmeter.apache.org}) eingesetzt und auf einem Laptop mit i7 2,3GHz Prozessor und 16GB DDR3 RAM durchgeführt.}. Die Anwendung des Anforderungsprofils 1 aus der Tabelle \ref{AnforderungsprofileEval} wurde für die Bestimmung der Metriken nicht benötigt und daher nicht weiter beachtet.
 
+Die Recherche hat den Erwartungen entsprochen. Da Spring ein sehr etabliertes Framework ist, ist auch die Community sehr aktiv. Es werden regelmäßig Fehler behoben und neue Major-Releases veröffentlicht. Dies spiegelt auch die Akzeptanz bei großen Firmen wider. So setzen nach Pivotal\footnote{\url{https://pivotal.io}}, der Organisation hinter dem Spring Framework, die 7 größten Banken oder die 9 größten Automanufakturen das Framework produktiv ein.
+
+Die Ergebnisse der quantitativen Evaluation sind in der Tabelle \ref{QuantErgebnisSpring} festgehalten. Mit diesem Schritt wurde die Evaluation von dem Spring Framework beendet.  
 
 \begin{longtable}{c}
-	\todoFigure{Quantitative Evaluation Spring Ergebnis}\\
-	%\includegraphics[width=\linewidth]{Bilder/QuantErgebnis.pdf} \\	
-	\caption[Quantitative Evaluation Ergebnis Spring]{Ergebnis von Quantitative Evaluation für Spring}
+	\includegraphics[width=\linewidth]{Bilder/ObjekEvalErgebnisSpring.pdf} \\	
+	\caption[Quantitative Evaluation Ergebnis Spring]{Ergebnis der quantitativen Evaluation von Spring}
 	\label{QuantErgebnisSpring}\\
 \end{longtable}
 \FloatBarrier
 
 \subsubsection{Evaluation durchführen: Go-Kit}
+Der zweite Kandidat für die Evaluation ist Go-Kit. Auch hier wird nicht auf die komplette Implementierung\footnote{
+	Die gesamte Implementierung findet sich auf einem Github Repository mit der URL:\url{https://github.com/darenegade/SimpleGoKitService}
+} 
+ eingegangen, sondern nur markante Punkte hervorgehoben. Dabei beginnt die Evaluation mit dem 1. Szenario.
 
 \newparagraph{Szenario 1: Installation}
+
+
 \newparagraph{Szenario 2: Einfacher Service}
 \newparagraph{Szenario 3: Erweiterter Service}
 \newparagraph{Quantitative Evaluation}
