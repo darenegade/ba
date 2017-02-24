@@ -307,7 +307,6 @@ Die Implementierung des einfachen "Hello-Word"-Endpunktes ist in Listing \ref{He
 		helloWorldHandler := httptransport.NewServer(
 			ctx, helloWorldEndpoint, 
 			decodeHelloWorldRequest, encodeResponse,
-			httptransport.ServerBefore(jwt.ToHTTPContext()),
 			httptransport.ServerErrorLogger(logger),
 		)
 		
@@ -339,12 +338,36 @@ Im Sinne der Evaluation von \ac{MFEM} wurde entschieden, die Durchführung nicht
 
 \newparagraph{Szenario 3: Erweiterter Service}
 Auch beim erweiterten Service stößt man mit Go-Kit schnell an die Grenzen. Es bietet selber keine Unterstützung für eine Verbindung zu einer MySQL Datenbank. Um dies zu ermöglichen, wurde die Gorm\footnote{\url{http://jinzhu.me/gorm/}} Bibliothek mit aufgenommen. Es unterstützt die gängigsten Operationen auf einer Datenbank und verwaltet dabei das Datenschema.\\
-Da Go-Kit somit nichts über die Datenbank weiß, kann es die \ac{Rest}-Schnittstelle auch nicht nach Ressourcen aufbauen. Dies muss somit manuell erfolgen und für fast jede Operation muss ein eigener Endpunkt erstellt werden. Da dies analog zum Listing \ref{HelloGo} erfolgt, entsteht sehr viel \enquote{Boilerplate} Code, der die Entwicklung ineffizient macht. So wird der Code mit nur wenigen Endpunkten schnell unübersichtlich und schwer wartbar.\\
+Da Go-Kit somit nichts über die Datenbank weiß, kann es die \ac{REST}-Schnittstelle auch nicht nach Ressourcen aufbauen. Dies muss somit manuell erfolgen und für fast jede Operation muss ein eigener Endpunkt erstellt werden. Da dies analog zum Listing \ref{HelloGo} erfolgt, entsteht sehr viel \enquote{Boilerplate} Code, der die Entwicklung ineffizient macht. So wird der Code mit nur wenigen Endpunkten schnell unübersichtlich und schwer wartbar.\\
+Bei der Umsetzung hilft die Dokumentation nur wenig. Sie enthält lediglich die Klassen sowie Packages und wenige einfache Beispiele. Tiefer greifende Erläuterungen sucht man vergebens.\\
+Aus diesen Gründen ist die in Tabelle \ref{Sz3ErgebnisGokit} dargestellte Bewertung von Go-Kit für das 3. Szenario ernüchternd ausgefallen.
 
+\begin{longtable}{c}
+	\includegraphics[width=\linewidth]{Bilder/Sz3ErgebnisGokit.pdf} \\	
+	\caption[Szenario 3 Ergebnis GoKit]{Ergebnis von Szenario 3 für GoKIt}
+	\label{Sz3ErgebnisGokit}\\
+\end{longtable}
+\FloatBarrier  
 
 \newparagraph{Quantitative Evaluation}
+Bei den Performance-Messungen konnte Go-Kit seine Stärken zeigen. Mit durchschnittlichen 9 Millisekunden Latenz kann der Service schnell Anfragen verarbeiten. So konnte er unter Last beachtliche 27.625 Anfragen/Sekunde beantworten und blieb dabei mit 31MB im Speicher sehr effizient\footnote{Für die Performance Messung wurde das Tool JMeter(\url{http://jmeter.apache.org}) eingesetzt und auf einem Laptop mit i7 2,3GHz Prozessor und 16GB DDR3 RAM durchgeführt.}.
+
+Die Recherche bestätigte jedoch das bisher relativ schlechte Ergebnis. Obwohl das Framework auf der offiziellen Webseite als Produktionsreif vermarktet wird\cite{GoKitFAQ2017}, steht es derzeit noch in Entwicklung und ist aktuell in der Version $0.3$ veröffentlicht. Somit gibt es zur Zeit weder einen offiziellen Support noch setzen zu Recht große Firmen auf dieses Framework.
+
+Das Ergebnis der Quantitativen Evaluation ist in Tabelle \ref{QuantErgebnisGokit} dargestellt.  
+
+\begin{longtable}{c}
+	\includegraphics[width=\linewidth]{Bilder/ObjekEvalErgebnisGokit.pdf} \\	
+	\caption[Quantitative Evaluation Ergebnis Go-Kit]{Ergebnis der quantitativen Evaluation von Go-Kit}
+	\label{QuantErgebnisGokit}\\
+\end{longtable}
+\FloatBarrier
 
 \subsubsection{Resümee Evaluationsphase}
+
+Die Evaluationsphase ist die längste Phase von \ac{MFEM}. So hat die praktische Umsetzung der Szenarien und Messungen sowie die Einarbeitung in das Framework bei beiden Kandidaten eine Woche betragen. Aus diesem Grund ist es wichtig, bei der Ermittlung der Metriken auf die Prioritäten der Anforderungen zu achten. Wie bei der Evaluation von Go-Kit zu sehen war, hätte schon das Ergebnis des 2. Szenarios zu einem Abbruch führen können.\\
+Durch die genaue Definition der Szenarien mit den zugehörigen Metriken erfolgt die Durchführung der Evaluation zudem sehr zielgerichtet. Mit etwas Disziplin kann so eine ausschweifende Entwicklung verhindert und somit der Zeitaufwand weitestgehend verkürzt werden. Hierzu sollten, wie von \ac{MFEM} vorgesehen, die Szenarien möglichst genau definiert werden.\\
+Hierzu hat sich der Kreislauf zur Definition von Szenarien und der Zuordnung von Metriken in dieser Phase bewährt. So können keine Metriken übersehen werden und die Szenarien verfeinern sich zusehend.    
 
 \subsection{Abschlussphase}
 \subsubsection{Resümee Abschlussphase}
