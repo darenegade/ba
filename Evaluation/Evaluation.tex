@@ -383,9 +383,9 @@ Die Erfüllung einer Ja/Nein-Frage kann wie eine zweistufige Ordinalskala angese
 Nachdem die einzelnen Werte für eine Anforderung aufsummiert wurden, kann der prozentuale Erfüllungsgrad bestimmt werden. Bei 2 Anforderungen würde ein Wert von 2 einer vollen Erfüllung (100\%) entsprechen. Mit einem Wert von $1,5$ ergibt sich so ein Erfüllungsgrad von $87,5\%$.\\
 Anhand der Prioritäten werden die Gewichte für die Zusammenführung der Anforderungen ermittelt. Eine mit \enquote{A} bewertete Anforderung geht vollständig in das Ergebnis über. Die Priorität \enquote{B} zählt zur Hälfte und \enquote{C} nur ein Viertel. So ergibt sich das Gesamtergebnis von $88,83\%$ für die Wartbarkeit von Spring.
 
-Nachdem alle Ergebnisse aller Qualitätskategorien für Spring und Go-Kit mit diesem Schema ausgewertet wurden, konnte das Netzdiagramm erstellt werden. Abbildung \ref{FittnessVergleich} zeigt das Gesamtergebnis von Spring und Go-Kit in einer Grafik. 
+Nachdem alle Ergebnisse aller Qualitätskategorien für Spring und Go-Kit mit diesem Schema ausgewertet wurden, konnte das Netzdiagramm erstellt werden. Abbildung \ref{FitnessVergleich} zeigt das Gesamtergebnis von Spring und Go-Kit in einer Grafik. 
 
-\image[FittnessVergleich.pdf][width=0.9\linewidth]{FittnessVergleich}{Gesamtergebnis von Spring und Go-Kit}{Gesamtergebnis von Spring und Go-Kit als Netzdiagramm}
+\image[FitnessVergleich.pdf][width=0.9\linewidth]{FitnessVergleich}{Gesamtergebnis von Spring und Go-Kit}{Gesamtergebnis von Spring und Go-Kit als Netzdiagramm}
   
 Das Gesamtergebnis macht die Überlegenheit von Spring deutlich. In nahezu jeder Kategorie hat es einen Vollausschlag. Lediglich bei der Performance kann Go-Kit Punkten. Aufgrund des miserablen restlichen Ergebnisses, wird jedoch auch dann von einem Einsatz im produktiven Umfeld abgeraten, falls die Geschwindigkeit ein maßgeblicher Faktor ist.\\
 Der Einsatz von Spring ist dagegen sehr empfehlenswert, was der Erfolg und die weite Verbreitung des Frameworks zeigt.   
@@ -395,6 +395,23 @@ Der Einsatz von Spring ist dagegen sehr empfehlenswert, was der Erfolg und die w
 Die Auswertung der Daten ist sehr einfach und liefert ein ansehnliches Gesamtergebnis. Es kann dabei nur für sich stehen oder auch im Vergleich zu anderen Frameworks gut hergenommen werden, was die Abbildung \ref{FittnessVergleich} sehr gut zeigt. Auf dieser Basis kann schnell ein guter Überblick gewonnen werden, mittels dessen weitere Diskussionen durchgeführt oder Entscheidungen getroffen werden können.
 
 \subsection{Gesamtauswertung \ac*{MFEM}}
+
+Zusammenfassend kann gesagt werden, dass \ac{MFEM} seinen Zweck erfüllt. Die Diskrepanz, die bei der Wahl der Kandidaten eine Anforderung war, hat sich in den Ergebnissen widergespiegelt. So wurde trivialerweise ein gutes Framework äußerst positiv und ein unausgereiftes Framework negativ bewertet. Hierzu wurden, bis auf wenige Ausnahmen, nur die Basisanforderungen genutzt. So kann auch gesagt werden, dass diese bereits eine gute Grundlage für eine Bewertung darstellen.\\
+Sämtliche Anforderungen lassen sich durch die Analysephase an die jeweilige Situation anpassen oder erweitern, sodass die Methode flexibel bleibt. Wie hier gezeigt wurde, entsteht so schnell eine Vielzahl an Anforderungen. Dazu bietet der Quality Utility Tree einen guten Ansatz, um den Überblick zu behalten und sich nicht in Feinheiten zu verlieren.\\
+Die erste Hürde stellt die Wahl der passenden Metriken dar. Dies war auch bei dieser Evaluation durchaus eine Herausforderung. Auch wenn hier bis zuletzt kein Patentrezept für die Wahl der bestmöglichen Metriken ausgestellt werden kann, stellt die \ac{GQM} Methode einen guten Top-Down Ansatz dar, um dies zu unterstützen.
+
+Bis zur Evaluationsphase, und selbst dort erst im letzten Schritt, spielt das eigentlich zu testende Framework keine Rolle. Dadurch bleibt die Methode sprachunabhängig und verkürzt sich bei mehrfacher Anwendung an verschiedenen Frameworks. Dieser Gewinn ist jedoch nur marginal, da die Durchführung der Evaluation am Framework den größten Zeitaufwand einnimmt. Hierzu bietet die Methode mit den Szenarien einen guten Ansatz, um den verhältnismäßig langen Prozess zumindest zielgerichtet zu gestalten. Wie sich gezeigt hat, kann durch die Priorisierung auch ein schneller Abbruch zustande kommen. So wird wenigstens nicht unnötig Zeit in einen negativen Kandidaten gesteckt.\\
+Einzig die Abbruchbedingung wird von \ac{MFEM} nicht vorgegeben und sollte vor der Durchführung definiert werden. Eine Bedingung im Zusammenhang mit den Prioritäten ist hierfür prädestiniert.
+
+Das mittels Netzdiagramm dargestellte Gesamtergebnis bietet einen sehr guten und schnellen Überblick über das Ergebnis. So kann der Architekt auch vor nicht allzu technisch versierten Entscheidungsträgern seine Wahl anschaulich begründen, ohne zu tief ins Detail gehen zu müssen.     
+
+
+
+
+
+
+
+
 
 
 
