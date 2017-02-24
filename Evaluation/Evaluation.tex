@@ -370,8 +370,29 @@ Durch die genaue Definition der Szenarien mit den zugehörigen Metriken erfolgt 
 Hierzu hat sich der Kreislauf zur Definition von Szenarien und der Zuordnung von Metriken in dieser Phase bewährt. So können keine Metriken übersehen werden und die Szenarien verfeinern sich zusehend.    
 
 \subsection{Abschlussphase}
+
+In der Abschlussphase werden die Ergebnisse aus der Evaluation aufbereitet und präsentiert. Aufgrund der Fülle von Anforderungen und erhobene Daten, wird dies hier nur exemplarisch an einer Qualitätskategorie für ein Framework durchgeführt. Die Auswertung der Restlichen erfolgt analog und findet sich als Excel Tabelle in den jeweiligen Github-Repositories sowie auf der beigelegten Daten-CD.
+
+Die Aufbereitung der erhobenen Daten wird mit der komplexen Auswertung erfolgen. Die Abbildung \ref{AuswSpringWart} zeigt den kompletten Prozess.\\
+
+\image[AuswertungSpringWartbarkeit.pdf][width=0.9\linewidth]{AuswSpringWart}{Auswertung Spring Wartbarkeit}{Auswertung und Zusammenführung aller Daten für die Qualitätskategorie \enquote{Wartbarkeit} am Beispiel Spring}
+
+So wurden im ersten Schritt die ermittelten Ergebnisse auf einen Wert zwischen 0 und 1 normalisiert. Für die dreistufigen Ordinalskalen ergeben sich 3 mögliche Werte: $1$ für den höchsten, $0,5$ für den mittleren und $0$ für den niedrigsten Wert.\\
+Bei den quantitativen Daten wird die prozentuale Abweichung zum Zielwert für die Normalisierung hergenommen. So ergab sich für die Supportlänge, mit einem Ergebnis von 10 und einem Zielwert von 12, ein Wert von $0,83$.
+Die Erfüllung einer Ja/Nein-Frage kann wie eine zweistufige Ordinalskala angesehen werden. So wurde der vorhandene Support mit 1 normalisiert.\\
+Nachdem die einzelnen Werte für eine Anforderung aufsummiert wurden, kann der prozentuale Erfüllungsgrad bestimmt werden. Bei 2 Anforderungen würde ein Wert von 2 einer vollen Erfüllung (100\%) entsprechen. Mit einem Wert von $1,5$ ergibt sich so ein Erfüllungsgrad von $87,5\%$.\\
+Anhand der Prioritäten werden die Gewichte für die Zusammenführung der Anforderungen ermittelt. Eine mit \enquote{A} bewertete Anforderung geht vollständig in das Ergebnis über. Die Priorität \enquote{B} zählt zur Hälfte und \enquote{C} nur ein Viertel. So ergibt sich das Gesamtergebnis von $88,83\%$ für die Wartbarkeit von Spring.
+
+Nachdem alle Ergebnisse aller Qualitätskategorien für Spring und Go-Kit mit diesem Schema ausgewertet wurden, konnte das Netzdiagramm erstellt werden. Abbildung \ref{FittnessVergleich} zeigt das Gesamtergebnis von Spring und Go-Kit in einer Grafik. 
+
+\image[FittnessVergleich.pdf][width=0.9\linewidth]{FittnessVergleich}{Gesamtergebnis von Spring und Go-Kit}{Gesamtergebnis von Spring und Go-Kit als Netzdiagramm}
+  
+Das Gesamtergebnis macht die Überlegenheit von Spring deutlich. In nahezu jeder Kategorie hat es einen Vollausschlag. Lediglich bei der Performance kann Go-Kit Punkten. Aufgrund des miserablen restlichen Ergebnisses, wird jedoch auch dann von einem Einsatz im produktiven Umfeld abgeraten, falls die Geschwindigkeit ein maßgeblicher Faktor ist.\\
+Der Einsatz von Spring ist dagegen sehr empfehlenswert, was der Erfolg und die weite Verbreitung des Frameworks zeigt.   
+
 \subsubsection{Resümee Abschlussphase}
 
+Die Auswertung der Daten ist sehr einfach und liefert ein ansehnliches Gesamtergebnis. Es kann dabei nur für sich stehen oder auch im Vergleich zu anderen Frameworks gut hergenommen werden, was die Abbildung \ref{FittnessVergleich} sehr gut zeigt. Auf dieser Basis kann schnell ein guter Überblick gewonnen werden, mittels dessen weitere Diskussionen durchgeführt oder Entscheidungen getroffen werden können.
 
 \subsection{Gesamtauswertung \ac*{MFEM}}
 
