@@ -90,7 +90,7 @@ Bei der Softwarearchitektur gibt es eine Vielzahl an Qualitätsmerkmale anhand d
 	Es muss möglich sein, das System mit vorhandenen Ressourcen (Technologie, Budget, usw.) umzusetzen.
 \end{description}
 
-Diese Aufzählung stellt hierbei eine Auswahl an verschiedenen allgemeinen Qualitätsmerkmalen dar und erhebt dabei keinen Anspruch auf Vollständigkeit.
+Diese Aufzählung stellt hierbei eine Auswahl an verschiedenen allgemeinen Qualitäts\-merkmalen dar und erhebt dabei keinen Anspruch auf Vollständigkeit.
 
 \subsection{Soll-Ist-Vergleich}
 \
@@ -268,12 +268,23 @@ Ein Beispiel für das Ergebnis von \ac{GQM} wird in Bild \ref{GQMBeispiel} darge
 An diesem Punkt ist die Evaluation denkbar einfach. Sie besteht aus dem Sammeln und Auswerten der Daten mittels der Metriken. Über die gewonnenen Daten und die vorher bestimmten zulässigen Werte, wie das Vorhandensein spezifischer Funktionen, wird die Architekturqualität bestimmt. Es lässt sich auch eine Aussage über die zu erwartende Qualität des Endsystems treffen.
 An diesem Punkt wird der Unterschied zu \ac{ATAM} wieder deutlich. \ac{SAEM} versucht nicht ein tieferes Verständnis für die Architektur bei maßgeblichen Stakeholdern zu schaffen, sondern nur die Einhaltung spezifischer Anforderungen zu gewährleisten. Dies hängt dabei stark vom definiertem Qualitätsziel ab. Gerade bei der internen Qualität verlangt \ac{SAEM} somit eine firmeninterne Qualitätsrichtlinie\cite{IEEE_TSE2002}, die auf Erfahrung und Expertenwissen basiert.
 
-\subsection{Architekturbewertungsmethoden und Microservices}
+\subsection{Architekturbewertungsmethoden und Microservice Frameworks}
 
-\todoInline{Resümee der beiden Methoden und Klärung: "Warum schlecht für MS-Frameworks?"}
+Mit Architekturbewertungsmethoden wie \ac{ATAM} oder \ac{SAEM} lässt sich die Qualität einer Architektur sehr gut bewerten. So kann die spezifische Umsetzung einer Microservice Architektur auf die gegebene Anforderungen untersucht werden. Zudem schärft es nicht nur die Anforderungen selbst, sondern kann auch die geplante Architektur weiter verfeinern und ein tieferes Verständnis bei den Stakeholdern dafür schaffen.
 
-Mit dem Wissen über verschiedene Ansätze zur Qualitätsbewertung von Softwarearchitektur kann nun versucht werden, eine Methode zu finden, die es zur Bewertung von Microservice Frameworks und die daraus vorgegebenen Architektur des Services nutzt. 
+Mit diesem Wissen müssen anschließend die passenden Frameworks für die einzelnen Services gewählt werden. Hierzu lässt sich die reine Architekturbewertung jedoch nicht mehr verwenden, da diese ein vollständiges Verständnis über die Architektur und dessen Einfluss benötigt. D.~h., in Bezug auf ein Framework muss bekannt sein, wie sich die vorhandenen Architekturentscheidungen und Entwurfsmuster innerhalb des Frameworks auf die tatsächliche Architektur der Umsetzung eines Microservices auswirken.\\
+Beim Einsatz eines neuen Frameworks ist dieses Wissen jedoch in vielen Fällen nicht vorhanden und muss erarbeitet werden. Aus diesem Grund ist es verständlich, wenn Entwickler und Architekten bei der Wahl eines Frameworks auf ein Bekanntes zurückgreifen. Eine Bewertungsmethode sollte somit kein Expertenwissen voraussetzen, damit sich alle Frameworks in den Bewertungsprozess mit einbeziehen lassen.
 
+Zudem kann, wie in Abbildung \ref{BewertungFramework} gezeigt, die Bewertung eines Frameworks auf 4 Seiten aufgeteilt werden. Die Architekturbewertung betrachtet lediglich nur 2 dieser Seiten.
+
+\image[BewertungFramework.pdf][width=0.7\linewidth]{BewertungFramework}{Bewertung Framework}{Bewertung der 4 Seiten eines Frameworks}
+
+Wie ein Framework benutzt wird, stellt die erste Seite \enquote{Nutzende Implementierung} dar. Dies umfasst z.~B. die Art und Weise wie Funktionen mit dem Framework umgesetzt werden, wie stark es den Nutzer dabei unterstützt oder welche Programmiersprache genutzt werden muss.\\
+Doch nicht nur die Implementierung ist vom Framework abhängig. Da ein Framework einen Rahmen zur Verfügung stellt, haben die Architekturentscheidungen dessen einen Einfluss auf die Architektur des Microservices. Dies stellt die zweite Seite dar.\\
+Zusätzlich kann die Umsetzung des Frameworks selber bewertet werden. Somit betrachtet die dritte Seite \enquote{Produktqualität} die Qualität des Frameworks selber, welche im Regelfall von der Qualitätssicherung des Herstellers abgesichert werden sollte. Doch hängt dies stark an den verwendeten Anforderungen. So können diese von den Anforderungen des Nutzers abweichen und somit nicht die benötigte Qualität liefern.\\
+Die vierte Seite \enquote{Zukunftssicherheit} betrachtet das Framework über den gesamten Software-Lebenszyklus. Die Entscheidung für ein Framework sollte auch auf lange Sicht bestand haben. So sollten z.~B. Fehler vom Hersteller behoben oder neue Funktionen eingebaut werden.\\
+
+Ein Framework-Bewertungsmethode sollte sich somit nicht nur auf die Architektur beschränken, sondern alle vier Seiten betrachten.
 
 
 
