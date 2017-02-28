@@ -1,32 +1,36 @@
 \section{Microservices}
 
-\todoInline{Kurz Microservices Basics + Warum ist man so unabhängig}
+\bigquote{Do One Thing and Do It Well}{Douglas McIlroy (A Quarter Century of Unix)}
+
+Diesem Grundsatz aus der Unix Philosophie folgt auch die Microservice Architektur. Sie bietet einen Ansatz zur Modularisierung von Software. Doch im Gegensatz zur konventionellen Modularisierung von großen Systemen, sind die sogenannten Microservices eigene Programme\cite[10]{Wolff2015}, die über eine einheitliche Schnittstelle, wie z.~B. \ac{REST} oder Messaging, kommunizieren. Ein einzelner Service ist dabei relativ klein, weitgehend entkoppelt und  übernimmt nur eine kleine Aufgabe.\\
+Doch ist dies nur ein Aspekt des Entwurfsmusters. Die Abbildung \ref{MicroservicesVorteile} zeigt hierzu die wesentlichen Vorteile von einer Microservice Architektur.
+
+\image[MicroservicesVorteile.pdf]{MicroservicesVorteile}{Vorteile Microservices}{Wesentliche Vorteile von Microservices\cite[12]{Wolff2015}}
+
+\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Ergänzung Legacy-Systeme}]
+	\item[Starke Modularisierung] 
+	 	Durch die strikte Trennung der einzelnen Services in eigene Programme, schleichen sich kaum unerwünschte Abhängigkeiten unter den Modulen ein.
+	\item[Ersetzbarkeit]
+		Solange die Schnittstelle eines Services gleich bleibt, kann dieser einfach ersetzt werden. Dabei muss er weder die Code-Basis noch die Technologie des bestehenden Services verwenden.
+	\item[Nachhaltige Entwicklung] 
+		Mit der starken Modularisierung und der Ersetzbarkeit können technische Schulden vermieden und so eine nachhaltige Entwicklung geschaffen werden.
+	\item[Effiziente Skalierung]
+		Durch die starke Trennung lassen sich die einzelnen Module unabhängig voneinander skalieren.
+	\item[Continuous Delivery]
+		Dank der kleineren Services lässt sich einfacher eine Continuous-Delivery-Pipeline aufbauen. So können einzelne Services schneller in die Produktion gebracht werden, wodurch sich die Time-To-Market Zeit verringert. 
+	\item[Technologie Freiheit]
+		Einzelne Services können unterschiedliche Technologien verwenden. Es besteht dabei keine Einschränkung auf eine Programmiersprache oder Plattform.
+\end{description}
+
+Besonders die technologische Freiheit ist an dieser Stelle interessant. Durch die Aufteilung in einzelnen Services, können für jeden Microservice unabhängig die Programmiersprache und Frameworks gewählt werden. So lassen sich neue Technologien in einem Service erproben, ohne dass andere Services davon betroffen sind. Dies senkt das Risiko für die Einführung neuer Technologien und die Kosten bleiben kalkulierbar\cite[13]{Wolff2015}.\\
+Die Technologie-Entscheidung könnte somit auf die Funktionalität des Services reduziert werden. Aber auch die Fähigkeiten des Entwickler-Teams spielen eine Rolle. So kann z.~B. für das eine Team NodeJS gewählt werden, da überwiegend Javascript Entwickler vertreten sind, und für das andere Team Spring, da dieses aus Java Entwicklern besteht.
 
 \subsection{Microservice Frameworks}
-\todoInline{Warum und Was lässt sich bewerten}
-
-
-Die Auswahl des richtigen Frameworks für einen einzelnen Service hängt von vielen Faktoren ab.
-Damit neben den Kundenanforderungen nicht Anforderungen von der
-Microservice Architektur vergessen und objektiv in den Auswahlprozess
-mit einbezogen werden, sollte es eine Methode zur Bewertung des Frameworks
-geben. Dabei kann die durch das Framework vorgegebene Architektur und die
-bereits enthaltenen Funktionen bewertet werden. So kann, schon während der
-Entwurfsphase, eine fundierte Aussage über die zu erwartenden Risiken und Trade-Offs
-getroffen werden. Sollte z.~B. eine wesentliche Funktion, wie eine Authentifizierung am
-Service, fehlen, müsste diese selbstständig entwickelt werden.
-Die kann, je nach Architektur, sehr aufwendig sein. Damit verbunden wäre ein hoher Zeitaufwand, 
-der die Projektkosten immens steigern würde.
-Um eine passende Bewertungsmethode zu finden, können bereits etablierte Methoden zur
-Architekturbewertung herangezogen werden. Der Vorteil hierbei ist, dass diese bereits
-getestet, weiterentwickelt und in vielen Unternehmen verwendet werden.
-So ist der Aufwand für die Integration der neuen Methode sehr gering, da sie in bereits bestehende
-Bewertungsprozesse integriert werden kann.
-In diesem Zusammenhang stellt sich die grundsätzliche Frage, warum Architekturen in der professionellen Softwareentwicklung bewertet werden? Und ob es dafür bereits etablierte Methoden gibt?  
+\todoInline{Warum bewerten und Was lässt sich bewerten} 
 
 \section{Qualitätsbewertung von Softwarearchitektur}
 
-\bigquote{You cannot control what you cannot measure}{Tom DeMarco (Controlling Software Projects, 1982)}
+\bigquote{You cannot control what you cannot measure}{Tom DeMarco (Controlling Software Projects)}
 
 Die Aussage beschreibt sehr gut, dass ein IT-Projekt besser auf die Projektziele
 zusteuern kann, wenn Messwerte erhoben werden. Diese lassen sich z.~B. in Diagrammen sehr gut darstellen und können zumeist einfach sowie unmissverständlich interpretiert werden. Neben dem aktuellen Projektstatus lassen sich so auch Trends erkennen. Diese helfen dabei rechtzeitig Abweichungen festzustellen und gegebenenfalls korrigierende Maßnahmen einzuleiten\cite{Starke2015}. Auch wenn \citeauthor{DeMarco2009} \citeyear{DeMarco2009} seine Aussage relativiert hat\cite{DeMarco2009}, bleibt sie in Bezug auf die Softwarearchitektur stimmig.
@@ -90,7 +94,7 @@ Bei der Softwarearchitektur gibt es eine Vielzahl an Qualitätsmerkmale anhand d
 	Es muss möglich sein, das System mit vorhandenen Ressourcen (Technologie, Budget, usw.) umzusetzen.
 \end{description}
 
-Diese Aufzählung stellt hierbei eine Auswahl an verschiedenen allgemeinen Qualitäts\-merkmalen dar und erhebt dabei keinen Anspruch auf Vollständigkeit.
+Diese Aufzählung stellt hierbei eine Auswahl an verschiedenen allgemeinen Qualitätsmerkmalen dar und erhebt dabei keinen Anspruch auf Vollständigkeit.
 
 \subsection{Soll-Ist-Vergleich}
 \
