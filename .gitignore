@@ -17,6 +17,10 @@
 *.bcf
 *.run.xml
 *.tdo
+*.gls
+*.glo
+*.glg
+*.ist
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
