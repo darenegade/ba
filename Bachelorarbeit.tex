@@ -39,12 +39,8 @@ linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
 \usepackage{multirow}
 \usepackage{placeins}
 \usepackage{longtable}
-
+\usepackage[toc,numberedsection,nopostdot]{glossaries}
 \usepackage{listings}
-\lstset{basicstyle=\footnotesize, captionpos=b, breaklines=true, showstringspaces=false, tabsize=2, frame=lines, numbers=left, numberstyle=\tiny, xleftmargin=2em, framexleftmargin=2em}
-\makeatletter
-\def\l@lstlisting#1#2{\@dottedtocline{1}{0em}{1em}{\hspace{1,5em} Lst. #1}{#2}}
-\makeatother
 
 \geometry{a4paper, top=27mm, left=30mm, right=20mm, bottom=35mm, headsep=10mm, footskip=12mm}
 
@@ -59,11 +55,11 @@ linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
 	colorlinks=true,linkcolor=black,citecolor=black,filecolor=magenta,urlcolor=black}
 \pdfinfo{/CreationDate (D:20110620133321)}
 
+%-------Listings Definitions------
 \definecolor{red}{rgb}{0.6,0,0} % for strings
 \definecolor{green}{rgb}{0.25,0.5,0.35} % comments
 \definecolor{purple}{rgb}{0.5,0,0.35} % keywords
 \definecolor{docblue}{rgb}{0.25,0.35,0.75} % javadoc
-%-------Listings Definitions------
 \lstset{
 	basicstyle=\footnotesize,
 	keywordstyle=\color{purple}\bfseries,
@@ -83,6 +79,9 @@ linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
 	xleftmargin=2em, 
 	framexleftmargin=2em
 }
+\makeatletter
+\def\l@lstlisting#1#2{\@dottedtocline{1}{0em}{1em}{\hspace{1,5em} Lst. #1}{#2}}
+\makeatother
 \lstdefinelanguage{Golang}
 {morekeywords=[1]{package,import,func,type,struct,return,defer,panic,%
 		recover,select,var,const,iota,},%
@@ -183,10 +182,9 @@ linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
 }
 %-------------
 
-%----Hypenation---------
-
-%-------------
-
+\makeglossaries
+\loadglsentries{glossar}
+\glsaddall
 \bibliography{bibo}
 
 \begin{document}
@@ -261,11 +259,13 @@ Insert Abstract Here
 % ----------------------------------------------------------------------------------------------------------
 % Verzeichnisse
 % ----------------------------------------------------------------------------------------------------------
-% TODO Typ vor Nummer
 \renewcommand{\cfttabpresnum}{Tab. }
 \renewcommand{\cftfigpresnum}{Abb. }
 \settowidth{\cfttabnumwidth}{Abb. 10\quad}
 \settowidth{\cftfignumwidth}{Abb. 10\quad}
+\setlength{\cftsecnumwidth}{2em}
+\setlength{\cftsubsecindent}{1cm}
+\setlength{\cftsubsubsecindent}{2cm}
 
 \titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{2pt plus 2pt minus 2pt}
 \singlespacing
@@ -288,7 +288,7 @@ Insert Abstract Here
 % Abkürzungen
 % ----------------------------------------------------------------------------------------------------------
 \section{Abkürzungsverzeichnis}
-\begin{acronym}[ATAM] % längste Abkürzung steht in eckigen Klammern
+\begin{acronym}[HATEOAS] % längste Abkürzung steht in eckigen Klammern
 	\setlength{\itemsep}{-\parsep} % geringerer Zeilenabstand
 	\acro{SEI}{Software Engineering Institute}
 	\acro{SAAM}{Software Architecture Analysis Method}
@@ -304,12 +304,15 @@ Insert Abstract Here
 	\acro{CW}{Cognitive Walkthrough}
 	\acro{JWT}{JSON Web Token}
 	\acro{API}{Programmierschnittstelle}
-	\acro{HATEOAS}{Hypermedia As The Engine Of Application State}
 	\acro{JPA}{Java Persistence API}
 	\acro{LOC}{Lines of Code}
 \end{acronym}
 \newpage
-
+% ----------------------------------------------------------------------------------------------------------
+% Glossar
+% ----------------------------------------------------------------------------------------------------------
+\printglossary[style=altlist,nonumberlist]
+\newpage
 % ----------------------------------------------------------------------------------------------------------
 % Inhalt
 % ----------------------------------------------------------------------------------------------------------
@@ -334,7 +337,7 @@ Insert Abstract Here
 
 %
 \ifoptionfinal{}{\linenumbers}
- ----------------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------------
 % Einleitung und Motivation
 % ----------------------------------------------------------------------------------------------------------
 \subimport{Einleitung/}{Einleitung}
