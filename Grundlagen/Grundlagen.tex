@@ -33,13 +33,16 @@ Dabei ist es darauf ausgelegt, möglichst schnell Ergebnisse zu erzielen und ein
 Dank der Technologiefreiheit kann für jeden Service ein eigenes Framework gewählt werden. Dabei stellt sich die Frage, welches für die Lösung der Teilaufgabe am besten geeignet ist. \\
 Da es einen Rahmen für die Entwicklung zur Verfügung stellt und die Programmiersprache vorgibt, ist diese Entscheidung maßgeblich für den weiteren Entwurf des Services. Aus diesem Grund sollte die Wahl nicht gänzlich unbedacht sein. Auch wen mit der Ersetzbarkeit die Hürde zum Austausch gering ist, bedeutet ein Fehlschlag mitunter mehrere Wochen vergeudetet Entwicklungszeit.
 
-Um das richtige Framework zu finden, müssen die Anforderungen an den Service festgelegt sein. Nur wenn es diese erfüllt, macht eine Umsetzung mit dem Framework Sinn. Welche Anforderungen ein Service zu erfüllen hat, ergibt sich aus der Aufgabe, die mit dem Service umgesetzt werden soll. Dies können sowohl fachliche Aufgaben, wie eine Kundenverwaltung, oder technische, wie das Sammeln von Log-Daten der weiteren Services, sein.\\
+Um das richtige Framework zu finden, müssen die Anforderungen an den Service festgelegt sein. Nur wenn es diese erfüllt, macht eine Umsetzung mit dem Framework Sinn. Somit sollten bei der Bewertung eines Frameworks die Erfüllung der spezifischen Serviceanforderungen geprüft werden.\\
+Welche Anforderungen ein Service zu erfüllen hat, ergibt sich aus der Aufgabe, die mit dem Service umgesetzt werden soll. Dies können sowohl fachliche Aufgaben, wie eine Kundenverwaltung, oder technische, wie das Sammeln von Log-Daten der weiteren Services, sein.\\
 Aus der Architektur ergibt sich die Aufteilung der Aufgaben. Dabei ist es wichtig, dass bei Änderungen und neuen Features nur ein Service angepasst werden muss. Hierzu ist es essentiell, dass jeder Service eine fachliche bzw. technische Einheit bildet.\\
 Durch die Anforderungen des Gesamtsystems, die hauptsächlich vom Auftraggeber vorgegeben sind, ergibt sich die Architektur. Dieser Weg von den Anforderungen bis zur Wahl der passenden Frameworks ist in Abbildung \ref{FrameNeeds} nochmals dargestellt.
     
-\image[FrameNeeds.pdf][width=0.4\linewidth]{FrameNeeds}{Anforderungen und Frameworks}{Der Weg von den Anforderungen zu den passenden Frameworks für die Services}
+\image[FrameNeeds.pdf][width=0.3\linewidth]{FrameNeeds}{Anforderungen und Frameworks}{Der Weg von den Anforderungen zu den passenden Frameworks für die Services}
  
-Daraus wird ersichtlich, dass sich nur dann die passenden Serviceanforderungen für die Bewertung eines Frameworks ergeben, wenn die Architektur den Anforderungen entspricht. Aus diesem Grund sollte die Architekturqualität vorher bewiesen sein. Zudem bietet es sich an, die Bewertung der Frameworks an die Qualitätsbewertung von Softwarearchitektur anzulehnen.
+Aus diesem Zusammenhang wird ersichtlich, dass sich nur dann die passenden Serviceanforderungen für die Bewertung eines Frameworks ergeben, wenn die Architektur den Anforderungen entspricht. Bevor man ein Framework bewerten kann, muss somit die Qualität der Architektur bewiesen sein. Nur dann kann man sicher gehen, dass der richtige Maßstab für die Wahl des passenden Frameworks angelegt wird.
+
+Es bietet sich somit an, die Bewertung von Frameworks an die Qualitätsbewertung von Softwarearchitektur anzulehnen. So kann gewährleistet werden, dass die Serviceanforderungen in direkter Beziehung zu den Anforderungen des Gesamtsystems stehen und die Wahl des passenden Frameworks nachvollziehbar bleibt.
  
 \pagebreak
 \section{Qualitätsbewertung von Softwarearchitektur}
