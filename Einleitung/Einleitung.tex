@@ -1,13 +1,18 @@
 \section{Einleitung}
 
-Mit der Microservice Architektur lassen sich verschiedenste Technologien vermischen. Jeder Service kann mit unterschiedlichen Frameworks und Programmiersprachen entwickelt werden.\\
-Diese Freiheit spiegelt sich im Auswahlprozess der Softwareentwickler wider. Sie laufen unter Umständen einem Hype hinterher\cite{HDD2016} und die Erwartungen an das neue Framework sind häufig stark überzogen. Dieser Investition in die neue Technologie folgt Ernüchterung. Im Detail sind viele Funktionen oft nicht so, wie man es erwartet hat und im schlimmsten Fall schlägt die Entwicklung fehl.
+Mit der Technologiefreiheit in einer Microservice Architektur stehen den Softwarearchitekten alle Türen offen. Danke der losen Kopplung dieses Entwurfsmusters kann für jeden kleinen Service ein eigenes Framework gewählt werden. Zudem können alle Services polyglott sein, womit die verschiedensten Frameworks zur Auswahl stehen.\\
+Hinzu kommt, dass die Anzahl der verfügbaren Frameworks stetig steigt. Lagom\footnote{\url{www.lagomframework.com}},  Micro\footnote{\url{github.com/micro}} und MS4J\footnote{\url{github.com/wso2/msf4j}} sind nur ein paar der allein im Jahre 2016 erstmals veröffentlichten Microservice Frameworks.\\
+Ein Architekt hat somit eine sehr große Auswahl, um ein gegebenes Problem zu lösen.
 
-Zudem ist die Microservice Architektur nicht eindeutig definiert\cite[11]{Wolff2015}. Jede Ausprägung ist anderes und folgt den spezifischen Anforderungen oder dem Geschmack des Architekten. So kann ein Framework für eine Ausprägung ideal und für eine andere ein regelrechter Fehlgriff sein. 
+Doch der Schein trügt. Die Entscheidung für ein Framework sollte nicht leichtfertig getroffen werden. Die Microservice Architektur ist nicht eindeutig definiert\cite[11]{Wolff2015}. Jede Ausprägung ist anderes und folgt den spezifischen Anforderungen oder dem Geschmack der Architekten. So kann ein Framework für eine Ausprägung viel Unterstützung bieten und für eine Andere immense Eigenentwicklung von Standardfunktionen bedeuten.\\
+Dutzende oder hunderte von Services innerhalb eines Systems sind keine Seltenheit. Einige benötigen dabei nur wenige Tage oder Wochen an Entwicklungszeit. So kann man es sich nicht leisten, den Entwicklungsaufwand eines Jeden zu steigern\cite{Richardson2016}.\\ 
+Mit einer polyglotten Umgebung müssten zudem die gleichen Funktionen in verschiedensten Sprachen umgesetzt und später gewartet werden. Dieser Mehraufwand ist nur in den wenigsten Fällen sinnvoll.\\
+Ein Microservice Framework sollte somit nicht nur das Problem sehr gut lösen können, sondern auch die Vorgaben aus der Architektur effizient umsetzen.  
 
-Dies bietet jedoch keinen Anlass sämtliche unbekannten Frameworks zu meiden und nur die jahrelang Etablierten zu nutzen. Neue Technologien können auch eine Chance bieten und echten Mehrwert produzieren. Sie lösen mitunter ein gravierendes Problem oder die Entwicklungszeit verringert sich immens. So lohnt sich gerade in einer Microservice Architektur das Risiko einzugehen, da der Fehlschlag eines einzelnen Services vertretbar ist.
+Doch wie lässt sich dies bereits in der Entwurfsphase sicherstellen und die Wahl des Frameworks mit fundierten Kenntnissen gestalten?
 
-Um dieses Risiko weiter zu minimieren und das richtige Framework zu finden, soll in dieser Arbeit eine Bewertungsmethode für Microservice Frameworks etabliert werden. Damit verbunden, sollen folgende Eigenschaften von der Methode erfüllt werden:
+Um diese Frage lösen zu können, ist das Ziel dieser Arbeit die Entwicklung einer Microservice Framework Bewertungsmethode. Sie soll anhand einer gegebenen Microservice Architektur ein oder mehrere Frameworks untersuchen und als Ergebnis eine vielschichtige Entscheidungsgrundlage liefern.
+Damit diese unabhängig eingesetzt werden kann, soll sie zudem folgende Eigenschaften aufweisen:
 
 \begin{description}
 	\item[Sprachunabhängigkeit] 
@@ -20,4 +25,7 @@ Um dieses Risiko weiter zu minimieren und das richtige Framework zu finden, soll
 	Das Ergebnis der Methode soll sowohl für sich stehen, als auch ein Vergleich zu anderen Frameworks eröffnen.
 \end{description}
 
-Mit der Bewertung lässt sich eine Microservice Architektur aufbauen, die technologisch Heterogen ist und bei der Chancen genutzt sowie Risiken minimiert werden.
+Zur Findung dieser Methode werden zunächst die Microservice Frameworks (Kapitel \ref{Microservice_Frameworks}) allgemein beleuchtet. So lässt sich feststellen, was deren Aufgabe ist und auf welcher Basis eine Bewertung erfolgen kann.\\
+Anschließend wird die Qualitätsbewertung von Architekturen(Kapitel \ref{Qualitätsbewertung_Softwarearchitektur}) näher analysiert und 2 Beispiele vorgestellt. Aufgrund der engen Verzahnung einer Architektur mit den Frameworks sollen diese etablierten Methoden als Vorlage für die Frameworkbewertung dienen.\\
+Mit den daraus gewonnen Erkenntnissen kann die neue Microservice Framework Bewertungsmethode eingeführt (Kapitel \ref{MFEM}) und daraufhin an Beispielen evaluiert (Kapitel \ref{MFEMEvaluation}) werden. 
+So lässt sich sicherstellen, dass die Methode wirksam ist und damit qualitativ hochwertige und heterogene Microservices entwickelt werden können.
