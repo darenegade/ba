@@ -1,22 +1,22 @@
 \section{Einleitung}
 
-Mit der Technologiefreiheit in einer Microservice Architektur stehen den Softwarearchitekten alle Türen offen. Danke der losen Kopplung dieses Entwurfsmusters kann für jeden kleinen Service ein eigenes Framework gewählt werden. Zudem können alle Services polyglott sein, womit die verschiedensten Frameworks zur Auswahl stehen.\\
-Hinzu kommt, dass die Anzahl der verfügbaren Frameworks stetig steigt. Lagom\footnote{\url{www.lagomframework.com}},  Micro\footnote{\url{github.com/micro}} und MS4J\footnote{\url{github.com/wso2/msf4j}} sind nur ein paar der allein im Jahre 2016 erstmals veröffentlichten Microservice Frameworks.\\
-Ein Architekt hat somit eine sehr große Auswahl, um ein gegebenes Problem zu lösen.
+Microservices stehen zur Zeit hoch im Kurs. Durch bestechenden Vorteilen, wie z.~B. bedarfsgerechte Skalierung und bessere Wartbarkeit, setzen immer mehr Firmen auf dieses Architekturmuster. Besonders erfolgreiche Umsetzungen der Webgiganten Netflix, Amazon und Twitter haben auch kleinere Unternehmen überzeugt\cite{Roewekamp2016}.\\ 
+Dies sorgt dafür, dass die Anzahl der verfügbaren Microservice Frameworks stetig steigt. Lagom\footnote{\url{www.lagomframework.com}},  Micro\footnote{\url{github.com/micro}} und MS4J\footnote{\url{github.com/wso2/msf4j}} sind nur ein paar der allein im Jahre 2016 erstmals veröffentlichten Frameworks. Sie bietet dabei immer neue Ansätze, wie z.~B. reaktive Webservices, um gegebene Aufgaben besser zu lösen. Oder sie sind besonders leichtgewichtig und schnell, um die Effizienz weiter zu steigern. \\
+So bleibt den Softwarearchitekten die Qual der Wahl. Danke der losen Kopplung der Microservices kann für jeden kleinen Service ein eigenes Framework gewählt werden. Mit der Vielzahl an Frameworks lässt sich somit das beste Hilfsmittel für das gegebene Problem auswählen.
 
-Doch der Schein trügt. Die Entscheidung für ein Framework sollte nicht leichtfertig getroffen werden. Die Microservice Architektur ist nicht eindeutig definiert\cite[11]{Wolff2015}. Jede Ausprägung ist anderes und folgt den spezifischen Anforderungen oder dem Geschmack der Architekten. So kann ein Framework für eine Ausprägung viel Unterstützung bieten und für eine Andere immense Eigenentwicklung von Standardfunktionen bedeuten.\\
-Dutzende oder hunderte von Services innerhalb eines Systems sind keine Seltenheit. Einige benötigen dabei nur wenige Tage oder Wochen an Entwicklungszeit. So kann man es sich nicht leisten, den Entwicklungsaufwand eines Jeden zu steigern\cite{Richardson2016}.\\ 
+Doch der Schein trügt. Die Entscheidung für ein Framework sollte nicht leichtfertig getroffen werden. Die Microservice Architektur ist nicht eindeutig definiert\cite[11]{Wolff2015}. Jede Ausprägung ist anderes und folgt den spezifischen Anforderungen oder dem Geschmack der Architekten. So kann ein Framework für eine Ausprägung viel Unterstützung bieten und für eine andere immense Eigenentwicklung von Standardfunktionen bedeuten.\\
+Dutzende oder hunderte von Services innerhalb eines Systems sind keine Seltenheit. Einige benötigen dabei nur wenige Tage oder Wochen an Entwicklungszeit. So kann man es sich nicht leisten, den Entwicklungsaufwand eines jeden zu steigern\cite{Richardson2016}.\\ 
 Mit einer polyglotten Umgebung müssten zudem die gleichen Funktionen in verschiedensten Sprachen umgesetzt und später gewartet werden. Dieser Mehraufwand ist nur in den wenigsten Fällen sinnvoll und sollte wohl überlegt sein.\\
 Ein Microservice Framework muss somit nicht nur das Problem sehr gut lösen können, sondern auch die Vorgaben aus der Architektur effizient umsetzen.  
 
-Doch wie lässt sich dies bereits in der Entwurfsphase sicherstellen und die Wahl des Frameworks mit fundierten Kenntnissen gestalten?
+Doch wie lässt sich dies bereits in der Entwurfsphase sicherstellen und die Wahl des Frameworks auf Basis von fundierten Kenntnissen gestalten?
 
 Um diese Frage lösen zu können, ist das Ziel dieser Arbeit die Entwicklung einer Microservice Framework Bewertungsmethode. Sie soll anhand einer gegebenen Microservice Architektur ein oder mehrere Frameworks untersuchen und als Ergebnis eine vielschichtige Entscheidungsgrundlage liefern.
 Damit diese unabhängig eingesetzt werden kann, soll sie zudem folgende Eigenschaften aufweisen:
 
 \begin{description}
 	\item[Sprachunabhängigkeit] 
-	So wie die Erstellung eines Microservices in jeder Programmiersprache erfolgen kann, soll auch die Methode unabhängig sein.
+	Microservices können polyglott sein. Somit sollte auch die Methode unabhängig von der Programmiersprache sein.
 	\item[Kein Vorwissen nötig] 
 	Damit sämtliche Frameworks einbezogen werden können, darf die Methode vom Bewertungsteam kein Vorwissen über das Framework verlangen.
 	\item[Anpassbarkeit] 
@@ -25,7 +25,7 @@ Damit diese unabhängig eingesetzt werden kann, soll sie zudem folgende Eigensch
 	Das Ergebnis der Methode soll sowohl für sich stehen, als auch ein Vergleich zu anderen Frameworks eröffnen.
 \end{description}
 
-Zur Findung dieser Methode werden zunächst die Microservice Frameworks (Kapitel \ref{Microservice_Frameworks}) allgemein beleuchtet. So lässt sich feststellen, was deren Aufgabe ist und auf welcher Basis eine Bewertung erfolgen kann.\\
-Anschließend wird die Qualitätsbewertung von Architekturen(Kapitel \ref{Qualitätsbewertung_Softwarearchitektur}) näher analysiert und 2 Beispiele vorgestellt. Aufgrund der engen Verzahnung einer Architektur mit den Frameworks sollen diese etablierten Methoden als Vorlage für die Frameworkbewertung dienen.\\
+Zunächst wird jedoch genauer beleuchtet, was ein Microservice Framework ist und wie dieses bewerten werden kann (Kapitel \ref{Microservice_Frameworks}).
+Anschließend wird die Qualitätsbewertung von Architekturen(Kapitel \ref{Qualitätsbewertung_Softwarearchitektur}) näher analysiert und 2 Beispiele vorgestellt. Aufgrund der engen Verbindung einer Architektur mit den Frameworks sollen diese etablierten Methoden als Vorlage für die Frameworkbewertung dienen.\\
 Mit den daraus gewonnen Erkenntnissen kann die neue Microservice Framework Bewertungsmethode eingeführt (Kapitel \ref{MFEM}) und daraufhin an Beispielen evaluiert (Kapitel \ref{MFEMEvaluation}) werden. 
-So lässt sich sicherstellen, dass die Methode wirksam ist und damit qualitativ hochwertigen und heterogenen Microservices nichts im Weg steht.
+So lässt sich sicherstellen, dass die Methode wirksam ist und qualitativ hochwertigen, heterogenen Microservices nichts im Weg steht.
