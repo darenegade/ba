@@ -1,7 +1,15 @@
 \section{\acf*{MFEM}}\label{MFEM}
 
-Die Bewertung, ob ein Framework für den produktiven Einsatz in einer Microservice Architektur geeignet ist, lässt sich nicht auf die Servicearchitektur beschränken. Aus diesem Grund ist \ac{MFEM} keine reine Architekturbewertungsmethode. Sie betrachtet einerseits den Einfluss des Frameworks auf die Servicearchitektur und versucht dabei Risiken aufzudecken sowie ein tieferes Verständnis für die Framework-Architektur zu schaffen. Des Weiteren betrachtet sie aber auch die Qualität des Frameworks selber und die daraus entstehende Umsetzung eines Microservices. Dies beinhaltet den gesamten Software-Lebenszyklus.\\
-\ac{MFEM} setzt dabei keine grundlegenden Kenntnisse über das Framework voraus, da es 2 Seiten der Analyse anbietet. Dies ist einerseits die Nutzung von bereits vorhandenem Expertenwissen, was die Phase der Evaluation verkürzt. Andererseits werden die restlichen Daten über die Erstellung von Prototypen erfasst.
+Die Bewertung, ob ein Framework für den produktiven Einsatz in einer Microservice Architektur geeignet ist, lässt sich nicht auf die Servicearchitektur beschränken. Aus diesem Grund ist \ac{MFEM} keine reine Architekturbewertungsmethode.\\ 
+Sie betrachtet drei Seiten der Frameworkbewertung, welche in \ref{BewertungFrameworkSeiten} dargestellt sind.
+
+\image[FrameworkSeiten.pdf][width=0.8\linewidth]{BewertungFrameworkSeiten}{Bewertung der drei Frameworkseiten}{Die 3 Seiten eines Frameworks und dessen reguläre Bewertung}
+
+Wie ein Framework benutzt wird, stellt die erste Seite \enquote{Nutzung} dar. Dies umfasst z.~B. die Art und Weise wie Funktionen mit dem Framework umgesetzt werden, wie stark es den Nutzer dabei unterstützt oder welche Programmiersprache genutzt werden muss. Zusätzlich beinhaltet es den Architektureinfluss. Da ein Framework einen Rahmen zur Verfügung stellt, haben die Architekturentscheidungen dessen einen Einfluss auf die Architektur des Microservices.\\
+Des Weiteren kann die Umsetzung des Frameworks selber bewertet werden. Somit betrachtet die zweite Seite \enquote{Produktqualität} die Qualität des Frameworks an sich, welche im Regelfall von der Qualitätssicherung des Herstellers abgesichert werden sollte. Doch hängt dies stark an den verwendeten Anforderungen. So können diese von den Anforderungen des Nutzers abweichen und somit nicht die benötigte Qualität liefern.\\
+Die dritte Seite \enquote{Zukunftssicherheit} betrachtet das Framework über den gesamten Software-Lebenszyklus. Die Entscheidung für ein Framework sollte auch auf lange Sicht bestand haben. So sollten z.~B. Fehler vom Hersteller behoben oder neue Funktionen eingebaut werden.\\
+
+\ac{MFEM} setzt dabei keine grundlegenden Kenntnisse über das Framework voraus, da es zwei Seiten der Analyse anbietet. Dies ist einerseits die Nutzung von bereits vorhandenem Expertenwissen, was die Phase der Evaluation verkürzt. Andererseits werden die restlichen Daten über die Erstellung von Prototypen erfasst.
 Auf dieser Basis kann am Ende eine begründete Entscheidung für oder gegen den Einsatz eines Frameworks getroffen werden.
 
 Der Ablauf von \ac{MFEM} ist in Bild \ref{MFEMAblauf} schematisch dargestellt und startet mit der optionalen Kickoff-Phase. Diese kann somit auch übersprungen werden, wenn die beteiligten Personen nur die Software-Architekten selbst sind. Sollten bei der Bewertung auch weitere Stakeholder mit einbezogen werden, wird zur Durchführung der Kickoff-Phase geraten.
