@@ -14,13 +14,13 @@ Auf dieser Basis kann am Ende eine begründete Entscheidung für oder gegen den 
 
 Der Ablauf von \ac{MFEM} ist in Bild \ref{MFEMAblauf} schematisch dargestellt und startet mit der optionalen Kickoff-Phase. Diese kann somit auch übersprungen werden, wenn die beteiligten Personen nur die Software-Architekten selbst sind. Sollten bei der Bewertung auch weitere Stakeholder mit einbezogen werden, wird zur Durchführung der Kickoff-Phase geraten.
 
-\image[MFEM-Phasen.pdf][width=0.75\linewidth]{MFEMAblauf}{Ablaufschema MFEM}{Schematische Darstellung vom Ablauf von \ac{MFEM}}
+\image[MFEM-Phasen.pdf][width=0.75\linewidth]{MFEMAblauf}{Ablaufschema MFEM}{Phasen der Frameworkbewertung nach \ac{MFEM}}
 
 \subsection{Kickoff-Phase}
 
 In der Kickoff Phase geht es darum, Klarheit zu schaffen. Den Beteiligten Personen sollten der Ablauf und die Ziele dieser Methode erläutert werden. Wie auch schon bei \ac{ATAM} ist das Ziel von \ac{MFEM} nicht die Vergabe von Noten. Vielmehr geht es darum den Reifegrad eines Frameworks und etwaige Risiken, wie erhöhten Entwicklungsaufwand für fehlende Funktionen, festzustellen. 
 
-In diesem Zusammenhang sollte auch die vorhandene Microservice Architektur vom Software-Architekten vorgestellt werden, damit die Grundlage der Bewertung klar ist. Neben den in der Architektur getroffenen Entscheidungen geht es auch um technische Einschränkungen und Abhängigkeiten zu Drittsystemen. Auf dieser Basis kann die Architektur analysiert und Anforderungen definiert werden.
+In diesem Zusammenhang sollte auch die vorhandene Microservice Architektur vom Soft\-ware\-architekten vorgestellt werden, damit die Grundlage der Bewertung klar ist. Neben den in der Architektur getroffenen Entscheidungen geht es auch um technische Einschränkungen und Abhängigkeiten zu Drittsystemen. Auf dieser Basis kann die Architektur analysiert und Anforderungen definiert werden.
 
 \subsection{Analysephase}
 
@@ -33,13 +33,14 @@ Damit ein Service dies erfüllt und somit in der Architektur funktionieren kann,
 
 \newparagraph{Funktionale Frameworkanforderungen}
 \
-Es müssen demnach Anforderungen gefunden werden, die die Microservice Architektur an die einzelnen Services stellt. Das ist dabei stark von der Umsetzung dieser abhängig. Ein gutes Beispiel hierfür ist die Servicediscovery. Dass sich Services gegenseitig finden können, ohne die Flexibilität der Architektur zu verlieren, darf eben diese nicht fehlen. Die Umsetzung kann dabei jedoch stark variieren. So kann ein zentraler Service, wie z.~B. Netflix-Eureka\footnote{
+Funktionale Frameworkanforderungen sind demnach die Anforderungen, die von der Architektur vorgegeben werden. Sie sind demnach stark von der Umsetzung dieser abhängig. Ein gutes Beispiel hierfür ist die Servicediscovery.\\ 
+Damit sich Services gegenseitig finden können, ohne die Flexibilität der Architektur zu verlieren, darf eben diese nicht fehlen. Die Umsetzung kann dabei jedoch stark variieren. So kann ein zentraler Service, wie z.~B. Netflix-Eureka\footnote{
 \url{https://github.com/Netflix/eureka}
 }
 oder Consul\footnote{
 \url{https://www.consul.io}
-}
-, eine Registrierungsstelle anbieten. Dort können sich sämtliche Service-Instanzen registrieren und auch andere Services finden. Diese müssen es aber auch nicht direkt unterstützen. Projekte wie Spring Cloud Sidecar\footnote{
+}, 
+eine Registrierungsstelle anbieten. Dort können sich sämtliche Service-Instanzen registrieren und auch andere Services finden. Diese müssen eine Servicediscovery aber auch nicht direkt unterstützen. Projekte wie Spring Cloud Sidecar\footnote{
 \url{http://projects.spring.io/spring-cloud/spring-cloud.html\#_polyglot_support_with_sidecar}
 }
 übernehmen dies für einzelne Services. Die Discovery kann aber auch auf die darüber liegende Abstraktions-Schicht hochgezogen werden. Innerhalb eines Kubernetes\footnote{
@@ -53,10 +54,13 @@ Die spezifische Ausprägung der Architektur gibt somit Anforderungen vor, die es
 
 \newparagraph{Nicht-Funktionale Frameworkanforderungen}
 \
-Neben den funktionalen Frameworkanforderungen lassen sich auch nicht-funktionale Anforderungen definieren, die zur Erreichung und Zufriedenstellung der benötigen Funktionen notwendig sind. Dies muss dabei nicht auf die durch das Framework vorgegebene Architektur des Services beschränkt sein. An dieser Stelle kann das Framework als Werkzeug aufgefasst werden. Es gilt somit nicht nur die Frage zu klären, ob ein Framework eine benötigte Funktion bereitstellt. Sondern ob es den Entwickler bei der Umsetzung bestmöglich unterstützt und dabei flexibel bleibt. Nach dem KISS-Prinzip\footnote{
+Neben den funktionalen Frameworkanforderungen lassen sich auch nicht-funktionale Anforderungen definieren, die zur Erreichung und Zufriedenstellung der benötigen Funktionen notwendig sind. Dies muss dabei nicht auf die durch das Framework vorgegebene Architektur des Services beschränkt sein. An dieser Stelle kann das Framework als Werkzeug aufgefasst werden. Es gilt somit nicht nur die Frage zu klären, ob ein Framework eine benötigte Funktion bereitstellt. Sondern ob es den Entwickler bei der Umsetzung bestmöglich unterstützt und dabei flexibel bleibt.\\ 
+Nach dem KISS-Prinzip\footnote{
 \url{http://principles-wiki.net/principles:keep_it_simple_stupid}
 } 
-wird zum Beispiel die Funktion bevorzugt, die möglichst einfach und \enquote{dumm} erscheint. So brauch es für die Umsetzung keine anspruchsvollen oder besonders cleveren Lösungen. Eine Einfache lässt sich nicht nur besser Lesen und Verstehen, es erhöht auch die Wartbarkeit.  
+wird zum Beispiel die Funktion bevorzugt, die möglichst einfach und \enquote{dumm} erscheint. So brauch es für die Umsetzung keine anspruchsvollen oder besonders cleveren Lösungen. Eine Einfache lässt sich nicht nur besser Lesen und Verstehen, es erhöht auch die Wartbarkeit.\\
+Bei einem Framework kann dies z.~B. bedeuten, dass die Konfiguration einer Funktion mit nur wenigen Funktionsaufrufen erfolgt und dabei stets nachvollziehbar bleibt. Im Idealfall kann man dies direkt am Code erkennen, ohne dabei Kenntnisse über das Framework zu haben.\\
+Des Weiteren fordern die nicht-funktionalen Frameworkanforderungen wie strukturiert die Umsetzung damit ist. Man sollte z.~B. beim Ändern eines Endpunktes nur einen Codeabschnitt anfassen müssen und nicht viele verschiedene. 
 
 \newparagraph{Basisanforderungen von \ac{MFEM}}
 \
@@ -67,12 +71,12 @@ Die so gefundenen Anforderungen basieren auf der Erfahrung der Anwendungsentwick
 Um die Analyse und Wahl der Anforderungen zu unterstützen, wird hier ein Quality Utility Tree aufgebaut.
 
 \newparagraph{Entwicklung Quality Utility Tree}
-
-Der \ac{QUT} bietet einen effizienten Top-Down Ansatz zur Identifizierung und Verfeinerung von Qualitätsanforderungen. Mittels Brainstorming sollen somit Anforderungen gefundenen und in einzelne Kategorien aufgeteilt werden. Die Anforderungen müssen dabei nicht sofort konkret sein, sondern können anfangs grob erstellt werden. Über den Baum können die groben Anforderungen nach rechts weiter verfeinert werden, bis diese konkret genug sind. 
+\
+Der \ac{QUT} bietet einen effizienten Top-Down Ansatz zur Identifizierung und Verfeinerung von Qualitätsanforderungen. Mittels Brainstorming sollen Anforderungen gefundenen und in einzelne Kategorien aufgeteilt werden. Die Anforderungen müssen dabei nicht sofort konkret sein, sondern können anfangs grob erstellt werden. Über den Baum können die groben Anforderungen nach rechts weiter verfeinert werden, bis diese konkret genug sind. 
 
 Bei der Kategorisierung kann das Qualitätsmodell aus der ISO/IEC 25010 hergenommen werden. Wobei das Modell nur eine Hilfestellung ist und keine Vorgabe darstellt. Es geht lediglich darum einen Überblick zu schaffen und mehrere Teilaspekte zu betrachten. Auch ermöglichen die Kategorien eine bessere Übersicht über das Endergebnis. Hierzu später mehr im Abschnitt \ref{Ergebnisse_auswerten} \enquote{Ergebnisse auswerten}.
 
-Für die Basisanforderungen wurden die Kategorien Funktionalität, Performance, Benutzbarkeit, Sicherheit, Wartbarkeit und Zukunftssicherheit definiert. Anschließend wurden diesen die Qualitätsanforderungen zugeordnet und stellen ein Beispiel dar, wie ein entsprechender \ac{QUT} aufgebaut ist. Bild \ref{MSQUTAusschnitt} zeigt einen Ausschnitt des gesamten Baumes, wobei der vollständige Baum im Anhang zu finden ist. 
+Für die Basisanforderungen wurden die Kategorien Funktionalität, Performance, Benutzbarkeit, Sicherheit, Wartbarkeit und Zukunftssicherheit definiert. Anschließend wurden diesen die Qualitätsanforderungen zugeordnet und stellen ein Beispiel dar, wie ein entsprechender \ac{QUT} aufgebaut ist. Bild \ref{MSQUTAusschnitt} zeigt einen Ausschnitt des gesamten Baumes, wobei die vollständige Abbildung im Anhang zu finden ist. 
 
 \image[MSQUTAusschnitt.pdf][width=0.7\linewidth]{MSQUTAusschnitt}{\acs{MFEM} \acl*{QUT} Beispiel}{Ausschnitt aus dem \acl*{QUT} der Basisanforderungen}
 
@@ -97,7 +101,7 @@ Diese Metriken bieten sich auch für weitere Anforderungen an, die sich schwer i
 		\textbf{Anforderung (Goal)}                   & \textbf{Frage (Question)} & \textbf{Skala für Metrik} & \textbf{Erläuterung}                                                                                         \\ \hline
 		\multirow{3}{3cm}{Effiziente Entwicklung}	& 
 		\multirow{3}{3cm}{Kann das Framework schnell erlernt werden?} 
-		& sehr gut & Das Framework lässt sich schnell erlernen und ist intuitive zu bedienen. Es nimmt dem Nutzer, wo es geht, Arbeit ab. 
+		& sehr gut & Das Framework lässt sich schnell erlernen und ist intuitiv zu bedienen. Es nimmt dem Nutzer, wo es geht, Arbeit ab. 
 		\\ \cline{3-4} & 
 		& gut & Die Einarbeitungszeit ist etwas länger und das Framework ist nicht sehr intuitive.                                   
 		\\ \cline{3-4} &                                                                                       
@@ -105,7 +109,7 @@ Diese Metriken bieten sich auch für weitere Anforderungen an, die sich schwer i
 		\\ \hline
 		\multirow{3}{3cm}{Standard Übertragungs-formate} & 
 		\multirow{3}{3cm}{Wird JSON unterstützt?}                                               
-		& automatisch & Das Framework de- und serialisiert Objekte automatisch ins JSON Format.                                              
+		& automatisch & Das Framework deserialisiert und serialisiert Objekte automatisch ins JSON Format.                                              
 		\\ \cline{3-4} & 
 		& manuell & Durch eigenes Parsing oder mittels Drittbibliotheken können die Objekte de- und serialisiert werden.                 
 		\\ \cline{3-4} &                                                                                       
@@ -113,11 +117,11 @@ Diese Metriken bieten sich auch für weitere Anforderungen an, die sich schwer i
 		\\ \hline
 		\multirow{4}{3cm}{Gute Dokumentation} & 
 		\multirow{4}{3cm}{Bietet das Framework eine umfangreiche Dokumentation mit Beispielen?} 
-		& Sehr Umfangreich mit Beispielen & Die Dokumentation erklärt jeden Teilaspekt des Frameworks und bietet viele Code-Beispiele.                           
+		& sehr umfangreich mit Beispielen & Die Dokumentation erklärt jeden Teilaspekt des Frameworks und bietet viele Code-Beispiele.                           
 		\\ \cline{3-4} &                                                                                       
-		& Umfangreich & Sämtliche Funktionen sind von der Dokumentation erfasst.                                                            
+		& umfangreich & Sämtliche Funktionen sind von der Dokumentation erfasst.                                                            
 		\\ \cline{3-4} &                                                                                       
-		& Einfach & Nur die wichtigsten Funktionen werden abgedeckt.                                                                     
+		& einfach & Nur die wichtigsten Funktionen werden abgedeckt.                                                                     
 		\\ \cline{3-4} &                                                                                       
 		& nicht vorhanden & Es ist keine Dokumentation vorhanden.                                                                                
 		\\ \hline
@@ -128,7 +132,7 @@ Diese Metriken bieten sich auch für weitere Anforderungen an, die sich schwer i
 \end{table}
 \FloatBarrier
 
-Zusätzlich können auch Softwaremetriken genutzt werden. Da im Zuge der Evaluation ein Prototyp erstellt wird, können an diesem auch direkt Messungen vorgenommen werden. Damit kann neben der Performance auch z.~B. der Aufwand zur Umsetzung bestimmter Funktionen bemessen werden. Falls z.~B. die Erstellung eines \ac{REST}-Endpunktes sehr aufwändig ist und viele Codezeilen sowie Methodenaufrufe benötigt, macht dies den Microservice schnell sehr komplex bei vielen Endpunkten und verschlechtert somit die Wartbarkeit.
+Zusätzlich können auch Softwaremetriken genutzt werden. Da im Zuge der Evaluation ein Prototyp erstellt wird, können an diesem auch direkt Messungen vorgenommen werden. Damit kann neben der Performance auch z.~B. der Aufwand zur Umsetzung bestimmter Funktionen bemessen werden. Falls z.~B. die Erstellung eines \ac{REST}-Endpunktes sehr aufwändig ist und viele Codezeilen sowie Methodenaufrufe benötigt, macht dies den Microservice schnell sehr komplex bei vielen Endpunkten. Zudem verschlechtert es die Wartbarkeit.
 Um bei der Definition der Metriken stets das Ziel im Auge zu behalten, wird die bereits bekannte \ac{GQM} Methode genutzt. 
 
 Eine um Metriken erweiterter Qualitätsbaum ist in Bild \ref{MFEMGQMQUTAusschnitt} dargestellt. Wie zuvor ist dies nur ein Ausschnitt, wobei der gesamte Baum im Anhang zu finden ist.
@@ -149,16 +153,16 @@ Die subjektiven Eindrücke versucht man bei der objektiven Evaluation möglichst
 
 \newparagraph{Subjektive Evaluation}
 \
-Während der subjektiven Evaluation soll bei \ac{MFEM} der Prototyp von einem Experten erstellt werden. Wie eingangs erwähnt muss dies zielgerichtet ablaufen. Um dies zu unterstützen und gleichzeitig eine Aussage über Qualitätsmerkmale wie Lernbarkeit, Analysierbarkeit, Wartbarkeit oder Benutzbarkeit zu treffen, soll der \ac{CW} verwendet werden. Dies ist eine aufgabenorientierte Inspektionsmethode\cite{Hegner2016}. Dabei versetzt sich der Prüfer in einen hypothetischen Benutzer und analysiert konkrete Handlungsabläufe. Dies kann z.~B. das Lösen eines Problems oder das Umsetzen einer einfachen Funktion sein. 
+Während der subjektiven Evaluation soll bei \ac{MFEM} der Prototyp von einem Softwareentwickler erstellt werden. Wie eingangs erwähnt muss dies zielgerichtet ablaufen. Um dies zu unterstützen und gleichzeitig eine Aussage über Qualitätsmerkmale wie Lernbarkeit, Analysierbarkeit, Wartbarkeit oder Benutzbarkeit zu treffen, soll der \ac{CW} verwendet werden. Dies ist eine aufgabenorientierte Inspektionsmethode\cite{Hegner2016}. Dabei versetzt sich der Prüfer in einen hypothetischen Benutzer und analysiert konkrete Handlungsabläufe. Dies kann z.~B. das Lösen eines Problems oder das Umsetzen einer einfachen Funktion sein. 
 So kann er feststellen, woran die Entwicklung eines Microservices mit Hilfe des Frameworks vermutlich scheitern wird.
 
 Der \ac{CW} verläuft in 3 Schritten\cite{Hegner2016}:
 
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Input definieren}]
 	\item[1. Vorbereitung]
-	In diesem Schritt werden die Beispielszenarien definiert. D.~h. es werden für den Experten Aufgaben bzw. Problemstellungen festgelegt, die durchgeführt oder gelöst werden sollen. Dies können grundlegend Aufgaben sein, wie das Erstellen eines \ac{REST}-Endpunktes. Sie sollten so präzise wie möglich formuliert werden.
+	In diesem Schritt werden die Beispielszenarien definiert. D.~h. es werden für den Prüfer Aufgaben bzw. Problemstellungen festgelegt, die durchgeführt oder gelöst werden sollen. Dies können grundlegend Aufgaben sein, wie das Erstellen eines \ac{REST}-Endpunktes. Sie sollten so präzise wie möglich formuliert werden.
 	\item[2. Analyse]
-	Während der Analyse nimmt sich der Experte ein Szenario nach dem anderen zur Hand und führt dieses durch. Für jede Aktivität wird ein Protokoll angefertigt. Durchgeführten Aktionen und damit eventuell zusammenhängenden Probleme oder Feststellungen sind damit festzuhalten.
+	Während der Analyse nimmt sich der Prüfer ein Szenario nach dem anderen zur Hand und führt dieses durch. Für jede Aktivität wird ein Protokoll angefertigt. Durchgeführten Aktionen und damit eventuell zusammenhängenden Probleme oder Feststellungen sind damit festzuhalten.
 	\item[3. Follow Up]
 	Die durch die Analyse gewonnenen Erkenntnisse werden zusammengefasst und ausgewertet. Falls nötig, können Maßnahmen bestimmt werden.
 \end{description}
@@ -168,13 +172,13 @@ Im derzeitigen Definitionsschritt müssen in erster Linie Szenarien definiert we
 
 \newsubparagraph{Definition von Szenarien}\label{Definition_Szenarien}
 
-Für die Definition der Szenarien muss ein Standard-Anwendungsfall gefunden werden. Hierzu sollten sich die Prüfer überlegen, wie ein herkömmlicher Service, der mit dem Framework erstellt werden soll, aussehen könnte und was dieser für Eigenschaften haben sollte. Da der Einsatzzweck stark an die zuvor definierten Anforderungen gebunden ist, können diese für die Definition genutzt werden. Soll der Service z.~B. eine eigene Datenbank verwalten und diese mittels \ac{REST} nach außen anbieten oder wird Event Sourcing eingesetzt? Vielleicht soll der Service aber auch keine eigenen Daten verwalten, sondern diese von anderen Services einholen und zusammenführen.
+Für die Definition der Szenarien muss ein Standard-Anwendungsfall gefunden werden. Hierzu sollten sich die Prüfer überlegen, wie ein herkömmlicher Service, der mit dem Framework erstellt werden soll, aussehen könnte und was er für Eigenschaften haben sollte. Da der Einsatzzweck stark an die zuvor definierten Anforderungen gebunden ist, können diese für die Definition genutzt werden. Soll der Service z.~B. eine eigene Datenbank verwalten und mittels \ac{REST} nach außen anbieten oder wird Event Sourcing eingesetzt? Vielleicht soll der Service aber auch keine eigenen Daten verwalten, sondern von anderen Services einholen und zusammenführen.
 
 Die Definition des Standard-Anwendungsfalls kann erst einmal grob erfolgen und wird im Folgenden weiter verfeinert. Hierzu sollte der gefundene Anwendungsfall in Entwicklungsstufen aufgeteilt werden. Diese stellen anschließend die Szenarien dar. Die Anzahl sollte dabei gering gehalten werden (z.~B. 3 Szenarien), damit der Evaluationsaufwand nicht zu groß wird. Um die Szenarien weiter zu verfeinern und einen Rückschluss auf die Anforderungen zu gewährleisten, werden anschließend den Szenarien die zu messenden Metriken zugeordnet. Dabei kann es vorkommen, dass sich einzelne Metriken nicht zuordnen lassen, da die Szenarien anfangs nur grob definiert sind. In diesem Fall müssen die Szenarien in Hinblick auf die fehlenden Metriken weiter verfeinert werden. Der dadurch entstehende Kreislauf ist im Bild \ref{MFEM-Evaluationskreislauf} abgebildet.       
 
 \image[MFEM-Evaluationskreislauf.pdf][width=0.5\linewidth]{MFEM-Evaluationskreislauf}{MFEM Kreislauf Evaluation}{Kreislauf zur Definition und Verfeinerung der Szenarien}
 
-Bei der Zuordnung der Metriken muss zwischen objektiver und subjektiver Evaluation unterschieden werden. Aus diesem Grund wird dieser Vorgang erst im Abschnitt \ref{Metriken_zuordnen} genauer erläutert, nachdem auch die objektive Evaluation definiert wurde.
+Bei der Zuordnung der Metriken muss zwischen objektiver und subjektiver Evaluation unterschieden werden. Aus diesem Grund wird der Vorgang erst im Abschnitt \ref{Metriken_zuordnen} genauer erläutert, nachdem auch die objektive Evaluation definiert wurde.
 
 \newsubparagraph{Beispiel-Szenarien}
 
@@ -189,7 +193,7 @@ Mit den Basis-Anforderungen von \ac{MFEM} wird eine Authentifizierung mittels OA
 
 \image[Szenario2.pdf][width=0.6\linewidth]{EinfacherService}{Einfacher Service}{Szenario 2: Erstellung eines einfachen Hello-World-Services.} 
 
-\textbf{Szenario 3 erweiterter Service:} Das dritte Szenario baut auf dem zweiten auf und erweitert es um ein Datenmodell. Hier soll neben der Anbindung an eine Datenbank auch die Erstellung einer komplexeren API durchgeführt werden. Das Modell muss dabei als solches nicht komplex sein. Hier wird eine einfach Personal- und Aufgabenverwaltung umgesetzt. Dieses teilt Mitarbeiter in Abteilungen auf, welche wiederum Mitarbeiter als Abteilungsleiter haben. Zusätzlich können Mitarbeitern Aufgaben zugeordnet werden. Das vollständige Datenmodell ist im Bild \ref{ErweiterterService} dargestellt.
+\textbf{Szenario 3 erweiterter Service:} Das dritte Szenario baut auf dem Zweiten auf und erweitert es um ein Datenmodell. Hier soll neben der Anbindung an eine Datenbank auch die Erstellung einer komplexeren API durchgeführt werden. Das Modell muss dabei als solches nicht komplex sein. Hier wird eine einfach Personal- und Aufgabenverwaltung umgesetzt. Dieses teilt Mitarbeiter in Abteilungen auf, welche wiederum Mitarbeiter als Abteilungsleiter haben. Zusätzlich können Mitarbeitern Aufgaben zugeordnet werden. Das vollständige Datenmodell ist im Bild \ref{ErweiterterService} dargestellt.
 
 \image[Szenario3Datenmodell.pdf][width=0.7\linewidth]{Datenmodell}{Datenmodell}{Szenario 3: Datenmodell der Aufgabenverwaltung}
 
@@ -202,6 +206,7 @@ Auf diesem Modell soll auch eine einfache Geschäftslogik implementiert werden, 
 Die objektive Evaluation dient zur Findung der \textbf{harten} Daten. Hierzu werden die Artefakte aus der subjektiven Evaluation als Grundlage der Messungen genutzt. So können einzelne Funktionen im Code auf Komplexität untersucht werden, damit z.~B. eine Aussage über Umsetzungsaufwand oder Wartbarkeit getroffen werden kann. Neben diesen Messungen direkt an den Artefakten kann auch eine Performance Messung und Recherche zur Ermittlung der harten Daten herangezogen werden. 
 
 \newsubparagraph{Performance Messung}
+
 Der aus der subjektiven Evaluation gewonnene lauffähige Prototyp kann für Performance-Messungen herangezogen werden. Hierzu sollen ein oder mehrere Anforderungsprofile definiert werden, die eine reguläre Nutzung des Services unter verschiedenen Situationen betrachtet. Damit werden die Voraussetzungen und Umstände für die Messungen genauer definiert. Die Tabelle \ref{Anforderungsprofile} zeigt hierzu ein paar mögliche Beispiele. 
 
 \begin{table}[!h]
@@ -225,13 +230,14 @@ Der aus der subjektiven Evaluation gewonnene lauffähige Prototyp kann für Perf
 	\label{Anforderungsprofile}
 \end{table}
 
-Das erste Anforderungsprofil-Beispiel stellt einen einfachen Datenservice dar. Dieser ist mit einer Datenbank verbunden und führt diese über die \ac{REST}-Schnittstelle nach außen. Durch die hohen Anfragen wird dieser Service stark unter Last gestellt, um eine Aussage über Qualitätsmerkmale wie Stabilität, Fehlerrate und Durchsatz zu treffen.
+Das erste Anforderungsprofil-Beispiel stellt einen einfachen Datenservice dar. Dieser ist mit einer Datenbank verbunden und führt diese über die \ac{REST}-Schnittstelle nach außen. Durch die viele parallele Anfragen wird dieser Service stark unter Last gestellt, um eine Aussage über Qualitätsmerkmale wie Stabilität, Fehlerrate und Durchsatz zu treffen.
 
-Um möglichst limitierende Faktoren, wie die Datenbank, auszuschließen, wurden die Profile zwei bis fünf definiert. Diese bauen auf einer Geschäftslogik im Service auf. Dabei spielt es keine Rolle, ob ein sinnvolles Ergebnis berechnet wird. Mit der wenig rechenintensiven Logik steht der Overhead des Frameworks im Vordergrund. Ist dieser besonders groß, um z.~B. die übertragenen Daten zu de- und serialisieren, beeinflusst es jede Anfrage am Service und vermindert den Durchsatz. Die stark rechenintensive Logik zielt dabei mehr auf einen Vergleich zu anderen Programmiersprachen ab. Aus diesem Grund sollte die enthaltene Logik einheitlich sein. So kann sie darin bestehen Testdaten zu generieren und diese zu sortieren.
+Um möglichst limitierende Faktoren, wie die Datenbank, auszuschließen, wurden die Profile zwei bis fünf definiert. Diese bauen auf einer Geschäftslogik im Service auf. Dabei spielt es keine Rolle, ob ein sinnvolles Ergebnis berechnet wird. Mit der wenig rechenintensiven Logik steht der Overhead des Frameworks im Vordergrund. Ist dieser besonders groß, um z.~B. die übertragenen Daten zu de- und serialisieren, beeinflusst es jede Anfrage am Service und vermindert den Durchsatz. Die stark rechenintensive Logik zielt dabei mehr auf einen Vergleich zu anderen Programmiersprachen ab. Aus diesem Grund sollte die enthaltene Logik einheitlich sein. So kann sie darin bestehen, Testdaten zu generieren und diese zu sortieren.
 
-Neben dem reinen Zeitverhalten können an den Profilen noch weitere Messwerte erhoben werden. Dies kann z.~B. Speicherbedarf in Ruhe sowie bei Vollauslastung sein. Dabei stellen die zuvor genannten Punkte nur Beispiele für Messungen an den Profilen dar. Welche genau durchgeführt werden, wurde bereits mit den Anforderungen über \ac{GQM} definiert. So bleiben die tatsächlichen Messungen sinnvoll.
+Neben dem reinen Zeitverhalten können an den Profilen noch weitere Messwerte erhoben werden. Dies kann z.~B. Speicherbedarf in Ruhe sowie bei Vollauslastung sein. Dabei stellen die zuvor genannten Punkte nur Beispiele für Messungen an den Profilen dar. Welche genau durchgeführt werden, wurde bereits mit den Anforderungen über \ac{GQM} definiert.
 
 \newsubparagraph{Recherche}
+
 Auch durch eine Recherche können harte Daten gewonnen werden. So lassen sich Fragen beantworten, die in erster Linie nicht direkt mit der Entwicklung eines Microservices zusammenhängen. Bei einem Open-Source-Framework stellt sich z.~B. die Frage, ob dieses eine aktive Entwicklergemeinschaft hat und regelmäßig Fehler behoben werden. Sollte z.~B. die Behebung eines Fehlers viel Zeit in Anspruch nehmen, kann dies im produktiven Umfeld schnell zu Problemen führen. Auch ein kommerzieller Support kann gewünscht sein, wenn eigenes Fachwissen fehlt oder tiefgreifende Fehler schnell behoben werden sollen. Solche Punkte sind häufig mit ausschlaggebend bei der Entscheidung für ein Framework und sollten mit berücksichtigt werden.
 
 \subsubsection{Metriken zuordnen}\label{Metriken_zuordnen}
@@ -245,9 +251,9 @@ Wie bereits in Abschnitt \ref{Definition_Szenarien} erwähnt, kann es vorkommen,
 
 \subsubsection{Evaluation durchführen}
 
-An dieser Stelle werden die zuvor definierten Evaluationsprozesse durchgeführt. Dabei sollte der Fokus auf die Anforderungen mit hoher Priorität stehen. So kann das frühzeitig nicht Erfüllen von wichtigen Anforderungen direkt zum Abbruch führen.
+An dieser Stelle werden die zuvor definierten Evaluationsprozesse durchgeführt. Dabei sollte der Fokus auf die Anforderungen mit hoher Priorität stehen. So kann die Evaluation frühzeitig abgebrochen werden, wenn wichtige Anforderungen nicht erfüllt werden.
 
-Zu aller erst werden die Szenarien des \ac{CW} umgesetzt. Dabei müssen die gewonnenen Erkenntnisse negativ als auch positiv protokolliert werden, damit diese sich später besser auswerten lassen. Sobald ein Szenario durchgeführt wurde, wird es durch die zugeordneten Metriken bewertet.
+Zuallererst werden die Szenarien des \acp{CW} umgesetzt. Dabei müssen die gewonnenen Erkenntnisse negativ als auch positiv protokolliert werden, damit diese sich später besser auswerten lassen. Sobald ein Szenario durchgeführt wurde, wird es durch die zugeordneten Metriken bewertet.
 
 Nachdem das letzte Szenario de \ac{CW} durchgeführt wurde, steht ein Prototyp für die objektive Evaluation bereit. An diesem werden nun über den Programmcode die Softwaremetriken gemessen. Zusätzlich wird am laufenden Prototyp mittels Tools, wie z.~B. JMeter\footnote{http://jmeter.apache.org}, die Leistung sowie der Durchsatz gemessen.
 
@@ -269,7 +275,7 @@ Wie stark einzelne Anforderungen in die zugehörige Kategorie einfließen, häng
 
 Für eine einfache Auswertung reicht die Unterscheidung zwischen Erfüllen (1) und Nichterfüllen (0) der Anforderungen. Somit reicht es die Gewichte der erfüllten Anforderungen pro Kategorie zu kumulieren, den Prozentsatz zu bilden und in die jeweilige Achse einzutragen. Dies hat jedoch den Nachteil, dass gerade bei den qualitativ erhobenen Daten viel Informationsgehalt verloren geht. Wird z.~B. die Lernbarkeit über einer Ordinalskala mit 3 möglichen Werten erhoben (sehr gut, gut, schlecht), geht die Differenzierung zwischen \enquote{sehr gut} und \enquote{gut} bzw. \enquote{gut} und \enquote{schlecht} verloren, je nachdem wo die Akzeptanzschwelle liegt.
 
-Um dies zu verhindern, kann auch eine komplexere Auswertung erfolgen. Diese betrachtet jede erhobene Metrik und stellt einen Erfüllungsgrad pro Anforderung zusammen. Hierzu wird das Ergebnis der Metrik auf einen Wert zwischen 0 und 1 normalisiert. Dies kann bei der zuvor genannten Ordinalskala mit 3 Werten folgende Ergebnisse enthalten:
+Um dies zu verhindern, kann auch eine komplexere Auswertung erfolgen. Diese betrachten jede erhobene Metrik und stellt einen Erfüllungsgrad pro Anforderung zusammen. Hierzu wird das Ergebnis der Metrik auf einen Wert zwischen 0 und 1 normalisiert. Dies kann bei der zuvor genannten Ordinalskala mit 3 Werten folgende Ergebnisse enthalten:
   
 \begin{table}[!h]
 	\centering
@@ -287,7 +293,7 @@ Um dies zu verhindern, kann auch eine komplexere Auswertung erfolgen. Diese betr
 	\label{Ordinalskala_Normalisierung}
 \end{table}
 
-Für quantitativ erhobene Daten kann weiterhin die dyadische Darstellung gewählt werden. Alternativ hierzu kann auch eine Abstufung mittels prozentualer Abweichung zum Zielwert ermittelt werden. Soll z.~B. die Antwortzeit eines ausgelasteten Services unter 10ms im Durchschnitt betragen, könnte folgende Normalisierung gewählt werden:
+Für quantitativ erhobene Daten kann weiterhin die dyadische Darstellung gewählt werden. Alternativ kann hierzu auch eine Abstufung mittels prozentualer Abweichung zum Zielwert ermittelt werden. Soll z.~B. die Antwortzeit eines ausgelasteten Services unter 10ms im Durchschnitt betragen, könnte folgende Normalisierung gewählt werden:
 
 \begin{table}[!h]
 	\centering
