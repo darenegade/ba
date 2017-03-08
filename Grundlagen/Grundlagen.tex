@@ -2,7 +2,7 @@
 
 \bigquote{Do One Thing and Do It Well}{Douglas McIlroy (A Quarter Century of Unix)}
 
-Diesem Grundsatz aus der Unix Philosophie folgt auch die Microservice Architektur. Sie bietet einen Ansatz zur Modularisierung von Software. Doch im Gegensatz zur konventionellen Modularisierung von großen Systemen, sind die sogenannten Microservices eigene Programme\cite[10]{Wolff2015}, die über eine einheitliche Schnittstelle, wie z.~B. \ac{REST} oder Messaging, kommunizieren. Ein einzelner Service ist dabei relativ klein, weitgehend entkoppelt und  übernimmt nur eine kleine Aufgabe.\\
+Diesem Grundsatz aus der Unix Philosophie folgt auch die Microservice Architektur. Sie bietet einen Ansatz zur Modularisierung von Software. Doch im Gegensatz zur konventionellen Modularisierung von großen Systemen, sind die sogenannten Microservices eigene Programme\cite[10]{Wolff2015}, die über eine einheitliche Schnittstelle, wie z.~B. \ac{REST} oder Messaging, kommunizieren. Für sich genommen ist ein einzelner Service relativ klein und bildet einen mehr oder minder geschlossen Teil der Anwendung ab\cite{Roewekamp2016}.\\
 Doch ist dies nur ein Aspekt des Entwurfsmusters. Die Abbildung \ref{MicroservicesVorteile} zeigt hierzu die wesentlichen Vorteile einer Microservice Architektur.
 
 \image[MicroservicesVorteile.pdf]{MicroservicesVorteile}{Vorteile Microservices}{Wesentliche Vorteile von Microservices\cite[12]{Wolff2015}}
@@ -17,32 +17,33 @@ Doch ist dies nur ein Aspekt des Entwurfsmusters. Die Abbildung \ref{Microservic
 	\item[Effiziente Skalierung]
 		Durch die starke Trennung lassen sich die einzelnen Module unabhängig voneinander skalieren.
 	\item[Continuous Delivery]
-		Dank der kleineren Services lässt sich einfacher eine Continuous-Delivery-Pipeline aufbauen. So können einzelne Services schneller in die Produktion gebracht werden, wodurch sich die Time-To-Market Zeit verringert. 
+		Kleine Services können schneller in die Produktion gebracht werden, wodurch sich die Time-To-Market Zeit verringert. 
 	\item[Technologie Freiheit]
 		Einzelne Services können unterschiedliche Technologien verwenden. Es besteht dabei keine Einschränkung auf eine Programmiersprache oder Plattform.
 \end{description}
 
-Besonders die technologische Freiheit ist an dieser Stelle interessant. Durch die Aufteilung in einzelnen Services, können für jeden Microservice unabhängig die Programmiersprache und Frameworks gewählt werden. So lassen sich neue Technologien in einem Service erproben, ohne dass andere Services davon betroffen sind. Dies senkt das Risiko für die Einführung neuer Technologien und die Kosten bleiben kalkulierbar\cite[13]{Wolff2015}, da nur in einem kleinen Rahmen eingeführt und getestet wird.\\
-Die Technologie-Entscheidung könnte somit auf die kleine Teilaufgabe, die der Service übernimmt, reduziert werden. Aber auch die Fähigkeiten des Entwickler-Teams spielen eine Rolle. So kann z.~B. für das eine Team NodeJS gewählt werden, da überwiegend Javascript Entwickler vertreten sind, und für das andere Team Spring, da dieses hauptsächlich Java beherrschen.
+Besonders die technologische Freiheit ist an dieser Stelle interessant. Durch die Aufteilung in einzelnen Services, können für jeden Microservice unabhängig die Programmiersprache und Frameworks gewählt werden. So lassen sich neue Technologien in einem Service erproben, ohne dass andere Services davon betroffen sind. Dies senkt das Risiko für die Einführung neuer Technologien und die Kosten bleiben kalkulierbar\cite[13]{Wolff2015}, da nur in einem kleinen Rahmen eingeführt und getestet wird.\\ 
+Aber auch die Fähigkeiten des Entwickler-Teams spielen eine Rolle und können bei der Wahl des Frameworks berücksichtigt werden. Als Beispiel kann das eine Team einen Service mit NodeJS entwickeln, da überwiegend Javascript Entwickler vertreten sind. Und das andere Team einen Service mit Spring, da dieses hauptsächlich Java beherrschen.
 
 \subsection{Microservice Frameworks}\label{Microservice_Frameworks}
 
 Ein Microservice Framework soll die Erstellung eines Services vereinfachen. Es unterstützt den Entwickler bei sich wiederholenden Tätigkeiten, wie z.~B. der Erstellung eines \ac{REST}-Endpunktes, und bringt viele häufig benötigte Funktionen mit. Dies könnte z.~B. eine Authentifizierung oder Caching sein.\\
 Dabei ist es darauf ausgelegt, möglichst schnell Ergebnisse zu erzielen und einen lauffähigen Microservice zu erstellen. Dies ist wichtig, da aufgrund der Vielzahl von Services die Erstellung eines einzigen nicht zu komplex sein sollte und der Fokus auf der Geschäftslogik liegt. 
 
-Dank der Technologiefreiheit kann für jeden Service ein eigenes Framework gewählt werden. Dabei stellt sich die Frage, welches für die Lösung der Teilaufgabe am besten geeignet ist. \\
+Dank der Technologiefreiheit kann für jeden Service ein eigenes Framework gewählt werden. Dabei stellt sich die Frage, welches für die Lösung der Teilaufgabe am besten geeignet ist und den Entwickler möglichst gut unterstützt.\\
 Da es einen Rahmen für die Entwicklung zur Verfügung stellt und die Programmiersprache vorgibt, ist diese Entscheidung maßgeblich für den weiteren Entwurf des Services. Aus diesem Grund sollte die Wahl nicht gänzlich unbedacht sein. Auch wen mit der Ersetzbarkeit die Hürde zum Austausch gering ist, bedeutet ein Fehlschlag mitunter mehrere Wochen vergeudetet Entwicklungszeit.
 
-Um das richtige Framework zu finden, müssen die Anforderungen an den Service festgelegt sein. Nur wenn es diese erfüllt, macht eine Umsetzung mit dem Framework Sinn. Somit sollten bei der Bewertung eines Frameworks die Erfüllung der spezifischen Serviceanforderungen geprüft werden.\\
-Welche Anforderungen ein Service zu erfüllen hat, ergibt sich aus der Aufgabe, die mit dem Service umgesetzt werden soll. Dies können sowohl fachliche Aufgaben, wie eine Kundenverwaltung, oder technische, wie das Sammeln von Log-Daten der weiteren Services, sein.\\
-Aus der Architektur ergibt sich die Aufteilung der Aufgaben. Dabei ist es wichtig, dass bei Änderungen und neuen Features nur ein Service angepasst werden muss. Hierzu ist es essentiell, dass jeder Service eine fachliche bzw. technische Einheit bildet.\\
-Durch die Anforderungen des Gesamtsystems, die hauptsächlich vom Auftraggeber vorgegeben sind, ergibt sich die Architektur. Dieser Weg von den Anforderungen bis zur Wahl der passenden Frameworks ist in Abbildung \ref{FrameNeeds} nochmals dargestellt.
-    
-\image[FrameNeeds.pdf][width=0.3\linewidth]{FrameNeeds}{Anforderungen und Frameworks}{Der Weg von den Anforderungen zu den passenden Frameworks für die Services}
- 
-Aus diesem Zusammenhang wird ersichtlich, dass sich nur dann die passenden Serviceanforderungen für die Bewertung eines Frameworks ergeben, wenn die Architektur den Anforderungen entspricht. Bevor man ein Framework bewerten kann, muss somit die Qualität der Architektur bewiesen sein. Nur dann kann man sicher gehen, dass der richtige Maßstab für die Wahl des passenden Frameworks angelegt wird.
+Um das richtige Framework zu finden, müssen Anforderungen an dieses gestellt werden. Da ein Microservice eine eigene Anwendung ist und das Framework maßgeblich dazu beiträgt diesen zu erstellen, ergeben sich die Anforderungen aus denen, die an den Service gestellt werden. Diese Serviceanforderungen definieren nicht nur was für eine Aufgabe er hat, sondern auch wie er sie zu erfüllen hat.\\ 
+Wobei für das Framework nur die Serviceanforderungen interessant sind, die nicht mit der Geschäftslogik zusammenhängen. Es soll schließlich nur den Rahmen dazu anbieten und den Entwickler weitestgehend bei der Umsetzung der Aufgabe helfen.\\
+Welche Anforderungen an einen Service gestellt werden, hängt von der Architektur und dessen Anforderungen ab.
+Dabei müssen sie nicht unbedingt direkt aus Anforderungen des Gesamtsystems entstehen. Einzelne Architekturentscheidungen können auch zu Serviceanforderungen führen. Beispielhaft sind hier Service-Discovery und Logging zu nennen. 
+Abbildung \ref{Serviceanforderungen} ist ein Versuch diesen komplexen Zusammenhang darzustellen.\\
 
-Es bietet sich somit an, die Bewertung von Frameworks an die Qualitätsbewertung von Softwarearchitektur anzulehnen. So kann gewährleistet werden, dass die Serviceanforderungen in direkter Beziehung zu den Anforderungen des Gesamtsystems stehen und die Wahl des passenden Frameworks nachvollziehbar bleibt.
+
+\image[Serviceanforderungen.pdf][width=0.5\linewidth]{Serviceanforderungen}{Serviceanforderungen}{Aus Anforderungen an die gesamte Architektur ergeben sich separate Serviceanforderungen. Diese können unmittelbar übergehen oder aus Architekturentscheidungen entstehen.}  
+
+Im Gegensatz zu einer Bibliothek beeinflusst ein Framework die Servicearchitektur erheblich. Der Entwickler bekommt mit ihr eine Struktur für die Anwendung vorgegeben und erweitert bzw. passt sie so an, dass die Serviceanforderungen erfüllt werden.\\
+Damit dies schon während der Entwurfsphase überprüft werden kann, gibt es etablierte Methoden zur Qualitätsbewertung von Softwarearchitekturen. So kann die Servicearchitektur auf die Serviceanforderungen untersucht werden. Für die Bewertung von Frameworks ist es daher naheliegend diese daran anzulehnen.  
  
 \pagebreak
 \section{Qualitätsbewertung von Softwarearchitektur}\label{Qualitätsbewertung_Softwarearchitektur}

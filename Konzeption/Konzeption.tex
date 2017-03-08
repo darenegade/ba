@@ -23,7 +23,7 @@ In diesem Zusammenhang sollte auch die vorhandene Microservice Architektur vom S
 Aus dem vorangegangenen Kapitel wird ersichtlich, dass eine Bewertung nicht nur frühzeitig erfolgen muss. Viel mehr ist es wichtig, dass diese auch auf detaillierten Anforderungen basiert. Durch die maßgeblichen Stakeholder werden diese vorgegeben. In einer Microservice Architektur sind dies die definierten Umstände eines Services. Diese beschränken sich dabei nicht auf die Kommunikation zwischen zwei einzelnen Services. Gerade die Komposition der Microservices über die Infrastruktur muss gewährleistet sein. Wobei Punkte wie Sicherheit und Wartbarkeit die Komplexität noch steigern.
 Damit ein Service dies erfüllt und somit in der Architektur funktionieren kann, müssen anhand der Umstände, wie z.~B. Servicediscovery, Logging oder Tracing, Anforderungen definiert werden. Nur wenn das Framework eines Services diese unterstützt, kann garantiert werden, dass es in die Gesamtarchitektur passt.
 
-\newparagraph{Funktionale Serviceanforderungen}
+\newparagraph{Funktionale Frameworkanforderungen}
 \
 Es müssen demnach Anforderungen gefunden werden, die die Microservice Architektur an die einzelnen Services stellt. Das ist dabei stark von der Umsetzung dieser abhängig. Ein gutes Beispiel hierfür ist die Servicediscovery. Dass sich Services gegenseitig finden können, ohne die Flexibilität der Architektur zu verlieren, darf eben diese nicht fehlen. Die Umsetzung kann dabei jedoch stark variieren. So kann ein zentraler Service, wie z.~B. Netflix-Eureka\footnote{
 \url{https://github.com/Netflix/eureka}
@@ -41,18 +41,18 @@ Clusters übernimmt die Service-Verwaltung diese Aufgabe selbst und stellt sie �
 
 \image[Servicediscoverytypen.pdf]{Servicediscoverytypen}{Servicediscovery Typen}{Beispiele für Ausprägungen der Servicediscovery}
 
-Die spezifische Ausprägung der Architektur gibt somit Anforderungen vor, die es zu identifizieren gilt. Diese stellen die funktionalen Serviceanforderungen dar und müssen für die Akzeptanz erfüllt werden. Sollte sich mit einem Framework z.~B. nicht die benötigte Authentifizierung umsetzen lassen, kann der Service nicht vor Missbrauch geschützt werden. Ein Einsatz im produktiven Umfeld wäre demnach undenkbar oder nur mit unverhältnismäßig großem Aufwand zu realisieren.
+Die spezifische Ausprägung der Architektur gibt somit Anforderungen vor, die es zu identifizieren gilt. Diese stellen die funktionalen Frameworkanforderungen dar und müssen für die Akzeptanz erfüllt werden. Sollte sich mit einem Framework z.~B. nicht die benötigte Authentifizierung umsetzen lassen, kann der Service nicht vor Missbrauch geschützt werden. Ein Einsatz im produktiven Umfeld wäre demnach undenkbar oder nur mit unverhältnismäßig großem Aufwand zu realisieren.
 
-\newparagraph{Nicht-Funktionale Serviceanforderungen}
+\newparagraph{Nicht-Funktionale Frameworkanforderungen}
 \
-Neben den funktionalen Serviceanforderungen lassen sich auch nicht-funktionale Anforderungen definieren, die zur Erreichung und Zufriedenstellung der benötigen Funktionen notwendig sind. Dies muss dabei nicht auf die durch das Framework vorgegebene Architektur des Services beschränkt sein. An dieser Stelle kann das Framework als Werkzeug aufgefasst werden. Es gilt somit nicht nur die Frage zu klären, ob ein Framework eine benötigte Funktion bereitstellt. Sondern ob es den Entwickler bei der Umsetzung bestmöglich unterstützt und dabei flexibel bleibt. Nach dem KISS-Prinzip\footnote{
+Neben den funktionalen Frameworkanforderungen lassen sich auch nicht-funktionale Anforderungen definieren, die zur Erreichung und Zufriedenstellung der benötigen Funktionen notwendig sind. Dies muss dabei nicht auf die durch das Framework vorgegebene Architektur des Services beschränkt sein. An dieser Stelle kann das Framework als Werkzeug aufgefasst werden. Es gilt somit nicht nur die Frage zu klären, ob ein Framework eine benötigte Funktion bereitstellt. Sondern ob es den Entwickler bei der Umsetzung bestmöglich unterstützt und dabei flexibel bleibt. Nach dem KISS-Prinzip\footnote{
 \url{http://principles-wiki.net/principles:keep_it_simple_stupid}
 } 
 wird zum Beispiel die Funktion bevorzugt, die möglichst einfach und \enquote{dumm} erscheint. So brauch es für die Umsetzung keine anspruchsvollen oder besonders cleveren Lösungen. Eine Einfache lässt sich nicht nur besser Lesen und Verstehen, es erhöht auch die Wartbarkeit.  
 
 \newparagraph{Basisanforderungen von \ac{MFEM}}
 \
-Damit das Bewertungsteam, bei der Findung von funktionalen und nicht-funktionalen Serviceanforderungen, nicht bei null anfangen muss, wird an dieser Stelle eine Orientierungshilfe angeboten. Hier wurde in einem Brainstorming versucht, eine Schnittmenge an Anforderungen zu finden, die für die meisten Microservice Architekturen gelten sollte. 
+Damit das Bewertungsteam, bei der Findung von funktionalen und nicht-funktionalen Frameworkanforderungen, nicht bei null anfangen muss, wird an dieser Stelle eine Orientierungshilfe angeboten. Hier wurde in einem Brainstorming versucht, eine Schnittmenge an Anforderungen zu finden, die für die meisten Microservice Architekturen gelten sollte. 
 Die so gefundenen Anforderungen basieren auf der Erfahrung der Anwendungsentwicklung innerhalb der Landeshauptstadt München. Diese hat sich in den letzten Jahren mit dem produktiven Einsatz von Microservices beschäftigt und diverse erfolgreiche Projekte damit umgesetzt.
 \ac{MFEM} enthält somit Basisanforderungen, die als Grundlage für die Bewertung eines Frameworks hergenommen werden können. Eine Verpflichtung zu diesen Anforderungen besteht jedoch nicht. Wie zuvor beschrieben, hängen die Anforderungen stark am jeweiligen Kontext und müssen dahingehend beurteilt werden. Daher ist essentiell, dass die Basisanforderungen nur als Orientierung dienen und beliebig gekürzt aber in jedem Fall um weitere kontext-spezifische Anforderungen erweitert werden müssen.  
 
