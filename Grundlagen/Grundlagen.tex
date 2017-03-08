@@ -23,7 +23,7 @@ Doch ist dies nur ein Aspekt des Entwurfsmusters. Die Abbildung \ref{Microservic
 \end{description}
 
 Besonders die technologische Freiheit ist an dieser Stelle interessant. Durch die Aufteilung in einzelnen Services, können für jeden Microservice unabhängig die Programmiersprache und Frameworks gewählt werden. So lassen sich neue Technologien in einem Service erproben, ohne dass andere Services davon betroffen sind. Dies senkt das Risiko für die Einführung neuer Technologien und die Kosten bleiben kalkulierbar\cite[13]{Wolff2015}, da nur in einem kleinen Rahmen eingeführt und getestet wird.\\ 
-Aber auch die Fähigkeiten des Entwickler-Teams spielen eine Rolle und können bei der Wahl des Frameworks berücksichtigt werden. Als Beispiel kann das eine Team einen Service mit NodeJS entwickeln, da überwiegend Javascript Entwickler vertreten sind. Und das andere Team einen Service mit Spring, da dieses hauptsächlich Java beherrschen.
+Aber auch die Fähigkeiten des Entwickler-Teams spielen eine Rolle und können bei der Wahl des Frameworks berücksichtigt werden. Als Beispiel kann das eine Team einen Service mit NodeJS entwickeln, da überwiegend Java\-script Entwickler vertreten sind. Und das andere Team einen Service mit Spring, da dieses hauptsächlich Java beherrschen.
 
 \subsection{Microservice Frameworks}\label{Microservice_Frameworks}
 
@@ -61,7 +61,7 @@ In einem sogenannten \enquote{Audit} oder \enquote{Review} werden bereits produk
 Sollten sich hier starke Abweichungen gegenüber den Anforderungen zeigen, kann sich dies zu einem großen Problem 
 avancieren, hohe Kosten verursachen und Kunden verärgern.\\
 Aus diesem Grund ist die Qualität einer Architektur sehr entscheidend und sollte stichhaltig nachgewiesen sein.
-Um sie zu bestimmen und Restrisiken minimiert zu können, gibt es Methoden zur Qualitätsbewertung 
+Um sie zu bestimmen und Restrisiken minimieren zu können, gibt es Methoden zur Qualitätsbewertung 
 von Softwarearchitektur. Neben diesem Ziel gibt es noch weitere positive Auswirkungen, die für den Einsatz der Architekturbewertung sprechen. (Siehe Bild \ref{Architekturbewertung})
 
 \image[Architekturbewertung.pdf][width=0.7\linewidth]{Architekturbewertung}{Ziele Architekturbewertung}{Allgemeine Ziele von Architekturbewertung.}
@@ -138,7 +138,7 @@ verstanden wurden, dar. So kann z.~B. der verwendete Datenbanktyp noch ungeklär
 Sensitivitätspunkte sind starke Abhängigkeiten messbarer Qualitätsmerkmale. Diese beziehen sich auf die Auslegung von einzelnen Komponenten der Architektur. Ein Beispiel für Sensitivitätspunkte ist ein Engpass zwischen zwei Modulen. D.~h. wenn der Kommunikationskanal zweier Module, wovon mindestens eins essenziell für das Gesamtsystem ist, zu gering ausgelegt wurde, dann kann dieser für einen niedrigen Durchsatz des gesamten Systems verantwortlich sein. In anderen Worten beeinflusst die Dimensionierung einer einzelnen Komponente direkt das Gesamtsystem, was einen Sensitivitätspunkt darstellt.
 
 Zusätzlich deckt der Kompromisspunkt Sensitivitätspunkte auf, die sich entgegen wirken.
-Würde man z.~B. den zuvor genannten Engpass breiter auslegen, kann unter Umständen dies die Zuverlässigkeit des Gesamtsystems verschlechtern. Ein angebundenes Modul verwirft möglicherweise bei einer starken Belastung einige Anfragen, wodurch ein korrektes Ergebnis nicht mehr garantiert werden kann. So wirken sich diese beiden Sensitivitätspunkte entgegen und es muss ein Kompromiss gebildet werden.  
+Würde man z.~B. den zuvor genannten Engpass beheben und den Kanal breiter auslegen, kann unter Umständen dies die Zuverlässigkeit des Gesamtsystems verschlechtern. Ein angebundenes Modul verwirft möglicherweise bei einer starken Belastung einige Anfragen, wodurch ein korrektes Ergebnis nicht mehr garantiert werden kann. So wirken sich diese beiden Sensitivitätspunkte entgegen und es muss ein Kompromiss gebildet werden.  
  
 Mit den Risiken, Sensitivitäts- und Kompromisspunkten kann die Architektur mit gezielteren Analysen, Erstellung von Prototypen und weiteren Entwürfen stark verbessert 
 werden. 
@@ -164,11 +164,11 @@ Im ersten Schritt soll die Bewertungsmethode vorgestellt und deren Ziele verdeut
 
 \newparagraph{Qualitätsziel vorstellen}
 \
-Die Qualitätsanforderungen werden wesentlich vom Auftraggeber bestimmt. Aus diesem Grund sollte er auch diese vorstellen und dabei genau erläutern, was die Gründe für die Entwicklung sind und wie das System in die fachlichen Unternehmensprozesse eingeordnet werden soll. Selbst wenn die Ziele bereits in einem Anforderungsdokument erfasst wurden, ist es wichtig, die aktuelle Sichtweise des Auftraggebers zu begreifen. Zudem sind Zielformulierungen aus den Anforderungsdokumenten, meist von Systemanalytikern, gründlich gefiltert worden\cite{Starke2015}. So können Teilnehmer Rückfragen stellen und Aha-Erlebnisse auslösen.
+Die Qualitätsanforderungen werden wesentlich vom Auftraggeber bestimmt. Aus diesem Grund sollte er auch diese vorstellen und dabei genau erläutern, was die Gründe für die Entwicklung sind und wie das System in die fachlichen Unternehmensprozesse eingeordnet werden soll. Selbst wenn die Ziele bereits in einem Anforderungsdokument erfasst wurden, ist es wichtig, die aktuelle Sichtweise des Auftraggebers zu begreifen. Zudem sind Zielformulierungen aus den Anforderungsdokumenten, meist von Systemanalytikern, gründlich gefiltert worden\cite{Starke2015}. So können Teilnehmer Rückfragen stellen und \enquote{Aha}-Erlebnisse auslösen.
 
 \newparagraph{Architektur erläutern}
 \
-In dieser Phase wird vom Softwarearchitekten die Architektur vorgestellt. Dabei wird nicht nur das eigentliche System erläutert, sondern es sollte auch der gesamte Kontext mit einbezogen werden\cite{Starke2015}. Es beinhaltet Nachbarsysteme oder Plattformen mit denen das System in Verbindung steht. Eine angemessene Detailtiefe spielt dabei auch eine Rolle. Was angemessen ist, hängt in erster Linie von den vorhandenen Informationen (Dokumente, Diagramme, usw.) und der verfügbaren Zeit ab. Dies stellt einen wesentlichen Punkt in der Bewertung dar\cite{Clements2000}, da nur die bereitgestellten Informationen in die Analyse mit einbezogen werden können. Je mehr vorhanden ist, desto tiefer und detaillierter kann die Bewertung durchgeführt werden. Wichtige und benötigte Dokumente oder Entscheidungen zur Architektur sollten unbedingt vor der Evaluation erstellt worden sein.
+In dieser Phase wird vom Softwarearchitekten die Architektur vorgestellt. Dabei wird nicht nur das eigentliche System erläutert, sondern es sollte der gesamte Kontext mit einbezogen werden\cite{Starke2015}. Es beinhaltet Nachbarsysteme oder Plattformen mit denen das System in Verbindung steht. Eine angemessene Detailtiefe spielt dabei auch eine Rolle. Was angemessen ist, hängt in erster Linie von den vorhandenen Informationen (Dokumente, Diagramme, usw.) und der verfügbaren Zeit ab. Dies stellt einen wesentlichen Punkt in der Bewertung dar\cite{Clements2000}, da nur die bereitgestellten Informationen in die Analyse mit einbezogen werden können. Je mehr vorhanden ist, desto tiefer und detaillierter kann die Bewertung durchgeführt werden. Wichtige und benötigte Dokumente oder Entscheidungen zur Architektur sollten unbedingt vor der Evaluation erstellt worden sein.
 Die Präsentation der Architektur sollte hier folgende Informationen umfassen\cites{Clements2000}{Starke2015}:
 
 \begin{itemize}[]
@@ -193,7 +193,7 @@ So werden die geforderten Anforderungen, z.~B. in einem Brainstorming, erfasst u
 Anschließend werden zu den Qualitätsanforderungen Szenarien erstellt. Diese bilden einen wichtigen Bestandteil der Bewertungsmethode. Sie dienen dazu, die Anforderungen genauer zu definieren und den Stakeholdern somit näher zu bringen. Dabei muss die Formulierung eines Szenarios möglichst konkret sein und ein Beispiel darstellen, wie sich das System in einer bestimmten Situation verhält. Ein Szenario sollte folgende Informationen umfassen\cite{Starke2015}:
 
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Systembestandteil}]
-	\item[Auslöser] Welcher spezifischer Stimulus löst das Szenario aus.
+	\item[Auslöser] Welcher spezifische Stimulus löst das Szenario aus.
 	\item[Quelle] Woher stammt der Auslöser. Z. B. intern, extern, Benutzer, Administrator usw.
 	\item[Umgebung] Welcher Bestandteil des Systems ist betroffen.
 	\item[Antwort] Wie reagiert das System auf den Auslöser.
@@ -204,7 +204,7 @@ Die Szenarien sind nicht nur eine genauere Definition der Anforderungen. Auch he
 
 \image[BeispielQualitaetsbaumMitSzenarien.pdf]{QualitaetsbaumSzenarien}{Qualitätsbaum und Szenarien}{Qualitätsbaum mit einzelnen Szenarien erweitert}
 
-Zuletzt werden den Szenarien Prioritäten zugeordnet, so dass der Fokus zuerst auf kritischen Anforderungen steht. Auch ist der Bewertungs-Workshop meist zeitlich begrenzt und somit wird sichergestellt, dass die Nichterfüllung essentieller Qualitätsanforderungen schnell zu einem Abbruch führt. Es kann durch eine einfache Skala mit wenigen Prioritäten erreicht werden, z.~B. A = hoch, B = mittel und C = weniger wichtig.
+Zuletzt werden den Szenarien Prioritäten zugeordnet, so dass der Fokus zuerst auf kritischen Anforderungen liegt. Auch ist der Bewertungs-Workshop meist zeitlich begrenzt und somit wird sichergestellt, dass die Nichterfüllung essentieller Qualitätsanforderungen schnell zu einem Abbruch führt. Es kann durch eine einfache Skala mit wenigen Prioritäten erreicht werden, z.~B. A = hoch, B = mittel und C = weniger wichtig.
 
 \newparagraph{Architekturansätze analysieren}
 \
@@ -242,7 +242,7 @@ Das Qualitätsmodell von \ac{SAEM} baut dabei auf dem Modell der ISO/IEC 25010 a
 \image[ISO25010.pdf]{ISO25010Modell}{Qualitätsmodell der ISO/IEC 25010}{Qualitätsmodell der ISO/IEC 25010\cite{ISOIEC25010}}
 
 Hierzu wird im ersten Schritt die externe Qualität bestimmt. Diese basiert auf messbaren Metriken unter Nutzungsbedingungen und werden vom Nutzer sowie den Architekten definiert\cite{Duenas1998}. So sollten für alle Qualitätskategorien Anforderungen an die Architektur ausgewählt und optimale bzw. zulässige Werte bestimmt werden. Ein Beispiel hierfür ist die Reaktionszeit auf Anfragen.\\ 
-Mittels der externen Qualität können die Architekten die interne Qualität bestimmen. Diese sind Anforderungen, die benötigt werden um das Ziel zufriedenstellend zu erreichen. Im Unterschied zu externen Anforderungen werden diese nicht durch die Nutzung bestimmt, sondern beziehen sich auf intrinsische Eigenschaften, wie z.~B. Modularität oder Komplexität\cite{Duenas1998}. Die Bestimmung der internen Qualität basiert meist auf Expertenwissen oder Firmen interne Richtlinien.
+Mittels der externen Qualität können die Architekten die interne Qualität bestimmen. Diese sind Anforderungen, die benötigt werden um das Ziel zufriedenstellend zu erreichen. Im Unterschied zu externen Anforderungen werden diese nicht durch die Nutzung bestimmt, sondern beziehen sich auf intrinsische Eigenschaften, wie z.~B. Modularität oder Komplexität\cite{Duenas1998}. Die Bestimmung der internen Qualität basiert meist auf Expertenwissen oder firmeninterne Richtlinien.
 
 \subsubsection{Bestimmung von Metriken}
 Für die Messung der Qualitätsanforderungen müssen Metriken bestimmt werden. Hierzu kann das Bewertungsteam aus bekannten Softwaremetriken wählen oder systematisch neue definieren. Wichtig ist nur, dass die Messung zielorientiert ist. D. h. die Metriken müssen mit einem Top-Down Ansatz bestimmt werden\cite{Habenicht2008}. Somit soll nicht aus vorhandenen Messungen ein Bezug zur Qualität aufgebaut, sondern mittels spezifischer Qualitätsanforderungen passende und aussagekräftige Metriken gefunden werden.
@@ -269,7 +269,7 @@ An diesem Punkt ist die Evaluation denkbar einfach. Sie besteht aus dem Sammeln 
 An diesem Punkt wird der Unterschied zu \ac{ATAM} wieder deutlich. \ac{SAEM} versucht nicht ein tieferes Verständnis für die Architektur bei maßgeblichen Stakeholdern zu schaffen, sondern nur die Einhaltung spezifischer Anforderungen zu gewährleisten. Dies hängt dabei stark vom definiertem Qualitätsziel ab. Gerade bei der internen Qualität verlangt \ac{SAEM} somit eine firmeninterne Qualitätsrichtlinie\cite{IEEE_TSE2002}, die auf Erfahrung und Expertenwissen basiert.
 
 \subsection{Architekturbewertungsmethoden und Frameworks}
-Mit Architekturbewertungsmethoden wie \ac{ATAM} oder \ac{SAEM} lässt sich die Qualität einer Architektur sehr gut bewerten. So kann die spezifische Umsetzung einer Microservice Architektur auf die gegebene Anforderungen untersucht werden. Zudem schärft es nicht nur die Anforderungen selbst, sondern kann auch die geplante Architektur weiter verfeinern und ein tieferes Verständnis bei den Stakeholdern dafür schaffen.
+Mit Architekturbewertungsmethoden wie \ac{ATAM} oder \ac{SAEM} lässt sich die Qualität einer Architektur sehr gut bewerten. So kann die spezifische Umsetzung einer Microservice Architektur auf die gegebenen Anforderungen untersucht werden. Zudem schärft es nicht nur die Anforderungen selbst, sondern kann auch die geplante Architektur weiter verfeinern und ein tieferes Verständnis bei den Stakeholdern dafür schaffen.
 
 Mit diesem Wissen müssen anschließend die passenden Frameworks für die einzelnen Services gewählt werden. Hierzu lässt sich die reine Architekturbewertung jedoch nicht mehr verwenden, da diese ein vollständiges Verständnis über die Architektur und dessen Einfluss benötigt. D.~h., in Bezug auf ein Framework muss bekannt sein, wie sich die vorhandenen Architekturentscheidungen und Entwurfsmuster innerhalb des Frameworks auf die tatsächliche Architektur der Umsetzung eines Microservices auswirken.\\
 Beim Einsatz eines neuen Frameworks ist dieses Wissen jedoch in vielen Fällen nicht vorhanden und muss erarbeitet werden. Aus diesem Grund ist es verständlich, wenn Entwickler und Architekten bei der Wahl eines Frameworks auf etwas zurück greifen, dass bekannt ist. Eine Bewertungsmethode sollte somit kein Expertenwissen voraussetzen, damit sich alle Frameworks in den Bewertungsprozess mit einbeziehen lassen.
