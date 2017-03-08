@@ -17,11 +17,11 @@ Um mit der Evaluation von \ac{MFEM} möglichst vertretbare Ergebnisse zu erhalte
 
 Diesen Anforderungen folgend wurde als Erstes das auf Java basierende Spring Framework\footnote{\url{spring.io}} gewählt. Es befindet sich seit 2002 in Entwicklung und hat seit dem mehrere Preise gewonnen\cite[1]{Gutierrez2016}. Dabei entwickelt es die sehr aktive Open-Source-Community ständig weiter und integriert die neuesten Technologien. Beispiele hierfür sind WebFlux, welches reaktive Webapplikationen ermöglicht, oder Cloud-Contract, um die \ac{REST}-Schnittstelle mit einem Consumer-Driven Contract abzusichern. Zudem findet jährlich die SpringOne Konferenz statt, welche mit über 2000 Teilnehmern und 30 großen Sponsoren für den Erfolg von Spring sprechen\cite{SpringOne2016}.\\
 2014 wurde die Erweiterung Spring Boot offiziell veröffentlicht und stellte eine große Evolution des Frameworks dar. Es nimmt dem Entwickler so viel Arbeit wie möglich ab, sodass dieser sich auf die Geschäftslogik konzentrieren kann. Dabei stellt es die Konvention über die Konfiguration und erstellt so automatisch robuste, erweiterbare und skalierbare Spring Applikationen\cite[1]{Gutierrez2016}. Dies spricht für den hohen Reifegrad und die Akzeptanz des Frameworks.\\
-Nach \cite{Wolff2016} ist das Spring Framework eine sehr gute Wahl für den Einsatz in einer Microservice Architektur und lässt dabei kaum ein Problem offen, für das es keine Lösung vorhält. 
+Nach \citeauthor{Wolff2016} (\citeyear{Wolff2016}) ist das Spring Framework eine sehr gute Wahl für den Einsatz in einer Microservice Architektur und lässt dabei kaum ein Problem offen, für das es keine Lösung vorhält. 
 
 Die Wahl des zweiten Frameworks fiel auf Go-Kit\footnote{\url{gokit.io}}. Es wird seit 2016 entwickelt und ist somit, im Gegensatz zu Spring, ein sehr junges Framework. Dabei setzen die Entwickler auf die Programmiersprache Go, welche selbst noch relativ jung ist. \\
-Go wurde ursprünglich 2007 von Mitarbeitern des Unternehmens Google\cite{Golang2009} entwickelt und ist seit 2012 in einer stabilen Version verfügbar. Seit dem ist das Interesse für diese Sprache immens gestiegen, was der Tiobe Index deutlich zeigt. Dies ist ein Popularitäts-Ranking von Programmiersprachen, in dem Go bereits Platz 14 (Stand: Februar 2017) einnimmt\cite{Tiobe2016}. Aufgrund der starken Steigerung gegenüber dem Vorjahr wurde Go von Tiobe auch zur Programmiersprache 2016 gewählt.\\
-Da Go bereits im Hinblick auf skalierbare Netzwerkdienste, Cluster- und Cloud Computing entwickelt wurde, bringt die Sprache bereits sehr viel für die Erstellung von verteilten Systemen mit. In Bezug auf eine Microservice Architektur fehlen jedoch einige Funktionen wie z.~B. Infrastrukturintegration oder Logging. Diese Lücke versucht Go-Kit zu schließen, damit der Entwickler sich auf die Geschäftslogik konzentrieren kann.
+Go wurde ursprünglich 2007 von Mitarbeitern des Unternehmens Google\cite{Golang2009} entwickelt und ist seit 2012 in einer stabilen Version verfügbar. Seit dem ist das Interesse für diese Sprache immens gestiegen, was der Tiobe Index deutlich zeigt. Dies ist ein Popularitäts-Ranking von Programmiersprachen, in dem Go derzeit den 14. Platz (Stand: Februar 2017) einnimmt\cite{Tiobe2016}. Aufgrund der starken Steigerung gegenüber dem Vorjahr wurde Go von Tiobe auch zur Programmiersprache 2016 gewählt.\\
+Da Go bereits im Hinblick auf skalierbare Netzwerkdienste, Cluster- und Cloud Computing entwickelt wurde, bringt die Sprache sehr viel für die Erstellung von verteilten Systemen mit. In Bezug auf eine Microservice Architektur fehlen jedoch einige Funktionen wie z.~B. Infrastrukturintegration oder Logging. Diese Lücke versucht Go-Kit zu schließen, damit der Entwickler sich auf die Geschäftslogik konzentrieren kann.
 
 Mit Spring und Go-Kit für die Evaluation von \ac{MFEM} werden die Anforderungen nach Heterogenität, Diskrepanz, Popularität und Opportunität erfüllt. Neben den unterschiedlichen Programmiersprachen geht der Reifegrad der Frameworks stark auseinander und sollte somit für unterschiedliche Ergebnisse sorgen. Nichtsdestotrotz erfahren 
 beide aktuell einen hohen Zuspruch für den Einsatz in einer Microservice Architektur und stellen somit interessante Kandidaten dar.
@@ -29,7 +29,7 @@ beide aktuell einen hohen Zuspruch für den Einsatz in einer Microservice Archit
 \subsection{Kickoff-Phase}
 
 Neben der Einführung der Methode sieht diese Phase eine Vorstellung der vorhandenen Microservice Architektur vor.  
-Da ein Teil der Evaluation auf den in \ac{MFEM} enthaltenen Basisanforderungen und deren Wirkung liegen soll, wurde ein möglichst einfacher Entwurf der zugrundeliegenden Architektur gewählt. So ergeben sich in der Analysephase nur wenige spezifische Anforderungen, die für die Evaluation der Methode nur eine geringe Rolle spielen. Weitere Phasen sind von der Microservice Architektur nicht direkt betroffen und bleiben daher unberührt. Abbildung \ref{Evaluationsarchitektur} zeigt die gewählte Architektur.
+Da ein Teil der Evaluation auf den in \ac{MFEM} enthaltenen Basisanforderungen und deren Wirkung liegen soll, wurde ein möglichst einfacher Entwurf der zugrundeliegenden Architektur gewählt. So ergeben sich in der Analysephase nur wenige spezifische Anforderungen, die für die Evaluation der Methode eine geringe Rolle spielen. Weitere Phasen sind von der Microservice Architektur nicht direkt betroffen und bleiben daher unberührt. Abbildung \ref{Evaluationsarchitektur} zeigt die gewählte Architektur.
 
 \image[Evaluationsarchitektur.pdf]{Evaluationsarchitektur}{Architektur für die Evaluation}{Vorgegebene Microservice Architektur für die Evaluation}
 
@@ -57,17 +57,17 @@ In der Analysephase sollen nun mit Hilfe der gegebenen Architektur die Anforderu
 
 \subsubsection{Architektur Analyse und Wahl der Anforderungen}
 
-Mit \ac{MFEM} kommen bereits viele Anforderungen, die Basisanforderungen, mit. Da die Architektur möglichst einfach gehalten wurde, gibt es keinen Widerspruch zu diesen Anforderungen. Auch gibt es unter den Basisanforderungen keine Punkte die sich Widersprechen. Sie lassen sich somit vollständig übernehmen.
+Mit \ac{MFEM} kommen bereits viele die Basisanforderungen mit. Da die Architektur möglichst einfach gehalten wurde, gibt es keinen Widerspruch zu diesen Anforderungen. Auch gibt es unter den Basisanforderungen keine Punkte die sich Widersprechen. Sie lassen sich somit vollständig übernehmen.
 
 Zusätzlich ergeben sich aus der Architektur funktionale Serviceanforderungen. Dies betrifft hauptsächlich die Service-Discovery. Ein Service muss sich an diesem An- und Abmelden sowie regelmäßig einen Heartbeat senden. Auch für die Inter-Service-Kommunikation muss ein Service an der Discovery die Einträge abfragen und verarbeiten können. (Abbildung \ref{ServiceDiscovery}) Somit wurde die Anforderung zur Unterstützung einer mit Eureka aufgebauten Service-Discovery aufgenommen.
 
-In den Basisanforderungen ist bereits unter der Kategorie Sicherheit die Anforderung nach einer Absicherung gefordert. Dies beinhaltet die Unterstützung eines \ac{JWT} und wird daher nicht als eigener Punkt aufgenommen. Zusätzlich soll auf eine Autorisierung durch Benutzer zugehörige Rechte verzichtet werden. 
+In den Basisanforderungen ist bereits unter der Kategorie Sicherheit die Anforderung nach einer Absicherung gefordert. Dies beinhaltet die Unterstützung eines \ac{JWT} und wird daher nicht als eigener Punkt aufgenommen. Zusätzlich soll auf eine Autorisierung durch Benutzerrechte verzichtet werden. 
 Aus diesem Grund ergeben sich durch den Authentifizierungs-Service keine weiteren Anforderungen.\\
 Auch durch das Gateway ergeben sich keine Anforderungen, da die Beziehung zu den Services einseitig ist. Im vorliegenden Entwurf leitet das API-Gateway Anfragen an die Services weiter. Jedoch stellen die Services keine Anfragen an das Gateway und müssen daher keine zugehörigen Funktionen unterstützen.
 
 Die Basisanforderungen decken bereits eine Vielzahl an nicht-funktionalen Serviceanforderungen ab. Diese beinhalten z.~B. die Forderung nach einer aktiven Community, eine effiziente Programmierung oder eine gute Dokumentation. Aus diesem Grund wird auch hier auf die Aufnahme weiterer Anforderungen verzichtet.
 
-Nachdem alle Anforderungen zusammengetragen und in einem Quality Utility Tree eingeordnet wurden, sind diese Priorisiert worden. Abbildung \ref{QUT} zeigt den entstandenen Quality Utility Tree mit allen Anforderungen für die Evaluation.
+Nachdem alle Anforderungen zusammengetragen und in einem Quality Utility Tree eingeordnet wurden, sind diese priorisiert worden. Abbildung \ref{QUT} zeigt den entstandenen Quality Utility Tree mit allen Anforderungen für die Evaluation.
 
 \image[QUT.pdf][width=0.9\linewidth]{QUT}{Quality Utility Tree Evaluation}{Priorisierter Quality Utility Tree mit allen Anforderungen für die Evaluation.}
 
@@ -134,7 +134,7 @@ Diese sind in Abbildung \ref{MessgruppenEval} nochmal zusammengefasst.
 
 Die Zuordnung der Metriken beginnt mit den Szenarios. Da diese zur subjektiven Evaluation gehören, werden nur weiche Daten erhoben. Im aktuellen Fall betrifft dies somit die mittels Ordinalskala erhobenen Metriken.
 
-Da das Szenario 1 die Installation und Einrichtung übernimmt, wurden hier z.~B. Metriken der Anforderungen  Build-Tools oder Dependencieverwaltung zugeordnet. Mit dem Szenario 2, dem einfachen Service, konnten die Standardformate und Security (\ac{JWT}) zugeordnet werden. Als letzte wurden dem Szenario 3, dem erweiterten Service, die Metriken für die \ac{REST}-Schnittstelle sowie Objektvalidierung zugeordnet. Zusätzlich wurden diesem Szenario, da es das fortgeschrittenste ist, auch die Dokumentation und effiziente Programmierung zugeteilt.\\
+Da das Szenario 1 die Installation und Einrichtung übernimmt, wurden hier z.~B. Metriken der Anforderungen Build-Tools oder Dependencieverwaltung zugeordnet. Mit dem Szenario 2, dem einfachen Service, konnten die Standardformate und Security (\ac{JWT}) zugeordnet werden. Als letzte wurden dem Szenario 3, dem erweiterten Service, die Metriken für die \ac{REST}-Schnittstelle sowie Objektvalidierung zugeordnet. Zusätzlich wurden diesem Szenario, da es das Fortgeschrittenste ist, auch die Dokumentation und effiziente Programmierung zugeteilt.\\
 Somit blieben am Ende des ersten Durchlaufs Metriken für Anforderungen wie z.~B. Logging, Service-Discovery und Circuit-Breaker-Pattern übrig. Aus diesem Grund mussten die Szenarios weiter verfeinert werden. Die Wahl fiel dabei auf das Szenario 2. Es sollte somit nicht nur ein "Hello World"-Service entstehen, sondern auch ein Service der bereits in der Infrastruktur funktioniert. Somit ließen sich auch die letzten Metriken zuordnen. 
 
 Es ergibt sich somit die in Tabelle \ref{SzMetriken} gezeigte Zuordnung.  
@@ -146,7 +146,7 @@ Es ergibt sich somit die in Tabelle \ref{SzMetriken} gezeigte Zuordnung.
 \end{longtable}
 \FloatBarrier
 
-Da die objektiven Metriken sich nur an ihrem definierten Messpunkt erheben lassen, z.~B. kann der Durchsatz nur am lauffähigen Prototyp ermitteln, ließen sich diese einfach auf die 3 verbleibenden Messgruppen verteilen. 
+Da die objektiven Metriken sich nur an ihrem definierten Messpunkt erheben lassen, z.~B. kann der Durchsatz nur am lauffähigen Prototyp ermittelt werden, ließen sich diese einfach auf die 3 verbleibenden Messgruppen verteilen. 
 
 Es ergibt sich somit die in Tabelle \ref{ObjekEvalMetriken} gezeigte Zuordnung. 
 
@@ -164,11 +164,11 @@ Da nun festgelegt ist, an welchem Punkt welche Daten erhoben werden, kann die Ev
 An dieser Stelle werden die Szenarien und Messungen an Spring Boot vorgenommen. Da es bei der Evaluation von \ac{MFEM} weniger um die konkrete Implementierung\footnote{
 	Die gesamte Implementierung findet sich auf einem Github Repository mit der URL:\url{https://github.com/darenegade/SimpleSpringService}
 } 
- geht, wird die Durchführung der einzelnen Messgruppen nur kurz beschrieben. Dabei werden markante Punkte hervorgehoben, die die Ergebnisse nachvollziehbar machen. 
+ geht, wird die Durchführung der einzelnen Messgruppen nur kurz beschrieben. Dabei werden markante Punkte hervorgehoben, sodass die Ergebnisse nachvollziehbar bleiben. 
 
 \newparagraph{Szenario 1: Installation}
 Mit Spring Boot wird Java als Programmiersprache benötigt. Die nötigen Installationsdateien lassen sich für jedes Betriebssystem bei Oracle\footnote{\url{http://www.oracle.com/technetwork/java}} beziehen.\\
-Als Buildmanagement-Tools haben sich Gradle\footnote{\url{https://gradle.org}}  und Maven\footnote{\url{https://maven.apache.org}} etabliert. Beide sind für die Verwendung mit Spring gut geeignet und daher fiel die Wahl auf Maven. Die Installation ist sehr einfach und es werden keine Vorkenntnisse benötigt. So konnten alle Metriken mit den bestmöglichen Werten bewertet werden.
+Als Buildmanagement-Tools haben sich Gradle\footnote{\url{https://gradle.org}}  und Maven\footnote{\url{https://maven.apache.org}} etabliert. Beide sind für die Verwendung mit Spring gut geeignet. Und da keines augenscheinlich einen Vorzug aufweist, wurde Maven gewählt. Die Installation ist sehr einfach und es werden keine Vorkenntnisse benötigt. So konnten alle Metriken mit den bestmöglichen Werten bewertet werden.
 
 \begin{longtable}{c}
 	\includegraphics[width=\linewidth]{Bilder/Sz1ErgebnisSpring.pdf} \\	
@@ -179,9 +179,9 @@ Als Buildmanagement-Tools haben sich Gradle\footnote{\url{https://gradle.org}}  
 
 \newparagraph{Szenario 2: Einfacher Service}
 Für die Erstellung eines neuen Projektes bietet Spring einen Initialisierungsservice\footnote{\url{http://start.spring.io}} an. Dieser lässt einen die nötigen Spring Module auswählen und das Projekt vorkonfigurieren. Als Ergebnis erhält man ein vollständig konfiguriertes Maven Projekt.
-Dies macht den Einstieg sehr einfach.
+Dies macht den Einstieg sehr unkompliziert.
 
-Auch die Implementierung eines einfachen "Hello-World"-Service ist mit Spring denkbar einfach. Das Listing \ref{SpringHello} zeigt was hierfür nötig ist. Daran sieht man sehr gut, dass die Einstiegshürde sehr gering ist. 
+Auch die Implementierung eines "Hello-World"-Service ist mit Spring denkbar einfach. Das Listing \ref{SpringHello} zeigt was hierfür nötig ist. Daran sieht man sehr gut, dass die Einstiegshürde sehr gering ist. 
 Mit \lstinline|@SpringBootApplication| werden die Standard-Spring\-konfigurationen aktiviert. So lässt sich anschließend über \lstinline|@RestController| und \lstinline|@PostMapping| der "Hello-World"-Endpunkt erstellen.
 Mehr Konfiguration ist dabei nicht nötig, da Spring über die automatische Konfiguration die Parameter sowie den Rückgabewert der Methode erkennt und damit den Endpunkt anlegt. Auch die De- und Serialisierung in die Standardformate erfolgt automatisch und muss nicht manuell erstellt werden. Somit konnten diese Anforderungen mit automatisch bewertet werden. 
 
@@ -204,7 +204,7 @@ Mehr Konfiguration ist dabei nicht nötig, da Spring über die automatische Konf
 	\end{lstlisting}
 \end{minipage}
 
-Ähnlich einfach gestaltet sich die Einrichtung der Service-Discovery Unterstützung. Mit der zusätzlichen Annotation \lstinline|@EnableEurekaClient| und einem Eintrag der Discovery-URL in der Datei \lstinline|application.properties| ist der Service für die Discovery konfiguriert. Die zugehörige Anforderung konnte somit bestmöglich bewertet werden. \\
+Ähnlich mühelos gestaltet sich die Einrichtung der Service-Discovery Unterstützung. Mit der zusätzlichen Annotation \lstinline|@EnableEurekaClient| und einem Eintrag der Discovery-URL in der Datei \lstinline|application.properties| ist der Service für die Discovery konfiguriert. Die zugehörige Anforderung konnte somit bestmöglich bewertet werden. \\
 Diese Kombination von Annotationen und einfachen Konfigurationen ist typisch für Spring Boot und konnte auf sämtliche weiteren Anforderungen angewendet werden. Das Ergebnis in Tabelle \ref{Sz2ErgebnisSpring} ist dementsprechend positiv.
 
 \begin{longtable}{c}
@@ -352,7 +352,7 @@ Aus diesen Gründen ist die in Tabelle \ref{Sz3ErgebnisGokit} dargestellte Bewer
 \newparagraph{Quantitative Evaluation}
 Bei den Performance-Messungen konnte Go-Kit seine Stärken zeigen. Mit durchschnittlichen 9 Millisekunden Latenz kann der Service schnell Anfragen verarbeiten. So konnte er unter Last beachtliche 27.625 Anfragen/Sekunde beantworten und blieb dabei mit 31MB im Speicher sehr effizient\footnote{Für die Performance Messung wurde das Tool JMeter(\url{http://jmeter.apache.org}) eingesetzt und auf einem Laptop mit i7 2,3GHz Prozessor und 16GB DDR3 RAM durchgeführt.}.
 
-Die Recherche bestätigte jedoch das bisher relativ schlechte Ergebnis. Obwohl das Framework auf der offiziellen Webseite als Produktionsreif vermarktet wird\cite{GoKitFAQ2017}, steht es derzeit noch in Entwicklung und ist aktuell in der Version $0.3$ veröffentlicht. Somit gibt es zur Zeit weder einen offiziellen Support noch setzen zu Recht große Firmen auf dieses Framework.
+Die Recherche bestätigte jedoch das bisher relativ schlechte Ergebnis. Obwohl das Framework auf der offiziellen Webseite als produktionsreif vermarktet wird\cite{GoKitFAQ2017}, steht es derzeit noch in Entwicklung und ist aktuell in der Version $0.3$ veröffentlicht. Somit gibt es zur Zeit weder einen offiziellen Support noch setzen, zu Recht, große Firmen auf dieses Framework.
 
 Das Ergebnis der Quantitativen Evaluation ist in Tabelle \ref{QuantErgebnisGokit} dargestellt.  
 
@@ -392,7 +392,7 @@ Der Einsatz von Spring ist dagegen sehr empfehlenswert, was der Erfolg und die w
 
 \subsubsection{Resümee Abschlussphase}
 
-Die Auswertung der Daten ist sehr einfach und liefert ein ansehnliches Gesamtergebnis. Es kann dabei nur für sich stehen oder auch im Vergleich zu anderen Frameworks gut hergenommen werden, was die Abbildung \ref{FittnessVergleich} sehr gut zeigt. Auf dieser Basis kann schnell ein guter Überblick gewonnen werden, mittels dessen weitere Diskussionen durchgeführt oder Entscheidungen getroffen werden können.
+Die Auswertung der Daten ist sehr einfach und liefert ein ansehnliches Gesamtergebnis. Es kann dabei nur für sich stehen oder auch im Vergleich zu anderen Frameworks gut hergenommen werden, was die Abbildung \ref{FitnessVergleich} sehr gut zeigt. Auf dieser Basis kann schnell ein guter Überblick gewonnen werden, mittels dessen weitere Diskussionen durchgeführt oder Entscheidungen getroffen werden können.
 
 \subsection{Gesamtauswertung \ac*{MFEM}}
 
