@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,bibliography=totocnumbered,listof=totocnumbered]{scrartcl}
+\documentclass[12pt,a4paper,bibliography=totocnumbered,listof=totocnumbered,final]{scrartcl}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
@@ -244,16 +244,7 @@ linecolor=yellow, textsize=tiny, textwidth=43]{todonotes}
 % Abstract
 % ----------------------------------------------------------------------------------------------------------
 \setcounter{page}{1}
-\onehalfspacing
-\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{2pt plus 2pt minus 2pt}
-\rhead{KURZFASSUNG}
-\section{Kurzfassung}
-Insert Abstract Here
-
-\vspace{-1,2em}
-\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{-6pt plus 2pt minus 2pt}
-\section*{Abstract}
-Insert Abstract Here
+\include{abstract}
 \pagebreak
 
 % ----------------------------------------------------------------------------------------------------------
