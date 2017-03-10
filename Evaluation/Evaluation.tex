@@ -17,7 +17,7 @@ Um mit der Evaluation von \ac{MFEM} möglichst vertretbare Ergebnisse zu erhalte
 
 Diesen Anforderungen folgend wurde als Erstes das auf Java basierende Spring Framework\footnote{\url{spring.io}} gewählt. Es befindet sich seit 2002 in Entwicklung und hat seit dem mehrere Preise gewonnen\cite[1]{Gutierrez2016}. Dabei entwickelt es die sehr aktive Open-Source-Community ständig weiter und integriert die neuesten Technologien. Beispiele hierfür sind WebFlux, welches reaktive Webapplikationen ermöglicht, oder Cloud-Contract, um die \ac{REST}-Schnittstelle mit einem Consumer-Driven Contract abzusichern. Zudem findet jährlich die SpringOne Konferenz statt, welche mit über 2000 Teilnehmern und 30 großen Sponsoren für den Erfolg von Spring sprechen\cite{SpringOne2016}.\\
 2014 wurde die Erweiterung Spring Boot offiziell veröffentlicht und stellte eine große Evolution des Frameworks dar. Es nimmt dem Entwickler so viel Arbeit wie möglich ab, sodass dieser sich auf die Geschäftslogik konzentrieren kann. Dabei stellt es die Konvention über die Konfiguration und erstellt so automatisch robuste, erweiterbare und skalierbare Spring Applikationen\cite[1]{Gutierrez2016}. Dies spricht für den hohen Reifegrad und die Akzeptanz des Frameworks.\\
-Nach \citeauthor{Wolff2016} (\citeyear{Wolff2016}) ist das Spring Framework eine sehr gute Wahl für den Einsatz in einer Microservice Architektur und lässt dabei kaum ein Problem offen, für das es keine Lösung vorhält. 
+Nach \cite{Wolff2016} ist das Spring Framework eine sehr gute Wahl für den Einsatz in einer Microservice Architektur und lässt dabei kaum ein Problem offen, für das es keine Lösung vorhält. 
 
 Die Wahl des zweiten Frameworks fiel auf Go-Kit\footnote{\url{gokit.io}}. Es wird seit 2016 entwickelt und ist somit, im Gegensatz zu Spring, ein sehr junges Framework. Dabei setzen die Entwickler auf die Programmiersprache Go, welche selbst noch relativ jung ist. \\
 Go wurde ursprünglich 2007 von Mitarbeitern des Unternehmens Google\cite{Golang2009} entwickelt und ist seit 2012 in einer stabilen Version verfügbar. Seit dem ist das Interesse für diese Sprache immens gestiegen, was der Tiobe Index deutlich zeigt. Dies ist ein Popularitäts-Ranking von Programmiersprachen, in dem Go derzeit den 14. Platz (Stand: Februar 2017) einnimmt\cite{Tiobe2016}. Aufgrund der starken Steigerung gegenüber dem Vorjahr wurde Go von Tiobe auch zur Programmiersprache 2016 gewählt.\\
@@ -49,7 +49,7 @@ Weitere Vorgaben über die Architektur werden nicht gemacht, da diese im Sinne d
 
 \subsubsection{Resümee Kickoff}
 
-Da nur der Autor die Evaluation durchführt, gab es keine Informationen, die mit anderen Teilnehmern ausgetauscht werden mussten. Aus diesem Grund wäre diese Phase bei einer realen Anwendung übersprungen worden. Sie ist somit zu Recht nach \ac{MFEM} nur optional durchzuführen. Eine Einführung bei mehreren Teilnehmern mach weiterhin durchaus Sinn.
+Da nur der Autor die Evaluation durchführt, gab es keine Informationen, die mit anderen Teilnehmern ausgetauscht werden mussten. Aus diesem Grund wäre diese Phase bei einer realen Anwendung übersprungen worden. Sie ist somit zu Recht nach \ac{MFEM} nur optional durchzuführen.
 
 \subsection{Analysephase}
 
@@ -57,7 +57,7 @@ In der Analysephase sollen nun, mit Hilfe der gegebenen Architektur, die Anforde
 
 \subsubsection{Architektur Analyse und Wahl der Anforderungen}
 
-Mit \ac{MFEM} kommen bereits viele die Basisanforderungen mit. Da die Architektur möglichst einfach gehalten wurde, gibt es keinen Widerspruch zu diesen Anforderungen. Auch gibt es unter den Basisanforderungen keine Punkte die sich widersprechen. Sie lassen sich somit vollständig übernehmen.
+Mit \ac{MFEM} kommen bereits viele die Basisanforderungen mit. Da die Architektur möglichst einfach gehalten wurde, gibt es keinen Widerspruch zu diesen Anforderungen. Auch gibt es innerhalb der Basisanforderungen keine Punkte die sich widersprechen. Sie lassen sich somit vollständig übernehmen.
 
 Zusätzlich ergeben sich aus der Architektur funktionale Serviceanforderungen. Dies betrifft hauptsächlich die Service-Discovery. Ein Service muss sich an diesem An- und Abmelden sowie regelmäßig einen Heartbeat senden. Auch für die Inter-Service-Kommunikation muss ein Service an der Discovery die Einträge abfragen und verarbeiten können. (Abbildung \ref{ServiceDiscovery}) Somit wurde die Anforderung zur Unterstützung einer mit Eureka aufgebauten Service-Discovery aufgenommen.
 
@@ -367,7 +367,7 @@ Das Ergebnis der Quantitativen Evaluation ist in Tabelle \ref{QuantErgebnisGokit
 
 Die Evaluationsphase ist die längste Phase von \ac{MFEM}. So hat die praktische Umsetzung der Szenarien und Messungen sowie die Einarbeitung in das Framework bei beiden Kandidaten eine Woche betragen. Aus diesem Grund ist es wichtig, bei der Ermittlung der Metriken auf die Prioritäten der Anforderungen zu achten. Wie bei der Evaluation von Go-Kit zu sehen war, hätte schon das Ergebnis des 2. Szenarios zu einem Abbruch führen können.\\
 Durch die genaue Definition der Szenarien mit den zugehörigen Metriken erfolgt die Durchführung der Evaluation zudem sehr zielgerichtet. Mit etwas Disziplin kann so eine ausschweifende Entwicklung verhindert und somit der Zeitaufwand weitestgehend verkürzt werden. Hierzu sollten, wie von \ac{MFEM} vorgesehen, die Szenarien möglichst genau definiert werden.\\
-Hierzu hat sich der Kreislauf zur Definition von Szenarien und der Zuordnung von Metriken in dieser Phase bewährt. So können keine Metriken übersehen werden und die Szenarien verfeinern sich zusehend.    
+Der Kreislauf zur Definition von Szenarien und der Zuordnung von Metriken hat sich in dieser Phase bewährt. So konnten keine Metriken übersehen und die Szenarien verfeinert werden.    
 
 \subsection{Abschlussphase}
 
